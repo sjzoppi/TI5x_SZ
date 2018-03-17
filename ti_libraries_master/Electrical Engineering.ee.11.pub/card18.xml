@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">SMITH CHART CALCULATIONS</label>
+<label slot="titleright">EE-18</label>
+<label slot="a">a</label>
+<label slot="b"><sigma/></label>
+<label slot="c">X</label>
+<label slot="d">P</label>
+<label slot="e"><ArrowR/> Execute</label>
+<label slot="aprime">Z<sub>0</sub></label>
+<label slot="bprime">Z</label>
+<label slot="cprime">Y</label>
+</carddef>

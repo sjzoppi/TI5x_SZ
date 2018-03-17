@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-12 — Line-of-Sight Distance and Altitude DME Speed Correction</H1>
+
+<P>As suggested by the title, this program consists of two routines
+  each independent of the other. They are considered separately.
+</P>
+
+<H2>Line-of-Sight Distance and Altitude</h2>
+<P>Given the altitude of a transmitter station (Trans), the maximum
+  altitude of the terrain between the transmitter and an aircraft
+  (Terr), and the aircraft altitude (ALT), (all in feet above mean sea
+  level), this routine calculates the line-of-sight distance from the
+  aircraft to the station (Dist) (in nautical miles) when the aircraft
+  is at the minimum altitude required to receive the
+  signal. Conversely, given Terr, Trans, and Dist, the routine
+  calculates the minimum ALT needed to receive the signal.
+</P>
+
+<P>The formulae assume that the radial from the center of the earth to
+  the point of highest terrain is perpendicular to the
+  line-of-sight. If this is not actually the case, then Dist
+  calculated will be slightly shorted than the actual distance, or ALT
+  will be slightly higher than necessary. In any event, this routine
+  yields the <i>worst case result</i>.
+</p>
+
+<H2>DME Speed Correction</h2>
+
+<P>Given the magnetic course (MC), the DME speed indicator reading
+  (DMEsp), and the radial to or from the DME station
+  (R<sub>DME</sub>), this routine computes the ground speed (GS). The
+  DME speed indicator measures the component of the aircraft ground
+  velocity vector in the direction of the radial between aircraft and
+  station.
+</P>
+
+<P>
+<IMG ALT="DME Speed Correction" src="data:image/png;base64,
+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
+">
+
+<DL class="deflist">
+  <DT>Select degree mode
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+  </DT>
+
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.</DD>
+  </DT>
+
+  <h3>For all line-of-sight distance or altitude:</h3>
+
+  <DT>Enter altitude of terrain (MSL)
+    <DD>Terr (ft) <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">Terr</sub></dd>
+  </DT>
+
+  <DT>Enter transmitter altitude (MSL)
+    <DD>Trans (ft) <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">Trans</sub></dd>
+  </DT>
+
+  <h3>To calculate line-of-sight distance given ALT:</h3>
+
+  <DT>Enter aircraft altitude (MSL)
+    <DD>ALT (ft) <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">ALT</sub></dd>
+  </DT>
+
+  <DT>Compute line-of-sight distance
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">Dist (n. mi.)</sub></dd>
+  </DT>
+
+  <h3>To calculate ALT given line-of-sight distance:</h3>
+
+  <DT>Enter line-of-sight distance
+    <DD>Dist (n. mi.) <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">Dist</sub></dd>
+  </DT>
+
+  <DT>Compute minimum altitude required
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">ALT (ft)</sub></dd>
+  </DT>
+
+  <h3>To compute ground speed from DME speed reading:</h3>
+
+  <DT>Enter magnetic course
+    <DD>MC (deg)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">MC</dd>
+  </DT>
+
+  <DT>Enter radial to (or from) the DME station
+    <DD>R<sub>DME</sub>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">R<sub>DME</sub></dd>
+  </DT>
+
+  <DT>Enter DME<sub>sp</sub> and calculate ground speed
+    <DD>DME<sub>sp</sub> (knots)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">GS (knots)</dd>
+  </DT>
+
+  <h3>To correct for aircraft altitude:</h3>
+
+  <DT>Enter distance to DME station
+    <DD>Dist<sub>DME</sub> (n. mi.)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">Dist<sub>DME</sub></dd>
+  </DT>
+
+  <DT>Enter difference between aircraft and DME station altitude and
+  compute the corrected ground speed
+    <DD>&Delta;h (ft)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">GS (knots)</dd>
+  </DT>
+</DL>
+
+<P>Registers used: 00, 10-19
+
+</BODY>

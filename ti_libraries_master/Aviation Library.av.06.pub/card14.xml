@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">DME AREA NAVIGATION</label>
+<label slot="titleright">AV-14</label>
+<label slot="a">Time</label>
+<label slot="b"># <ArrowR/> Dist to</label>
+<label slot="c"><ArrowR/> ETA</label>
+<label slot="d"><ArrowR/> MC</label>
+<label slot="e">Add mi</label>
+<label slot="aprime">from FIX #</label>
+<label slot="bprime">Rad</label>
+<label slot="cprime">DME</label>
+<label slot="dprime">GS <ArrowR/></label>
+<label slot="eprime"><ArrowR/> GS</label>
+</carddef>

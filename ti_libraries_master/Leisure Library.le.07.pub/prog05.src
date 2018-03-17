@@ -1,0 +1,188 @@
+Lbl A'
+CMs
+(
+STO 06
++
+10
+)
+Exc 06
+SUM Ind 09
+INV SBR
+Lbl B'
+(
+CE
+-
+Int
+STO 01
+)
+INV SBR
+Lbl C'
+RCL 08
+INV SBR
+Lbl D'
+RCL Ind 09
+INV SBR
+Lbl E'
+(
+B'
+×
+10
+)
+INV SBR
+Lbl A
+CP
+STO 09
+x=t 235
+9
+SUM 09
+INV Stflg 7
+RCL Ind 09
+Op 19
+Ifflg 7 239
+.01
+SBR 012
+D'
+E'
+E'
+CP
+INV x=t 092
+.1
++/-
+SBR 012
+100
++/-
+√x
+INV SBR
+(
+RCL 09
+-
+9
+)
+INV SBR
+Lbl B
+STO 08
+SBR 012
+D'
+E'
+B'
+CP
+RCL 01
+x=t 125
+C'
+SBR 012
+.1
++/-
+SBR 012
+(
+D'
+E'
+B'
+0
+x⇌t
+RCL 01
+-
+2
+)
+INV x≥t 150
+C'
+SBR 012
+.1
++/-
+SBR 012
+(
+CP
+C'
+-
+10
+)
+INV x=t 173
+D'
+E'
+E'
+CP
+x=t 173
+.2
+SBR 012
+C'
+INV SBR
+Lbl C
+(
+STO 07
+SBR 012
+D'
+E'
+B'
+CP
+RCL 01
+-
+1
+)
+INV x=t 207
+RCL 07
+SBR 012
+.1
++/-
+SBR 012
+(
+C'
+CP
++
+RCL 07
+-
+10
+)
+INV x=t 226
+.1
+SBR 012
+RCL 07
+INV SBR
+Lbl D
+SBR 012
+INV SBR
+1
++/-
+lnx
+INV SBR
+(
+RCL 09
+-
+9
+)
+INV SBR
+Lbl E
+STO 09
+Adv
+Prt
+9
+SUM 09
+D'
+Prt
+INV SBR
+Lbl Prt
+Fix 0
+RCL 06
+x⇌t
+9
+STO 01
+Op 21
+(
+RCL 01
+x=t 289
+Adv
+-
+9
+)
+Prt
+Pause
+RCL Ind 01
+Prt
+Pause
+GTO 268
+-
+10
+)
+INV SBR
+Lbl CLR
+Fix 9
+CMs
+INV SBR

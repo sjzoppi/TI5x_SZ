@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">UNIT CONVERSIONS (1)</label>
+<label slot="titleright">ML-24</label>
+<label slot="aprime">cm <ArrowR/> in</label>
+<label slot="bprime">m <ArrowR/> ft</label>
+<label slot="cprime">m <ArrowR/> yd</label>
+<label slot="dprime">km <ArrowR/> mi</label>
+<label slot="eprime">n mi <ArrowR/> mi</label>
+<label slot="a">in <ArrowR/> cm</label>
+<label slot="b">ft <ArrowR/> m</label>
+<label slot="c">yd <ArrowR/> m</label>
+<label slot="d">mi <ArrowR/> km</label>
+<label slot="e">mi <ArrowR/> n mi</label>
+</carddef>

@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">DETERMINANT, MATRIX &amp; SIMUL. EQ.</label>
+<label slot="titleright">ML-02</label>
+<label slot="aprime">i; <ArrowR/> x<sub>i</sub></label>
+<label slot="bprime"><ArrowR/> A<sup>-1</sup></label>
+<label slot="cprime">j; <ArrowR/> a<sub>ij</sub><sup>-1</sup></label>
+<label slot="eprime"><ArrowR/> |A|, A<sup>-1</sup></label>
+<label slot="a">n</label>
+<label slot="b">j;a<sub>ij</sub></label>
+<label slot="c"><ArrowR/> |A|</label>
+<label slot="d">i;b<sub>i</sub></label>
+<label slot="e"><ArrowR/> x</label>
+</carddef>

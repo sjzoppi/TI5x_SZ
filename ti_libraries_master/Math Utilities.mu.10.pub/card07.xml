@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">DATA ARRAYS</label>
+<label slot="titleright">MU-07</label>
+<label slot="a">Row<sub>A</sub>.Row<sub>B</sub></label>
+<label slot="b">Row<sub>C</sub></label>
+<label slot="c">Data</label>a
+<label slot="d">Growth</label>
+<label slot="e">SUM</label>
+<label slot="aprime">Constant</label>
+<label slot="bprime">R.C (INIT)</label>
+<label slot="cprime">R.C<sub>STO-RCL</sub></label>
+<label slot="dprime">Shift</label>
+<label slot="eprime">PRD</label>
+</carddef>

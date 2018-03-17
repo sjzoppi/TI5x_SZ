@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="163.29836mm"
+   height="53.715111mm"
+   viewBox="0 0 578.61622 190.32913"
+   id="svg8999"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="dme-speed-correction.svg">
+  <defs
+     id="defs9001">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker11028"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path11030"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker10968"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path10970"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker10884"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path10886"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker10838"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path10840"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4160"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker9579"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend"
+       inkscape:collect="always">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path9581"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path4145"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="240.17519"
+     inkscape:cy="21.738126"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="false"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:window-width="1113"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:snap-nodes="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata9004">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-123.63683,-353.86087)">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 160,533.79078 474.28571,465.21935"
+       id="path9547"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow2Lstart);marker-end:url(#marker9579)"
+       d="M 461.42857,393.79077 160,533.79078 l -0.76505,-150"
+       id="path9571"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 160,533.79078 685.71429,418.07649"
+       id="path10702"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 474.28571,465.21935 461.42857,393.79077"
+       id="path10704"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker10884)"
+       id="path10828"
+       sodipodi:type="arc"
+       sodipodi:cx="160"
+       sodipodi:cy="533.79077"
+       sodipodi:rx="128.57143"
+       sodipodi:ry="98.571434"
+       sodipodi:start="4.6958836"
+       sodipodi:end="5.988557"
+       d="M 157.87798,435.23276 A 128.57143,98.571434 0 0 1 283.0313,505.16719"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker10838)"
+       id="path10830"
+       sodipodi:type="arc"
+       sodipodi:cx="160"
+       sodipodi:cy="533.79077"
+       sodipodi:rx="50"
+       sodipodi:ry="61.428577"
+       sodipodi:start="4.6958782"
+       sodipodi:end="5.8666537"
+       sodipodi:open="true"
+       d="m 159.1745,472.37057 a 50,61.428577 0 0 1 46.55039,36.56675"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 470.22601,443.24022 22.72843,-5.05076 4.04061,19.1929"
+       id="path10930"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="121.42857"
+       y="370.93362"
+       id="text10932"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002"><tspan
+         sodipodi:role="line"
+         id="tspan10934"
+         x="121.42857"
+         y="370.93362">N (mag)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="182.85713"
+       y="478.07651"
+       id="text10936"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002"><tspan
+         sodipodi:role="line"
+         id="tspan10938"
+         x="182.85713"
+         y="478.07651">MC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="212.85716"
+       y="436.64789"
+       id="text10940"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002"><tspan
+         sodipodi:role="line"
+         id="tspan10942"
+         x="212.85716"
+         y="436.64789">R<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan10944">DME</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="300"
+       y="448.07651"
+       id="text10946"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002"><tspan
+         sodipodi:role="line"
+         id="tspan10948"
+         x="300"
+         y="448.07651">GS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="305.71426"
+       y="536.64789"
+       id="text10950"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002"><tspan
+         sodipodi:role="line"
+         id="tspan10952"
+         x="305.71426"
+         y="536.64789">DME<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan10954">sp</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="568.57141"
+       y="400.93365"
+       id="text10956"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002"><tspan
+         sodipodi:role="line"
+         id="tspan10958"
+         x="568.57141"
+         y="400.93365">DME station</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker10968)"
+       d="m 300,420.93363 c 5.71429,0 37.14286,0 37.14286,0"
+       id="path10960"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker11028)"
+       d="m 305.71428,509.50506 c 68.57143,1.42857 68.57143,1.42857 68.57143,1.42857"
+       id="path11020"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/obry/path11020.png"
+       inkscape:export-xdpi="36.330002"
+       inkscape:export-ydpi="36.330002" />
+  </g>
+</svg>

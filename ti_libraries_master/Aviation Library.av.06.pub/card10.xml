@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">RHUMBLINE NAVIGATION</label>
+<label slot="titleright">AV-10</label>
+<label slot="a">[d <ArrowR/> s]</label>
+<label slot="b">L<sub>s</sub>(+N,-S)</label>
+<label slot="c">L<sub>d</sub>(+N,-S)</label>
+<label slot="d"><ArrowR/> TC ; MC</label>
+<label slot="e"><ArrowR/> Dist</label>
+<label slot="aprime">Var (+W,-E)</label>
+<label slot="bprime"><lambda/><sub>s</sub> (+W,-E)</label>
+<label slot="cprime"><lambda/><sub>d</sub> (+W,-E)</label>
+<label slot="dprime">[calc] <ArrowR/></label>
+<label slot="eprime"><ArrowR/> tot Dist</label>
+</carddef>

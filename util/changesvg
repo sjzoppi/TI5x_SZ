@@ -1,0 +1,84 @@
+#! /usr/bin/python
+#
+# Change base64 encoded images from help file. The source image must be in SVG
+# format. In the HTML file, just place initially:
+#
+#    <IMG ALT="Name Of Image"
+#    ">
+#
+# Then call:
+#
+#    $ changesvg /path/to/art/directory /path/to/help/file
+#
+# The IMG tag above will be replaced by the base64 encoded PNG created out of
+# the SVG file using inkscape. The final HTML will look like:
+#
+#
+#    <IMG ALT="Name Of Image" src="data:image/png;base64,
+#    iVBORw0KGgoAAAANSUhEUgAAAV4AAADeCAYAAAB17Gh2AAAABHNCSVQICAgIfAhkiAAAAA
+#    lwSFlzAAAHsAAAB7AB1IKDYgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vu
+#    ...
+#    ">
+#
+# Note that all attributes before the ALT one are kept, others are lost.
+#
+# The actual SVG file to use is based in the ALT attribute content. All
+# letters are converted to lower-case and spaces to '-'.
+#
+# To replace all images in help text from Git root repository:
+#
+#    $ find modules -name "help*" -exec util/changesvg $PWD/art {} \;
+
+import getopt
+import sys
+import os
+import string
+import re
+import base64
+
+# width of the PNG image, the height is kept with proportion
+WIDTH = 350
+
+if len(sys.argv) != 3:
+    sys.exit("usage: changesvg <art_directory> <help_file>")
+
+art = sys.argv[1]
+file = sys.argv[2]
+
+print file
+
+content = open(file, 'r').readlines()
+newcontent = []
+
+is_img=False
+
+for c in content:
+    if string.find(string.lower(c), "<img") != -1:
+        alt = re.search('^(.*) ALT="([^"]*)".*$', c)
+        if alt != None:
+            svgfile = os.path.join(art,string.lower(alt.group(2)) + '.svg').replace(' ', '-')
+
+
+            if os.path.exists(svgfile):
+                is_img = True
+                os.system("inkscape -f %s -w %d -e /tmp/art.png" % (svgfile, WIDTH))
+
+                initial_data = open('/tmp/art.png', 'rb').read()
+                encoded_data = base64.b64encode(initial_data)
+                newcontent.append('%s ALT="%s" src="data:image/png;base64,' % (alt.group(1), alt.group(2)) + '\n')
+                for i in xrange((len(encoded_data)/70)+1):
+                    newcontent.append(encoded_data[i*70:(i+1)*70] + '\n')
+            else:
+                print("skip: svg file '%s' not found" % svgfile)
+
+    if not is_img:
+        newcontent.append(c);
+
+    if is_img == True and string.find(string.lower(c), '">') != -1:
+        is_img=False
+        newcontent.append(c);
+
+# write new content
+f = open(file, "w+");
+f.writelines(newcontent)
+f.close()

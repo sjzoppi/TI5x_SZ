@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">ALPHA MESSAGES</label>
+<label slot="titleright">MU-03</label>
+<label slot="a">Left</label>
+<label slot="b">Center</label>
+<label slot="c">Right</label>
+<label slot="d">Number</label>
+<label slot="e">Space</label>
+<label slot="aprime">New Line</label>
+<label slot="bprime">Print</label>
+<label slot="cprime">Edit</label>
+<label slot="dprime">ENTER</label>
+<label slot="eprime">PRESS: SBR</label>
+</carddef>

@@ -1,0 +1,287 @@
+
+lbl A
+   sto 48
+   sto 59
+   inv sbr
+   st* 59
+   1
+   inv sum 59
+   rcl 59
+   gto 006
+
+lbl B
+   sto 49
+   inv sbr
+
+lbl E
+   cp
+   x=t 038
+   x≥t 033
+   inv stflg 1
+   gto 039
+   inv stflg 0
+   inv sbr
+
+lbl C'
+   sto 52
+   x⇌t
+   sto 53
+
+lbl C
+   rcl 48
+   x⇌t
+   2
+   inv x≥t 103
+   x=t 083
+   1
+   adv
+   prt
+   inv sbr
+   (
+   rcl 00
+   +/-
+   ÷
+   rcl 01
+   )
+   prt
+   inv sbr
+   inv stflg 0
+   inv stflg 1
+   inv sbr
+   rcl 01
+   +/-
+   sto 52
+   rcl 00
+   +/-
+   sto 53
+   rcl 02
+   1/x
+   prd 52
+   prd 53
+   gto 322
+   rcl 48
+   sto 50
+   23
+   sto 51
+   sto 54
+   22
+   sto 55
+   rc* 50
+   st* 51
+   sto 47
+   1
+   sum 51
+   inv sum 50
+   (
+   rc* 50
+   +
+   rcl 52
+   ×
+   rc* 54
+   )
+   st* 51
+   0
+   sto 46
+   (
+   rcl 48
+   -
+   1
+   )
+   sto 22
+   1
+   inv sum 50
+   sum 51
+   sum 54
+   sum 55
+   (
+   rc* 50
+   +
+   rcl 52
+   ×
+   rc* 54
+   +
+   rcl 53
+   ×
+   rc* 55
+   )
+   st* 51
+   (
+   rc* 54
+   +
+   rcl 53
+   ×
+   rcl 46
+   sto 45
+   +
+   rcl 52
+   ×
+   rcl 47
+   sto 46
+   )
+   sto 47
+   dsz 22 152
+   cp
+   (
+   rcl 46
+   x²
+   -
+   rcl 45
+   ×
+   rcl 47
+   )
+   sto 56
+   inv x=t 232
+   1
+   sum 52
+   sum 53
+   gto 103
+   rcl 49
+   x⇌t
+   (
+   (
+   rcl 45
+   ×
+   rc* 51
+   -
+   rc* 54
+   ×
+   rcl 46
+   )
+   ÷
+   rcl 56
+   )
+   sum 52
+   sto 57
+   inv ifflg 0 275
+   ifflg 1 273
+   +
+   =
+   inv sbr
+   ce
+   gto 275
+   adv
+   prt
+   (
+   (
+   rc* 54
+   ×
+   rcl 47
+   -
+   rc* 51
+   ×
+   rcl 46
+   )
+   ÷
+   rcl 56
+   )
+   sum 53
+   inv ifflg 0 312
+   ifflg 1 311
+   +
+   =
+   inv sbr
+   ce
+   gto 312
+   prt
+   |x|
+   x≥t 103
+   rcl 57
+   |x|
+   x≥t 103
+   rcl 52
+   inv ifflg 0 339
+   ifflg 1 337
+   inv sbr
+   gto 339
+   adv
+   prt
+   rcl 53
+   inv ifflg 0 355
+   ifflg 1 354
+   inv sbr
+   gto 355
+   prt
+   rcl 48
+   adv
+   prt
+   inv sbr
+   (
+   rcl 52
+   x²
+   +
+   4
+   ×
+   rcl 53
+   )
+   prt
+   inv sbr
+   cp
+   x≥t 400
+   (
+   +/-
+   √x
+   ÷
+   2
+   )
+   prt
+   inv sbr
+   (
+   rcl 52
+   ÷
+   2
+   )
+   prt
+   inv sbr
+   rcl 48
+   x⇌t
+   2
+   x=t 076
+   inv sbr
+   (
+   (
+   √x
+   +
+   rcl 52
+   )
+   ÷
+   2
+   )
+   prt
+   inv sbr
+   (
+   ce
+   -
+   rcl 52
+   )
+   +/-
+   prt
+   inv sbr
+   gto 392
+
+lbl D
+   (
+   (
+   rcl 48
+   -
+   1
+   )
+   sto 22
+   -
+   1
+   )
+   sto 48
+   sto 50
+   23
+   sto 51
+   rc* 51
+   st* 50
+   1
+   sum 51
+   inv sum 50
+   dsz 22 446
+   inv sbr
+
+lbl clr
+   fix 9
+   0
+   inv sbr

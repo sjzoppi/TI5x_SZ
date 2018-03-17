@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">CHART INITIALIZATION</label>
+<label slot="titleright">NG-12</label>
+<label slot="b">L<sub>1</sub>, <lambda/><sub>1</sub></label>
+<label slot="c">L<sub>m</sub>, <lambda/><sub>m</sub></label>
+<label slot="e">STORE</label>
+<label slot="aprime">V</label>
+<label slot="bprime">L<sub>2</sub>, <lambda/><sub>2</sub></label>
+<label slot="cprime">L</label>
+</carddef>

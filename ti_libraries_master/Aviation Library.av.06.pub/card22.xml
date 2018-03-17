@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">RNAV FLIGHT PLANNING</label>
+<label slot="titleright">AV-22</label>
+<label slot="a">WP #</label>
+<label slot="b">L (+W,-E)</label>
+<label slot="c"><lambda/> (+N,-S)</label>
+<label slot="d"># From</label>
+<label slot="e"># To</label>
+<label slot="aprime"><ArrowR/> TC</label>
+<label slot="bprime"><ArrowR/> Dist</label>
+<label slot="cprime">Leg Dist</label>
+<label slot="dprime">Var(+W,-E)</label>
+<label slot="eprime"><ArrowR/> Rad;DME</label>
+</carddef>

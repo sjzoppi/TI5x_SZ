@@ -1,0 +1,154 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A                                   ;000
+    inv
+
+lbl A'                                  ;003
+    stf 4
+    stf 1
+    sto 4
+    ( int ÷ 1 0 0 )
+    ( inv int × 1 0 0 )
+    sto 5
+    inv log
+    dms
+    sto 1
+    x⇌t
+    x≥t 62
+    ( x⇌t ÷ 1 0 +/- )
+    int x⇌t
+    sto 6
+    inv x≥t 62
+    0
+    x=t 61
+    rcl 6
+    x=t 62
+    inv stf 3
+    rcl 1
+    inv prd 6
+    ( rcl 4 × 1 0 0 )
+    ( inv int × 4 0 0 )
+    sto 3
+    ( rcl 4 ÷ 1 0 0 )
+    int
+    ( sto 7 ÷ 5 )
+    sto 0
+    int
+    inv sum 0
+    sum 3
+    5 +/-
+    prd 0
+    5 sum 0
+    rcl 0
+    inv log x²
+    ( 1/x × rc* 3 )
+    int sto 1
+    ( 2 0 - rcl 7 )
+    sto 2
+    rcl 4
+    ( inv int × 1 0 0 )
+    ( int + cp x=t 159 1 + rcl 5 )
+    sto 7
+    ( ce - rcl 0 )
+    x≥t 203
+    ( +/- inv log x² 1/x × x⇌t rc* 3 )
+    ( inv int ÷ x⇌t ÷ rcl 0 sto 7 inv log x² )
+    sum 1
+    gto 220
+
+    x⇌t                                  ;203
+    5
+    x⇌t
+    gto 214
+
+    ( ce - 5 )                           ; 209
+    x≥t 209
+    inv sum 7
+    op 33
+    inv stf 2
+    op 25
+    rcl 6
+    cp
+    x≥t 253
+    ( ce × 1 0 )
+    inv int
+    abs
+    sto 6
+    pgm 3 sbr -
+    op 35
+    gto 305
+
+    inv dsz 5 370                               ;253
+    inv iff 3 272
+    5 1
+    pgm 3 sbr sbr
+    gto 305
+
+    ( rcl 6 × 1 0 )
+    sto 6
+    int
+    inv sum 6
+    cp inv
+    x=t 300
+    iff 4 300
+    pgm 3 e
+    gto 305
+    stf 4
+    pgm 3 d
+    dsz 7 253
+    2 0
+    sto 7
+    op 23
+    ( 6 - rcl 5
+    iff 2 342
+    -
+    rcl 4
+    ( inv int × 1 0 0 )
+    int
+    cp
+    x=t 342
+    - 1
+    )
+    inv log
+    x²
+    sto 1
+    ( 1/x × rc* 3 )
+    inv int
+    prd 1
+    1 0
+    inv log
+    inv prd 1
+    op 33
+    gto 253
+
+    iff 2 404                                   ;370
+    rcl 4
+    ( inv int × 1 0 0 )
+    int
+    cp
+    x=t 404
+    sto 5
+    stf 4
+    stf 2
+    pgm 3 sbr .
+    op 25
+    gto 305
+
+    5 x⇌t                                       ;404
+    rcl 0
+    x=t 422
+    inv log
+    x²
+    op 23
+    prd 1
+    rcl 1
+    st* 3
+    0
+    rtn
+
+lbl B                                           ;424
+    pgm 3 b'
+    rtn

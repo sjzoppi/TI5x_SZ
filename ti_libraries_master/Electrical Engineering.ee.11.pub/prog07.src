@@ -1,0 +1,65 @@
+
+lbl clr
+   fix 9
+   0
+   inv stf 0
+   rtn
+
+lbl E
+   stf 0
+   rtn
+
+lbl A
+   iff 0 031
+   sto 10
+   sbr 118
+   sbr 129
+   sbr 140
+   rcl 10
+   gto 005
+
+lbl B
+   iff 0 062
+   sto 11
+   ( rcl 11 log × 2 0 )
+   sto 13
+   sbr 147
+   rcl 11
+   lnx
+   sto 12
+   rcl 11
+   gto 005
+
+lbl C
+   iff 0 091
+   sto 12
+   ( rcl 12 × 2 )
+   inv lnx
+   sto 10
+   sbr 118
+   sbr 140
+   rcl 12
+   gto 005
+
+lbl D
+   iff 0 113
+   sto 13
+   sbr 147
+   sbr 129
+   sbr 140
+   rcl 13
+   gto 005
+   ( rcl 10 log × 1 0 )
+   sto 13
+   rtn
+   ( rcl 10 lnx × . 5 )
+   sto 12
+   rtn
+   rcl 12
+   inv lnx
+   sto 11
+   rtn
+   ( rcl 13 ÷ 1 0 )
+   inv log
+   sto 10
+   rtn

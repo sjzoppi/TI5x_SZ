@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">INTERSECTION (BRG-DIST)</label>
+<label slot="titleright">SY-18</label>
+<label slot="a">N<sub>1</sub>, E<sub>1</sub></label>
+<label slot="b">N<sub>2</sub>, E<sub>2</sub></label>
+<label slot="c">Brg<sub>1</sub></label>
+<label slot="d">Q<sub>1</sub></label>
+<label slot="e">Dist<sub>2</sub></label>
+<label slot="aprime"><ArrowR/> Dist<sub>12</sub></label>
+<label slot="bprime"><ArrowR/> Az<sub>12</sub></label>
+<label slot="cprime"><ArrowR/> N<sub>I</sub></label>
+<label slot="dprime"><ArrowR/> E<sub>I</sub></label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

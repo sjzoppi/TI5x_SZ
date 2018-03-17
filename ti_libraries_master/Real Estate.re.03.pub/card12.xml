@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">INTERNAL RATE OF RETURN</label>
+<label slot="titleright">RE-12</label>
+<label slot="a">CF Entry</label>
+<label slot="b">Investment</label>
+<label slot="c"><ArrowR/> IRR</label>
+<label slot="d"></label>
+<label slot="e"><ArrowR/> Rev IRR</label>
+<label slot="aprime"># CF Del</label>
+<label slot="bprime">New CF Ent</label>
+<label slot="cprime">New CF</label>
+<label slot="dprime"></label>
+<label slot="eprime">INIT</label>
+</carddef>

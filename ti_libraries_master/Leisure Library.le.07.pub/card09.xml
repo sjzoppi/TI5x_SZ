@@ -1,0 +1,6 @@
+<carddef style="system">
+<label slot="titleleft">CODEBREAKER</label>
+<label slot="titleright">LE-09</label>
+<label slot="a">Guess</label>
+<label slot="e">Seed</label>
+</carddef>

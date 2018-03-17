@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">UNIT CONVERSIONS</label>
+<label slot="titleright">NG-30</label>
+<label slot="a">yds <ArrowR/> n.mi</label>
+<label slot="b">mi  <ArrowR/> n.mi</label>
+<label slot="c">gal(U.S.)<ArrowR/> lit</label>
+<label slot="d">lb <ArrowR/> kg</label>
+<label slot="e">°F <ArrowR/> °C</label>
+<label slot="aprime">n.mi <ArrowR/> yds</label>
+<label slot="bprime">n.mi <ArrowR/> mi</label>
+<label slot="cprime">lit <ArrowR/>gal(U.S.)</label>
+<label slot="dprime">kg <ArrowR/> lb</label>
+<label slot="eprime">°C <ArrowR/> °F</label>
+</carddef>

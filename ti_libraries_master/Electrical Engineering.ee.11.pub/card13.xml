@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">ACTIVE LP,HP,BP FILTERS</label>
+<label slot="titleright">EE-13</label>
+<label slot="a"><alpha/></label>
+<label slot="b">A</label>
+<label slot="c">F</label>
+<label slot="d">B</label>
+<label slot="aprime">C<sub>1</sub></label>
+<label slot="bprime">C<sub>2</sub></label>
+<label slot="cprime"><ArrowR/> BP</label>
+<label slot="dprime"><ArrowR/> LP</label>
+<label slot="eprime"><ArrowR/> HP</label>
+</carddef>

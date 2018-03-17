@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">RHUMBLINE NAVIGATION</label>
+<label slot="titleright">NG-11</label>
+<label slot="a">L<sub>s</sub>, <lambda/><sub>s</sub></label>
+<label slot="b">L<sub>D</sub>, <lambda/><sub>D</sub></label>
+<label slot="c">COMPUTE</label>
+<label slot="d"><ArrowR/> D</label>
+<label slot="e"><ArrowR/> CMG</label>
+<label slot="aprime">INIT</label>
+<label slot="bprime">UPDATE</label>
+<label slot="dprime"><ArrowR/> tD</label>
+<label slot="eprime"><Delta/> t <ArrowR/> SMG</label>
+</carddef>

@@ -1,0 +1,157 @@
+Lbl A
+(
+STO 12
+×
+1
+STO 13
+)
+INV Stflg 1
+INV SBR
+Lbl B
+STO 11
+INV SBR
+Lbl C
+Stflg 1
+INV SBR
+Lbl D
+2
+Prd 13
+RCL 13
+INV SBR
+Lbl E
+0
+STO 18
+6
+x⇌t
+RCL 11
+INV x≥t 050
+2
+SUM 18
+RCL 11
+x⇌t
+7
+INV x=t 059
+2
+Prd 18
+INV Ifflg 1 069
+1.5
+Prd 18
+6
+(
+Exc 18
+×
+5
+)
+STO 17
+INV Ifflg 1 086
+4
+SUM 18
+40
+x⇌t
+RCL 12
+INV x=t 097
+30
+STO 16
+(
+(
+CE
+×
+(
+RCL 11
+-
+1
+)
++
+RCL 12
+)
+×
+RCL 13
+)
+STO 14
+x⇌t
+99
+x⇌t
+x≥t 129
+1
+STO 18
+RCL 13
+x⇌t
+1
+x=t 155
+SUM 18
+(
+50
+INV Ifflg 1 148
+×
+2
+×
+RCL 13
+)
+STO 16
+(
+50
+×
+(
+RCL 17
++
+RCL 18
+)
++
+RCL 14
+)
+STO 14
+INV SBR
+Lbl D'
+(
+CE
+×
+RCL 16
++
+RCL 14
+)
+INV SBR
+
+lbl E'
+STO 18
+(
+50
+×
+RCL 13
+INV Ifflg 1 201
+×
+2
+)
+x⇌t
+RCL 16
+x⇌t
+x=t 217
+(
+CE
+×
+RCL 18
++/-
+)
+INV SBR
+(
+CE
++
+x⇌t
+×
+(
+RCL 18
+-
+1
+)
+×
+1.5
+Ifflg 1 237
+2
+)
++/-
+INV SBR
+Lbl CLR
+CMs
+Fix 9
+INV Stflg 1
+0
+INV SBR

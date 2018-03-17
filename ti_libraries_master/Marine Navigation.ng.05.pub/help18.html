@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-18 — Sextant Correction </H1>
+<P>After the navigator has observed a celestial body and recorded the time and sextant reading, the reading must be corrected and adjusted for a number of factors. This program is designed to apply these corrections and adjustments to the reading in computing the observed altitude (Ho) which is then stored in the calculator and may be used later with a sight reduction program or NG-25.</P>
+<P>The sextant correction workform may be used to organize the data for entry into the calcu¬lator. First, you fill out the general information at the top of the workform. This indicates the name or kind of body you observed, the date (Greenwich), the upper or lower limb if the body was the sun or moon, and the watch time, corrected for watch errors to produce GMT,</P>
+<P>The form's input data is organized according to its chronological entry into the program. The step reference numbers at the left of the workform correspond to the step-procedure instruc¬tions of the program.</P>
+<P>The workform is organized to help the navigator handle the decimal point when entering data. There is also space at the bottom of the form to record the program output, your corrected sextant reading (Ho).</P>
+<P>To record the input data, you begin by entering the sextant reading (Hs) from the instrument.</P>
+<P>The uncorrectible instrument error of your particular sextant for that reading will be noted on the certificate, usually found inside the lid of the sextant case.</P>
+<P>The index correction, which can be positive or negative, adjusts the reading for the fact that the index mirror and horizon glass may not be parallel. You find the index error by:</P>
+<OL>
+<LI>Setting the instrument to zero, 
+<LI>Looking at the horizon to determine if it appears as a single or broken line. 
+<LI>Adjusting the sextant to form a single horizon line if the "zero setting" produced a broken line. 
+<LI>Noting how many minutes/tenths must be added or subtracted to return the setting to zero. </LI></OL>
+<P>The additional sextant corrections for Venus and Mars are given in the middle column of page A-2, Altitude Corrections for Sun, Stars and Planets of the Nautical Almanac. You will find these corrections on the inside cover at the front of each year's Almanac. Table 3, reprinted from the 1975 Nautical Almanac, shows how this table is organized.</P>
+<P>The Semi-Diameter (SD) of the sun or moon is found on the right hand side of the white (daily) pages of-the Nautical Almanac. The information will be found at the bottom of the page. One entry is given for the sun for the three-day period covered by each page, and three entries, one for each day, are given for the moon. Table 2 is an extract of the 1975 Almanac for June 24, 25 and 26 which shows that the SD for the sun for any of those three days is 15.8'. The SD for the moon for June 24 is 15.3', for June 25, 15.1' and for June 26, 15.0`.</P>
+<P>The height of the navigator's eye above the water at the time of observation is recorded in feet. This information will be entered into the calculator to correct the sextant reading for the fact that the observer's eye was above sea level.</P>
+<P>The horizontal parallax (HP) adjusts the reading for the special characteristics of the moon. HP is given in the daily pages of the Almanac for each whole hour of GMT of the moon as illustrated by table 1.</P>
+<H2>Non-Standard Conditions</H2>
+<P>Extreme conditions are defined as very high (above 90°F) or very low (below 30°F) tempera¬ture; very high (above 30.5 inches) or very low (below 29.5 inches) barometric pressure.</P>
+<P>Since such conditions affect the sextant reading, the sextant correction program can adjust the reading for these extremes.</P>
+<P>If you find your observations involve extreme temperatures or barometric conditions, enter the air temperature (in degrees Fahrenheit) and barometric pressure (in inches) in steps 12 and 13. If conditions are standard, ignore these steps and proceed with the program.</P>
+<P>Very low altitude sightings (e.g., below 10°) are considered by many navigators as inherently unreliable. If, however, you are forced to use a low altitude sight, it is a good idea to use the prevailing temperature and barometric pressure components of the program even if conditions appear normal as low altitude sights are more sensitive to variations of pressure and temperature.</P>
+<P>Once you have taken a sight, recorded the data, and completed the sextant correction pro¬gram according to the instructions, the corrected sextant reading (Ho) will be automatically stored in your calculator's data memory. The navigator should jot down the corrected sextant reading Ho (DD.MMSSO in the program output space on the workform in case Ho must be entered manually due to a data entry error in the sight reduction program which required clearing the calculator memories. You are then ready to proceed with the appropriate sun, moon, star, planet sight or noon sight reduction program.</P>
+<P>The following formula is used to determine the observed altitude:</P>
+<DIV style="MARGIN-LEFT: 40px">Ho&nbsp; =&nbsp; Hs + IE + IC — D + SD — Rm + T' — P' + HP [cos (ha — Rm)]. </DIV>
+<P>The variables are defined as:</P>
+<DIV style="MARGIN-LEFT: 40px">
+<DL>
+<DT>Ho 
+<DD>= observed altitude 
+<DT>Hs 
+<DD>= sextant reading 
+<DT>IE 
+<DD>= instrument error 
+<DT>IC 
+<DD>= index correction 
+<DT>ID 
+<DD>= dip = 0.01617 √(height of eye in feet), 
+<DT>SD 
+<DD>= semi-diameter of sun or moon, 
+<DT>Rm 
+<DD>= mean refraction<BR>=0.00117 + 0.0154/tan(ha) {if ha ≥ 8°}<BR>=0.02360 + 0.0119/tan(ha) {if ha &lt; 8°} 
+<DT>T' 
+<DD>= air temperature correction = Rm [1 — 510/(460 + T)] 
+<DT>T 
+<DD>= temperature of air, °F 
+<DT>P' 
+<DD>= barometric pressure correction = Rm (1 — P/29.83) 
+<DT>P 
+<DD>= barometric pressure, 
+<DT>ha 
+<DD>= Hs + IE + IC— D + SD, and 
+<DT>HP 
+<DD>= horizontal parallax. </DD></DL></DIV><BR>
+<P><SPAN style="FONT-WEIGHT: bold">REMARKS</SPAN>:</P>
+<OL>
+<LI>This program may be used to compute and store up to six sights for use in programs NG-19 through 22. </LI></OL>
+</BODY>

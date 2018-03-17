@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-09 — Vertical Curve Design</H1>
+
+<P>This program computes the stationing and elevation of stations
+  along a vertical curve, given the starting and ending grades, and
+  the curve length (or the rate of change of grade (&Delta;g) per
+  station). Also computed are the rate of change of grade per station
+  (or the curve length) and the stationing and elevation of the
+  maximum or minimum elevation point.
+</P>
+
+<UL>
+  <LI>Initialize, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+
+  <LI>Enter starting grade, press
+    <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter ending grade, press
+    <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter either:
+    <UL>
+      <LI>curve length, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>change of grade per station, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Either:
+    <UL>
+      <LI>Enter Beginning station, press
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Enter Elevation of Stat<sub>B</sub>, press
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Compute Intersection station, press
+        <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+      <LI>Compute Elevation of Sta<sub>I</sub>, press
+        <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+    or
+
+    <UL>
+      <LI>Enter Intersection station, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>Enter Elevation of Stat<sub>I</sub>, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>Compute Beginning station, press
+        <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+      <LI>Compute Elevation of Sta<sub>B</sub>, press
+        <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute Station at maximum or minimum elevation, press
+    <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+  <LI>Compute maximum or minimum elevation, press
+    <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+
+  <LI>To find elevation of any curve station, enter <i>station</i> and
+    press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+</UL>
+
+<P>Registers used: 01-09, 12, 16
+
+</BODY>

@@ -1,0 +1,160 @@
+
+lbl A'
+   exc 00
+   inv sbr
+
+   -
+   cp
+   x≥t 012
+   0
+   +
+   24
+   =
+   cp
+   inv x≥t 005
+   inv sbr
+
+lbl B
+   cp
+   x=t 032
+   d.ms
+   sto 14
+   clr
+   inv sbr
+
+   rcl 10
+   ÷
+   rcl 17
+   =
+   sto 14
+   gto 109
+
+lbl C
+   cp
+   x=t 053
+   sto 17
+   clr
+   inv sbr
+
+   rcl 10
+   ÷
+   rcl 14
+   =
+   sto 17
+   inv sbr
+
+lbl D
+   cp
+   x=t 072
+   sto 10
+   clr
+   inv sbr
+
+   rcl 17
+   ×
+   rcl 14
+   =
+   sto 10
+   inv sbr
+
+lbl A
+   d.ms
+   sto 16
+   inv sbr
+
+lbl B'
+   sto 07
+   inv sbr
+
+lbl C'
+   sto 06
+   inv sbr
+
+lbl E
+   clr
+   b
+   d.ms
+   +
+   rcl 16
+   =
+   sbr 005
+   inv d.ms
+   inv sbr
+
+   rcl 11
+   inv sbr
+
+   rcl 12
+   gto 109
+
+lbl E'
+   d.ms
+   -
+   exc 16
+   =
+   sbr 005
+   sto 14
+   sum 12
+   ÷
+   rcl 10
+   sum 11
+   =
+   1/x
+   sto 17
+   rcl 16
+   gto 109
+
+lbl D'
+   a'
+   rcl 17
+   a'
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   +
+   a'
+   sto 13
+   rcl 06
+   a'
+   rcl 07
+   ∑+
+   0
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   =
+   a'
+   +
+   rcl 13
+   =
+   a'
+   exc 00
+   x⇌t
+   exc 00
+   inv p→r
+   x⇌t
+   exc 00
+   x⇌t
+   cp
+   x≥t 210
+   +
+   360
+   =
+   inv sbr
+   a'
+   gto 210
+
+lbl clr
+   fix 4
+   cms
+   deg
+   0
+   inv sbr
+   gto clr

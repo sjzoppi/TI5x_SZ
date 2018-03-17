@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">WIND VECTORS</label>
+<label slot="titleright">AV-07</label>
+<label slot="a"><ArrowR/>Tw(+T,-H)</label>
+<label slot="b"><ArrowR/>Cw(+L,-R)</label>
+<label slot="d"><ArrowR/> WD<sub>AV</sub></label>
+<label slot="e"><ArrowR/> WV<sub>AV</sub></label>
+<label slot="aprime">Var(+W,-E)</label>
+<label slot="bprime">WD</label>
+<label slot="cprime">WV</label>
+<label slot="dprime">MH</label>
+<label slot="eprime">Dist</label>
+</carddef>

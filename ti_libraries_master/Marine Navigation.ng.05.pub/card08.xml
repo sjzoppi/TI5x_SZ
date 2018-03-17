@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">DMG, SMG, CMG FROM 2 OBJECTS</label>
+<label slot="titleright">NG-08</label>
+<label slot="a">D, B<sub>t</sub>(1<ArrowR/>2)</label>
+<label slot="b">B<sub>c1</sub></label>
+<label slot="c">t</label>
+<label slot="d"><ArrowR/> D<sub>1</sub>; D<sub>2</sub></label>
+<label slot="e"><ArrowR/> DMG</label>
+<label slot="aprime">V; De</label>
+<label slot="bprime">B<sub>c2</sub></label>
+<label slot="eprime"><ArrowR/> SMG;CMG</label>
+</carddef>

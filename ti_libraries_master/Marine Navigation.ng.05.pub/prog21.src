@@ -1,0 +1,41 @@
+
+lbl A
+   adv
+   pgm 16 a
+   inv sbr
+
+lbl B
+   pgm 16 b
+   inv sbr
+
+lbl C
+   pgm 19 c
+   inv sbr
+
+lbl D
+   pgm 20 d
+   inv sbr
+
+lbl E
+   pgm 19 d
+   inv sbr
+
+lbl A'
+   pgm 19 e
+   inv sbr
+
+lbl B'
+   pgm 19 a'
+   inv sbr
+
+lbl C'
+   pgm 19 b'
+   inv sbr
+
+lbl D'
+   pgm 20 d'
+   inv sbr
+
+lbl E'
+   pgm 19 d'
+   inv sbr

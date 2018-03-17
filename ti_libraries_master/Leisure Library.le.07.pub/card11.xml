@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">BLACKJACK</label>
+<label slot="titleright">LE-11</label>
+<label slot="a">Hit</label>
+<label slot="b">Stand</label>
+<label slot="d">New Game</label>
+<label slot="e">Seed</label>
+<label slot="aprime">Ace</label>
+</carddef>

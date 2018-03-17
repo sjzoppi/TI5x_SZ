@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">DECLINING BALANCE DEPRECIATION</label>
+<label slot="titleright">RE-06</label>
+<label slot="a">SBV</label>
+<label slot="b">FACT</label>
+<label slot="c">Life</label>
+<label slot="d">Year</label>
+<label slot="e"><ArrowR/> DEP</label>
+<label slot="aprime"><ArrowR/> RDV</label>
+<label slot="bprime"><ArrowR/> RBV</label>
+<label slot="cprime"><ArrowR/> ACD</label>
+<label slot="dprime">Frac Year</label>
+<label slot="eprime">Year + 1</label>
+</carddef>

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-17 — Discrete Fourier Transform</H1>
+
+<P>This program transforms a real time series to the frequency domain
+(DFT) and performs the inverse transform (IDFT) from the frequency
+domain back to the time domain. The frequency representation of the
+transform is given in terms of magnitude in dB and phase in
+degrees. The program allows a DFT sampling rate of up to 88
+points. For IDFT's, the user can generate a time-domain image of a
+signal by taking up to 32-point sample of its symmetric frequency
+domain representation. It is assumed that the time series reflects a
+periodic function over some finite interval so that the frequency
+domain behavior can also be expressed as a discrete series
+representing a periodic function.
+</P>
+
+<P>The program assumes that the time function. f and the frequency
+function F are approximated by N equally spaced samples at intervals
+of &Delta;T (DFT) or 1/&Delta;T (IDFT). These N samples define the
+Discrete Fourier Transform pair f &hArr; F because the N time and
+frequency values give a discrete representation of the time and
+frequency domain waveforms, respectively. To minimize the effects of
+aliasing, choose N such that the DFT sample interval is
+&Delta;T&le;1/2f<sub>c</sub> where f<sub>c</sub> is the highest frequency
+component of the transform and the IDFT sample interval is
+1/&Delta;T&ge;2f<sub>c</sub> which is the Nyquist sampling rate.
+</P>
+
+<H3>Data Input</H3>
+
+<P>Data is input has described in the usage instruction
+below. Alternatively the data can be input directly into the following
+data registers.
+</P>
+
+<table>
+  <tr><td>For DTF:</td>
+    <td>f(0) &rarr; R<sub>12</sub></td>
+  <tr><td></td><td>f(1) &rarr; R<sub>13</sub></td></tr>
+  <tr><td></td><td>:</td></tr>
+  <tr><td></td><td>f(n) &rarr; R<sub>n + 12</sub></td></tr>
+  <tr><td></td><td>:</td></tr>
+  <tr><td></td><td>f(87) &rarr; R<sub>99</sub></td></tr>
+</table
+
+<P></P>
+
+<table>
+  <tr><td>For IDTF:</td>
+    <td>F<sub>re</sub>(0) &rarr; R<sub>12</sub> ;
+      F<sub>im</sub>(0) &rarr; R<sub>44</sub></td></tr>
+  <tr><td></td>
+    <td>F<sub>re</sub>(1) &rarr; R<sub>13</sub> ;
+      F<sub>im</sub>(1) &rarr; R<sub>45</sub></td></tr>
+  <tr><td></td><td>:</td></tr>
+  <tr><td></td>
+    <td>F<sub>re</sub>(n) &rarr; R<sub>n + 12</sub> ;
+      F<sub>im</sub>(n) &rarr; R<sub>n + 44</sub></td></tr>
+  <tr><td></td><td>:</td></tr>
+  <tr><td></td>
+    <td>F<sub>re</sub>(31) &rarr; R<sub>43</sub> ;
+      F<sub>im</sub>(31) &rarr; R<sub>75</sub></td></tr>
+</table>
+
+<P>This program is designed for use with the printer.
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <H3>For DTF</H3>
+
+  <LI>Enter sample number (0 &le; n &le; N - 1),
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter sample value,
+    press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+
+    <P>Repeat both steps above until all data is entered.</p>
+
+  <LI>Enter total number of samples N,
+    press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN> to compute
+    DFT. Values displayed are:
+    <UL>
+      <LI>sample number
+      <LI>real part of transform,
+      <LI>imaginary part of transform
+      <LI>magnitude of transform
+      <LI>magnitude of transform in dB
+      <LI>phase of transform in degrees
+    </UL>
+
+    <P>This six-part sequence is repeated for all values of n.
+
+  <H3>For IDTF</H3>
+
+  <LI>Enter sample number (0 &le; n &le; N - 1), press
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter magnitude of transform at n,
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+  <LI>Enter phase in degree of transform at n,
+    press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+    <P>Repeat the three steps above until all data is entered.</p>
+
+  <LI>Enter total number of samples N,
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    to compute IDFT. Values displayed are:
+    <UL>
+      <LI>sample number
+      <LI>time value at n
+    </UL>
+
+    <P>This two-part sequence is repeated for all values of n.
+</UL>
+
+</BODY>

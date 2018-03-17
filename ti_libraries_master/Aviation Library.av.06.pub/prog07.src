@@ -1,0 +1,119 @@
+
+lbl A'
+   sto 05
+   c
+   inv sbr
+
+lbl D'
+   sto 09
+   c
+   inv sbr
+
+lbl C'
+   sto 06
+   c
+   inv sbr
+
+lbl B'
+   sto 07
+   c
+   inv sbr
+
+lbl E'
+   sto 11
+   sum 13
+   ×
+   rcl 06
+   =
+   sto 00
+   rcl 07
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   sum 15
+   rcl 00
+   sum 14
+   rcl 11
+   c
+   inv sbr
+
+lbl A
+   ifflg 2 067
+   sbr 125
+   rcl 00
+   inv sbr
+
+lbl B
+   ifflg 2 079
+   sbr 125
+   rcl 12
+   inv sbr
+
+lbl C
+   inv stflg 2
+   inv sbr
+
+lbl E
+   ifflg 2 097
+   sbr 154
+   rcl 00
+   ÷
+   rcl 13
+   =
+   inv sbr
+
+lbl D
+   ifflg 2 113
+   sbr 154
+   rcl 10
+   cp
+   x≥t 124
+   +
+   360
+   =
+   inv sbr
+   stflg 2
+   rcl 06
+   +/-
+   sto 00
+   rcl 07
+   -
+   rcl 09
+   +
+   rcl 05
+   =
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   sto 12
+   inv sbr
+   stflg 2
+   rcl 14
+   sto 00
+   rcl 15
+   exc 00
+   x⇌t
+   exc 00
+   inv p→r
+   x⇌t
+   exc 00
+   x⇌t
+   ce
+   sto 10
+   inv sbr
+
+lbl clr
+   cms
+   fix 2
+   deg
+   0
+   inv sbr
+   gto clr

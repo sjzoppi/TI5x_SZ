@@ -1,0 +1,178 @@
+;+
+; Partial recreation of the "Surveying Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl E'
+    x²
+    √x
+    x⇌t
+    rtn
+
+lbl A
+    inv eng
+    fix 6
+    dms
+    sto 5
+
+lbl A'
+    inv dms
+    prt
+    rtn
+
+lbl nop
+    +
+    rcl 11
+;#026
+    cp
+    -
+    x≥t 33
+    0 +
+;#033
+    3 6 0
+    )
+    inv x≥t 26
+    rtn
+
+lbl B'
+    ( 1 +/- ×
+
+lbl B
+    rcl 5 + 1 8 0
+    sbr nop
+    sto 12
+    A'
+    rtn
+
+;#062                ; ???
+    x⇌t             ; was 5, but this makes no sense and x⇌t does fix an
+    E                ; issue with original code. The display was 0 on Page
+    rcl 12           ; 18 after: [74] [A] [2nd] [B'] [R/S] [R/S]
+    P→R             ; 0 because /sbr nop/ above do a CP, T=0
+    E' E'            ; and so P→R will have 0 and T is R in (R,Theta)
+    inv P→R
+    pgm 2 sbr st*
+    A'
+    rtn
+
+;#077
+    pgm 2 sbr
+    log
+    rtn
+
+lbl C
+    (
+    ( rcl 7
+    inv sum 9
+    ×
+    rcl 5
+    )
+    ×
+    π
+    ×
+    1 8 0 1/x
+    )
+    sto 8
+    sum 9
+    prt
+    rtn
+
+lbl D
+    rcl 7
+    E'
+    rcl 12
+    P→R
+    sto 19
+    prt
+    rtn
+
+    E'
+    sto 18
+    prt
+    rtn
+
+    ( ce + rcl 1 )
+    sto 3
+    prt
+    rtn
+
+    pgm 4 sbr op
+    rtn
+
+lbl D'
+    ( 1 +/- ×
+
+lbl C'
+    rcl 8 × rcl 7 ÷ 2 )
+    sum 17
+    prt
+    rtn
+
+lbl grad
+    pgm 3 sbr gto
+    sum 14
+    rcl 19
+    x²
+    √x
+    sum 15
+    rcl 12
+    sto 11
+    rcl 9
+    rtn
+
+lbl E
+    sbr grad
+    prt
+    adv
+    rtn
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;; TO DEBUG (page 18, SY-05)
+;;;;    sbr sto
+;;;;    74 A
+;;;;    B'
+;;;;    r/s
+
+;#lbl sto
+;#    cms
+;#    5
+;#    sto 20
+;#    x<>t
+;#    4 9 . 9 8 9 9 0 1 0 3
+;#    sto 00
+;#    sto 07
+;#
+;#    2 5 0
+;#    sto 01
+;#    sto 02
+;#    sto 03
+;#    sto 04
+;#
+;#    2 5 5 . 0 2 6 8 7 5 2
+;#    sto 09
+;#
+;#    4 9 3 7 0 . 4 2 5 2 2
+;#    sto 10
+;#
+;#    2 6 1 . 5 2 1 5 1 0 2
+;#    sto 11
+;#    sto 12
+;#
+;#    3
+;#    sto 13
+;#
+;#    7 . 3 7 0 4 1 6 0 1 9
+;#    sto 14
+;#    +/-
+;#    sto 18
+;#
+;#    4 9 . 4 4 3 5 7 5 6 5
+;#    sto 15
+;#    +/-
+;#    sto 19
+;#
+;#    8 1 . 5 2 1 5 1 0 2 5
+;#    sto  16
+;#
+;#    r/s

@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">VARIABLE ARITHMETIC</label>
+<label slot="titleright">MU-21</label>
+<label slot="a">A</label>
+<label slot="b">B</label>
+<label slot="c">C</label>
+<label slot="d">D</label>
+<label slot="e">E</label>
+<label slot="aprime">Compute</label>
+<label slot="eprime">ENTER</label>
+</carddef>

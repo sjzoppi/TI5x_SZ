@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">NETWORK ANALYSIS - INPUT CODE</label>
+<label slot="titleright">EE-19</label>
+<label slot="a">n</label>
+<label slot="b">R</label>
+<label slot="c">L</label>
+<label slot="d">C</label>
+<label slot="e"><ArrowR/> Execute</label>
+<label slot="aprime">g<sub>m</sub></label>
+</carddef>

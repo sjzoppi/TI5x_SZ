@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-17 — Star Identification<BR></H1>
+<P>One of the more troublesome areas of celestial navigation involves proper identification of stars once they have been observed during a.m. or p.m. twilight.</P>
+<P>As a practical matter, there will usually only be a limited number of stars observable each morning or evening. As a rule, these tend to be the most significant or major stars. The editors of the Nautical Almanac have alphabetically listed 57 selected navigational stars at the right hand of the stars-planets section of the daily pages. The Almanac also contains similar data for 173 other stars in the back of the book.</P>
+<P>When working with the start identification program, the navigator should follow this procedure:<BR></P>
+<OL>
+<LI>Observe a star with the sextant. 
+<LI>Record the GMT date/time, DR latitude and longitude, GMT minutes/seconds, the GHA of Aries (for the whole hours of GMT), and the uncorrected sextant reading (Hs) on a standard sight reduction workform. 
+<LI>The approximate azimuth (true compass direction) of the star should also be recorded by using a hand bearing compass. The reading should be corrected for local variation. 
+<LI>The data from the worksheet is then entered into the calculator as indicated. The program calculates the approximate SHA of the star you observed. To find out which star you have observed, consult the SHA-declination values (table 2) listed for the 57 selected stars on the appropriate daily page to find a star whose tabulated SHA and declination closely matches the approximate values. If a match cannot be found from the stars listed on the daily pages, consult the more detailed listing at the back of the Almanac. 
+<LI>Record the tabulated Declination and SHA on the workform and proceed with the normal sextant correction and star sight reduction programs. </LI></OL>
+<P>The following formulas are used in computing the program outputs:<BR></P>
+<DIV style="MARGIN-LEFT: 40px">
+<P>LHA = λ<SUB>DR</SUB> - 15.042&nbsp; ( MS ) - GHA γ</P>
+<P>Dec = sin<SUP>-1</SUP><BIG>[</BIG> <BIG><SPAN style="COLOR: rgb(51,51,255)">(</SPAN></BIG> sin( L<SUB>DR</SUB> ) * sin( Hs )<BIG><SPAN style="COLOR: rgb(51,51,255)"></SPAN></BIG> <BIG><SPAN style="COLOR: rgb(51,51,255)">) </SPAN></BIG>+<BIG><SPAN style="COLOR: rgb(51,51,255)"></SPAN></BIG> <BIG><SPAN style="COLOR: rgb(51,51,255)">( </SPAN></BIG>cos( L<SUB>DR</SUB> ) * cos( Hs ) * cos( Zn ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> <BIG>]</BIG></P>
+<P>SHA = cos<SUP>-1</SUP><BIG>[</BIG> <BIG><SPAN style="COLOR: rgb(51,51,255)">(</SPAN></BIG> sin( Hs ) - sin( L<SUB>DR</SUB> ) * sin( Dec ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> / <BIG style="COLOR: rgb(51,51,255)">(</BIG> cos( L<SUB>DR</SUB> ) * cos( Dec ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> <BIG>] + LHA<BR></BIG></P></DIV>
+<P>The variables used in the above equation are:</P>
+<TABLE style="MARGIN-LEFT: 40px">
+<TBODY>
+<TR>
+<TD style="VERTICAL-ALIGN: top">λ<SUB>DR</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">dead reckoning longitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>DR</SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">dead reckoning latitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">Hs<BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">sextant altitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">Zn</TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">observed azimuth<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">GHA γ</TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">Greenwich hour angle of Aires<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">&nbsp;LHA<SUB></SUB></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">Local hour angle<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">MS</TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">minutes and seconds of GMT at DR position<BR></TD></TR></TBODY></TABLE>
+<P>REMARKS: none<BR></P>
+</BODY>

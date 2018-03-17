@@ -1,0 +1,5 @@
+
+
+.auto-style1 {
+	color: #000099;
+}

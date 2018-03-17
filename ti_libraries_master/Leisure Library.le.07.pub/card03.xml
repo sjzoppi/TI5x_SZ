@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">PHOTO II - FILL-IN FLASH</label>
+<label slot="titleright">LE-03</label>
+<label slot="a">f stops</label>
+<label slot="b">Light ratio</label>
+<label slot="c">Guide #</label>
+<label slot="d">f<ArrowD/>dist.</label>
+</carddef>

@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">POSITION/NAVIGATION - ONE VOR</label>
+<label slot="titleright">AV-13</label>
+<label slot="a">t<sub>1</sub> , t<sub>2</sub></label>
+<label slot="b">Rad 1,Rad 2</label>
+<label slot="c"><ArrowR/> D<sub>2</sub></label>
+<label slot="d">D<sub>2</sub><ArrowR/>MC;Dist</label>
+<label slot="aprime">Var (+W,-E)</label>
+<label slot="bprime">WD , WV</label>
+<label slot="cprime">R<sub>VD</sub>, D<sub>VD</sub></label>
+<label slot="dprime">MH</label>
+<label slot="eprime">TAS</label>
+</carddef>

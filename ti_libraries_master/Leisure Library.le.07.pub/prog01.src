@@ -1,0 +1,64 @@
+;+
+; Partial recreation of the "Leisure Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl ce
+    0 sto 9
+    deg
+    fix 9
+
+lbl clr
+    cp
+    6 sto 1
+    0 st* 1
+    dsz 01 015
+    rtn
+
+lbl =
+    sbr ce
+    inv eng 5
+    x⇌t 3
+    0 p→r
+    ∑+
+    inv p→r
+    ∑+
+    op 12
+    dms
+    ∑+
+    op 11
+    inv dms
+    inv ∑+
+    op 14
+    ( ce - sbr dms )
+    ee
+    inv ee
+    x⇌t
+    3 7 7 .
+    2 5 8 0 9 0 6         ; was 2580907 (rounding issue?)
+    eq write
+    0
+    1/x
+
+lbl write                 ; all ok
+    fix 9
+    op 00
+    2 4 3 6 4 1 3 5 1 7   ; ISURE
+    op 04
+    2 7 1 7               ; LE
+    op 03
+    op 05                 ; print
+    7                     ; display 7
+    prt
+    rtn
+
+lbl dms
+    fix 9
+    (
+    ( 2 4 2 9 8 * rcl 09 + 9 9 9 9 1 )
+    ÷
+    1 9 9 0 1 7 sto 10
+    )
+    ( ( inv int * rcl 10 )
+    sto 9 ÷ rcl 10 )
+    rtn

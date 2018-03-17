@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-04 — Long Range Flight Plan</H1>
+
+<P>There are two sections of this program; the first serves to enter
+  way points and generates an overall picture of the flight; the
+  second gives more detailed flight plan information.
+</P>
+<P>
+  Given the waypoints in order, the overall average ground speed,
+  average Burn, fuel aboard at take-off, and ETD, this program will
+  print the great circle distances between start and finish, ETE, ETA,
+  fuel required, and fuel left on board.
+</P>
+<P>
+  Having completed the above, the user may then enter any of the
+  following quantities for each leg as required: ground speed, Burn,
+  fuel aboard (usually fuel left from preceding leg, or refueled
+  quantity), and ETD. Then the following are printed for that leg:
+</P>
+<OL>
+  <LI>great circle distance (Dist)
+  <LI>total distance flown thus far (tot Dist)
+  <LI>initial true course to fly a great circle route
+  <LI>ETE
+  <LI>ETA
+  <LI>estimated fuel required (EFR)
+  <LI>estimated fuel left aboard (EFL) at the end of the leg
+</OL>
+
+<DL class="deflist">
+  <DT>Select degree mode
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN></DT>
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.000</DD></DT>
+
+  <DT>Enter coordinate in order (repeat for each waypoint)
+    <DD>L<sub>n</sub> (+N, -S, DD.MMSS) <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">1.0000 (print L<sub>n</sub>)
+    <DD>&lambda;<sub>n</sub> (+W, -E, DD.MMSS) <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">1.0000 (print &lambda;<sub>n</sub>)
+  </DT>
+
+  <DT>Enter GS (average for entire trip, knots)
+    <DD>GS <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">GS
+  </DT>
+
+  <DT>Enter Fuel aboard at takeoff (gal or lbs)
+    <DD>Fuel abd <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">Fuel abd</DD>
+  </DT>
+
+  <DT>Enter Burn (gal or lbs/hr)
+    <DD>Burn <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">Burl</DD>
+  </DT>
+
+  <DT>Enter departure time (GMT), and print Dist, ETE, ETA, EFR, EFL
+    <DD>ETD (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">2.0000</DD>
+  </DT>
+
+  <h3>- for each leg:</h3>
+
+  <DT>Enter new GS
+    <DD>GS <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">GS
+  </DT>
+
+  <DT>Enter new Fuel aboard
+    <DD>Fuel abd <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">Fuel abd</DD>
+  </DT>
+
+  <DT>Enter new Burn
+    <DD>Burn <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">Burl</DD>
+  </DT>
+
+  <DT>Enter new ETD
+    <DD>ETD (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">ETD</DD>
+  </DT>
+
+  <DT>Print Leg no., (L, &lambda;) of end of leg, Dist, tot Dist,
+  TC<sub>i</sub>, ETE, ETA, EFR and EFL
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">Leg data</DD>
+  </DT>
+</DL>
+
+<P>Registers used: 00-09, 12-19
+
+</BODY>

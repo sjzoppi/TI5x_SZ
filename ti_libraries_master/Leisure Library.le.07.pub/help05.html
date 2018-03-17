@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-05 BOWLING SCOREKEEPER</H1>
+
+<P>This program can be used to keep score for up to 90 bowlers 
+(50 bowlers for the TI Programmable 58) bowling simultaneously.  
+Individual counters for each bowler allow scoring to be done at any time.
+</P>
+
+<P>
+	INSTRUCTIONS (<b>Display and Printer</b>)
+</P>
+
+<OL>
+
+	<LI>
+		Press
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>05
+		<SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+		<SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+		to initialize program.
+		Displayed value is not affected.
+	</LI>
+
+	<BR />
+  
+	<LI>
+		Enter number of bowlers and press
+
+		<BR />
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+		<BR />
+		<P>
+			<b>Note:</b> If the number of bowlers is greater than 50 
+			(20 for the TI-58), the partitioning of your calculator
+			will have to be changed.  The number of data registers required
+			is the number of bowlers plus 10.  See your Owner's Manual for 
+			instructions on partitioning your calculator's memory.
+		</P>
+
+		<BR />
+	
+	</LI>
+	
+	<BR />
+
+	<LI>Enter number of bowler and press
+
+		<SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>.
+		Each
+		<SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+		increments frame number for that bowler.
+		<p>
+			A flashing 10. indicates that the bowler is entering the tenth frame
+			-- Press
+			<SPAN CLASS="brownbutton">&nbsp;CE&nbsp;</SPAN>
+			and continue.
+		</p>
+	</LI>
+	
+	<BR />
+
+	<LI>
+		Enter number of pins knocked down by first ball in a frame and press
+		<SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>.
+	</LI>
+	
+	<BR />
+
+	<LI>
+		Enter number of pins nocked down by second ball in a frame and press
+		<SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>.
+		(Do not enter 0 if first ball was a strike.)
+	</LI>
+	
+	<BR />
+
+	<LI>
+		If a third ball is bowled in the tenth frame, 
+		enter the number of pins kocked down and press
+		<SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>.
+	</LI>
+
+	<BR />
+
+	<LI>
+		Repeat Steps 3 through 6 until scoring is complete.
+	</LI>
+
+	<BR />
+
+	<LI>
+		You may recall a bowler's score by entering his number and pressing
+		<SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>.
+		The score is displayed in the form
+		<BR />
+		<BR />
+		<b>Score&nbsp;.&nbsp;BF</b>
+		<BR />
+		<BR />
+		Where
+		<BR />
+		<BR />
+		<UL>
+			<LI><b>F</b> is the number of the last frame completed by the bowler.</LI>
+			<LI><b>B</b> is the number of balls pending in that frame.</LI>
+			This information will be printed if the PC-100A is being used.
+		</UL>
+	</LI>
+
+	<BR />
+
+	<BR />
+
+	<LI>
+		With the PC-100A printer, 
+		you can obtain a complete listing of the 
+		current scores of all bowlers by pressing    
+		<SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;Prt&nbsp;</SPAN>.
+	</LI>
+	
+	<BR />
+	
+	<LI>
+		For a new game, press
+		<SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+		<SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+		and go to Step 2.
+	</LI>
+
+</OL>
+
+</BODY>

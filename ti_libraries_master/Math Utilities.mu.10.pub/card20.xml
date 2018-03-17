@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">CALCULATOR STATUS</label>
+<label slot="titleright">MU-20</label>
+<label slot="a">Save</label>
+<label slot="b">Flags</label>
+<label slot="c">Partition</label>
+<label slot="d">Angle</label>
+<label slot="e">Parens</label>
+<label slot="aprime">INIT</label>
+<label slot="bprime">Fix</label>
+<label slot="cprime">Printer</label>
+</carddef>

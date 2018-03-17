@@ -1,0 +1,1166 @@
+#!/usr/bin/python3
+#+
+# This script takes an XML card template from standard input and renders the card
+# image in PNG format to standard output.
+#
+# The XML template looks like this:
+#
+#     <carddef style="user|system">
+#         label
+#         label ...
+#     </carddef>
+#
+# where each label looks like
+#
+#     <label slot="slot">content</label>
+#
+# where the slot specifies where to position the label (as below), and the content is a
+# mix of straight text and the following special items:
+#
+#     <angle/>
+#         An angle symbol is drawn.
+#     <bar>text</bar>
+#     <Bar>text</Bar>
+#         The text is rendered with a bar over the top. “bar” is suitable for
+#         lower-case text, while “Bar” is suitable for upper-case text.
+#     <button>titletext</button>
+#         The titletext is rendered inline with the rest of the text with a box around it.
+#     <Delta/>
+#         A capital-delta character is drawn.
+#     <div/>
+#         A divide symbol is drawn.
+#     <alpha/>
+#         A alpha character is drawn.
+#     <beta/>
+#         A beta character is drawn.
+#     <Gamma/>
+#         A capital-gamma character is drawn.
+#     <gamma/>
+#         A gamma character is drawn.
+#     <Omega/>
+#         A capital-omega character is drawn.
+#     <omega/>
+#         A omega character is drawn.
+#     <Zeta/>
+#         A capital-zeta character is drawn.
+#     <zeta/>
+#         A zeta character is drawn.
+#     <integral/>
+#         An integral character is drawn.
+#     <lambda/>
+#         A lambda character is drawn.
+#     <mul/>
+#         A multiply symbol is drawn.
+#     <noverr/>
+#         A letter n and letter r are drawn vertically aligned.
+#     <uarrow/>
+#         An up-arrow character is drawn.
+#     <darrow/>
+#         A down-arrow character is drawn.
+#     <sigma/>
+#         A sigma character is drawn.
+#     <sub>subscripttext</sub>
+#         The subscripttext is rendered lowered with a smaller font.
+#     <sup>superscripttext</sup>
+#         The superscripttext is rendered raised with a smaller font.
+#     <supb>superscripttext</supb>
+#         The superscripttext is rendered raised with a smaller font, half move for next character
+#     <theta/>
+#         A theta character is drawn.
+#     <empty/>
+#         A circle with an oblique bar is drawn.
+#     <intersect/>
+#         An half-circle down is drawn.
+#     <ArrowR/>
+#         An arrow left to right is drawn.
+#     <ArrowL/>
+#         An arrow right to left is drawn.
+#     <ArrowD/>
+#         A double arrow is drawn.
+#     <ArrowLR/>
+#         A left arrow at the bottom and a right arrow over is drawn.
+#20170108/SJZ:
+#     <Pi/><pi/>
+#         Pi Character
+#
+# The label slots must be from the following:
+#
+#     titleleft -- second row, left-aligned
+#     titleright -- second row, right-aligned
+#     aprime, bprime, cprime, dprime, eprime -- third row, five cells
+#     primecenter -- third row, centred in single full-width cell
+#     a, b, c, d, e -- fourth row, five cells
+#     basecenter -- fourth row, centred in single full-width cell
+#
+# Note that the ones that treat a row as a single cell are incompatible
+# with the ones that divide it into multiple cells.
+#
+# Copyright 2011 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>
+# Copyright 2012-2016 Pascal Obry <pascal@obry.net>
+# Copyright 2016 Steven Zoppi <about_ti5x@zoppi.org>
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#-
+
+from functools import \
+    reduce
+import sys
+import io
+import os
+import subprocess
+import xml.parsers.expat as expat
+import xml.sax.saxutils as saxutils
+if os.name == "nt" :
+
+	import errno, winreg
+
+#end if
+	
+#+
+# Useful stuff
+#-
+
+def psstring(data) :
+    """returns a PostScript string literal that evaluates to data."""
+    data = str(data)
+    result = ""
+    for i in range(0, len(data)) :
+        ch = data[i]
+        if ch == "(" or ch == ")" or ch == "\\" :
+            ch = "\\" + ch
+        # everything else can remain as is
+        #end if
+        result += ch
+    #end for
+    return "(" + result + ")"
+#end psstring
+
+def mm(dist) :
+    """returns the equivalent in points to dist in millimetres."""
+    return dist * 72 / 25.4
+#end mm
+
+#+
+# Card template
+#-
+
+fullrow = frozenset(range(1, 6))
+label_slots = \
+    {
+    # key is slot name, value is dict with keys:
+    #     row -- row number [2 .. 4] (top row reserved for fixed text)
+    #     cells -- cell column number(s) in range [1 .. 5], either single integer or
+    #         set of integers for cell spanning multiple (contiguous) columns
+    #     align -- alignment of label text within cell
+        "titleleft" : {"row" : 2, "cells" : fullrow, "align" : "left"},
+        "titleright" : {"row" : 2, "cells" : fullrow, "align" : "right"},
+        "aprime" : {"row" : 3, "cells" : 1, "align" : "center"},
+        "bprime" : {"row" : 3, "cells" : 2, "align" : "center"},
+        "abprime" : {"row" : 3, "cells" : set((1, 2)), "align" : "center"},
+        "bcprime" : {"row" : 3, "cells" : set((2, 3)), "align" : "center"},
+        "deprime" : {"row" : 3, "cells" : set((4, 5)), "align" : "center"},
+        "cprime" : {"row" : 3, "cells" : 3, "align" : "center"},
+        "dprime" : {"row" : 3, "cells" : 4, "align" : "center"},
+        "eprime" : {"row" : 3, "cells" : 5, "align" : "center"},
+        "primecenter" : {"row" : 3, "cells" : fullrow, "align" : "center"},
+        "basecenter" : {"row" : 4, "cells" : fullrow, "align" : "center"},
+        "baseleft" : {"row" : 4, "cells" : fullrow, "align" : "left"},
+        "baseright" : {"row" : 4, "cells" : fullrow, "align" : "right"},
+        "a" : {"row" : 4, "cells" : 1, "align" : "center"},
+        "b" : {"row" : 4, "cells" : 2, "align" : "center"},
+        "c" : {"row" : 4, "cells" : 3, "align" : "center"},
+        "d" : {"row" : 4, "cells" : 4, "align" : "center"},
+        "e" : {"row" : 4, "cells" : 5, "align" : "center"},
+    }
+for slot in label_slots :
+    if type(label_slots[slot]["cells"]) == int :
+        label_slots[slot]["cells"] = set((label_slots[slot]["cells"],))
+    #end if
+    label_slots[slot]["cells"] = frozenset(label_slots[slot]["cells"])
+#end for
+
+# classes representing label content:
+class cdata :
+    """straight text."""
+
+    def __init__(self, text) :
+        self.text = text
+    #end __init__
+
+    def __repr__(self) :
+        return repr("<cdata>%s</cdata>" % self.text)
+    #end __repr__
+
+#end cdata
+
+class taggedtext :
+    """common superclass for various tag types."""
+
+    def __init__(self, tag, text) :
+        self.tag = tag
+        self.text = text
+    #end __init__
+
+    def __repr__(self) :
+        return repr("<%s>%s</%s>" % (self.tag, self.text, self.tag))
+    #end __repr__
+
+#end taggedtext
+
+class button(taggedtext) :
+    """an inline button label."""
+
+    def __init__(self, text) :
+        super().__init__("button", text)
+    #end __init__
+
+#end button
+
+class subscript(taggedtext) :
+    """an inline subscript label."""
+
+    def __init__(self, text) :
+        super().__init__("sub", text)
+    #end __init__
+
+#end subscript
+
+class superscript(taggedtext) :
+    """an inline superscript label."""
+
+    def __init__(self, text) :
+        super().__init__("sup", text)
+    #end __init__
+
+#end superscript
+
+class superscript_before(taggedtext) :
+    """an inline superscript label before."""
+
+    def __init__(self, text) :
+        super().__init__("supb", text)
+    #end __init__
+
+#end superscript_before
+
+class Bar(taggedtext) :
+    """an inline label with a horizontal bar over the text."""
+
+    def __init__(self, text) :
+        super().__init__("Bar", text)
+    #end __init__
+
+#end Bar
+
+class ArrowR(taggedtext) :
+    """a right arrow"""
+
+    def __init__(self) :
+        super().__init__("ArrowR", "")
+    #end __init__
+
+    def __repr__(self) :
+        return "<ArrowR/>"
+    #end __repr__
+
+#end ArrowR
+
+class ArrowL(taggedtext) :
+    """a left arrow"""
+
+    def __init__(self) :
+        super().__init__("ArrowL", "")
+    #end __init__
+
+    def __repr__(self) :
+        return "<ArrowL/>"
+    #end __repr__
+
+#end ArrowL
+
+class ArrowLR(taggedtext) :
+    """a left(below)/right(over) arrows"""
+
+    def __init__(self) :
+        super().__init__("ArrowLR", "")
+    #end __init__
+
+    def __repr__(self) :
+        return "<ArrowLR/>"
+    #end __repr__
+
+#end ArrowLR
+
+class ArrowD(taggedtext) :
+    """a left/right arrow"""
+
+    def __init__(self) :
+        super().__init__("ArrowD", "")
+    #end __init__
+
+    def __repr__(self) :
+        return "<ArrowD/>"
+    #end __repr__
+
+#end ArrowD
+
+class bar(taggedtext) :
+    """an inline label with a horizontal bar over the text."""
+
+    def __init__(self, text) :
+        super().__init__("bar", text)
+    #end __init__
+
+#end bar
+
+class noverr(taggedtext) :
+    """n vertically placed over r."""
+
+    def __init__(self) :
+        super().__init__("noverr", "")
+    #end __init__
+
+    def __repr__(self) :
+        return "<noverr/>"
+    #end __repr__
+
+#end noverr
+
+def defsymbol(name, psstr) :
+    """defines a symbol from Symbol font. psstr is the
+    PostScript string literal for rendering it."""
+
+    class newsymbol(taggedtext) :
+
+        def __init__(self) :
+            super().__init__(name, "")
+        #end __init__
+
+    #end newsymbol
+
+#begin defsymbol
+    newsymbol.__name__ = name
+    newsymbol.psstr = psstr
+    return newsymbol
+#end defsymbol
+
+# ref: http://www.vigyan.com/desl/TH000000.HTM
+# ref: http://www.htmlhelp.com/reference/html40/entities/symbols.html
+
+symbols = \
+    { # based on symbol font
+        "angle" : defsymbol("angle", "(\\320)"),
+        "Delta" : defsymbol("Delta", "(\\104)"),
+        "div": defsymbol("div", "(\\270)"),
+        "sqrt": defsymbol("sqrt", "(\\326)"),
+        "epsilon": defsymbol("epsilon", "(\\145)"),
+        "alpha" : defsymbol("alpha", "(\\141)"),
+        "beta" : defsymbol("beta", "(\\142)"),
+        "Gamma" : defsymbol("Gamma", "(\\107)"),
+        "gamma" : defsymbol("gamma", "(\\147)"),
+        "integral" : defsymbol("integral", "(\\362)"),
+        "lambda" : defsymbol("lambda", "(\\154)"),
+        "mul": defsymbol("mul", "(\\264)"),
+        "uarrow" : defsymbol("uarrow", "(\\255)"),
+        "darrow" : defsymbol("darrow", "(\\257)"),
+        "sigma" : defsymbol("sigma", "(\\163)"),
+        "theta" : defsymbol("theta", "(\\161)"),
+        "Omega" : defsymbol("Omega", "(\\127)"),
+        "omaga" : defsymbol("omega", "(\\167)"),
+        "Pi" : defsymbol("Pi", "(\\120)"),
+        "pi" : defsymbol("pi", "(\\160)"),
+        "Phi" : defsymbol("Phi", "(\\106)"),
+        "phi" : defsymbol("phi", "(\\146)"),
+        "Zeta" : defsymbol("Zeta", "(\\132)"),
+        "zeta" : defsymbol("zeta", "(\\172)"),
+        "Sigma" : defsymbol("Sigma", "(\\123)"),
+        "rho"   : defsymbol("rho", "(\\162)"),
+        "nu" : defsymbol("nu", "(\\156)"),
+        "mu" : defsymbol("mu", "(\\155)"),
+        "Mu" : defsymbol("Mu", "(\\115)"),
+        "Upsilon" : defsymbol("Upsilon", "(\\125)"),
+        "upsilon" : defsymbol("upsilon", "(\\165)"),
+        "empty" : defsymbol("empty", "(\\306)"),     # circle with a bar
+        "intersect" : defsymbol("intersect", "(\\307)"), # half-circle down
+    }
+
+fontname = "Helvetica"
+symbolfontname = "Symbol"
+basefontsize = 7.0
+arrowsize = basefontsize / 4
+subsupscale = 0.8 # relative scaling for superscript/subscript text
+subsupscaleb = 0.75 # relative scaling for superscript/subscript before text
+suboffset = -0.2 # vertical offset for subscript, relative to basefontsize
+superoffset = 0.5 # vertical offset for superscript, relative to basefontsize
+superoffsetb = 0.6 # vertical offset for superscript before, relative to basefontsize
+xheightscale = 0.65
+orange = tuple(i / 170 for i in (0x95, 0x50, 0x1c))
+dorange = tuple(i / 255 for i in (0x95, 0x50, 0x1c))
+black = (0.0, 0.0, 0.0)
+colors = \
+    {
+        "user" : {"fg" : black, "bg" : dorange},
+        "system" : {"fg" : orange, "bg" : black},
+    }
+
+def parse_template(input) :
+    """parses the XML template read from input, and returns a structure
+    representing the information for rendering."""
+
+    parse_state = {"nest" : 0, "main_seen" : False, "save_content" : [], "content" : None}
+    result = {"slots" : [None] * 4}
+
+    def require_attrs(tag, attrs, attrnames) :
+        """ensures that attrs has values for all keys listed in attrnames."""
+        if not reduce(lambda a, b : a and b, (name in attrs for name in attrnames), True) :
+            raise RuntimeError("missing required attributes for \"%s\"" % tag)
+        #end if
+    #end require_attrs
+
+    def handle_label_def(tag, attrs) :
+        require_attrs(tag, attrs, ("slot",))
+        slotname = attrs["slot"]
+        if slotname not in label_slots :
+            raise RuntimeError("invalid slot name \"%s\"" % slotname)
+        #end if
+        slot = label_slots[slotname]
+        if result["slots"][slot["row"] - 1] == None :
+            result["slots"][slot["row"] - 1] = {"labels" : {}, "cells_filled" : set(), "cell_runs" : []}
+        #end if
+        row = result["slots"][slot["row"] - 1]
+        row["cells_filled"] |= slot["cells"] # don't bother to check for overlap
+        cellrun = tuple(sorted(slot["cells"])) # assume contiguous
+        row["cell_runs"].append((cellrun[0], cellrun[-1])) # so just keep first and last
+        if slot["cells"] not in row["labels"] :
+            row["labels"][slot["cells"]] = {}
+        #end if
+        if slot["align"] in row["labels"][slot["cells"]] :
+            raise RuntimeError \
+              (
+                    "already filled %s alignment in %s slot in row %d"
+                %
+                    (slot["align"], repr(slot["cells"]), slot["row"])
+              )
+        #end if
+        parse_state["cur_label"] = {"content" : []}
+        row["labels"][slot["cells"]][slot["align"]] = parse_state["cur_label"]
+    #end handle_label_def
+
+    def handle_label_end(tag) :
+        parse_state["cur_label"]["content"].append(cdata("".join(parse_state["content"])))
+    #end handle_label_end
+
+    def handle_common_tag_start(tag, attrs) :
+        # presence of handler just to indicate tag is valid
+        pass
+    #end handle_common_def
+
+    def handle_common_end(tagclass) :
+        parse_state["cur_label"]["content"].append(tagclass("".join(parse_state["content"])))
+    #end handle_common_end
+
+    def handle_button_end(tag) :
+        handle_common_end(button)
+    #end handle_button_end
+
+    def handle_subscript_end(tag) :
+        handle_common_end(subscript)
+    #end handle_subscript_end
+
+    def handle_superscript_end(tag) :
+        handle_common_end(superscript)
+    #end handle_superscript_end
+
+    def handle_superscript_before_end(tag) :
+        handle_common_end(superscript_before)
+    #end handle_superscript_before_end
+
+    def handle_Bar_end(tag) :
+        handle_common_end(Bar)
+    #end handle_Bar_end
+
+    def handle_bar_end(tag) :
+        handle_common_end(bar)
+    #end handle_bar_end
+
+    def make_symbol_def(tagclass) :
+        def handle_def(tag) :
+            parse_state["cur_label"]["content"].append(tagclass())
+        #end handle_def
+        return handle_def
+    #end make_symbol_def
+
+    element_handlers = \
+        {
+            1 :
+                {
+                    "label" : handle_label_def,
+                    "/label" : handle_label_end,
+                },
+            2 :
+                {
+                    "button" : handle_common_tag_start,
+                    "/button" : handle_button_end,
+                     "sub" : handle_common_tag_start,
+                    "/sub" : handle_subscript_end,
+                    "sup" : handle_common_tag_start,
+                    "/sup" : handle_superscript_end,
+                    "supb" : handle_common_tag_start,
+                    "/supb" : handle_superscript_before_end,
+                    "Bar" : handle_common_tag_start,
+                    "/Bar" : handle_Bar_end,
+                    "bar" : handle_common_tag_start,
+                    "/bar" : handle_bar_end,
+                }
+        }
+    for symbol in symbols.values() :
+        element_handlers[2][symbol.__name__] = handle_common_tag_start
+        element_handlers[2]["/" + symbol.__name__] = make_symbol_def(symbol)
+    #end for
+    for symbol in (noverr, ArrowR, ArrowL, ArrowLR, ArrowD) :
+        element_handlers[2][symbol.__name__] = handle_common_tag_start
+        element_handlers[2]["/" + symbol.__name__] = make_symbol_def(symbol)
+    #end for
+
+    def handle_start_element(name, attrs) :
+        parse_state["save_content"].append(parse_state["content"])
+        parse_state["content"] = []
+        if parse_state["nest"] == 0 :
+            if name == "carddef" :
+                require_attrs(name, attrs, ("style",))
+                result["card_style"] = attrs["style"]
+                assert result["card_style"] in ("user", "system"), \
+                    "invalid card style %s" % result["card_style"]
+                parse_state["nest"] = 1
+                parse_state["main_seen"] = True
+            else :
+                raise RuntimeError \
+                  (
+                    "unrecognized top-level element \"%s\"." % name
+                  )
+            #end if
+        else :
+            handlers = element_handlers.get(parse_state["nest"])
+            if handlers != None :
+                handler = handlers.get(name)
+                if handler != None :
+                    if parse_state["nest"] == 2 :
+                        parse_state["cur_label"]["content"].append \
+                          (
+                            cdata("".join(parse_state["save_content"][-1]))
+                          )
+                        parse_state["save_content"][-1] = []
+                    #end if
+                    parse_state["content"] = []
+                    parse_state["nest"] += 1
+                    handler(name, attrs)
+                else :
+                    raise RuntimeError \
+                      (
+                        "unrecognized element \"%s\"." % name
+                      )
+                #end if
+            else :
+                raise RuntimeError("unrecognized element nesting")
+            #end if
+        #end if
+    #end handle_start_element
+
+    def handle_end_element(name) :
+        parse_state["nest"] -= 1
+        if parse_state["nest"] != 0 :
+            handler = element_handlers[parse_state["nest"]].get("/" + name)
+            if handler != None :
+                handler(name)
+            #end if
+        #end if
+        parse_state["content"] = parse_state["save_content"].pop()
+    #end handle_end_element
+
+    def handle_cdata(data) :
+        parse_state["content"].append(data)
+    #end handle_cdata
+
+#begin parse_template
+    parser = expat.ParserCreate()
+    parser.StartElementHandler = handle_start_element
+    parser.EndElementHandler = handle_end_element
+    parser.CharacterDataHandler = handle_cdata
+    parser.ParseFile(input)
+      # can raise expat.ExpatError
+    if not parse_state["main_seen"] :
+        raise RuntimeError("missing \"carddef\" element")
+    #end if
+    if result["card_style"] == "system" :
+        result["slots"][0] = \
+            {
+                "cells_filled" : fullrow,
+                "cell_runs" : ((1, 6),),
+                "labels" : {fullrow : {"center" : {"content" : [cdata("Solid State Software")]}}},
+            }
+    #end if
+    for i in (2, 3) :
+        if result["slots"][i] == None :
+            result["slots"][i] = \
+                {
+                    "cells_filled" : fullrow,
+                    "cell_runs" : tuple((i, i) for i in range(1, 6)),
+                    "labels" : {},
+                } # just draw empty cells
+        else :
+            for col in range(1, 6) : # ensure boundaries are drawn for unused cells
+                if col not in result["slots"][i]["cells_filled"] :
+                    result["slots"][i]["cell_runs"].append((col, col))
+                    result["slots"][i]["cells_filled"].add(col)
+                #end if
+            #end for
+            result["slots"][i]["cell_runs"] = tuple \
+              (
+                sorted(result["slots"][i]["cell_runs"], key = lambda v : v[0])
+              ) # ensure cell numbers are in ascending order
+        #end if
+    #end for
+    return result
+#end parse_template
+
+#+
+# Mainline
+#-
+
+debug_ps = False
+template = parse_template(sys.stdin.detach())
+
+if debug_ps :
+    args = ("cat",)
+else :
+	if os.name == "nt" :
+	
+		#	This assumes the default installation of GhostScript 9.20 (64-bit) in the appropriate
+		#	location.
+		
+		args = \
+			(
+				"C:\\Program Files\\gs\\gs9.20\\bin\\gswin64c.exe", "-q", "-dBATCH", "-dNOPAUSE",
+				  # -dBATCH needed to turn off prompt (doc says -dNOPAUSE does this, but it
+				  # lies).
+				"-sPAPERSIZE=a4", "-sDEVICE=pngalpha", "-sOutputFile=-",
+				"-r%(pixel_density)ux%(pixel_density)u" % {"pixel_density" : 144},
+				"-",
+				  # Side effect of -dBATCH is that gs no longer automatically reads from
+				  # stdin, need to specify explicit input filenames.
+			)
+			
+	else :
+	
+		args = \
+			(
+				"gs", "-q", "-dBATCH", "-dNOPAUSE",
+				  # -dBATCH needed to turn off prompt (doc says -dNOPAUSE does this, but it
+				  # lies).
+				"-sPAPERSIZE=a4", "-sDEVICE=pngalpha", "-sOutputFile=/dev/stdout",
+				"-r%(pixel_density)ux%(pixel_density)u" % {"pixel_density" : 144},
+				"/dev/stdin",
+				  # Side effect of -dBATCH is that gs no longer automatically reads from
+				  # stdin, need to specify explicit input filenames.
+			)
+			
+	#end if
+#end if
+
+if os.name == "nt" :
+	proc_gs = subprocess.Popen \
+	  (
+		args = args,
+		stdin = subprocess.PIPE
+	  )
+else :
+	proc_gs = subprocess.Popen \
+	  (
+		args = args,
+		stdin = subprocess.PIPE,
+		close_fds = True # make sure no superfluous references to pipes
+	  )
+#end if
+gs = io.TextIOWrapper(proc_gs.stdin)
+
+card_width = mm(72)
+card_height = mm(16)
+thumb_margin = mm(2)
+label_margin = mm(2)
+gs.write \
+  (
+        "<</PageSize [%(width)u %(height)u] /ImagingBBox null>> setpagedevice\n"
+    %
+        {
+            "width" : card_width,
+            "height" : card_height,
+        }
+  )
+gs.write \
+  (
+    # theory of operation: the Decoding resource named Unicode is a dictionary
+    # mapping glyphnames to Unicode character codes. However, multiple glyph names
+    # can map to the same character code. I construct the inverse of this mapping,
+    # where each character code maps to a dictionary with all the corresponding
+    # glyph names as keys (and dummy values). To render a Unicode character,
+    # I try all the glyph names corresponding to that character code until I
+    # find a match in the CharStrings dictionary of the currentfont.
+    "/UnicodeEncode 256 dict def\n" # initial size doesn't matter
+    "/DefineCode\n" # glyphname charcode DefineCode -
+      # inserts a correspondence between the specified glyph name and character
+      # code into UnicodeEncode.
+    "  {\n"
+    "    UnicodeEncode 1 index known not\n"
+    "       { % if\n"
+    "        UnicodeEncode 1 index 1 dict put\n" # first glyph name for this character code
+    "      }\n"
+    "    if\n"
+    "    UnicodeEncode exch get exch true put\n"
+            # add another glyph name to dict for that character code
+            # glyph name is key, value is unimportant
+    "  }\n"
+    "def\n"
+    "/Unicode /Decoding findresource {DefineCode} forall\n"
+      # mapping from Unicode character code to possible PostScript glyph names
+    "/minus 45 DefineCode\n" # needed for Palatino-Roman
+    "\n"
+    "/UniShow\n" # chararray UniShow --
+      # given an array of Unicode character codes, does a show of the corresponding
+      # glyphs in turn. Assumes it's a Type 1 font.
+    "  {\n"
+    "      {\n"
+    "        dup UnicodeEncode exch known\n"
+    "          {\n"
+    "            UnicodeEncode exch get\n"
+    "            /.notdef exch\n" # in case no glyph name found
+    "              { % forall\n"
+    "                pop\n" # get rid of dummy value
+    "                currentfont /CharStrings get 1 index known\n"
+    "                  {\n"
+    "                    exch pop\n" # get rid of .notdef, leave found key
+    "                    exit\n"
+    "                  }\n"
+    "                  {\n"
+    "                    pop\n"
+    "                  }\n"
+    "                ifelse\n"
+    "              }\n"
+    "            forall\n"
+    "          }\n"
+    "          {\n"
+    "            pop /.notdef\n"
+    "          }\n"
+    "        ifelse\n"
+    "        glyphshow\n"
+    "      }\n"
+    "    forall\n"
+    "  }\n"
+    "def\n"
+    "\n"
+    "/UniWidth\n" # chararray UniWidth xdelta ydelta
+      # given an array of Unicode character codes, returns the width
+      # of the complete string.
+    "  {\n"
+    "   currentpoint 3 2 roll\n" # save currentpoint (assumes there is one!)
+    "   clippath pathbbox 4 2 roll pop pop\n"
+    "   exch 100 add exch moveto\n" # guaranteed to be outside current clip
+    "   currentpoint 3 2 roll UniShow currentpoint\n"
+    "   3 2 roll sub 3 1 roll exch sub exch\n"
+    "   4 2 roll moveto\n" # restore currentpoint
+    "  }\n"
+    "def\n"
+  )
+def glyphify(thestr) :
+    """returns a PostScript sequence that constructs an array of glyphs
+    from the specified string."""
+    return \
+        (
+            "["
+        +
+            " ".join("%d" % ord(unich) for unich in thestr)
+        +
+            "]"
+              # yes, this sequence leaks memory
+        )
+#end glyphify
+def UniOp(thestr, Op) :
+    """returns a PostScript sequence that uses the UniShow routine
+    to render the specified string."""
+    return glyphify(thestr) + " " + Op
+#end UniOp
+def UniShow(thestr) :
+    return UniOp(thestr, "UniShow")
+#end UniShow
+def UniWidth(thestr) :
+    return UniOp(thestr, "UniWidth")
+#end UniWidth
+
+# yeah, all the scalefont calls leak memory
+draw_bar = \
+    "currentpoint 4 2 roll" \
+    " newpath 2 copy moveto exch pop 2 index exch lineto stroke" \
+    " moveto"
+
+render_special = \
+    { # special actions to modify rendering and width calculation for each tag
+        button :
+            {
+                "widthadjust" : "boxextra 2 mul add",
+                "renderbefore" :
+                    "currentpoint pop" # save x position
+                    " boxextra 2 div 0 rmoveto\n", # add box padding on left
+                "renderafter" :
+                        "boxextra 2 div 0 rmoveto" # add box padding on right
+                        " dup currentpoint pop exch sub" # width of box
+                    +
+                        " currentpoint exch pop %.2f sub" % (card_height * 0.03)
+                    +
+                        " exch %.2f rectstroke" % (card_height / 4 * 0.7),
+                          # draw the box around the button text
+            },
+        noverr :
+            {
+                "widthadjust" :
+                    "currentfont dup 0.6 scalefont setfont exch (n) stringwidth pop"
+                    " %.2f 0.2 mul add add exch setfont" % basefontsize,
+                "renderbefore" : "",
+                "renderafter" :
+                            "%.2f 0.1 mul 0 rmoveto currentfont dup 0.6 scalefont setfont "
+                        %
+                            basefontsize
+                    +
+                        "currentpoint 0 %.2f 0.42 mul rmoveto (n) show" % basefontsize
+                    +
+                        " moveto currentpoint exch pop 0 %.2f -0.2 mul rmoveto" % basefontsize
+                    +
+                            " (r) show currentpoint pop %.2f 0.1 mul add exch moveto setfont"
+                        %
+                            basefontsize,
+            },
+        subscript :
+            {
+                "widthadjust" : "%.2f mul" % subsupscale,
+                "renderbefore" :
+                        "currentfont dup %.2f scalefont setfont" % subsupscale
+                    +
+                        " 0 %.2f rmoveto" % (suboffset * basefontsize),
+                "renderafter" : "0 %.2f rmoveto setfont" % (- suboffset * basefontsize),
+            },
+        superscript :
+            {
+                "widthadjust" : "%.2f mul" % subsupscale,
+                "renderbefore" :
+                        "currentfont dup %.2f scalefont setfont" % subsupscale
+                    +
+                        " 0 %.2f rmoveto" % (superoffset * basefontsize),
+                "renderafter" : "0 %.2f rmoveto setfont" % (- superoffset * basefontsize),
+            },
+        superscript_before :
+            {
+                "widthadjust" : "%.2f mul" % subsupscaleb,
+                "renderbefore" :
+                        "currentfont dup %.2f scalefont setfont" % subsupscaleb
+                    +
+                        " 0 %.2f rmoveto" % (superoffsetb * basefontsize),
+                "renderafter" : "%.2f %.2f rmoveto setfont"
+                % (-basefontsize / 3 * subsupscaleb, - superoffsetb * basefontsize),
+            },
+        Bar :
+            {
+                "renderbefore" :
+                    "currentpoint %.2f add" % basefontsize,
+                "renderafter" : draw_bar,
+            },
+        ArrowR :
+            {
+                "widthadjust" : "%.2f add" % ( basefontsize * 0.5 ),
+                "renderbefore" : "",
+                "renderafter" :
+                   # save current point
+                   " currentpoint"
+                   # start new path and starting point
+                   + " newpath 2 copy moveto "
+                   # move middle of text for the start of arrow
+                   + " 0 %.2f 0.3 mul rmoveto" % basefontsize
+                   # draw the line (save line end which is staring point for arrow below)
+                   + " %.2f 0 rlineto currentpoint" % ( basefontsize * 0.5 )
+                   # stoke with a bigger line width, restoring the old width
+                   + " currentlinewidth 1 copy 2 mul setlinewidth stroke setlinewidth"
+                   # from there a closed and filed path for the arrow
+                   # start new path and starting point
+                   + " newpath moveto "
+                   + " -%.2f 1.2 mul %.2f rlineto 0 -%.2f 2 mul rlineto closepath fill"
+                     % (arrowsize, arrowsize, arrowsize)
+                   # move back to saved position
+                   + " moveto"
+                   + " %.2f 0 rmoveto" % ( basefontsize * 0.5 )
+            },
+        ArrowL :
+            {
+                "widthadjust" : "%.2f add" % ( basefontsize * 0.9 ),
+                "renderbefore" : "",
+                "renderafter" :
+                   # save current point
+                   " currentpoint"
+                   # start new path and starting point
+                   + " newpath 2 copy moveto "
+                   # x offset
+                   + " %.2f 0.2 mul 0 rmoveto" % basefontsize
+                   # move middle of text for the start of arrow
+                   + " 0 %.2f 0.3 mul rmoveto" % basefontsize
+                   # save start of line
+                   + " currentpoint"
+                   # draw arrow
+                   + " %.2f 1.2 mul %.2f rlineto 0 -%.2f 2 mul rlineto closepath fill"
+                     % (arrowsize, arrowsize, arrowsize)
+                   # move back to start of arrow
+                   + " moveto"
+                   # draw the line
+                   + " %.2f 0 rlineto" % ( basefontsize * 0.6 )
+                   # stoke with a bigger line width, restoring the old width
+                   + " currentlinewidth 1 copy 2 mul setlinewidth stroke setlinewidth"
+                   # move back to saved position
+                   + " moveto"
+                   + " %.2f 0 rmoveto" % ( basefontsize * 0.9 )
+            },
+        ArrowD :
+            {
+                "widthadjust" : "%.2f add" % ( basefontsize * 1.1 ),
+                "renderbefore" : "",
+                "renderafter" :
+                   # save current point
+                   " currentpoint"
+                   # start new path and starting point
+                   + " newpath 2 copy moveto "
+                   # x offset
+                   + " %.2f 0.1 mul 0 rmoveto" % basefontsize
+                   # move middle of text for the start of arrow
+                   + " 0 %.2f 0.3 mul rmoveto" % basefontsize
+                   # save start of line
+                   + " currentpoint"
+                   # draw arrow
+                   + " %.2f 1.2 mul %.2f rlineto 0 -%.2f 2 mul rlineto closepath fill"
+                     % (arrowsize, arrowsize, arrowsize)
+                   # move back to start of arrow
+                   + " moveto"
+                   # draw the line (save line end which is staring point for arrow below)
+                   + " %.2f 0 rlineto currentpoint" % ( basefontsize * 0.9 )
+                   # stoke with a bigger line width, restoring the old width
+                   + " currentlinewidth 1 copy 2 mul setlinewidth stroke setlinewidth"
+                   # from there a closed and filed path for the arrow
+                   # start new path and starting point
+                   + " newpath moveto "
+                   + " -%.2f 1.2 mul %.2f rlineto 0 -%.2f 2 mul rlineto closepath fill"
+                     % (arrowsize, arrowsize, arrowsize)
+                   # move back to saved position
+                   + " moveto"
+                   + " %.2f 1.1 mul 0 rmoveto" % basefontsize
+            },
+        ArrowLR :
+            {
+                "widthadjust" : "%.2f add" % ( basefontsize * 0.9 ),
+                "renderbefore" : "",
+                "renderafter" :
+                   # save current point
+                   " currentpoint"
+
+                   # TOP arrow
+                   # start new path and starting point
+                   + " newpath 2 copy moveto "
+                   # x offset
+                   + " %.2f 0.2 mul 0 rmoveto" % basefontsize
+                   # move middle of text for the start of arrow
+                   + " 0 %.2f 0.7 mul rmoveto" % basefontsize
+                   # draw the line (save line end which is staring point for arrow below)
+                   + " %.2f 0 rlineto currentpoint" % ( basefontsize * 0.6 )
+                   # stoke with a bigger line width, restoring the old width
+                   + " currentlinewidth 1 copy 2 mul setlinewidth stroke setlinewidth"
+                   # from there a closed and filed path for the arrow
+                   # start new path and starting point
+                   + " newpath moveto "
+                   + " -%.2f 1.2 mul %.2f rlineto 0 -%.2f 2 mul rlineto closepath fill"
+                     % (arrowsize, arrowsize, arrowsize)
+
+                   # BOTTOM arrow
+                   + " moveto currentpoint"
+                   # start new path and starting point
+                   + " newpath 2 copy moveto "
+                   # x offset
+                   + " %.2f 0.2 mul 0 rmoveto" % basefontsize
+                   # move middle of text for the start of arrow
+                   + " 0 %.2f 0.1 mul rmoveto" % basefontsize
+                   # save start of line
+                   + " currentpoint"
+                   # draw arrow
+                   + " %.2f 1.2 mul %.2f rlineto 0 -%.2f 2 mul rlineto closepath fill"
+                     % (arrowsize, arrowsize, arrowsize)
+                   # move back to start of arrow
+                   + " moveto"
+                   # draw the line
+                   + " %.2f 0 rlineto" % ( basefontsize * 0.6 )
+                   # stoke with a bigger line width, restoring the old width
+                   + " currentlinewidth 1 copy 2 mul setlinewidth stroke setlinewidth"
+
+                   # move back to saved position
+                   + " moveto"
+                   + " %.2f 0 rmoveto" % ( basefontsize * 0.9 )
+            },
+        bar :
+            {
+                "renderbefore" :
+                    "currentpoint %.2f %.2f mul add" % (basefontsize, xheightscale),
+                "renderafter" : draw_bar,
+            },
+    }
+for symbol in symbols.values() :
+    render_special[symbol] = \
+        {
+            "widthadjust" :
+                        "currentfont exch /%s findfont %.2f scalefont setfont"
+                    %
+                        (symbolfontname, basefontsize)
+                +
+                    " %s stringwidth pop add exch setfont" % symbol.psstr,
+            "renderbefore" :
+                    "currentfont /%s findfont %.2f scalefont setfont %s show"
+                %
+                    (symbolfontname, basefontsize, symbol.psstr),
+            "renderafter" : "setfont",
+        }
+#end for
+
+gs.write("/%s findfont %.2f scalefont setfont\n" % (fontname, basefontsize))
+gs.write("/boxextra (M) stringwidth pop 2 div def\n")
+gs.write("/DeviceRGB setcolorspace\n")
+corner_radius = mm(1.5)
+gs.write \
+  (
+        "%.3f %.3f %.3f setcolor newpath %.1f 0 moveto\n"
+    %
+        (colors[template["card_style"]]["bg"] + (corner_radius,))
+  )
+gs.write("%.1f 0 rlineto\n" % (card_width - 2 * corner_radius))
+gs.write \
+  (
+    "%.1f %.1f %.1f 270 360 arc\n" % (card_width - corner_radius, corner_radius, corner_radius)
+  )
+gs.write("0 %.1f rlineto\n" % (card_height - 2 * corner_radius))
+gs.write \
+  (
+        "%.1f %.1f %.1f 0 90 arc\n"
+    %
+        (card_width - corner_radius, card_height - corner_radius, corner_radius)
+  )
+gs.write("%.1f 0 rlineto\n" % (2 * corner_radius - card_width))
+gs.write \
+  (
+    "%.1f %.1f %.1f 90 180 arc\n" % (corner_radius, card_height - corner_radius, corner_radius)
+  )
+gs.write("0 %.1f rlineto\n" % (2 * corner_radius - card_height))
+gs.write("%.1f %.1f %.1f 180 270 arc\n" % (corner_radius, corner_radius, corner_radius))
+gs.write("closepath fill\n")
+gs.write("%.3f %.3f %.3f setcolor\n" % colors[template["card_style"]]["fg"])
+gs.write("0.5 setlinewidth\n")
+gs.write("newpath 0 %.1f moveto %.1f 0 rlineto stroke\n" % (card_height * 0.75, card_width))
+for i in (1, 2) :
+    gs.write \
+      (
+            "newpath 0 %.1f moveto %.1f 0 rlineto stroke\n"
+        %
+            (card_height * i  / 4, card_width - thumb_margin)
+      )
+#end for
+gs.write \
+  (
+        "newpath %.1f %.1f moveto 0 %.1f rlineto stroke\n"
+    %
+        (card_width - thumb_margin, card_height * 0.75, - card_height * 0.75)
+  )
+def celledge(col) :
+    return \
+        (card_width - thumb_margin) * col / 5
+#end celledge
+def rendercell(items, align) :
+    if align != "left" :
+        gs.write("0\n")
+        for item in items :
+            gs.write(UniWidth(item.text) + " pop")
+            widthadjust = render_special.get(type(item), {}).get("widthadjust")
+            if widthadjust != None :
+                gs.write(" " + widthadjust)
+            #end if
+            gs.write(" add\n")
+        #end for
+        gs.write("-%.1f mul 0 rmoveto\n" % {"center" : 0.5, "right" : 1.0}[align])
+    #end if
+    for item in items :
+        special = render_special.get(type(item), {})
+        renderbefore = special.get("renderbefore")
+        renderafter = special.get("renderafter")
+        if renderbefore != None :
+            gs.write(renderbefore + "\n")
+        #end if
+        gs.write(UniShow(item.text) + "\n")
+        if renderafter != None :
+            gs.write(renderafter + "\n")
+        #end if
+    #end for
+#end rendercell
+for i in range(0, 4) :
+    if template["slots"][i] != None :
+        row = template["slots"][i]
+        for \
+            col \
+        in \
+            reduce(lambda a, b : a | b, (set((cols[0] - 1, cols[-1])) for cols in row["cell_runs"])) \
+        :
+            # draw cell boundaries
+            if col != 0 : # don't draw one at left-hand edge of card
+                gs.write("%% cell boundary at (row, col) = (%d, %d)\n" % (i, col)) # debug
+                gs.write \
+                  (
+                        "newpath %.1f %.1f moveto\n"
+                    %
+                        (celledge(col), card_height * (4 - i) / 4)
+                  )
+                gs.write("0 -%.1f rlineto stroke\n" % (card_height * 0.25))
+            #end if
+        #end for
+        for slot in row["labels"] : # draw cell contents
+            cellrun = tuple(slot)
+            cell_left, cell_right = celledge(cellrun[0] - 1), celledge(cellrun[-1])
+            for align in row["labels"][slot] :
+                gs.write("%% (row, slot, align) = (%d, %s, %s)\n" % (i, repr(slot), align)) # debug
+                gs.write \
+                  (
+                        "newpath %.1f %.1f moveto "
+                    %
+                        (
+                                label_margin
+                            +
+                                cell_left
+                            +
+                                    (cell_right - cell_left - 2 * label_margin)
+                                *
+                                    {"left" : 0.0, "center" : 0.5, "right" : 1.0}[align],
+                            card_height * (4 - i - 0.75) / 4,
+                        )
+                  )
+                rendercell(row["labels"][slot][align]["content"], align)
+            #end for
+        #end for
+    #end if
+#end for
+gs.write("showpage\n")
+
+gs.close()
+proc_gs.wait()

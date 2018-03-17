@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">TRAVERSE (CIRCLE ARC)</label>
+<label slot="titleright">SY-05</label>
+<label slot="a">C<angle/></label>
+<label slot="b">CW <ArrowR/> Az</label>
+<label slot="c"><ArrowR/> Arc D</label>
+<label slot="d"><ArrowR/> Dp;Lt;N;E</label>
+<label slot="e">Occupy<ArrowR/><Sigma/>D</label>
+<label slot="bprime">CCW <ArrowR/> Az</label>
+<label slot="cprime">Inc A<sub>sect</sub></label>
+<label slot="dprime">Exec A<sub>sect</sub></label>
+</carddef>

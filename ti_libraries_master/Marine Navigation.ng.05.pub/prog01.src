@@ -1,0 +1,61 @@
+
+lbl ce
+   1
+   sto 21
+   deg
+   fix 9
+
+lbl clr
+   cp
+   6
+   sto 01
+   0
+   sto ind 01
+   dsz 1 015
+   inv sbr
+
+lbl =
+   sbr ce
+   inv eng
+   5
+   x⇌t
+   30
+   p→r
+   ∑+
+   inv p→r
+   ∑+
+   op 12
+   d.ms
+   ∑+
+   op 11
+   inv d.ms
+   inv ∑+
+   op 14
+   (
+   ce
+   -
+   pgm 11
+   sbr nop
+   )
+   ce
+   ee
+   inv ee
+   x⇌t
+   ; the java implementation rx=tuires a different checksum
+   ; 381.6123651
+   381.6123323
+   x=t 2nd r/s
+   0
+   1/x
+
+lbl 2nd r/s
+   fix 9
+   op 00
+   3113422422
+   op 03
+   1337243231
+   op 04
+   op 05
+   5
+   prt
+   inv sbr

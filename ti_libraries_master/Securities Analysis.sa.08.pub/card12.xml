@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">PORTFOLIO SELECTION - Sharpe's Model</label>
+<label slot="titleright">SA-12</label>
+<label slot="a">Alpha</label>
+<label slot="b">Beta</label>
+<label slot="c">Var</label>
+<label slot="d">Ser</label>
+<label slot="e">Enter</label>
+<label slot="aprime">x&#x305; ERI</label>
+<label slot="bprime">VARI</label>
+<label slot="cprime">N</label>
+<label slot="dprime">&#x2205;</label>
+<label slot="eprime">Compute</label>
+</carddef>

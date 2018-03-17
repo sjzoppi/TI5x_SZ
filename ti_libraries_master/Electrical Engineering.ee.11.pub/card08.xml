@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">SIGNAL DETECTION</label>
+<label slot="titleright">EE-08</label>
+<label slot="a"><sigma/><sub>1</sub>/<sigma/><sub>0</sub></label>
+<label slot="b">SNR</label>
+<label slot="c">P(FA)</label>
+<label slot="d">P(D)</label>
+<label slot="e"><ArrowR/> Execute</label>
+</carddef>

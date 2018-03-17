@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">OPTION WRITING</label>
+<label slot="titleright">SA-08</label>
+<label slot="a">N (Call)</label>
+<label slot="b">Opt; Com</label>
+<label slot="c">Ex Price</label>
+<label slot="d">N; Sh Price</label>
+<label slot="e">% Com</label>
+<label slot="aprime">N (Put)</label>
+<label slot="bprime">Max</label>
+<label slot="cprime">Inv; %I</label>
+<label slot="dprime">U; L</label>
+<label slot="eprime">Div; MNT</label>
+</carddef>

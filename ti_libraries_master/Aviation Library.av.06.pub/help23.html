@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-23 — Time Zone Conversions</H1>
+
+<P>Given the date and time in any particular time zone, this program
+  will determine the data and time in the same or in another zone at a
+  specified time earlier or later.
+</P>
+
+<P>The standard time zone system is theoretically based on the
+  division of the world into 24 zones, each 15° longitude in width
+  (first done to simplify railroad scheduling). In practice, the
+  division does not follow this scheme exactly, but more often follows
+  national boundaries or other convenient divisions. Therefore, the
+  pilot should consult applicable maps for schematic
+  representation. The best tabular references are the <i>Air Almanac,
+  1976 (pp. A20-A23)</i> or the <i>Nautical Almanac, 1976 (pp
+  262-265)</i>. The times shown in these publications is divided into
+  3 groups: List 2 are those places using GMT (zone 0); List 1 are
+  those places east of Greenwich, and times shown should be entered as
+  negative zone numbers; List 3 is west of Greenwich, and should be
+  entered as positive (see below).
+</p>
+
+<P>Each zone is assigned a zone number corresponding to time fast or
+  slow on GMT. The zone (GMT) containing 0° longitude is assigned zone
+  number 0. The zone number increases in the westerly direction,
+  reaching +12 on the eastern side of the International Dateline; and
+  decreases in the easterly direction, reaching -12 on the western
+  side of the Dateline. (Note that zone 12 is plus or minus depending
+  on the side of the Dateline.) Note also that a place where the
+  standard time is not an even hour from GMT can also be considered a
+  zone. For instance, the Chatham Islands, east of Greenwich, keep a
+  time 12:45 minutes fast on GMT. The zone number should be entered as
+  -12.75.
+</p>
+
+<P>Crossing the International Dateline in a westerly direction results
+  in a date and time exactly 1 day later; crossing in an easterly
+  direction results in a date and time exactly 1 day earlier.
+</p>
+
+<p>Some often-used zones have names:</P>
+<table>
+  <tr><td>Eastern time<td>= zone 5
+  <tr><td>Central time<td>= zone 6
+  <tr><td>Mountain time<td>= zone 7
+  <tr><td>Pacific time<td>= zone 8
+  <tr><td>Hawaiian time<td>= zone 10
+  <tr><td>Greenwich mean time<td>= zone 0
+  <tr><td>Mid-European time<td>= zone -1
+  <tr><td>East-European time<td>= zone -2
+</table>
+
+<p>Where:</p>
+
+<table>
+  <tr><td><b>t</b><td>= time in first zone
+  <tr><td><b>t'</b><td>= time in second zone
+  <tr><td><b>zone</b><td>= first zone number
+  <tr><td><b>zone'</b><td>= second zone number
+  <tr><td><b>&Delta;t</b><td>= time increment (+ if later, - if earlier)
+</table>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.</DD>
+  </DT>
+
+  <DT>Enter time first zone number
+    <DD>Zone <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">0.</dd>
+  </DT>
+
+  <DT>Enter date
+    <DD>Date (MM.DD) <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">0.</dd>
+  </DT>
+
+  <DT>Enter time
+    <DD>t (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">0.</dd>
+  </DT>
+
+  <DT>Enter time increment
+    <DD>&Delta;t (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">0.</dd>
+  </DT>
+
+  <DT>(Optional) Display new time (same zone)
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">t (HH.MMSS)</dd>
+  </DT>
+
+  <DT>(Optional) Display new date (same zone)
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">Date (MM.DD)</dd>
+  </DT>
+
+  <DT>Enter new zone number
+    <DD>Zone' <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">0.</dd>
+  </DT>
+
+  <DT>Display new time (new zone)
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">t (HH.MMSS)</dd>
+  </DT>
+
+  <DT>Display new date (new zone)
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">Date (MM.DD)</dd>
+  </DT>
+
+  <P>To convert last results to a new time and/or zone, got to step
+  "Enter time increment" above. For a new case, start over</p>
+</DL>
+
+<P>Registers used: 00-16
+
+</BODY>

@@ -1,0 +1,7 @@
+<carddef style="system">
+<label slot="titleleft">PRINTER FORMATTING</label>
+<label slot="titleright">MU-04</label>
+<label slot="a">FORMAT</label>
+<label slot="b">PRINT</label>
+<label slot="aprime">Leading 0's</label>
+</carddef>

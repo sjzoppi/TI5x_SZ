@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>MU-13 — Normal Distribution</H1>
+
+<P>This program uses the standard normal distribution curve.</P>
+
+<P>
+<IMG ALT="Normal Distribution" src="data:image/png;base64,
+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
+">
+
+<P>The program allows you to enter the normal variate (u) and will
+  compute either Z(u) at that point or the area, Q(u), under the curve
+  to the right of that point. Also, you may enter Q(u) and the program
+  will compute u.
+
+<UL>
+  <LI>Enter normal variate, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+  <LI>Enter Q(u), press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+  <LI>Enter normal variate, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+</UL>
+
+<H3>Formulas Used</H3>
+
+<P>Z(u) = (1 / sqrt(2&pi;)) e<sup>-u<sup>2</sup>/2</sup>
+
+<P>Q(u) = (1 / sqrt(2&pi;)) &sum;<sub>u..inf</sub> e<sup>-t<sup>2</sup>/2</sup>dt
+
+<P>Registers used: 10-11
+
+</BODY>

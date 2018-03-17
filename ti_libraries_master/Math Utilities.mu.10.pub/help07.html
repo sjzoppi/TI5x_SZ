@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>MU-07 — Data Arrays</H1>
+
+<P>The handling of arrays or matrices of data is always a time
+  consuming job. This program can simplify handling of data arrays
+  which have a large amount of fixed data and only a percentage of the
+  data items change from time to time.
+
+<P>The first requirement of this program is that you set the size of
+  the array. If you have a table of <b>3 x 5 values you need to
+  specify  4 x 6</b> to account for the last row and column used for
+  results of some sort.
+
+<P>Note that rows or columns numbers specified in the decimal part
+  must have 2 digits. So values 1 to 9 must have a leading 0.
+
+<H3>Entering Data</H3>
+
+<P>Entering Data
+  <UL>
+    <LI>Enter total number of rows and columns in the form R.C, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>. Note that a <b>4x6</b> array
+      as <b>4.06</b>.
+    <LI>To cancel last row/column isolation automatically set by the
+      step above, press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;St&nbsp;Flg&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+  </UL>
+
+<P>Entering Array Data
+
+  <UL>
+    <LI>Enter row number of data to be entered,
+      press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <LI>Enter data items column by column in left to right order,
+      press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>.
+      Repeat those steps until all data are entered.
+  </UL>
+
+<P>Entering Linear Growth Data
+
+  <UL>
+    <LI>Enter row number of data to be entered,
+      press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <LI>Enter first data item in row,
+      press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <LI>Enter growth rate as decimal percent, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+  </UL>
+
+<P>Entering Single Data items
+
+  <UL>
+    <LI>Enter row and column number of data item,
+      press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <LI>Enter data item,
+      press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  </UL>
+
+<H3>Data Array Computations</H3>
+
+<P>Row and Column Totals
+
+  <UL>
+    <LI>Compute the total of a row, enter row number and press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <LI>Store row total in last column of row, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <LI>Compute the total of a column, enter column number and press
+      <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN> <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <LI>Store column total in last row of column, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  </UL>
+
+<P>Row and Column Products
+
+  <UL>
+    <LI>Compute the product of data items in a row, enter row number
+      and press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <LI>Store product of row in last column of row, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <LI>Compute the product of data items in a column, enter column number and press
+      <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <LI>Store product of column in last row of column, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  </UL>
+
+<P>RowA [] RowB = RowC, where [] is one of + - x ÷ y<sup>x</sup>
+
+  <UL>
+    <LI>Enter numbers of rows A and B in the format A.B and
+      press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>Enter number of row C,
+      press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <LI>Compute RowA [] RowB,
+      press <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">[]</SPAN>
+  </UL>
+
+<P>RowA [] Constant = RowC
+
+  <UL>
+    <LI>Enter constant value, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <LI>Enter numbers of rows A, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>Enter number of row C, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <LI>Compute RowA [] Constant,
+      press <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">[]</SPAN>
+  </UL>
+
+<P>Constant [] RowB = Row C
+
+  <UL>
+    <LI>Enter constant value, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <LI>Enter numbers of rows B, in the for .B press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>Enter number of row C, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <LI>Compute RowA [] Constant,
+      press <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">[]</SPAN>
+  </UL>
+
+<P>Shift Right Row A, result in RowB
+
+  <UL>
+    <LI>Enter numbers of rows A and B in the format A.B and
+      press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>Enter position to be shifted,
+      press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+  </UL>
+
+<P>Shift Left Row A, result in RowB
+
+  <UL>
+    <LI>Enter numbers of rows A and B in the format A.B and
+      press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>Enter position to be shifted,
+      press <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+  </UL>
+
+<H3>Recall Array Data</H3>
+
+<UL>
+  <LI>Enter row number, recall first data item, press
+    <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN> <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+  <LI>Recall next data item in row,
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  <LI>To print all data items in a row, press
+    <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN> <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+</UL>
+
+<P>Registers: 00 - 06, 07 and up for data
+</BODY>

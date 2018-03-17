@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-20 — Customized Weight and Balance</H1>
+
+<P>This program is a customized version of AV-19 (<i>General Weight
+    and Balance</i>), calculating total weight, total moment, and
+    center of gravity for an aircraft with as many as 3 rows of seats,
+    2 fuels tanks, and 2 baggage compartments. The program requires
+    the pilot to enter the constants relevant to his aircraft directly
+    into the data registers. These include the moment arms for each
+    row of seats, tanks, and baggage compartments, as well as the
+    empty weight and empty moment. Most aircraft manuals include a
+    table of moment arms; if not, they can be derived from the loading
+    diagram (see not below).
+</P>
+
+<P>You may prepare a customized Constant Card one you have loaded your
+  constants into data memory. To prepare the Constant Card, see User
+  Instructions below. Once the Constant Card has been recorded, it can
+  be used to store these constants into the proper data registers
+  whenever you need to compute weight and balance for that particular
+  aircraft. First load the Constant Card. This stores the constants
+  into the appropriate registers. Then select this program and proceed
+  according to the User Instructions.
+</P>
+
+<P>To recompute weight and balance with new inputs, or to change
+  inputs at any time, only those inputs need be reentered. (Example -
+  to change a value already entered for Fuel 1, simple enter new value
+  and press <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+  just as you would for the initial value.)
+</P>
+
+<h2>Data Card</h2>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;CMs&nbsp;</SPAN>
+    <DD CLASS="display">0.00</DD>
+  </DT>
+
+  <DT>Enter Fuel 1 moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Fuel 2 moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Bag 1 moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Bag 2 moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;4&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Fr Row moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Rr Row moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;6&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Mid Row moment arm
+    <DD>Mmt arm (in) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Empty Moment
+    <DD>Empty Mmt (in-lbs) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;8&nbsp;</SPAN>
+  </DT>
+
+  <DT>Enter Empty Weight
+    <DD>Empty Wt (lbs) <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;9&nbsp;</SPAN>
+  </DT>
+
+  <h3>To Record Constant Card</h3>
+
+  <DT>Select floating point mode
+    <DD><SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;Fix&nbsp;</SPAN>
+  </DT>
+
+  <DT>Record data on Constant Card
+    <DD>4 <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;write&nbsp;</SPAN>
+  </DT>
+</DL>
+
+<H2>Program</h2>
+
+<DL class="deflist">
+  <H3>Do one of the following two steps:</h3>
+
+  <DT>Load Constant Card
+    <DD>4 <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;write&nbsp;</SPAN>
+    <DD CLASS="display">4</DD>
+  </DT>
+
+  <p>OR</p>
+
+  <DT>Load data registers manually</DT>
+
+  <h3>Then:</h3>
+
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.00</DD>
+  </DT>
+
+  <DT>Enter Fuel 1 (gal)
+    <DD>Fuel 1 <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">Fuel 1</dd>
+  </DT>
+
+  <DT>Enter Fuel 2 (gal)
+    <DD>Fuel 1 <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">Fuel 2</dd>
+  </DT>
+
+  <DT>Enter Bag 1 (lbs)
+    <DD>Fuel 1 <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">Bag 1</dd>
+  </DT>
+
+  <DT>Enter Bag 2 (lbs)
+    <DD>Fuel 1 <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">Bag 2</dd>
+  </DT>
+
+  <DT>Enter Fr Row (lbs)
+    <DD>Fr Row <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">Fr Row</dd>
+  </DT>
+
+  <DT>Enter Rr Row (lbs)
+    <DD>Fr Row <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">Rr Row</dd>
+  </DT>
+
+  <DT>Enter Mid Row (lbs)
+    <DD>Mid Row <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">Mid Row</dd>
+  </DT>
+
+  <DT>Calculate tot Wt
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">tot Wt</dd>
+  </DT>
+
+  <DT>Calculate total moment
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">tot Mmt</dd>
+  </DT>
+
+  <DT>Calculate center of gravity
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">C of G (in)</dd>
+  </DT>
+
+  <p>For a new case, enter any new value above and then calculate any
+    of the three results above</p>
+</DL>
+
+<P>Registers used: 00-19
+
+</BODY>

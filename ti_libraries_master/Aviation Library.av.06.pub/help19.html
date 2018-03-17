@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-19 — General Weight and Balance</H1>
+
+<P>This program computes the total weight, total moment, and center of
+  gravity of an aircraft given the weight and either moment or moment
+  arm of each item. Conversions from gallons to pounds of fuel, and
+  from pounds to kilograms are available.
+</P>
+
+<P>Any unit system may be used, but units must be compatible
+  throughout for correct results
+</P>
+
+<table>
+  <tr><td><b>Mmt</b><td>= moment</tr>
+  <tr><td><b>Wt</b><td>= weight</tr>
+  <tr><td><b>C of G</b><td>= center of gravity in distance from
+      reference point</tr>
+  <tr><td><b>tol</b><td>= total</tr>
+</table>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.00</DD>
+  </DT>
+
+  <DT>Enter weight of item
+    <DD>Wt <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">Wt</dd>
+  </DT>
+
+  <h3>Do either:</h3>
+
+  <DT>Enter moment arm
+    <DD>Mmt arm <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">Mmt</dd>
+  </DT>
+
+  <DT>Enter moment
+    <DD>Mmt <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">Mmt</DD>
+  </DT>
+
+  <h3>Then:</h3>
+
+  <DT>To delete pair just entered
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">0.00</dd>
+  </DT>
+
+  <P>Repeat points above for each data pair.</p>
+
+  <h3>Finally:</h3>
+
+  <DT>Compute total weight
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">tot Wt</dd>
+  </DT>
+
+  <DT>Compute total moment
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">tot Mmt</dd>
+  </DT>
+
+  <DT>Compute center of gravity
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">C of G</dd>
+  </DT>
+
+  <DT>To delete any pair
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">0.00</dd>
+  </DT>
+
+  <p>then, go to "Enter weight of item" and "Enter moment" for deleted
+    pair.</P>
+
+  <p>For a new case, start over to "Initialize".</p>
+
+  <DT>To convert gallon of fuel to pounds of fuel
+    <DD>Gal (fuel) <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">Lbs (fuel)</dd>
+  </DT>
+
+  <DT>To convert pounds to kilograms
+    <DD>Lbs <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">Kg</dd>
+  </DT>
+</DL>
+
+<P>Registers used: 10-13
+
+</BODY>

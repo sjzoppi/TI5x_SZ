@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">GOLF HANDICAPPER</label>
+<label slot="titleright">LE-07</label>
+<label slot="a">AS.CR</label>
+<label slot="b">Handicap</label>
+<label slot="e">Delete</label>
+<label slot="aprime">#Rounds</label>
+<label slot="bprime">Latest AS.CR</label>
+</carddef>

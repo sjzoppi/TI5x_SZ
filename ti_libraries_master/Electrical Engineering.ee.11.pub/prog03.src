@@ -1,0 +1,161 @@
+
+lbl A
+   p→r
+   sto 6
+   x⇌t
+   sto 5
+   rtn
+
+lbl B
+   p→r
+   sto 8
+   x⇌t
+   sto 7
+   rtn
+
+lbl C
+   p→r
+   sto 10
+   x⇌t
+   sto 9
+   rtn
+
+lbl D
+   p→r
+   sto 12
+   x⇌t
+   sto 11
+   rtn
+
+lbl clr
+   deg
+   cp
+   50 sto 17
+   fix 9
+   0
+   rtn
+
+lbl E
+   inv
+
+lbl E'
+   stf 4
+   cp
+   x=t 061       ; if not 0 set new x0 on r17 (default 50, see lbl clr)
+   sto 17
+   ;#061
+   inv iff 4 084
+   rcl 17
+   prd 5
+   prd 6
+   prd 7
+   prd 8
+   prd 9
+   prd 10
+   prd 11
+   prd 12
+   ;#084
+   rcl 12
+   sto 4
+   rcl 11
+   sto 3
+   rcl 6
+   sto 2
+   rcl 5
+   sto 1
+   pgm 4 c       ; s11 x s22 -> (r01, r02)
+   rcl 7
+   exc 1
+   sto 13
+   rcl 8
+   exc 2
+   sto 14        ; (r13,r14) = s22 x s11
+   rcl 9
+   sto 3
+   rcl 10
+   sto 4
+   pgm 4 c       ; s12 x s21 -> (r01, r02)
+   inv sum 13
+   x⇌t
+   inv sum 14    ; (r13,r14) = s11 x s22 - s12 x s21
+   rcl 13
+   sto 15
+   rcl 14
+   sto 16        ; (r15, r16) = deltas
+   rcl 11        ;
+   sum 13        ; deltas + s22 (real)
+   exc 5         ; s22 (real) -> s11 (real)
+   sum 13        ; deltas + s22 + s11 (real)
+   inv sum 5     ; s22 (real) - s11 (real)
+   rcl 12
+   sum 14        ; deltas + s22 (img)
+   exc 6         ; s22 (img) -> s11 (img)
+   sum 14        ; deltas + s22 s11 (img)    (r15,r16) = deltas
+   inv sum 6     ; s22 (img) - s11 (img)     (r05,r06) = s22 - s11
+   0             ;                           (r13,r14) = deltas + s22 + s11
+   rtn
+   ;#165
+
+lbl D'
+   sbr 260
+   inv sum 1
+   rcl 6         ;#174 is on the 6?????
+   inv sum 2
+   op 21         ; from a' - (r01,r02) = -deltas + s22 - s11 + 1 (ok)
+   ;#180
+   rcl 13        ;
+   sto 3
+   op 23
+   rcl 14
+   sto 4         ; (r03,r04) = deltas + s11 + s22 + 1 (?? was sto 14)
+   pgm 4 c'      ; (-deltas + s22 - s11 + 1) ÷ (deltas + s22 + s11 + 1)
+   rcl 17
+   iff 4 204
+   1/x
+   prd 1
+   prd 2
+   ;#204
+   rcl 1         ; y11 (real)
+   x⇌t
+   rcl 2         ; y11 (img)
+   inv p→r
+   x⇌t
+   prt
+   x⇌t
+   prt
+   x⇌t
+   adv
+   rtn
+
+lbl B'
+   rcl 7
+   sto 1
+   rcl 8
+   ;#226
+   sto 2
+   2
+   +/-
+   prd 1
+   prd 2
+   gto 180
+
+lbl C'
+   rcl 9
+   sto 1
+   rcl 10
+   gto 226
+
+lbl A'
+   sbr 260
+   sum 1
+   rcl 6
+   gto 176       ; ?? was 174 on orignal code
+   ;#260             ; (r01,r02) = - deltas
+   rcl 15
+   +/-
+   sto 1
+   rcl 16
+   +/-
+   sto 2
+   rcl 5
+   rtn

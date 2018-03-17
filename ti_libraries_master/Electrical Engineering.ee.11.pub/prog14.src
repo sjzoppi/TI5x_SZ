@@ -1,0 +1,233 @@
+
+lbl clr
+   fix 9
+   0
+   inv sbr
+
+lbl A
+   sto 10
+   inv sbr
+
+lbl B
+   sto 11
+   inv sbr
+
+lbl C
+   sto 12
+   inv sbr
+
+lbl D
+   sto 13
+   inv sbr
+
+lbl E'
+   inv lbl e
+   stflg 0
+   rad
+   rcl 10
+   sto 00
+   0
+   sto 01
+   cp
+   rcl 11
+   x≥t 050
+   +
+   =
+   inv sbr
+   x=t 056
+   gto 104
+   op 21
+   sbr 298
+   sbr 254
+   ifflg 0 069
+   inv sbr
+   dsz 0 078
+   deg
+   inv stflg 0
+   inv sbr
+   op 21
+   (
+   sbr 298
+   ×
+   rcl 12
+   x²
+   )
+   sbr 254
+   ifflg 0 097
+   inv sbr
+   dsz 0 056
+   gto 073
+   1
+   x⇌t
+   (
+   (
+   (
+   (
+   (
+   (
+   2
+   ×
+   rcl 11
+   ÷
+   40
+   ÷
+   1
+   inv lnx
+   log
+   )
+   +/-
+   inv lnx
+   sto 02
+   +
+   1
+   )
+   ÷
+   (
+   1
+   -
+   rcl 02
+   )
+   )
+   lnx
+   ÷
+   2
+   ÷
+   rcl 10
+   )
+   sto 02
+   inv lnx
+   -
+   rcl 02
+   +/-
+   inv lnx
+   )
+   ÷
+   2
+   )
+   sto 02
+   op 21
+   sbr 279
+   sto 04
+   rcl 01
+   x=t 182
+   sbr 327
+   gto 191
+   (
+   2
+   ×
+   rcl 04
+   ÷
+   rcl 02
+   )
+   sto 07
+   sbr 312
+   sbr 254
+   ifflg 0 204
+   inv sbr
+   dsz 0 211
+   gto 073
+   sbr 343
+   sbr 279
+   sto 04
+   sbr 327
+   sto 07
+   (
+   sbr 312
+   ×
+   rcl 12
+   x²
+   )
+   sbr 254
+   ifflg 0 241
+   inv sbr
+   dsz 0 248
+   gto 073
+   sbr 343
+   gto 166
+   exc 01
+   ifflg 0 268
+   pause
+   pause
+   pause
+   pause
+   pause
+   gto 270
+   adv
+   prt
+   exc 01
+   ifflg 0 277
+   inv sbr
+   prt
+   inv sbr
+   (
+   (
+   2
+   ×
+   rcl 01
+   -
+   1
+   )
+   ×
+   π
+   ÷
+   2
+   ÷
+   rcl 10
+   )
+   sin
+   inv sbr
+   (
+   sbr 279
+   ÷
+   π
+   ÷
+   rcl 13
+   ÷
+   rcl 12
+   )
+   inv sbr
+   (
+   rcl 07
+   ÷
+   2
+   ÷
+   π
+   ÷
+   rcl 13
+   ÷
+   rcl 12
+   )
+   inv sbr
+   (
+   4
+   ×
+   rcl 03
+   ×
+   rcl 04
+   ÷
+   rcl 05
+   ÷
+   rcl 06
+   )
+   inv sbr
+   (
+   (
+   rcl 01
+   ×
+   π
+   ÷
+   rcl 10
+   )
+   sin
+   x²
+   +
+   rcl 02
+   x²
+   )
+   sto 05
+   rcl 04
+   sto 03
+   rcl 07
+   sto 06
+   op 21
+   inv sbr

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-9 — Roots of Polynomials</H1>
+
+<P>The general form of a polynomial of degree n is P<sub>n</sub>(x) =
+  a<sub>1</sub>x<sup>n</sup> + a<sub>2</sub>x<sup>n-1</sup> + ... +
+  a<sub>n</sub>x + a<sub>n+1</sub>. This programs uses the
+  Lin-Bairstow method to find all roots, real and complex, of up to
+  21st degree polynomial in one variable with real coefficients.
+</P>
+<P>This method is based on the fact that the polynomial can be
+  represented as a product of quadratic and linear factors. An initial
+  guess is made of a trial quadratic factor which, for purposes of
+  convergence, is hopefully near the desired factor of the
+  polynomial. The trial factor is divided into the polynomial and a
+  remainder factor is transformed into an "exact" factor of the
+  polynomial by an iterative process which modifies the coefficients
+  of the quadratic term to make the remainder less than or equal to
+  &epsilon; (error factor).
+</P>
+<P>The resulting roots can be found by using the quadratic
+formula. The original polynomial can now be reduced by dividing out
+the quadratic factor. The remaining roots of the reduced polynomial
+are computed in the same manner as above, with the program using the
+exact quadratic factor which was just found as the new guess or
+allowing the user the option of entering a quadratic factor for the
+new guess. If, in the course of finding the root pairs by dividing out
+the quadratic factors, the reduced polynomial has degree = 2, the
+remaining roots are found using the quadratic formula; if degree = 1,
+the obvious root is computed.
+</P>
+
+<H3>General notes regarding program operation</h3>
+
+<OL>
+  <LI>An initial estimate of u = v = 0 is recommended in searching for
+    all roots. In general, there is no advantage in using previously
+    computed values of u and v.
+
+  <LI>A plot of f(x) may be used to find the approximate location
+    of <b>real</b> roots. Then, Master Library program ML-08 may be used
+    to find the exact location (within &epsilon;) of real roots. The
+    order of f(x) may then be lowered by dividing f(x) by factors of the
+    form (x - R<sub>i</sub>) where R<sub>i</sub> are the real roots.
+
+  <LI>If f(x) has <b>multiple sets</b> of <b>equals</b> roots,
+    &Delta;u and &Delta;v will appear to be converging but then may
+    never get smaller than the stated &epsilon;. The solution to this
+    pathological case is to define a larger &epsilon; and thus accept
+    a less precise approximation of the equal roots.
+
+  <LI>Do not assume divergence of &Delta;u, &Delta;v simply because
+  monotonic convergence does not occur. &Delta;u and &Delta;v will
+  often oscillate with large amplitude prior to convergence.
+</OL>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Enter the degree n of polynomial,
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>.
+
+  <LI>Enter coefficient a<sub>1</sub>
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>, and repeat for
+    all coefficients.
+
+  <LI>Enter allowable error &epsilon;,
+    press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>,
+
+  <LI>Enter control digit,
+    press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>,
+
+  <LI>Enter initial estimate of u,
+    press <SPAN CLASS="brownbutton">&nbsp;X<>T&nbsp;</SPAN>, then
+    enter initial estimate of v.
+
+  <LI>Calculate first two roots, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    press <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>,
+
+  <P>Repeat steps below until all roots have been found<P>
+
+  <LI>Calculate discriminant of quadratic,
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Calculate 1st root,
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Calculate 2nd root,
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Execute exit logic,
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Reduce degree of polynomial by 2 by dividing P(x) by
+    x<sup>2</sup> - ux - v,
+    press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+  <LI>Calculate next pail of roots,
+    <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+</UL>
+
+<P>Registers: 00 (constant term), 01-21 (coefficient of x term), 22-59
+
+</BODY>

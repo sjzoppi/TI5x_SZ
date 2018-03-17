@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">PORTFOLIO BOOKKEEPING</label>
+<label slot="titleright">SA-13</label>
+<label slot="a">N</label>
+<label slot="b">Cost</label>
+<label slot="c">MP</label>
+<label slot="d">INC</label>
+<label slot="e">Total</label>
+<label slot="aprime">Buy</label>
+<label slot="bprime">Current</label>
+<label slot="cprime">Sell</label>
+<label slot="dprime">Portfolio</label>
+<label slot="eprime"></label>
+</carddef>

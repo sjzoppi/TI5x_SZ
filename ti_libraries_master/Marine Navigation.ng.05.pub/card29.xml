@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">DIST AND BEARING TO MARK</label>
+<label slot="titleright">NG-29</label>
+<label slot="a">SMG<sub>p</sub>,CMG<sub>p</sub></label>
+<label slot="b"><Delta/>t <ArrowR/> DMG<sub>p</sub></label>
+<label slot="d"><Delta/>t <ArrowR/> DMG<sub>s</sub></label>
+<label slot="e">SMG<sub>s</sub>,CMG<sub>s</sub></label>
+<label slot="bprime">(P)<ArrowR/>D'; B<sub>t</sub>'</label>
+<label slot="cprime">UPDATE</label>
+<label slot="dprime">(S)<ArrowR/>D'; B<sub>t</sub>'</label>
+<label slot="eprime">D, B<sub>t</sub></label>
+</carddef>

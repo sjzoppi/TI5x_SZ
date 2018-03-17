@@ -1,0 +1,192 @@
+<resources>
+
+    <string name="app_name">ti5x</string>
+
+    <!-- options menu -->
+    <string name="show_calc_help">Calc Help</string>
+    <string name="show_module_help">Module Help</string>
+    <string name="show_overlay">Key Codes</string>
+    <string name="show_printer">Printer</string>
+    <string name="load_prog">Load Program...</string>
+    <string name="opt_feedback">Feedback...</string>
+    <string name="import_data">Import Data...</string>
+    <string name="export_data">Export Data...</string>
+    <string name="save_program_as">Save Program...</string>
+    <string name="about_me">About ti5x...</string>
+    <string name="turn_off">Off</string>
+
+    <!-- context menu -->
+    <string name="copy_number">Copy Number</string>
+    <string name="copy_full_number">Copy Full-Precision Number</string>
+    <string name="paste_number">Paste Number</string>
+
+    <!-- buttons -->
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="load">Load</string>
+    <string name="import_">Import</string>
+    <string name="likely_files">Likely Files</string>
+    <string name="all_files">All Files</string>
+    <string name="append">Append</string>
+    <string name="overwrite">Overwrite</string>
+    <string name="replace">Replace</string>
+    <string name="delete">Delete</string>
+    <string name="append_existing">Append to existing</string>
+    <string name="save_new">Save to new</string>
+    <string name="saved_progs">Saved Programs</string>
+    <string name="libraries">Libraries</string>
+    <string name="numbers_only">Numbers only</string>
+    <string name="all_printout">All printout</string>
+    <string name="feedback_click">Feedback: Click</string>
+    <string name="feedback_vibrate">Feedback: Vibrate</string>
+    <string name="feedback_click_and_vibrate">Feedback: Click and Vibrate</string>
+    <string name="feedback_none">Feedback: None</string>
+
+    <!-- prompt strings -->
+    <string name="program">program</string>
+    <string name="exported_data">exported data</string>
+    <string name="prog_prompt">Select Program to Load</string>
+    <string name="module_prompt">Select Module to Load</string>
+    <string name="master_library">Master Library (ML-01)</string>
+    <string name="appstats_library">Applied Statistics (ST-02)</string>
+    <string name="realestate_library">Real Estate/Investment (RE-03)</string>
+    <string name="surveying_library">Surveying Library (SY-04)</string>
+    <string name="marine_navigation_library">Marine Navigation Library (NG-05)</string>
+    <string name="aviation_library">Aviation Library (AV-06)</string>
+    <string name="leisure_library">Leisure Library (LE-07)</string>
+    <string name="securities_library">Securities Analysis (SA-08)</string>
+    <string name="mathutil_library">Math Utilities Library (MU-10)</string>
+    <string name="electrical_library">Electrical Engineering (EE-11)</string>
+    <string name="contribution_library">Contribution Library A (CT-99)</string>
+    <string name="import_prompt">Data to load:</string>
+    <string name="export_prompt">Append exported data to existing:</string>
+    <string name="save_as_prompt">Save %s as:</string>
+    <string name="button_feedback">Keypress Feedback Setting:</string>
+    <string name="input_code">EE-19 Input Code (Built-In)</string>
+    <string name="construct_nam_code">EE-19 Construct NAM Code (Built-In)</string>
+
+    <!-- messages -->
+    <string name="loading">Loading...</string>
+    <string name="saving">Saving...</string>
+    <string name="prog_running">ti5x program is running.</string>
+    <string name="prog_done">ti5x program has finished running.</string>
+    <string name="paste_nan">The Clipboard does not contain a valid number</string>
+    <string name="no_prog_help">Sorry, no help available for this program</string>
+    <string name="no_module_help">Sorry, no help available for this module</string>
+    <string name="no_external_storage">No place to save.</string>
+    <string name="please_enter_name">Please enter a name for saving the %s.</string>
+    <string name="no_programs">No programs to load.</string>
+    <string name="no_modules">No modules to load.</string>
+    <string name="no_data_files">No data files to load.</string>
+    <string name="query_replace_import">There is already an import in progress. Replace?</string>
+    <string name="import_started">Started importing file “%s”.</string>
+    <string name="import_error">Import error: %s.</string>
+    <string name="query_replace_export">There is already an export in progress. Replace?</string>
+    <string name="export_started">Started exporting to file “%s”.</string>
+    <string name="application_error"><b>Application Error</b>\n%s.</string>
+    <string name="program_loaded">Loaded program “%s”.</string>
+    <string name="file_load_error">Couldn’t load file: %s.</string>
+    <string name="folder_unreadable">Folder(s) “<b>%s</b>” Not Readable\n(Permissions Problem?)</string>
+    <string name="library_loaded">Loaded library “%s”.</string>
+    <string name="file_exists">The file “%s” already exists.</string>
+    <string name="query_delete">Delete file “%s”?</string>
+    <string name="file_deleted">File “%s” deleted.</string>
+    <string name="file_delete_error">Couldn’t delete file: %s.</string>
+    <string name="program_saved">Program saved as “%s”.</string>
+    <string name="program_save_error">Couldn’t save program: %s</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Permissions -->
+    <string name="label_ok">OK</string>
+    <string name="access_storage">Access Local Storage</string>
+    <string name="storage_unavailable"><b>Local Storage could not be opened.</b>\nThis occurs when the Local Storage is not available (for example it is already in use) or if the system has denied access (for example when storage access has been disabled or denied).</string>
+    <string name="permission_available_storage">Storage (Read/Write) Permission has been granted. Local files are now accessible.</string>
+    <string name="permissions_not_granted">Permissions were not granted.</string>
+    <string name="permission_storage_rationale">Storage permission is needed to access libraries and other files.</string>
+    <string name="intro_message">
+        <![CDATA[
+
+
+            The emulator requires access to your device\'s storage.
+            READ and WRITE permissions are required so that libraries,
+            virtual paper, programs, and other items may be stored
+            and retrieved.  Only in-built functionality will be permitted
+            without granting this type of access.
+
+        ]]>
+    </string>
+
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_key_feedback">Keypress Feedback</string>
+    <string name="pref_description_key_feedback">Provide audio and/or haptic feedback when a key is pressed.
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="trace_print_off">Trace (OFF)</string>
+    <string name="trace_print_on">Trace (ON)</string>
+</resources>

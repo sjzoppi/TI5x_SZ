@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">STAR IDENTIFICATION</label>
+<label slot="titleright">NG-17</label>
+<label slot="a">L<sub>DR</sub></label>
+<label slot="b"><lambda/><sub>DR</sub></label>
+<label slot="c">Hs</label>
+<label slot="d">Obs Zn</label>
+<label slot="e">GHA T</label>
+<label slot="aprime">GMT (MS)</label>
+<label slot="bprime"><ArrowR/> Dec</label>
+<label slot="cprime"><ArrowR/> SHA</label>
+<label slot="dprime">INIT</label>
+</carddef>

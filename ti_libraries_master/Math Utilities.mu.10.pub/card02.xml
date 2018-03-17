@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">PROMPTER</label>
+<label slot="titleright">MU-02</label>
+<label slot="a">Read</label>
+<label slot="b">Ready</label>
+<label slot="c">Result</label>
+<label slot="d">Bad Cmmnd</label>
+<label slot="e">Underflow</label>
+<label slot="aprime">Record</label>
+<label slot="bprime">Repeat</label>
+<label slot="cprime">Option</label>
+<label slot="dprime">Bad Data</label>
+<label slot="eprime">Overflow</label>
+</carddef>

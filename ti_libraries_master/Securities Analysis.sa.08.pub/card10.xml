@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">BOND VALUATION</label>
+<label slot="titleright">SA-10</label>
+<label slot="a">N</label>
+<label slot="b">%I</label>
+<label slot="c">%C</label>
+<label slot="d">Buy; Com</label>
+<label slot="e">MAT</label>
+<label slot="aprime">Settle</label>
+<label slot="bprime">Redeem<ArrowR/>N</label>
+<label slot="cprime"><ArrowR/>CYLD</label>
+<label slot="dprime">Tax; CGT</label>
+<label slot="eprime">Compute</label>
+</carddef>

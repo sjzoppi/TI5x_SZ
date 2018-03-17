@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">EXCESS DEPRECIATION RECAPTURE</label>
+<label slot="titleright">RE-09</label>
+<label slot="a"><ArrowR/>Tot Dep %</label>
+<label slot="b"><ArrowR/>64 ACD%</label>
+<label slot="c"><ArrowR/>64-69 ACD</label>
+<label slot="d"><ArrowR/>70-75 ACD</label>
+<label slot="e"><ArrowR/>70 Excess</label>
+<label slot="aprime"><ArrowR/>70-75 Excs</label>
+<label slot="bprime"><ArrowR/>Total Excs</label>
+<label slot="cprime"><ArrowR/>Ord Inc</label>
+<label slot="dprime"><ArrowR/>Cap Gain</label>
+<label slot="eprime">INIT</label>
+</carddef>

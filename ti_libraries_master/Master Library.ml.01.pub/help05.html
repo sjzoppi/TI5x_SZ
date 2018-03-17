@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>ML-05 — Complex Functions</H1>
+
+<P>First, enter the complex number X which is the operand for the remaining
+operations: enter the real part of X, then press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>,
+then enter the imaginary part, and press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> again.
+<P>(This is the same initial entry procedure as for ML-04 and ML-06, and indeed the first or only
+operand entered for any of these programs may be used for any of the others.)
+
+<P>Except for the angular conversion, the remaining functions return the real part of the
+result in the display, and the imaginary part in the T register, and also replace the X
+operand with the result, ready for further operations:
+<DL class="deflist">
+<DT><SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD>Convert to angular format: shows <I>r</I>, press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+    to show <I>&theta;</I>.
+<DT><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD>Compute X<SUP>2</SUP>.
+<DT><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD>Compute square root of X.
+<DT><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD>Compute 1/X.
+<DT><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">A´</SPAN>
+    <DD>Compute natural log of X.
+<DT><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">B´</SPAN>
+    <DD>Compute e<SUP>X</SUP>.
+</DL>
+
+<H3>Formulas Used</H3>
+<P>where X = a + bi (a, b real):
+<P>absolute magnitude of X, r = sqrt(a<SUP>2</SUP> + b<SUP>2</SUP>)
+<P>angle part of X, &theta; = atan2(b, a)
+<P>X<SUP>2</SUP> = r<SUP>2</SUP> cos 2&theta; + ir<SUP>2</SUP> sin 2&theta;
+<P>sqrt(X) = sqrt(r) cos(&theta; ÷ 2) + i sqrt(r) sin(&theta; ÷ 2)
+<P>1/X = (a - bi) ÷ (a<SUP>2</SUP> + b<SUP>2</SUP>)
+<P>e<SUP>X</SUP> = e<SUP>a</SUP> cos b + ie<SUP>a</SUP> sin b
+<P>ln X = ln r + i&theta; (X ≠ 0)
+
+<P>Registers used: 01-04.
+
+</BODY>

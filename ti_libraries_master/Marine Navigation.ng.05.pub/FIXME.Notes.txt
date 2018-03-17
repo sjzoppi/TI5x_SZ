@@ -1,0 +1,26 @@
+Program Notes
+NG-13
+
+Program step [E] flaw - 
+	Expected 41.08214401
+	Result   41.04094401
+	[R/S]
+	Expected 71.37048644
+	Result   71.52468644
+	
+Minutes appear to be off.
+
+NG-14
+
+Program Step [E] flaw - 
+	Expected 41.08288545
+	Result   41.10490585
+	[R/S]
+	Expected 72.13200182
+	Result   72.13312501
+	
+NG-23
+
+Program Steps May need to be re-done.
+
+Results are inconsistent.

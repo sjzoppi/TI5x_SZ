@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">FIX TWO OBSERVATIONS</label>
+<label slot="titleright">NG-23</label>
+<label slot="a">L<sub>DR</sub></label>
+<label slot="b"><lambda/><sub>DR</sub></label>
+<label slot="c">#</label>
+<label slot="d"># <ArrowR/> <lambda/></label>
+<label slot="e"><ArrowR/> L</label>
+</carddef>

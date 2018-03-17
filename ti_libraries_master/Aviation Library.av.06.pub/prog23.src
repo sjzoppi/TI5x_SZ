@@ -1,0 +1,137 @@
+
+lbl E'
+   b'
+   rcl 14
+   ÷
+   100
+   +
+
+lbl D'
+   rcl 15
+   =
+   inv sbr
+
+lbl B'
+   -
+   .5
+   =
+   fix 0
+   ee
+   inv ee
+   fix 9
+   inv sbr
+
+lbl C'
+   d'
+   cp
+   x=t 045
+   -
+   13
+   =
+   x=t 048
+   inv sbr
+   11
+   +
+   1
+   =
+   sto 15
+   inv sbr
+
+lbl A
+   -
+   exc 16
+   =
+   inv sum 13
+   b'
+   0
+   inv sbr
+
+lbl B
+   sto 14
+   b'
+   inv sum 14
+   sto 15
+   100
+   prd 14
+   0
+   inv sbr
+
+lbl C
+   fix 4
+   d.ms
+   sto 13
+   b'
+   fix 0
+   0
+   inv sbr
+
+lbl D
+   fix 4
+   d.ms
+   sum 13
+   b'
+   fix 0
+   0
+   inv sbr
+
+lbl E
+   rcl 13
+   ÷
+   24
+   b'
+   sum 14
+   ×
+   24
+   =
+   inv sum 13
+   rcl 14
+   -
+   1
+   =
+   x≥t 144
+   1
+   inv sum 15
+   c'
+   rcl ind 15
+   =
+   sum 14
+   gto 160
+   rcl ind 15
+   -
+   rcl 14
+   =
+   x≥t 160
+   +/-
+   sto 14
+   1
+   sum 15
+   c'
+   rcl 13
+   +
+   5
+   +/-
+   inv log
+   =
+   inv d.ms
+   fix 4
+   inv sbr
+
+lbl clr
+   12
+   sto 00
+   31
+
+lbl sin
+   sto ind 00
+   dsz 0 sin
+   30
+   sto 04
+   sto 06
+   sto 09
+   sto 11
+   28
+   sto 02
+   b'
+   0
+   inv sbr
+   gto clr

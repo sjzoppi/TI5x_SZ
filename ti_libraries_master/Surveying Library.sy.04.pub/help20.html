@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-20 — Three-Point Resection</H1>
+
+<P>This program solves the three-point resection problem in which the
+  location of an unknown point (P) is determined with respect to three
+  known control points (A, B and C) by measuring the angles at point P
+  from A to B (angle APB) and from A to C (angle APC), and then using
+  these angles and the coordinates of the control points to compute
+  the desired information.
+</P>
+
+<P>Three cases are handled by the program. These are distinguished by
+  the fact that in Case-1, the points A and P are on opposite sides of
+  a line connecting points B and C; in Case-2, point P lies between
+  point A and a line connecting points B and C; in Case-3 point A lies
+  between point P and a line connecting point B and C.
+
+<UL>
+  <LI>Enter the appropriate case number, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+
+  <LI>Enter north coordinate of point A, press
+    <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+  <LI>Enter east coordinate of point A, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Enter north coordinate of point B, press
+    <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+  <LI>Enter east coordinate of point B, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Display distance BA, press
+    <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+  <LI>Enter north coordinate of point C, press
+    <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  <LI>Enter east coordinate of point C, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Display distance CA, press
+    <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+  <LI>Enter angle P1 (DDD.MMSS), press
+    <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+  <LI>Enter angle P2 (DDD.MMSS), press
+    <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    (Clockwise P2 is positive, Counter clockwise P2 is negative).
+
+  <LI>Calculate P<sub>N</sub>, P<sub>E</sub>, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    and <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+  <LI>Calculate azimuth AP and distance AP, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    and <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+  <LI>Calculate azimuth BP and distance BP, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    and <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+  <LI>Calculate azimuth CP and distance CP, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    and <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+</UL>
+
+<P>Registers used: 01-23
+
+</BODY>

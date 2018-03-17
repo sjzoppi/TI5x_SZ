@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-25 — Curve Solution</H1>
+
+<P>For an arc of a circle, this program calculates the remaining
+  parameters when certain pars are given. One of the following pairs
+  of parameters must be supplied as input:
+</P>
+
+<UL>
+  <LI>Radius and Center angle:
+    <UL>
+      <LI>Enter R, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Enter &Delta; (DDD.MMSS), press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+  <LI>Radius and Chord length:
+    <UL>
+      <LI>Enter R, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Enter C, press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+  <LI>Radius and Arc length:
+    <UL>
+      <LI>Enter R, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Enter L, press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+  <LI>Chord length and Central angle:
+    <UL>
+      <LI>Enter C, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+      <LI>Enter &Delta; (DDD.MMSS), press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+  <LI>Central angle and Arc lenght:
+    <UL>
+      <LI>Enter &Delta; (DDD.MMSS), press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+      <LI>Enter L, press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+</UL>
+
+<P>Then, calculate the remaining values:</P>
+
+<UL>
+  <LI>Central angle and Radius:
+    <UL>
+      <LI>&Delta;, press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+      <LI>Radius, press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+  <LI>Arc length and Chord length:
+    <UL>
+      <LI>L, press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>C, press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+  <LI>Area and segment area:
+    <UL>
+      <LI>A, press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>a, press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+</UL>
+
+<P>Registers used: 00-04.
+
+</BODY>

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-05 — Circle Arc Traverse</H1>
+
+<P>SY-02, SY-03, SY-04 and SY-05 form a group and are to be used together.
+
+<P>This four programs calculate the unknown elements of a traverse
+  leg, as well as total horizontal distance for use in closure
+  determination, and intermediate calculations for an overall
+  closed-traverse area. Each program deals with a certain type of
+  traverse, but the programs may be used interdependently as
+  demonstrated in the example, as well as in conjunction with the
+  Closure and Balance programs.
+</P>
+
+<P>The key to interdependent use of these programs is the
+  <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> keystroke. Basically,
+  this arranges the data present in the storage registers for use in
+  calculating the next leg of a traverse. While only the total
+  horizontal distance is displayed following
+  <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>, several other things
+  also happen that re quite difficult to correct once
+  completed. Therefore, be certain that all data for that leg is
+  correct before pressing <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>.
+</P>
+
+<P>For the first leg, select the proper program (usually
+  Azimuth/Bearing or Field Angle), initialize, and enter the reference
+  data. This should be the <i>only</i> time you need to enter this
+  data. The <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> command
+  will do it otherwise. Once the (closed) traverse is complete, it is
+  best to do to the Closure program, although Inverse Traverse will
+  also work for closure. Then the Balance programs will distribute
+  closure error in proportion to the leg length.
+</P>
+
+<P>In the first three programs, if an error occurs
+  before <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>, it may be
+  corrected by doing that leg again; but the Circle Arc program is
+  somewhat different.
+</P>
+
+<P>Azimuth, Bearing and Quadrant (see SY-02).
+
+<P>This program (SY-05) must be preceded by either the
+  Azimuth/Bearing, Inverse, or Field Angle Traverse program to
+  establish the center coordinates, radius, and reference azimuth (of
+  the known radial) of the arc. Then, given the central angle, this
+  program calculates the azimuth, bearing and quadrant, latitude,
+  departure, and end coordinates of the unknown radial. In addition,
+  the arc distance is calculated and summed into the total distance
+  register, while the previously calculated and summed leg distance is
+  subtracted from that register, thus bounding the traverse by the arc
+  rather than its radials.
+</P>
+
+<P>Note that the program assumes that the <i>closed traverse is
+    bounded by the arc</i>. Two cases become apparent here:
+</P>
+
+<UL>
+  <LI>In <b>Case 1</b>, the sector area must be included in the traverse,
+  since the program otherwise calculates only the area inside the
+    irregular polygon (bounded by the radials).
+
+  <LI>In <b>Case 2</b>, the sector area will already be included, so
+  the program must be instructed to subtract (exclude)
+    A<sub>sect</sub>.
+
+</UL>
+
+<UL>
+  <LI>Select degree mode,, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+
+  <LI>Enter central angle (DDD.MMSS), press
+    <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Either:
+    <UL>
+      <LI>If C angle measured clockwise, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>If C angle measured counterclockwise, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute bearing, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  <LI>Compute quadrant, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  <LI>Compute arc distance, press
+    <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+  <LI>Either:
+    <UL>
+      <LI>Compute and <i>include</i> sector area, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>Compute and <i>exclude</i> sector area, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute Departure, press
+    <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+  <LI>Compute Latitude, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  <LI>Compute next North, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  <LI>Compute next East, press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Occupy next station and compute total distance thus far, press
+    <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+</UL>
+
+<P>Registers used: 00-05, 07-20.
+
+</BODY>

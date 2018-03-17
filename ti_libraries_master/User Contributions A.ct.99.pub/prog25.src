@@ -1,0 +1,332 @@
+; Treasure Island
+; http://www.rskey.org/gene/calcmuseum/59treas.htm
+
+; 01 x position
+; 02 y position
+; 03 my initial position
+; 05 index of message (WOODS, TREE...)
+; 06 score
+; 18 my X
+; 19 my Y
+
+; Game ends here
+adv
+rcl 53         ; "YOU"
+op 01
+0
+op 04
+op 05          ; prt register
+op 00          ; clr prt register
+rcl 46         ; "START"
+op 02
+rcl 48         ; "WAS"
+op 03
+1337           ;  "AT"
+ee
+6
+inv ee
+op 04
+op 05          ; prt register
+rcl 03         ; prt my initial position
+prt
+36153540       ; "SCR."
+op 04
+rcl 06
+op 06          ; current value + SCR.
+r/s
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; B'
+
+; compute a random number 0 .. 9
+lbl B'
+pgm 15
+sbr d.ms
+×
+10
+=
+int
+inv sbr
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; B
+
+lbl B
+op 21
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; =
+
+lbl =
+gto 306
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; A
+
+lbl A
+op 31
+gto =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; C
+
+lbl C
+op 32
+gto =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; D
+
+lbl D
+op 22
+gto =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; D'
+
+lbl D'
+rcl 19
+×
+2
++
+20
+=
+sto 08         ; reg8 is an index
+rcl 18
+x⇌t
+4
+x≥t 114
+op 28          ; increment reg8
+5
+inv sum 18
+rcl ind 08     ; #114
+÷
+(
+10
+-
+2
+×
+rcl 18
+)
+inv log
+ee
+hir 04         ; save value into stack4
+=
+sto 17
+inv int
+inv sum 17
+×
+100
+=
+sto 16
+int
+inv sum 16
+inv ee
+inv sbr
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; E'
+
+lbl E'
+sto 09
+20             ; initialize all terrains
+sto 00         ; reg00 is index (start terrain)
+rcl 59         ; #161 "^^^^^"
+sto ind 00
+op 20          ; increment reg00
+rcl 00
+x⇌t
+39
+x≥t 161        ; <39 continue initialize terrains
+31
+inv sum 30
+44             ; reg00 is index
+sto 00
+rcl ind 00     ; #184 ROCK value
+int            ; => 35
+sto 04
+rcl ind 00     ; ROCK value
+inv int        ; fractional part
+×
+10
+=
+int
+sto 03         ; 2 (first decimal digit of ROCK)
+B'             ; #200 - compute rand position
+sto 18         ; X
+B'
+sto 19         ; Y
+D'
+x⇌t
+75             ; we are not a space, goto 200
+inv x=t 200
+rcl 04         ; we are on a space
+sum 16
+rcl 16
+÷
+100
++
+rcl 17
+=
+×
+hir 14         ; get back stack4
+=
+sto ind 08
+dsz 3 200      ; if Reg(3) /= 0 goto 200
+op 30          ; decrement reg00
+40
+x⇌t
+rcl 00
+x≥t 184
+20
+sto 00         ; reg00 is index (20 -> 39) all terrains
+A'             ; display top
+rcl 57         ; "> "  ; left border
+hir 08
+op 01
+nop
+nop
+rcl ind 00     ; #261 first 5 terrains
+op 02
+op 20          ; increment reg00
+rcl ind 00     ; next 5 terrains
+op 03
+op 05          ; prt register
+op 20
+rcl 00
+x⇌t
+39
+x≥t 261
+A'             ; display bottom
+adv
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; C'
+
+lbl C'
+adv
+B'             ; rand
+sto 01
+B'             ; rand
+sto 02
++
+rcl 01
+÷
+10
+=
+sto 03         ; store my initial position
+clr
+sto 06
+op 26          ; #306 increment reg6
+10
+x⇌t
+rcl 01
+x≥t 325        ; reg01 > 10
+rcl 02
+x≥t 325        ; reg02 > 10
+cp
+x≥t 355
+
+op 00          ; #325 - clear print register
+rcl 47         ; "----------"
+op 02
+op 04
+rcl 52         ; Move "SHARK" into the 3rd print register
+hir 07
+op 05          ; prt register
+rcl 10
+sto 01
+rcl 11
+sto 02
+ifflg 1 419
+stflg 1
+clr
+r/s
+
+rcl 01         ; #355
+inv x≥t 325
+rcl 01
+sto 18
+rcl 02
+sto 19
+D'
+x⇌t
+44
+x=t 464        ; end game : DID IT
+45             ; 45 into 5, "SPACE" message
+sto 05
+rcl ind 05     ; #380 read value reg45
+int
+x=t 391        ; found, display "on your field"
+op 35          ; decrement reg5
+gto 380
+rcl ind 05     ; #391
+hir 05         ; message to 1st print register
+rcl 49         ; 49, 50, 51 message "ON YOUR FIELD"
+op 02
+rcl 50
+op 03
+rcl 51
+op 04
+op 05          ; prt register
+rcl 01
+sto 10
+rcl 02
+sto 11
+x⇌t
+r/s
+rcl 54         ; #419 "ARE DEAD"
+op 02
+rcl 55
+op 03
+2
+prd 06
+12
+sum 06
+rst
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; A'
+
+lbl A'
+op 00          ; display top/bottom line
+rcl 47         ; "-----"
+op 02
+op 03
+4720           ; "   +-"
+op 01
+2047           ; "-+   "
+ee
+6
+inv ee
+op 04          ; #459
+op 05          ; prt register
+rtn
+
+rcl 56         ; #464 "DID IT."
+op 02
+rcl 58
+op 03
+rst
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; E
+
+lbl E
+43.44332321   sto 40   ; 43.4 "WOODS"
+30.43032413   sto 41   ; 30.4 "MOUNT"
+37.13735171   sto 42   ; 37.1 "TREE "
+15.21513421   sto 43   ; 15.2 "CAVE "
+35.23532152   sto 44   ; 35.2 "ROCK "
+75.93633131   sto 45   ; 75.9 "SPACE"
+3637133537    sto 46   ; "START"
+2020202020    sto 47   ; "-----"
+43133600      sto 48   ; " WAS "
+32310045      sto 49   ; " ON Y"
+3241350021    sto 50   ; "OUR F"
+2417271600    sto 51   ; "IELD "
+9.993623133   sto 52   ; 9.99 "SHARK"
+45324100      sto 53   ; "YOU "
+1335170016    sto 54   ; "ARE D"
+1713167300    sto 55   ; "EAD. "
+1624160024    sto 56   ; "DID I"
+6200.062      sto 57   ; "<
+3773000000    sto 58   ; "T.   "
+7575757575    sto 59   ; "^^^^^"
+
+636 EE 11 +/- sum 40
+137 EE 11 +/- sum 41
+  7 EE  9 +/- sum 42 sum 43
+  6 EE  9 +/- sum 44
+517 EE 11 +/- sum 45
+526 EE 12 +/- sum 52   ; ??? was 352
+E'

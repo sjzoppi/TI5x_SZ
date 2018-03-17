@@ -1,0 +1,6 @@
+<carddef style="system">
+<label slot="titleleft">RANDOM NUMBER GENERATOR</label>
+<label slot="titleright">MU-12</label>
+<label slot="a">Uniform</label>
+<label slot="b">Normal</label>
+</carddef>

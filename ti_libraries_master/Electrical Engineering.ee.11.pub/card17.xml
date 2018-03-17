@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">DISCRETE FOURIER TRANSFORM</label>
+<label slot="titleright">EE-17</label>
+<label slot="a">n</label>
+<label slot="b">f(n)</label>
+<label slot="c">F(n)</label>
+<label slot="d"><angle/> F(n)</label>
+<label slot="e"><ArrowR/> DFT</label>
+<label slot="eprime"><ArrowR/> IDFT</label>
+</carddef>

@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">ROOT LOCUS CALCULATIONS</label>
+<label slot="titleright">EE-16</label>
+<label slot="a">Real; Imag</label>
+<label slot="c"><ArrowR/> Asym. Par.</label>
+<label slot="d"><ArrowR/> Dep <angle/></label>
+<label slot="e"><ArrowR/> Arr <angle/></label>
+<label slot="aprime">n(poles)</label>
+<label slot="bprime">m(zeros)</label>
+</carddef>

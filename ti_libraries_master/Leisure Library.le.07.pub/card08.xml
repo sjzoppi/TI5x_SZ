@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">BRIDGE SCORER</label>
+<label slot="titleright">LE-08</label>
+<label slot="a">Trick</label>
+<label slot="b">Bid</label>
+<label slot="c">Vulnerable</label>
+<label slot="d">Doubled</label>
+<label slot="e">Contract</label>
+<label slot="dprime">Over</label>
+<label slot="eprime">Down</label>
+</carddef>

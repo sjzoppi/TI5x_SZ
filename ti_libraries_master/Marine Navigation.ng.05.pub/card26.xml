@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">GREAT CIRCLE SAILING</label>
+<label slot="titleright">NG-26</label>
+<label slot="a">L<sub>S</sub></label>
+<label slot="b"><lambda/><sub>S</sub></label>
+<label slot="c">L<sub>D</sub></label>
+<label slot="d"><lambda/><sub>D</sub> <ArrowR/> DIST</label>
+<label slot="e"><lambda/>' <ArrowR/> L'</label>
+</carddef>

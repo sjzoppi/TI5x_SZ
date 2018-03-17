@@ -1,0 +1,162 @@
+
+lbl E
+   exc 00
+   inv sbr
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   =
+   e
+   +
+   rcl 13
+   =
+   e
+   exc 00
+   x⇌t
+   exc 00
+   inv p→r
+   x⇌t
+   exc 00
+   x⇌t
+   inv sbr
+   -
+   cp
+   x≥t 041
+   0
+   +
+   24
+   =
+   cp
+   inv x≥t 034
+   inv sbr
+
+lbl C
+   rcl 06
+   +/-
+   e
+   rcl 07
+   +
+   rcl 05
+   =
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   +
+   e
+   sto 13
+   rcl 08
+   e
+   rcl 09
+   sbr 005
+   e
+   sto 17
+   ×
+   rcl 14
+   ×
+   (
+   e
+   -
+   rcl 10
+   )
+   sin
+   ÷
+   (
+   rcl 11
+   -
+   rcl 10
+   )
+   sin
+   =
+   x²
+   √x
+   inv sbr
+
+lbl D
+   +/-
+   e
+   rcl 11
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   +
+   e
+   sto 13
+   rcl 03
+   e
+   rcl 04
+   sbr 005
+   cp
+   x≥t 148
+   +
+   360
+   =
+   inv sbr
+   rcl 00
+   inv sbr
+   ÷
+   rcl 17
+   inv sbr
+   +
+   rcl 15
+   =
+   sbr 034
+   inv d.ms
+   gto 148
+
+lbl A'
+   sto 05
+   inv sbr
+
+lbl B'
+   exc 06
+   exc 07
+   inv sbr
+
+lbl C'
+   exc 03
+   exc 04
+   inv sbr
+
+lbl D'
+   sto 09
+   inv sbr
+
+lbl E'
+   sto 08
+   inv sbr
+
+lbl A
+   d.ms
+   -
+   exc 15
+   =
+   sbr 034
+   sto 14
+   rcl 15
+   inv sbr
+
+lbl B
+   exc 11
+   exc 10
+   rcl 11
+   inv sbr
+
+lbl clr
+   cms
+   fix 4
+   deg
+   0
+   inv sbr
+   gto clr

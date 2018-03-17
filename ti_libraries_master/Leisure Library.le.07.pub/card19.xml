@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">COMPUTER ART</label>
+<label slot="titleright">LE-19</label>
+<label slot="a">P.S 1st</label>
+<label slot="b">P.S 2nd</label>
+<label slot="c">P.S 3rd</label>
+<label slot="d">P.S 4th</label>
+<label slot="e">PRINT</label>
+</carddef>

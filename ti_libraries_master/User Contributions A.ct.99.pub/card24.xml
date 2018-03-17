@@ -1,0 +1,7 @@
+<carddef style="user">
+<label slot="titleleft">3D-TIC-TAC-TOE</label>
+<label slot="titleright">RS-24</label>
+<label slot="a">Play</label>
+<label slot="d">Print</label>
+<label slot="e">Init</label>
+</carddef>

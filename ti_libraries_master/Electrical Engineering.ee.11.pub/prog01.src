@@ -1,0 +1,17 @@
+
+lbl clr
+   cp
+   6 sto 1
+   0 st* 1
+   dsz 1 007
+   rtn
+
+lbl wrt
+   fix 9
+   op 0
+   1 7 1 7
+   op 2
+   op 5
+   1 1
+   prt
+   rtn

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE id=TI59MasterCSS type=text/css>.program {
+	FONT-SIZE: small; BORDER-TOP: gray 2px solid; FONT-FAMILY: monospace; BORDER-BOTTOM: gray 2px solid
+}
+.registerref {
+	FONT-SIZE: small; FONT-FAMILY: "dejavu sans"
+}
+.progbuttons {
+	FONT-SIZE: small; FONT-FAMILY: "dejavu sans"; FONT-WEIGHT: normal; COLOR: #dcdcdc; BACKGROUND-COLOR: #8b0000
+}
+.unicode {
+	FONT-SIZE: x-small; FONT-FAMILY: "dejavu sans"; FONT-WEIGHT: normal; COLOR: red
+}
+.yellowbutton {
+	FONT-SIZE: 0.9em; BORDER-TOP: black 1pt solid; HEIGHT: 1.8em; FONT-FAMILY: "dejavu sans"; BORDER-RIGHT: black 1pt solid; WIDTH: 4.8em; VERTICAL-ALIGN: middle; BORDER-BOTTOM: black 1pt solid; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: black 1pt solid; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 2px
+}
+.brownbutton {
+	FONT-SIZE: 0.9em; BORDER-TOP: black 1pt solid; HEIGHT: 1.8em; FONT-FAMILY: "dejavu sans"; BORDER-RIGHT: black 1pt solid; WIDTH: 4.8em; VERTICAL-ALIGN: middle; BORDER-BOTTOM: black 1pt solid; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: black 1pt solid; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 2px
+}
+.virtualbutton {
+	FONT-SIZE: 0.9em; BORDER-TOP: black 1pt solid; HEIGHT: 1.8em; FONT-FAMILY: "dejavu sans"; BORDER-RIGHT: black 1pt solid; WIDTH: 4.8em; VERTICAL-ALIGN: middle; BORDER-BOTTOM: black 1pt solid; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: black 1pt solid; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 2px
+}
+.whitebutton {
+	FONT-SIZE: 0.9em; BORDER-TOP: black 1pt solid; HEIGHT: 1.8em; FONT-FAMILY: "dejavu sans"; BORDER-RIGHT: black 1pt solid; WIDTH: 4.8em; VERTICAL-ALIGN: middle; BORDER-BOTTOM: black 1pt solid; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: black 1pt solid; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 2px
+}
+.alttext {
+	FONT-SIZE: 0.9em; BORDER-TOP: black 1pt solid; HEIGHT: 1.8em; FONT-FAMILY: "dejavu sans"; BORDER-RIGHT: black 1pt solid; WIDTH: 4.8em; VERTICAL-ALIGN: middle; BORDER-BOTTOM: black 1pt solid; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; TEXT-ALIGN: center; PADDING-TOP: 2px; PADDING-LEFT: 2px; BORDER-LEFT: black 1pt solid; LINE-HEIGHT: 1.8em; PADDING-RIGHT: 2px
+}
+.yellowbutton {
+	BACKGROUND: #ce8c3b 0% 50%; COLOR: black
+}
+.brownbutton {
+	BACKGROUND: #4e3836 0% 50%; COLOR: #ac9e80
+}
+.virtualbutton {
+	BACKGROUND: #ac9e80 0% 50%; COLOR: #ac3e20
+}
+.whitebutton {
+	BACKGROUND: #ac9e80 0% 50%; COLOR: #222424
+}
+.alttext {
+	BACKGROUND: #222424 0% 50%; COLOR: #ac9e80
+}
+.inline {
+	DISPLAY: inline-block
+}
+.deflist DT {
+	FONT-WEIGHT: bold
+}
+.deflist DD {
+	MARGIN-LEFT: 4em
+}
+.display {
+	FONT-FAMILY: monospace; FONT-WEIGHT: bold; COLOR: red; TEXT-ALIGN: right; MARGIN-RIGHT: 2em
+}
+.tdletter {
+	FONT-FAMILY: monospace; PADDING-BOTTOM: 0em; TEXT-ALIGN: center; PADDING-TOP: 0.5em; PADDING-LEFT: 2em; PADDING-RIGHT: 0.5em
+}
+.tdnumber {
+	FONT-FAMILY: monospace; PADDING-BOTTOM: 0.5em; TEXT-ALIGN: center; PADDING-TOP: 0em; PADDING-LEFT: 2em; PADDING-RIGHT: 0.5em
+}
+P.dataentry {
+	FONT-SIZE: x-small; OVERFLOW: auto; FONT-FAMILY: "courier new"; FONT-WEIGHT: bold; COLOR: #006400
+}
+TEXTAREA.dataentry {
+	FONT-SIZE: x-small; OVERFLOW: auto; FONT-FAMILY: "courier new"; FONT-WEIGHT: bold; COLOR: #006400
+}
+P.legend {
+	FONT-SIZE: x-small; OVERFLOW: auto; FONT-FAMILY: "courier new"; FONT-WEIGHT: bold; COLOR: #006400
+}
+P.legend {
+	TEXT-ALIGN: right; PADDING-TOP: 0.3em
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>Electrical Engineering Help Index</H1>
+<P>Enter <SPAN class=yellowbutton>&nbsp;2nd&nbsp;</SPAN> <SPAN class=alttext>&nbsp;Pgm&nbsp;</SPAN> <I>nn</I> to select program EE-<I>nn</I>. Tap the label card to get more information about that particular program. </P>
+<DL class=deflist>
+<DT>EE-01 
+<DD>Electrical Engineering Module Check 
+<DT>EE-02 
+<DD>Phase Locked Loop 
+<DT>EE-03 
+<DD>S x⇌t Y Parameter Conversions 
+<DT>EE-04 
+<DD>Complex Arithmetic 
+<DT>EE-05 
+<DD>Complex Functions 
+<DT>EE-06 
+<DD>Complex Trigonometric Functions 
+<DT>EE-07 
+<DD>dB,Np,P,V,I Ratio Conversions 
+<DT>EE-08 
+<DD>Signal Detection 
+<DT>EE-09 
+<DD>Roots of a Polynomial 
+<DT>EE-10 
+<DD>Chains Multiplication of Polynomials 
+<DT>EE-11 
+<DD>Reactance Chart 
+<DT>EE-12 
+<DD>Series/Parallel Impedance Conversions 
+<DT>EE-13 
+<DD>Active LP, HP, BP Filters 
+<DT>EE-14 
+<DD>Passive Lowpass Filters 
+<DT>EE-15 
+<DD>Convolution 
+<DT>EE-16 
+<DD>Root Locus Calculations 
+<DT>EE-17 
+<DD>Discrete Fourier Transform 
+<DT>EE-18 
+<DD>Smith Chart Calculations 
+<DT>EE-19 
+<DD>Network Analysis<BR></DD></DL>
+</BODY>

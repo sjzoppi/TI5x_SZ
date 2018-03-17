@@ -1,0 +1,155 @@
+
+lbl B'
+   (
+   15
+   -
+   .001981
+   ×
+   rcl 10
+   )
+   inv sbr
+
+lbl D'
+   (
+   b'
+   sbr inv
+   sbr tan
+   y**x
+   5.2563
+   )
+   inv sbr
+
+lbl C'
+   b'
+   sbr inv
+   sbr tan
+   √x
+   inv sbr
+
+lbl E'
+   (
+   d'
+   ÷
+   c'
+   x²
+   )
+   inv sbr
+
+lbl D
+   (
+   (
+   (
+   rcl 11
+   -
+   ce
+   ÷
+   (
+   1
+   +
+   .205
+   ×
+   rcl 13
+   x²
+   )
+   -
+   1
+   )
+   ×
+   rcl 12
+   sbr inv
+   )
+   sbr inv
+   +/-
+   )
+   inv sbr
+
+lbl A
+   sto 10
+   inv sbr
+
+lbl A'
+   sto 11
+   inv sbr
+
+lbl B
+   sto 12
+   inv sbr
+
+lbl C
+   ÷
+   1461
+   )
+   x²
+   +
+   1
+   )
+   y**x
+   3.5
+   -
+   1
+   )
+   ÷
+   d'
+   +
+   1
+   )
+   y**x
+   .286
+   ×
+   5
+   -
+   5
+   )
+   √x
+   sto 13
+   ×
+   39
+   ×
+   d
+   sbr inv
+   √x
+   )
+   inv sbr
+
+   rcl 13
+   inv sbr
+
+lbl E
+   sbr inv
+   sbr tan
+   ÷
+   d'
+   =
+   1/x
+   y**x
+   .235
+   -
+   1
+   =
+   +/-
+   ×
+   145426
+   =
+   inv sbr
+
+lbl inv
+   (
+   ce
+   +
+   273.15
+   )
+   inv sbr
+
+lbl tan
+   (
+   ce
+   ÷
+   288.15
+   )
+   inv sbr
+
+lbl clr
+   0
+   fix 2
+   inv sbr
+   gto clr

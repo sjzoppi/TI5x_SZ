@@ -1,0 +1,108 @@
+
+lbl B
+   deg
+   gto 009
+
+lbl pause
+   rad
+   rcl 01
+   x⇌t
+   rcl 02
+   inv p→r
+   x⇌t
+   rad
+   inv sbr
+
+lbl E'
+   (
+   (
+   rcl 02
+   inv lnx
+   +
+   1/x
+   )
+   ÷
+   2
+   )
+   rad
+   inv sbr
+
+lbl A
+   pgm 04 a
+   inv sbr
+
+lbl D'
+   rcl 02
+   x⇌t
+   rcl 01
+   inv sbr
+
+lbl A'
+   sbr pause
+   lnx
+   sto 01
+   x⇌t
+   sto 02
+   x⇌t
+   inv sbr
+
+lbl B'
+   rad
+   rcl 01
+   inv lnx
+   x⇌t
+   rcl 02
+   p→r
+   sto 02
+   x⇌t
+   sto 01
+   inv sbr
+
+lbl C
+   sbr pause
+   x²
+   (
+   x⇌t
+   ×
+   2
+   )
+   p→r
+   sto 02
+   x⇌t
+   sto 01
+   inv sbr
+
+lbl D
+   sbr pause
+   √x
+   (
+   x⇌t
+   ÷
+   gto 086
+
+lbl E
+   1
+   sto 03
+   0
+   sto 04
+   pgm 04 e'
+   pgm 04 c'
+   inv sbr
+
+lbl C'
+   (
+   (
+   rcl 02
+   inv lnx
+   -
+   1/x
+   )
+   ÷
+   2
+   )
+   inv sbr
+
+lbl p→r
+   inv stflg 1
+   pgm 04 sbr p→r
+   inv sbr

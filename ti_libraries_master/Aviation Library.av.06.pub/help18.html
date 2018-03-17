@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-18 — Rate of Climb; Turn Performance</H1>
+
+<P>As suggested by the title, this program contains two routines which
+  operate independently.
+</P>
+
+<h2>Rate of Climb</h2>
+
+<P>Given the true airspeed and altitude change (+ or -), this routine
+  can calculate the rate of climb (+ or -) if the ground distance over
+  which the altitude change occurs is specified. Conversely, the
+  distance can be calculated if the rate of climb is specified.
+</P>
+
+<P>
+<IMG ALT="Rate of Climb" src="data:image/png;base64,
+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
+">
+
+<h2>Turn Performance</h2>
+
+<P>Given the true airspeed, bank angle, and normal stall speed, this
+  routine computes the G-force, turn diameter, time to complete a 360°
+  turn, and the stall speed in the turn.
+</P>
+
+<table>
+  <tr><td><b>Bank</b><td>= bank angle in degrees</tr>
+  <tr><td><b>Diam</b><td>= turn diameter in n. miles</tr>
+  <tr><td><b>TAS</b><td>= true airspeed in knots</tr>
+  <tr><td><b>t</b><td>= time to complete a 360° turn (minutes))</tr>
+  <tr><td><b>N<sub>stall</sub></b><td>= normal stall speed (knots)</tr>
+  <tr><td><b>Stall</b><td>= stall speed in turn (knots)</tr>
+  <tr><td><b>G-force</b><td>= force in direction of the turn radius
+      expressed in parts of a G</tr>
+</table>
+
+<DL class="deflist">
+  <DT>Select degree mode
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+  </DT>
+
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</DD>
+  </DT>
+
+  <h3>Rate of Climb:</h3>
+
+  <DT>Enter &Delta;ALT in feet
+    <DD>&Delta;ALT <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Enter TAS in knots
+    <DD>TAS <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>If Dist is known calculate ROC
+    <DD>Dist (n. miles) <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+    <DD><SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">ROC</dd>
+  </DT>
+
+  <DT>If ROC is known calculate Dist
+    <DD>ROC (ft/min) <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+    <DD><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">Dist (n. miles)</dd>
+  </DT>
+
+  <h3>Turn Performance:</h3>
+
+  <DT>Enter TAS in knots
+    <DD>TAS <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Enter Bank angle in degrees
+    <DD>Bank angle <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Enter Nstall in knots
+    <DD>Nstall <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>To calculate G-force
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">G-force</dd>
+  </DT>
+
+  <DT>To calculate Diam
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">Diam (n. miles)</dd>
+  </DT>
+
+  <DT>To calculate t
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">t (HH.MMSS)</dd>
+  </DT>
+
+  <DT>To calculate Stall
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">Stall (knots)</dd>
+  </DT>
+</DL>
+
+<P>Registers used: 8, 10-14
+
+</BODY>

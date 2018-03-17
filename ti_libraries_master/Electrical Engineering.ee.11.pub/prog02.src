@@ -1,0 +1,112 @@
+
+lbl E
+   stf 0
+   rtn
+
+lbl E'
+   stf 1
+   rtn
+
+lbl clr
+   pgm 11 sbr clr
+   rtn
+
+lbl A
+   sto 10
+   rtn
+
+lbl B
+   iff 0 035
+   iff 1 043
+   sto 17
+   rtn
+   sbr 309
+   sto 17
+   gto 049
+   sbr 324
+   sto 17
+   inv stf 0
+   inv stf 1
+   rtn
+
+lbl C
+   sto 13
+   rtn
+
+lbl D
+   iff 0 073
+   iff 1 091
+   sto 18
+   rtn
+   ( sbr 309 ÷ 2 × rcl 12 × rcl 13 )
+   sto 18
+   gto 048
+   (
+   ( rcl 12 × rcl 13 + rcl 10 1/x )
+   × sbr 324 ÷ 2
+   )
+   sto 18
+   gto 048
+
+lbl A'
+   sto 20
+   rtn
+
+lbl B'
+   iff 0 133
+   iff 1 152
+   sto 11
+   rtn
+   ( rcl 10 ÷ rcl 17 x² ÷ rcl 13 ÷ rcl 20 )
+   sto 11
+   gto 048
+   sbr 262
+   iff 2 189
+   (
+   ( rcl 10 ÷ rcl 17 x² - 2 × rcl 18 ÷ rcl 17
+   + rcl 10 1/x
+   ) ÷ rcl 13
+   )
+   sto 11
+   gto 048
+   0
+   1/x
+   inv stf 2
+   gto 048
+
+lbl C'
+   iff 0 210
+   iff 1 218
+   sto 12
+   rtn
+   sbr 296
+   sto 12
+   gto 048
+   sbr 262
+   iff 2 189
+   sbr 296
+   ( ce - rcl 10 1/x ÷ rcl 13 )
+   sto 12
+   gto 048
+
+lbl D'
+   ( ( rcl 18 + ce 1/x ÷ 4 ) × rcl 17 ÷ 2 )
+   rtn
+   1
+   x⇌t
+   ( ( 2 × rcl 18 - rcl 17 ÷ rcl 10 ) × rcl 17 ÷ rcl 10 )
+   x≥t 293
+   x⇌t
+   0
+   x≥t 293
+   rtn
+   stf 2
+   rtn
+   ( 2 × rcl 18 ÷ rcl 17 ÷ rcl 13 )
+   rtn
+   ( rcl 10 ÷ rcl 20 ÷ rcl 11 ÷ rcl 13 )
+   √x
+   rtn
+   ( ( rcl 13 × ( rcl 11 + rcl 12 ) ) 1/x × rcl 10 )
+   √x
+   rtn

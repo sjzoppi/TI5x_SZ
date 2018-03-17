@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">CURVE SOLUTION</label>
+<label slot="titleright">SY-25</label>
+<label slot="aprime"><ArrowR/> <Delta/>; R</label>
+<label slot="bprime"><ArrowR/> L; C</label>
+<label slot="cprime"><ArrowR/> A; a</label>
+<label slot="a">R; <Delta/></label>
+<label slot="b">R; C</label>
+<label slot="c">R; L</label>
+<label slot="d">C; <Delta/></label>
+<label slot="e"><Delta/>; L</label>
+</carddef>

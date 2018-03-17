@@ -1,0 +1,321 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-08 — The Wind Triangle</H1>
+
+<P>The wind triangle is a vector equation interrelating wind, air, and
+  ground speed vectors.
+</P>
+
+<!-- Image below generated from SVG, PNG size 250x250 -->
+
+<P>
+<IMG ALT="Wind Triangle" src="data:image/png;base64,
+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
+ALMvReJG/fpwAAAABJRU5ErkJggg==
+">
+
+<P>The true airspeed and magnetic heading are always entered. Then,
+  given W, GS vectors will result. Ot give GS, W vectors will
+  result. By entering the leg distance and the times at the start and
+  finish of the leg, the ground speed is automatically calculated and
+  entered. Thus entering MC and TAS allows W to result. Further, if
+  the magnetic wind direction is entered or desired, then Var should
+  be entered as zero. If, however, the true wind direction is entered
+  or desired, then the appropriate Var must be entered.
+</P>
+<P>Note that if TAS and GS are given as average values over a flight
+  path, the average wind vector for that path will result.
+</P>
+<P>This program can be used in conjunction with AV-09 (Dead
+  Reckoning). Distance and speed units must be compatible within any
+  one case; though knots and nautical miles are most often used.
+</p>
+
+<table>
+  <tr><td><b>GS&nbsp;vector</b><td>= vector with magnitude GS (ground
+  speed) and direction MC (mag. course).</tr>
+  <tr><td><b>TAS&nbsp;vector</b><td>= vector with magnitude TAS (true air
+  speed) and direction MH (mag. heading)</tr>
+  <tr><td><b>W&nbsp;vector</b><td>= vector with magnitude WV (wind
+  velocity) and direction WD + Var (wind direction + mag. variation)</tr>
+</table>
+
+<DL class="deflist">
+  <DT>Select degree mode
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+  </DT>
+
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.00</DD>
+  </DT>
+
+  <DT>Enter magnetic variation
+    <DD>Var (+W, -E) <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">Var</dd>
+  </DT>
+
+  <DT>Enter magnetic heading
+    <DD>MH (deg) <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">MH</dd>
+  </DT>
+
+  <DT>Enter true airspeed
+    <DD>TAS <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">TAS</dd>
+  </DT>
+
+  <h3>To calculate wind direction and velocity:</h3>
+
+  <DT>Enter magnetic course
+    <DD>MC (deg) <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">MC</dd>
+  </DT>
+
+  <p>Do either:</p>
+
+  <DT>Enter leg distance
+    <DD>Dist <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">Dist</dd>
+  </DT>
+
+  <DT>Enter time at start of leg
+    <DD>t<sub>1</sub> (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">ignore</dd>
+  </DT>
+
+  <DT>Enter time at end of leg
+    <DD>t<sub>2</sub> (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">GS</dd>
+  </DT>
+
+  <p>or:</p>
+
+  <DT>Enter ground speed
+    <DD>GS <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">GS</dd>
+  </DT>
+
+  <DT>Calculate wind direction
+    <DD><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">-1.00</dd>
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">WD (deg)</dd>
+  </DT>
+
+  <DT>Calculate wind velocity
+    <DD><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">-1.00</dd>
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">WV</dd>
+  </DT>
+
+  <h3>To calculate magnetic course and ground speed:</h3>
+
+  <DT>Enter wind direction
+    <DD>WD <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">WD</dd>
+  </DT>
+
+  <DT>Enter wind velocity
+    <DD>WV <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">WC</dd>
+  </DT>
+
+  <DT>Calculate magnetic course
+    <DD><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">-1.00</dd>
+    <DD><SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">MC (deg)</dd>
+  </DT>
+
+  <DT>Calculate ground speed
+    <DD><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">-1.00</dd>
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">GS</dd>
+  </DT>
+</DL>
+
+<P>Registers used: 00, 05-11, 14-15, 17-19
+
+</BODY>

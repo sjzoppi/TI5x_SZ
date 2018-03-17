@@ -1,0 +1,138 @@
+;+
+; Partial recreation of the "Surveying Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl D'
+    x²
+    √x
+    x⇌t
+    rtn
+
+lbl st*
+    x⇌t
+    sto 20
+    1 8 0 x⇌t
+    inv x≥t adv
+    ( ce - 3 6 0 )
+
+lbl adv
+    x⇌t
+    rcl 20
+    x⇌t
+    rtn
+
+lbl E'
+    adv 0
+    cms
+    inv eng
+    fix 6
+    rtn
+
+lbl A'
+    sto 1
+    prt
+    rtn
+
+    sto 2
+    prt
+    rtn
+
+lbl A
+    dms
+    sbr 130
+    rtn
+
+    5
+    D'
+    rcl 12
+    P→R
+    D' D'
+    inv P→R
+    sbr st*
+    sbr 132
+    rtn
+
+lbl log
+    ( rcl 12 ÷ 9 0 + . 5 )
+    fix 0
+    ee inv ee
+    fix 6
+    prt
+    rtn
+
+lbl B
+    dms
+    sto 16
+    gto 132
+
+lbl B'
+    sto 13      ; ??? was [sto] [18], but 18 is Lt and 13 is Quadrant
+    prt         ; which is what B' is about.
+    rtn
+
+    ( cp × 9 0
+    - cos
+    x=t 124
+
+    rcl 16
+    gto 129
+
+;#124
+    rcl 16
+    cos
+    inv sin
+;#129
+    )
+    sto 12
+
+;#132
+    fix 6
+    inv dms
+    prt
+    rtn
+
+lbl C
+    sto 7
+    prt
+    rtn
+
+    prt
+    dms
+    cos
+    inv sin
+    inv dms
+
+lbl C'
+    pgm 4 C'
+    rtn
+
+lbl D
+    adv
+    rcl 12
+    P→R
+    sto 19
+    prt
+    rtn
+
+    D'
+    sto 18
+    prt
+    rtn
+
+    ( ce + rcl 1 )
+    sto 3
+    prt
+    rtn
+
+    pgm 4 sbr op
+    rtn
+
+lbl E
+    pgm 5 sbr grad
+    rcl 7
+    sum 9
+    rcl 9
+    prt
+    adv
+    rtn

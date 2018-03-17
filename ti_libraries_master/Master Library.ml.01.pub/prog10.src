@@ -1,0 +1,48 @@
+;+
+; Partial recreation of the "Master Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+; Simpson's Approximation (Discrete)
+
+
+lbl a                                 ;000
+    ( abs sto 5 / 2 ) sto 2 inv int
+    cp inv eq ee rcl 5
+    prt
+    rtn
+
+lbl ee                                ;021
+    0 1/x
+    rtn
+
+lbl b                                 ;026
+    sto 3
+    prt
+    rtn
+
+lbl c                                 ;032
+    ( ce + x<>t 6 ) sto 1 x<>t adv rtn
+
+lbl abs                               ;045
+    st* 1 x<>t 1 sum 1 x<>t
+    prt
+    rtn
+
+gto abs                               ;056
+
+lbl d                                 ;058
+    ( rcl 5 + 6 ) sto 1 rc* 1 sto 4
+
+lbl yx                                ;072
+    1 inv sum 1 ( rc* 1 * 4 ) sum 4
+    1 inv sum 1
+    inv dsz 2 x2
+    ( rc* 1 * 2 ) sum 4
+    gto yx
+
+lbl x2                                ;104
+    rc* 1 sum 4 ( rcl 3 / 3 ) prd 4
+    rcl 4
+    adv
+    prt
+    rtn

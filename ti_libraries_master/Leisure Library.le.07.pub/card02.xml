@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">PHOTO I - EXPOSURE COMPENSATION</label>
+<label slot="titleright">LE-02</label>
+<label slot="a">f(mm)</label>
+<label slot="b">D(mm)</label>
+<label slot="c">t</label>
+<label slot="d">m</label>
+<label slot="aprime">f(in)</label>
+<label slot="bprime">D(in)</label>
+</carddef>

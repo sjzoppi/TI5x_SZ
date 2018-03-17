@@ -1,0 +1,155 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl E'                      ;000
+    1 0
+    prd 0
+
+lbl D'                      ;006
+    rcl 0
+    int
+    inv sum 0
+    rtn
+
+lbl B                       ;015
+    9 sto 1
+    ( ( 0
+    inv iff ind 1 37
+    × 1 0
+    + rcl 1
+    )
+    ( dsz 1 23 )
+    )
+    iff 0 50
+    fix 9
+    rtn
+
+    fix 1                   ;050
+    rtn
+
+lbl C                       ;056
+    op 16
+    ( inv int × 1 0 + . 9 )
+    int
+    rtn
+
+lbl D                       ;069
+    9 0
+    cos
+    op 10
+    rtn
+
+lbl B'                      ;077
+    cp
+    ( 1 0
+    -                       ;083
+    1
+    +
+    +/-
+    inv log
+    ee
+    inv ee
+    x=t 83
+    0
+    )
+    rtn
+
+lbl C'                      ;098
+    hir 8 7
+    op 4
+    hir 18
+    cp
+    inv x=t 113
+    inv stf 0 0
+    rtn
+
+lbl E                       ;118
+    x⇌t
+    1 0 sto 0
+    0 sto 1
+    (
+    inv stf 7
+    op 30                   ; 1 inv sum 0
+    op 21                   ; 1 sum 1
+    op 18                   ; raise flag 7 if no error
+    iff 7 127
+    ce
+    dsz 1 149
+    rcl 0
+    rtn
+
+    )                       ;149
+    gto 142
+
+lbl A                       ;153
+    0 sto 0
+    1 0 sto 1
+    inv iff ind 1 170
+    op 20
+    inv prd 0
+    dsz 1 162
+    B'
+    sum 0 . 1
+    prd 0 D
+    x=t 192
+    op 20
+    prd 0
+    . 1
+    prd 0
+    C
+    x⇌t
+    1 0
+    x=t 206
+    inv prd 0
+    ( 1/x × 0
+    x⇌t × rcl 0
+    op 10
+    inv x=t 221
+    1
+    )
+    sum 0
+    0
+    rtn
+
+lbl A'                       ;226
+    cp
+    rcl 0
+    int
+    x=t 243
+    inv sum 0
+    1 0
+    gto 245
+
+    E'                        ;243
+    abs
+    op 17
+    E'
+    x=t 266
+    x≥t 262
+    1 +/-
+    prd 0
+    rad
+    gto 267
+
+    grad                     ;262
+    gto 267
+
+    deg                      ;266
+    1 0 prd 0
+    fix
+    ind 0 D'
+    1 0 sto 1
+    inv log
+    prd 0
+    cp . 1
+    prd 0
+    rcl 0
+    inv int
+    inv sum 0
+    x=t 301
+    stf ind 1
+    dsz 1 284
+    0
+    rtn

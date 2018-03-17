@@ -1,0 +1,11 @@
+2018-03-17 09:40:54: -- Analysis Started by User Command
+2018-03-17 09:40:55: /.gitignore: R:TimeSize<>; Warning: Older file to replace Newer file
+2018-03-17 09:40:55: Changes: 2, Conflicts: 0, CopyTime: 0, FixState: 0, Errors: 0, All: 8069
+2018-03-17 09:40:55: Left to Right: Copy File: 1 Delete File: 1 
+2018-03-17 09:40:55: -- Analysis Complete. Time 00:00:01, Speed: 2,773 files/s
+2018-03-17 09:40:55: 
+2018-03-17 09:41:11: == Sync Started by User Command
+2018-03-17 09:41:12: Delete File 'C:/Users/SZoppi/Documents/Engineering/Projects.Android/TI5x_SZ/.gitattributes'
+2018-03-17 09:41:12: Copy Over 'C:/Users/SZoppi/Documents/Engineering/Projects.Android/TI5x/.gitignore' -> 'C:/Users/SZoppi/Documents/Engineering/Projects.Android/TI5x_SZ/.gitignore' (647)
+2018-03-17 09:41:12: == Sync Complete. Time: 00:00:01, Speed: 8.63 KB/s, OK: 2, Errors: 0
+2018-03-17 09:41:12: 

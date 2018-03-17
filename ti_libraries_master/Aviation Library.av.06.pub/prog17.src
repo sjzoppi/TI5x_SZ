@@ -1,0 +1,83 @@
+
+lbl A'
+   +
+   cp
+   inv x≥t 010
+   0
+   -
+   360
+   =
+   cp
+   inv x≥t 002
+   inv sbr
+
+lbl E'
+   (
+   (
+   rcl 11
+   -
+   rcl 12
+   )
+   x²
+   +
+   rcl 10
+   x²
+   )
+   √x
+   inv sbr
+
+lbl A
+   sto 10
+   inv sbr
+
+lbl B
+   sto 11
+   inv sbr
+
+lbl C'
+   x²
+   -
+   rcl 10
+   x²
+   =
+   √x
+
+lbl C
+   sto 12
+   inv sbr
+
+lbl D'
+   +
+   (
+   rcl 10
+   ÷
+   rcl 12
+   )
+   inv tan
+   =
+   a'
+
+lbl D
+   sto 13
+   inv sbr
+
+lbl E
+   (
+   rcl 10
+   ÷
+   e'
+   )
+   inv sin
+   +
+   rcl 13
+   =
+   a'
+   inv sbr
+
+lbl clr
+   cms
+   fix 2
+   deg
+   0
+   inv sbr
+   gto clr

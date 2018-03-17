@@ -1,0 +1,119 @@
+
+lbl E'
+   rcl 1
+   exc 3
+   sto 1
+   rcl 2
+   exc 4
+   sto 2
+   0
+   rtn
+
+lbl A
+   inv stf 1
+   cp
+   rad
+   exc 2
+   exc 1
+   rcl 2
+   ce
+   rtn
+
+lbl A'
+   stf 1
+   exc 4
+   exc 3
+   rcl 4
+   ce
+   rtn
+
+lbl B
+   rcl 4
+   sum 2
+   rcl 2
+   x⇌t
+   rcl 3
+   sum 1
+   rcl 1
+   rtn
+
+lbl B'
+   1
+   +/-
+   prd 3
+   prd 4
+   b
+   rtn
+
+lbl C
+   ( rcl 1 × rcl 3 - rcl 2 × rcl 4 )
+   x⇌t
+   ( rcl 1 × rcl 4 + rcl 2 × rcl 3 )
+   sto 2
+   x⇌t
+   sto 1
+   rtn
+
+lbl C'
+   1
+   +/-
+   prd 4
+   ( rcl 3 x² + rcl 4 x² )
+   1/x
+   prd 1
+   prd 2
+   c
+   rtn
+
+lbl D
+   e'
+   pgm 5 sbr pause
+   cp
+   x=t e'
+   pgm 5 a'
+   c
+   pgm 5 b'
+   rtn
+
+lbl D'
+   pgm 5 a'
+   e'
+   pgm 5 a'
+   e'
+   c'
+   rtn
+
+lbl E
+   e'
+   pgm 5 sbr pause
+   cp
+   x=t e'
+   pgm 5 a'
+   c'
+   pgm 5 b'
+   rtn
+
+lbl p→r
+   deg
+   iff 1 195
+   rcl 1
+   x⇌t
+   rcl 2
+   p→r
+   sto 2
+   x⇌t
+   sto 1
+   0
+   rad
+   rtn
+   rcl 3
+   x⇌t
+   rcl 4
+   p→r
+   sto 4
+   x⇌t
+   sto 3
+   inv stf 1
+   0
+   rad
+   rtn

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+.tdletter
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+.tdnumber
+{
+  padding:0em .5em .5em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-16 — Hangman</H1>
+
+<P>With this program...
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>. 0 is displayed.
+    Press <SPAN CLASS="brownbutton">&nbsp;Fix&nbsp;</SPAN> <SPAN CLASS="whitebutton">&nbsp;9&nbsp;</SPAN> to remove a fixed-decimal
+    format.
+
+  <LI>A telephone-pad entry is used to enter all characters one at a time.
+    <TABLE style="padding:1em">
+      <TR> <TD CLASS="tdletter">STU<TD CLASS="tdletter">VWX<TD CLASS="tdletter">YZ-
+      <TR> <TD CLASS="tdnumber">7<TD CLASS="tdnumber">8<TD CLASS="tdnumber">9
+
+      <TR> <TD CLASS="tdletter">JKL<TD CLASS="tdletter">MNO<TD CLASS="tdletter">PQR
+      <TR> <TD CLASS="tdnumber">4<TD CLASS="tdnumber">5<TD CLASS="tdnumber">6
+
+      <TR> <TD CLASS="tdletter">ABC<TD CLASS="tdletter">DEF<TD CLASS="tdletter">GHI
+      <TR> <TD CLASS="tdnumber">1<TD CLASS="tdnumber">2<TD CLASS="tdnumber">3
+
+      <TR> <TD CLASS="tdletter">,.?<TD><TD>
+      <TR> <TD CLASS="tdnumber">0<TD><TD>
+    </TABLE>
+
+    To enter a character (or space), find the character on the above chart and enter the number beneath it
+    into the display. Then press the appropriate user-defined key as explained below:
+
+    <UL>
+      <LI>Press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> if the character is to the left of the number
+      <LI>Press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN> if the character is centered above the number
+      <LI>Press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN> if the character is to the right of the number
+    </UL>
+
+  <LI>After a character is entered a number appears in the display indicating the number of entries that may
+    still be made before filling the line. Once you have finished entering your word(s), press
+
+  <LI>To guess a letter simply enter the letter as described above. If the letter is correct it is placed
+    in the correct position(s) and printed along with the previously guessed letters and remaining blanks.
+    If it is wrong the number of wrong guesses is printed along with the incorrect letter. Note that entering
+    a correct letter more than once may cause erroneous symbols to be printed.
+
+  <LI>To guess the complete work press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> and enter the word as described
+    above. If the word is correct it is printed; if not, the number of wrong guesses is printed.
+
+  <LI>After 7 wrong guesses, you are officially "hung". However you may continue playing if you wish.
+
+</UL>
+
+</BODY>

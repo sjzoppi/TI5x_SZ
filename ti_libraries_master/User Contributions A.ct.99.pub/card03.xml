@@ -1,0 +1,13 @@
+<carddef style="user">
+<label slot="titleleft">Limits of functions and infinite series</label>
+<label slot="titleright">JS-03</label>
+<label slot="aprime">Lim f(x+h)</label>
+<label slot="bprime">Lim f(x)</label>
+<label slot="cprime">f(x)/x;f(x)-ax</label>
+<label slot="dprime">Sum U<sub>n</sub></label>
+<label slot="a"><ArrowR/> X<sub>0</sub></label>
+<label slot="b"><ArrowR/> +-infinite</label>
+<label slot="c"><ArrowR/> +-infinite</label>
+<label slot="d"><ArrowR/> n:1..oo</label>
+<label slot="e"><ArrowR/> f(x);U<sub>n</sub></label>
+</carddef>

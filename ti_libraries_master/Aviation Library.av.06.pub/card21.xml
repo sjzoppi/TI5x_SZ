@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">PILOT UNIT CONVERSIONS</label>
+<label slot="titleright">AV-21</label>
+<label slot="a">meters</label>
+<label slot="b">feet</label>
+<label slot="c">kilometers</label>
+<label slot="d">naut miles</label>
+<label slot="e">stat miles</label>
+<label slot="aprime">°F <ArrowR/> °C</label>
+<label slot="bprime">gas gal <ArrowR/> lbs</label>
+<label slot="cprime">liter <ArrowR/> gal</label>
+<label slot="dprime">lbs <ArrowR/> kgms</label>
+<label slot="eprime"><ArrowL/> [INV]</label>
+</carddef>

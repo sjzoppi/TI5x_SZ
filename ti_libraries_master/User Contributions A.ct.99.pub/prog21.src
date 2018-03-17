@@ -1,0 +1,53 @@
+; simple matches-stick game
+;
+; enter the number of matches-stick and press A
+; enter number of matches-stick you take, press R/S
+;
+; if you got the last matches-stick a flashing 0 is displayed, you lost
+; if the TI displays 0, it took the last matches-stik and so lost
+;
+; registers:
+;
+; 0O  used
+; 01  number of matches-stick on the stack
+; 02  used
+; 03  used
+
+lbl A
+    sto 01
+    +
+    3
+
+lbl A'
+    - 4
+    =
+    x=t D
+    x≥t A'
+    inv x≥t B
+
+lbl D
+    sto 02
+    1
+    sum 00
+    rcl 00 - ( rcl 00 ÷ 3 )
+    int
+    × 3 + 1
+    =
+    sum 02
+    rcl 02
+    gto C
+
+lbl B
+    + 4 =
+
+lbl C
+    pause
+    inv sum 01
+    rcl 01
+    -
+    r/s
+    =
+    pause
+    pause
+    x=t E                  ; 0 lost
+    rst

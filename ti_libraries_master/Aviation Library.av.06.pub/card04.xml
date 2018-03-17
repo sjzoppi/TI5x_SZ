@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">LONG RANGE FLIGHT PLAN</label>
+<label slot="titleright">AV-04</label>
+<label slot="a">L<sub>n</sub> , <lambda/><sub>n</sub></label>
+<label slot="b">GS</label>
+<label slot="c">Fuel abd</label>
+<label slot="d">Burn</label>
+<label slot="e">ETD</label>
+<label slot="aprime">[print] <ArrowR/></label>
+</carddef>

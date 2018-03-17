@@ -1,0 +1,62 @@
+; Master Mind
+;
+; enter the number of digits for the secret number E
+; enter guess, TI display the number of correct digits
+;
+; registers:
+;
+; 00  number of digits in number to find
+; 01  secret number
+; 02  secret number
+; 03  guess
+; 05  used
+; 06  used
+
+sto 3
+
+lbl A
+    sbr C
+    x⇌t
+    sbr C
+    inv x=t B
+    1                           ; one more good guess
+    sum 6
+
+lbl B
+    dsz 00 A
+    rcl 1                       ; reset R02 with secret number
+    sto 2
+    rcl 5
+    exc 0
+    exc 6
+    r/s
+    rst
+
+lbl C                           ; get one digit from R02, R03
+    rcl 3
+    exc 2
+    sto 3
+    10
+    inv prd 2
+    rcl 2
+    inv int
+    inv sum 2
+    × 10 =
+    rtn
+
+lbl E
+    sto 00
+    pgm 15 E'                   ; initialize random
+    ( rcl 00 - 1 ) inv log      ; lower-bound
+    pgm 15 A
+    ( rcl 00 inv log ) - 1 =    ; upper-bound
+    pgm 15 B
+    pgm 15 C                    ; get random
+    int
+    sto 01
+    sto 02
+    rcl 00
+    sto 05
+    clr
+    r/s
+    rst

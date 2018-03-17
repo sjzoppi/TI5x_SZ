@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">CAPITAL ACCUMULATION PLANNING</label>
+<label slot="titleright">SA-14</label>
+<label slot="a">Present</label>
+<label slot="b">PNW</label>
+<label slot="c">INC</label>
+<label slot="d">%I</label>
+<label slot="e">%G</label>
+<label slot="aprime">Future</label>
+<label slot="bprime">FNW</label>
+<label slot="cprime">INV</label>
+<label slot="dprime">IR<ArrowR/>PV</label>
+<label slot="eprime"></label>
+</carddef>

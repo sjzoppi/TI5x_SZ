@@ -1,0 +1,211 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+Lbl a                                      ;000
+    x⇌t
+    0
+    x=t 106
+    1
+    gto 30
+
+lbl b                                      ;011
+    x⇌t
+    0
+    x=t 111
+    2
+    gto 30
+
+lbl c                                      ;022
+    x⇌t 0
+    x=t 116
+    3
+    ( ce + 3 × ( x⇌t - 1 ) )
+    x⇌t
+    5
+    x≥t 81
+    1 2
+    x≥t 86
+    2 0
+    x≥t 91
+    2 6
+    x≥t 96
+    6 1
+    gto 126
+
+lbl d                                      ;066
+    x⇌t 6
+    x≥t 77
+    3
+    gto 98
+
+    1 gto 98                                   ;077
+
+    1 2 gto 98                                  ;081
+
+    1 5 gto 98                                  ;086
+
+    1 7 gto 98                                  ;091
+
+    2 0                                         ;096
+
+    ( ce + x⇌t ) gto 126                        ;098
+
+    5 7 gto 126                                 ;106
+
+    6 5 gto 126                                 ;111
+
+    7 1 gto 126                                 ;116
+
+lbl e                                       ;121
+    0
+
+lbl sbr                                     ;124
+    x⇌t
+    1 0 0
+    prd 1
+    x⇌t
+    sum 1
+    rcl 1
+    dsz 0 151
+    op 23
+    st* 3
+    5 sto 0
+    0 sto 1
+    cp
+    op 32
+    rcl 2
+    inv x=t 178
+    iff 1 171
+    rcl 3
+    sto 0
+    sbr 179
+    5 sto 0
+    2 0
+    sto 2
+    rtn
+
+    4 sto 1
+    rc* 0
+    op* 1
+    op 30
+    dsz 1 182
+    op 05                                   ;179
+    op 00
+    rtn
+
+lbl a'                                      ;197
+    rcl 0
+    x⇌t 5
+    x=t 226
+    op 23
+    2
+    prd 0
+    ( rcl 0 inv log
+    ee inv ee × 0 exc 1 )
+    st* 3
+    (
+    rcl 2 ÷ 5 )
+    int
+    sto 2
+    op 22
+    inv
+    dsz 2 160
+    op 23 0
+    st* 3
+    gto 237
+
+lbl b'                                      ;250
+    cp
+    sto 00
+    inv int
+    x=t 358
+    ( inv sum 0 × 4 0 0 )
+    sto 3
+    3 sum 3
+    4 prd 0
+    op 30
+    rcl 3
+    x⇌t
+    4 sum 0
+    sbr 179
+    4 sum 0
+    rcl 0
+    inv x=t 279
+    5 sto 0
+    0
+    rtn
+
+lbl -                                       ;302
+    2 0 gto 126
+
+lbl .                                       ;309
+    4 0 gto 126
+
+lbl +                                       ;316
+    4 7 gto 126
+
+lbl ×                                       ;323
+    5 0 gto 126
+
+lbl (                                       ;330
+    5 5 gto 126
+
+lbl )                                       ;337
+    5 6 gto 126
+
+lbl =                                       ;344
+    6 4 gto 126
+
+lbl ÷                                       ;351
+    6 3 gto 126
+
+    4
+    prd 0
+    rc* 0
+    op 01
+    op 20
+    rc* 0
+    op 02                                   ;358
+    op 20
+    rc* 0
+    op 3
+    op 20
+    rc* 0
+    op 4
+    op 20
+    op 05
+    op 00
+    gto 297
+
+lbl clr                                     ;392
+    inv stf 1
+    1
+
+lbl c'                                      ;398
+    ( ce × 4 - 1 )
+    sto 3
+    0 sto 1
+    gto 171
+
+lbl e'                                      ;415
+    3 3 3 5 1 7 3 6 3 6
+    gto 442
+
+lbl d'                                      ;430
+    1 7 3 1 3 7 1 7 3 5
+    op 23
+    st* 3
+    4 sto 0
+    1 4
+    sto 2
+    rtn
+
+    3 6 1 4 3 5 0 0                         ; 484
+    op 23
+    st* 3
+    5 sto 0
+    1 0
+    sto 2
+    rtn

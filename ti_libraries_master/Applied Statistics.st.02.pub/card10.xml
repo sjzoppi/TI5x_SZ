@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">THEORETICAL HISTOGRAM</label>
+<label slot="titleright">ST-10</label>
+<label slot="a"><ArrowR/> Cnt(Cont)</label>
+<label slot="b"></label>
+<label slot="c"><ArrowR/> Q(x<sup>2</sup>)</label>
+<label slot="d"></label>
+<label slot="e">Init Cont</label>
+<label slot="aprime"><ArrowR/> Cnt(Disc)</label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime">Init Disc</label>
+</carddef>

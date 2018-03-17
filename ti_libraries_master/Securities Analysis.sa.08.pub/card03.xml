@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">COMPOUND INTEREST</label>
+<label slot="titleright">SA-03</label>
+<label slot="a">N</label>
+<label slot="b">%I</label>
+<label slot="c">FV</label>
+<label slot="d">PV</label>
+<label slot="e"></label>
+<label slot="aprime">Cpt N</label>
+<label slot="bprime">Cpt % I</label>
+<label slot="cprime">Cpt FV</label>
+<label slot="dprime">Cpt PV</label>
+<label slot="eprime"></label>
+</carddef>

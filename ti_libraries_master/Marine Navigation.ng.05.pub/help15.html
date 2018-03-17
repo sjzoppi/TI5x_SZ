@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-15 — Time of Sunrise/Sunset/Twilight<BR></H1>
+<P>The navigator observes planets and stars during that part of the day when the bodies and the horizon are both visible. These periods of time occurring right around the time the sun rises or sets are called twilight. Because it is important for the navigator to be on deck and ready to observe celestial bodies during this time and because the times of these events are constantly changing, he needs a reasonably accurate way to predict their occurence.</P><BR>
+<P>Given a reasonably accurate dead reckoning (DR) track, these programs should enable the navi-gator to predict the times of sunrise, sunset, and a.m. and p.m. twilight within several minutes. If the DR track is in doubt, the navigator should plan to be on deck ready to observe celestial bodies several minutes earlier than the programs might otherwise indicate.</P>
+<P>When using this program, the navigator should use his DR position to estimate where he expects to be about the time of the desired event. Then, consulting the appropriate daily page of the Almanac, he should take the following data from the twilight/sunrise (sunset) tables:</P>
+<OL style="MARGIN-LEFT: 40px">
+<LI>The tabulated latitude (whole degrees) which is at or above the projected DR latitude. 
+<LI>The tabulated latitude (whole degrees) which is below the projected DR latitude. </LI></OL>
+<P>in other words, the two tabulated latitudes should bracket the DR latitude where the navigator expects to be when the desired event occurs. While in this table, the navigator should also take out the times (GMT) corresponding to the desired event for the two tabulated latitudes. The navigator should use the twilight/sunrise data from the top half of the page if he desires an a.m. event, and the sunset/twilight data from the bottom half if he desires a p.m. event. The navigator should also note that the twilight/sunrise and sunset/twilight data is given once for the 3-day period covered by each daily page.</P>
+<P>After completing the program for the GMT of one a.m, or p.m. event, the navigator can obtain the GMT for the other a.m. or p.m. event by simply taking out the times listed for the other event and entering them in steps 7 and 8.</P>
+<P>This program is designed to be used by itself or in conjunction with the <SPAN style="FONT-WEIGHT: bold">PLANET LOCATION</SPAN> program. When used with this program, the DR latitude, longitude and GMT are stored automatically and, therefore, need not be reentered. To use these programs together as a system, the navigator first calculates the GMT for either a.rn. or p.m. twilight and then uses the planet location program to identify the approximate azimuth (true direction) and altitude (sextant reading).</P>
+<P>The projected time is calculated by the following equation:</P>
+<DIV style="MARGIN-LEFT: 40px">GMT = <BR></DIV>
+<P style="MARGIN-LEFT: 80px"><BIG><BIG>[</BIG></BIG><BR></P>
+<P style="MARGIN-LEFT: 120px">( 0.558 * <BIG style="COLOR: rgb(51,51,255)">(</BIG>&nbsp;( L <SUB>1</SUB> - L<SUB>DR</SUB> )&nbsp; / (L <SUB>1</SUB> - L<SUB>2</SUB> ) <BIG style="COLOR: rgb(51,51,255)">)</BIG><SUP>2</SUP> )<BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; +<BR>( 0.337 * <BIG style="COLOR: rgb(51,51,255)">(</BIG>&nbsp; ( L <SUB>1</SUB> - L<SUB>DR</SUB> )&nbsp; / (L <SUB>1</SUB> - L<SUB>2</SUB> ) <BIG style="COLOR: rgb(51,51,255)">) </BIG>+ 0.024 )<BR></P>
+<DIV style="MARGIN-LEFT: 80px"><BIG><BIG>]</BIG></BIG>&nbsp;&nbsp;&nbsp; &nbsp; * ( t<SUB>2</SUB> - t<SUB>1</SUB> ) + t<SUB>1</SUB> + ( θ<SUB>DR</SUB> / 15 )<BR></DIV>
+<P>The variables used in the above equation are:</P>
+<TABLE>
+<TBODY>
+<TR>
+<TD style="VERTICAL-ALIGN: top">λ<SUB>DR</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">dead reckoning longitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>DR</SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">dead reckoning latitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>1</SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">tabular value of latitude at or above L<SUB>DR</SUB><BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>2</SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">tabular value of latitude below L<SUB>DR</SUB><BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">t<SUB>1</SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">time of event at L<SUB>1</SUB><BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">t<SUB>2</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">time of event at L<SUB>2</SUB><BR></TD></TR></TBODY></TABLE>
+<P><BR></P>
+</BODY>

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">CHI-SQUARE &amp; STUDENT'S-t DISTRIBUTIONS</label>
+<label slot="titleright">ST-21</label>
+<label slot="a"><upsilon/> <ArrowR/><Gamma/>(<upsilon/>/2)</label>
+<label slot="b">x<sup>2</sup><ArrowR/>f(x<sup>2</sup>)</label>
+<label slot="c">x<sup>2</sup><ArrowR/>P(x<sup>2</sup>)</label>
+<label slot="d">x<sup>2</sup><ArrowR/>f(t)</label>
+<label slot="e">t<ArrowR/>P(t)</label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

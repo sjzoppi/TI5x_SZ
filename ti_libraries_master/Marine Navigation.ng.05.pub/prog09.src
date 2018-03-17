@@ -1,0 +1,119 @@
+
+lbl A
+   cp
+   x≥t 012
+   (
+   ce
+   +
+   24
+   )
+   inv sbr
+
+lbl E
+   (
+   (
+   rcl 19
+   -
+   rcl 16
+   )
+   a
+   ×
+   (
+   rcl 01
+   -
+   rcl 02
+   )
+   sin
+   ÷
+   (
+   rcl 02
+   -
+   rcl 03
+   )
+   sin
+   )
+   sto 20
+   (
+   rcl 16
+   -
+   rcl 14
+   )
+   a
+   inv prd 20
+   (
+   rcl 01
+   cos
+   -
+   rcl 20
+   ×
+   rcl 03
+   cos
+   )
+   (
+   (
+   x⇌t
+   rcl 01
+   sin
+   -
+   rcl 20
+   ×
+   rcl 03
+   sin
+   )
+   inv p→r
+   pgm 10 sbr st*
+   -
+   rcl 15
+   -
+   cp
+   x≥t 098
+   0
+   +
+   360
+   )
+   inv x≥t 091
+   sto 13
+   adv
+   prt
+   inv sbr
+
+lbl A'
+   sto 15
+   prt
+   inv sbr
+   sum 15
+   prt
+   inv sbr
+
+lbl B
+   prt
+   d.ms
+   sto 14
+   inv sbr
+
+lbl C
+   prt
+   d.ms
+   sto 16
+   inv sbr
+
+lbl D
+   prt
+   d.ms
+   sto 19
+   inv sbr
+
+lbl B'
+   sto 01
+   prt
+   inv sbr
+
+lbl C'
+   sto 02
+   prt
+   inv sbr
+
+lbl D'
+   sto 03
+   prt
+   inv sbr

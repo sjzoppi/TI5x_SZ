@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">RESIDENTIAL PURCHASE ANALYSIS</label>
+<label slot="titleright">RE-16</label>
+<label slot="a">Price</label>
+<label slot="b">Price <Delta/>%</label>
+<label slot="c">Prop Tax</label>
+<label slot="d">Prop Tax <Delta/>%</label>
+<label slot="e">months, yr 1</label>
+<label slot="aprime">N</label>
+<label slot="bprime">%I</label>
+<label slot="cprime">PV</label>
+<label slot="dprime"><ArrowR/> PMT</label>
+<label slot="eprime">Down Paymt</label>
+</carddef>

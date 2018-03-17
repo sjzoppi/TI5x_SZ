@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-16 — VOR Area Nav</H1>
+
+<P>The area Navigation package consists of three programs: Area Nav
+  Load Module (AV-15); VOR Area Nav (AV-16); and DME Area Nav
+  (AV-14). The Load Module program is used to load position
+  information into your calculator's data register for use in the VOR
+  or DME Area Nav programs. The Load Module can handle numerous
+  waypoints which may be VOR's or other geographic fixes, and can 1)
+  Load the data registers directly, or 2) store the information on a
+  blank Flight Data card. These Flight Data cards are particularly
+  useful in that several may be recorded for a large area, and simply
+  reading one will load the data registers with the information
+  necessary to navigate in that section of the area.
+</P>
+
+<P>The VOR or DME Are Nav programs do the real work for the set. While
+  similar, the choice between them is based on the type of equipment
+  you have. Both use the same input data, and both programs compute
+  distance to go, magnetic course, GS, and ETA to a specified
+  waypoint.
+</P>
+
+<h2>VOR Area Nav</h2>
+
+<P>Once the network data is in place, the VOR Area Nav program may be
+  used. Knowing the radials from 2 defined VOR's, the program
+  calculates the position of the aircraft relative to #0, and thus
+  relative to each defined network point. By entering the number of
+  the waypoint in question, the pilot may find the distance and
+  magnetic course from his present position to that waypoint. Then,
+  entering the time of the VOR readings and estimated ground speed,
+  ETA to that waypoint is calculated.
+</P>
+
+<P>Another important feature is the "Add miles" instruction. This
+  instruction directly changes the distance used in ETA
+  calculations. For instance, if the flight plan includes two legs to
+  a destination, the direct distance to the destination and resulting
+  ETA calculation will not be correct. But calculating the distance to
+  the leg intersection,  then adding the distance of the second leg
+  will give correct distance and ETA results.
+</P>
+
+<P>In addition, any undefined point may be treated as an aircraft
+  position provided the radials to two defined points are known. This
+  allows the user to find distance and magnetic course to a defined
+  point from an undefined one.
+</P>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.</DD>
+  </DT>
+
+  <DT>Enter estimated ground speed
+    <DD>GS <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">GS.0000</dd>
+  </DT>
+
+  <DT>Enter time of reading
+    <DD>t (HH.MMSS) <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">t (decimal hrs)</dd>
+  </DT>
+
+  <DT>Enter waypoint number of first VOR
+    <DD>n <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Enter radial from first VOR
+    <DD>Rad A <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Enter waypoint number of second VOR
+    <DD>m <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Enter radial from second VOR
+    <DD>Rad B <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">0.0000</dd>
+  </DT>
+
+  <DT>Calculate distance to waypoint #W
+    <DD>W <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">Dist to #W</dd>
+  </DT>
+
+  <DT>Calculate magnetic course to waypoint #W
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">MC (decimal degrees)</dd>
+  </DT>
+
+  <DT>Change distance (if needed)
+    <DD>&plusmn; miles <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">Dist to &plusmn; miles</dd>
+  </DT>
+
+  <DT>Calculate ETA to last distance displayed
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">ETA (HH.MMSS)</dd>
+  </DT>
+
+  <DT>Compute actual GS to waypoint of second VOR
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">GS</dd>
+  </DT>
+
+  <DT>Enter calculated GS for use in aditional ETA calculations if desired
+    <DD>GS <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">GS</dd>
+  </DT>
+
+  <p>For a new reading, go to "Enter time of reading", then enter
+  waypoint of first VOR and/or second VOR and continue.</p>
+</DL>
+
+<P>Registers used: 00-19, R20-Rxx
+
+</BODY>

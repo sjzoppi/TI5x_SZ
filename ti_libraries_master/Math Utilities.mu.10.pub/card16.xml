@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">MINIMAX</label>
+<label slot="titleright">MU-16</label>
+<label slot="a">Limit</label>
+<label slot="b"><Delta/>x</label>
+<label slot="c">X<sub>0</sub> <ArrowR/> X<sub>CRIT</sub></label>
+<label slot="d"><ArrowR/>Next X<sub>CRIT</sub></label>
+<label slot="aprime">X <ArrowR/> f(x)</label>
+<label slot="cprime">(no limit)</label>
+<label slot="dprime">(no limit)</label>
+</carddef>

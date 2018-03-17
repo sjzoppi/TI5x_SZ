@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-15 — Convolution</H1>
+
+<P>
+</P>
+
+<P>Given the impulse response for a linear system, one can use the
+  convolution integral to find the system's output for a specified input
+  waveform. The program generates outputs at intervals of &Delta;t using
+  the trapezoidal rule.
+</P>
+
+<P>The user specifies the integration step size (&Delta;) by the input
+  of n<sub>0</sub>. Then &Delta; = &Delta;t / n<sub>0</sub>. Note that
+  &Delat; is held constant for each successive evaluation of y(t).
+</P>
+
+<IMG ALT="Convolution" src="data:image/png;base64,
+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
+YII=
+">
+
+<P>The user specifies the number of equi-spaced arguments (N) for
+  which the integral is to be evaluated. After the output of N values
+  of y(t), one may generate additional values (in increments of
+  &Delta;t)
+</P>
+
+<P>The functions x(t) and h(t) are entered in program memory as a
+  series of keystrokes.
+</P>
+
+<UL>
+  <LI>Initialize program,
+    <SPAN CLASS="brownbutton">&nbsp;RST&nbsp;</SPAN>
+
+  <H3>Enter functions</H3>
+
+  <LI>Select learn mode,
+    <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+
+  <LI>Use A' as the label for x(t) subroutine, enter
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Lbl&nbsp;</SPAN> and
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+  <LI>Enter x(t) as a series of keystrokes. Assume t is in the
+    display. Do not use <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN> or
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN> or any used registers.
+
+  <LI>End subroutine with <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+
+  <LI>Use B' as the label for h(t) subroutine, enter
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Lbl&nbsp;</SPAN> and
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+
+  <LI>Enter h(t) as for x(t)
+
+  <LI>Exit learn mode,
+    <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+
+  <H3>Compute convolution</H3>
+
+  <LI>Select program 15,
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>
+    <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+    <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+
+  <LI>Enter number of panels in each &Delta;t (n<sub>0</sub>),
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Number of values of y(t) desired (N),
+    press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+
+  <LI>Enter increment &Delta;t,
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+  <LI>Execute without printer, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>, display
+    t<sub>1</sub> and y(t<sub>1</sub>)
+    <P>press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> N times to
+      display the N values, display t<sub>i</sub> and y(t<sub>i</sub>)
+
+  <LI>Execute with printer, press
+    <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>, print
+    t<sub>i</sub> and y(t<sub>i</sub>)
+
+  <LI>If additional values of y(t) are desired without printer,
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>, display
+    t<sub>N+1</sub> and y(t<sub>N+1</sub>)
+
+  <LI>If additional values of y(t) are desired with printer,
+    <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>, print
+    t<sub>N+1</sub> and y(t<sub>N+1</sub>)
+</UL>
+
+<P>Registers: 08-17
+
+</BODY>

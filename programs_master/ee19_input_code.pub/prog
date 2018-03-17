@@ -1,0 +1,137 @@
+
+lbl A
+   prt
+   x⇌t
+   2
+   x⇌t
+   inv x=t 011
+   3
+   sto 87
+   sto 05
+   inv sbr
+
+   prt
+   sto 78
+   sto 06
+   inv sbr
+
+   prt
+   sto 79
+   sto 07
+   inv sbr
+
+lbl D
+   x⇌t
+   .3
+   gto 057
+
+lbl A'
+   x⇌t
+   .1
+   gto 057
+
+lbl B
+   adv
+   prt
+   1/x
+   st* 02
+   0
+   st* 01
+   gto 064
+   st* 01
+   x⇌t
+   adv
+   prt
+   st* 02
+   inv sbr
+
+   inv ee
+   fix 1
+   prt
+   ×
+   10
+   =
+   sm* 01
+   fix 9
+   ifflg 0 103
+   2
+   +/-
+   sum 01
+   sum 02
+   rcl 01
+   sto 03
+   rcl 02
+   sto 04
+   1
+   sum 89
+   rcl 89
+   prt
+   inv sbr
+
+   inv stflg 0
+   rcl 04
+   sto 02
+   rcl 03
+   sto 01
+   inv sbr
+
+lbl E
+   stflg 0
+   adv
+   prt
+   +/-
+   ×
+   2
+   +
+   79
+   -
+   sto 02
+   1
+   =
+   sto 01
+   inv sbr
+
+lbl E'
+   inv stflg 0
+   inv ee
+   77
+   sto 02
+   76
+   sto 01
+   adv
+   op 00
+   2431
+   op 02
+   3341370000
+   op 03
+   op 05
+   4213
+   op 02
+   2741170000
+   op 03
+   op 05
+   2130
+   op 02
+   40373200
+   op 03
+   op 05
+   adv
+   inv sbr
+
+lbl B'
+   adv
+   rcl 05
+   sto 87
+   prt
+   rcl 06
+   sto 78
+   prt
+   rcl 07
+   sto 79
+   prt
+   inv sbr
+
+lbl C
+   x⇌t
+   .2
+   gto 057

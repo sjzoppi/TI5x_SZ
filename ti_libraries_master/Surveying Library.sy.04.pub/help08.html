@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-08 — Balance - Transit Rule</H1>
+
+<P>SY-07, SY-08 form a group and are to be used together.
+
+<P>The is a two program set which provides a means of balancing a
+  closed traverse by either compass or transit rule. They are designed
+  for use either with Closure (SY-06) or alone.
+</P>
+
+<P>Given the sums of the latitudes and departures, regardless of sign,
+  the end coordinates of the closure, and the end coordinates of the
+  traverse leg, this program calculates the adjusted (balanced)
+  coordinates. The transit rule, assumes that angular precision
+  is generally higher than distancing precision.
+</P>
+
+<UL>
+  <LI>If used standalone:
+    <UL>
+      <LI>Initialize, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+      <LI>Enter starting North, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+      <LI>Enter starting East, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+      <LI>Enter next North, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>Enter next East, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>Compute &sum;|Lt| and &sum;|Dp|, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+
+      <LI>For next leg, re-start from step enter next North above.
+
+      <LI>Compute closure latitude and departure, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+
+      <LI>Continue below...
+    </UL>
+
+  <LI>If used immediatly after the Closure (SY-06), start here:
+    <UL>
+      <LI>Enter starting North, press
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Enter starting East, press
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Enter unadjusted North, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Enter unadjusted East, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+
+      <LI>Compute adjusted North, press
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Compute adjusted East, press
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+      <LI>If more points, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        and re-start from step entering unadjusted North above.
+    </UL>
+</UL>
+
+<P>Registers used: 01-07, 09, 11, 12, 14, 15, 18, 19
+
+</BODY>

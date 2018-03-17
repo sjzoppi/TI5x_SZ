@@ -1,0 +1,130 @@
+
+lbl A
+   ×
+   2
+   +
+   14
+   =
+   sto 00
+   rcl 00
+   -
+   14
+   =
+   ÷
+   2
+   =
+   inv sbr
+
+lbl B
+   fix 6
+   d.ms
+   fix 4
+   sto ind 00
+   inv sbr
+
+lbl C
+   fix 6
+   d.ms
+   fix 4
+   op 20
+   sto ind 00
+   op 30
+   inv sbr
+
+lbl D
+   a
+   rcl ind 00
+   sto 01
+   op 20
+   rcl ind 00
+   sto 02
+   dsz 0 010
+
+lbl E
+   a
+   rcl ind 00
+   sto 03
+   op 20
+   rcl ind 00
+   sto 04
+   dsz 0 010
+
+lbl A'
+   pgm 10 d'
+   pgm 10 d
+   sto 12
+   inv sbr
+
+lbl B'
+   pgm 10 d'
+   rcl 08
+   inv sbr
+
+lbl C'
+   ÷
+   60
+   ×
+   rcl 12
+   cos
+   +
+   rcl 01
+   =
+   sto 03
+   sto ind 00
+   op 20
+   180
+   ÷
+   π
+   ×
+   (
+   rcl 03
+   sbr 179
+   -
+   rcl 01
+   sbr 179
+   =
+   ×
+   rcl 12
+   tan
+   +/-
+   +
+   rcl 02
+   =
+   sto 04
+   sto ind 00
+   dsz 0 010
+
+lbl D'
+   sto 05
+   inv sbr
+
+lbl E'
+   pgm 11 d
+   pgm 11 d'
+   pgm 10 sbr log
+   inv sbr
+
+lbl lnx
+   rcl 08
+   ×
+   60
+   =
+   inv sbr
+
+   (
+   ce
+   ÷
+   2
+   +
+   45
+   )
+   tan
+   lnx
+   inv sbr
+
+lbl clr
+   deg
+   fix 4
+   0
+   inv sbr
+   gto clr

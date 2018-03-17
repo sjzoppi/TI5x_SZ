@@ -1,0 +1,121 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A                                         ;000
+    sto 10
+    rtn
+
+lbl B                                         ;005
+    sto 11
+    sto 13
+    rtn
+
+lbl C                                         ;012
+    sto 12
+    sto 14
+    rtn
+
+lbl D                                         ;019
+    sto 19
+    rtn
+
+lbl E'                                        ;024
+    inv
+
+lbl E                                         ;027
+    stf 0
+    (
+    ( ce - rcl 10 )
+    ÷
+    rcl 19 sto 9
+    )
+    sto 15
+    sbr 275
+    sto 16
+    sbr 284
+    ( rcl 16 / 2 )
+    iff 0 94
+    ( ce + rcl 14 )
+    sto 12
+    (
+    ( rcl 14 + rcl 16 ÷ 4 )
+    ×
+    rcl 15
+    ÷ 2
+    +
+    rcl 13
+    )
+    gto 100
+
+    ( ce + rcl 13 )                           ;094
+    sto 11
+    sbr 275
+    ( sto 17 / 2 )
+    iff 0 126
+    ( ce + rcl 14 )
+    sto 12
+    gto 134
+
+    ( ce + rcl 13 )                           ;126
+    sto 11
+    sbr 275
+    sto 18
+    sbr 284
+    rcl 18
+    iff 0 176
+    ( ce + rcl 14 )
+    sto 12
+    (
+    ( rcl 14 + rcl 18 ÷ 2 )
+    ×
+    rcl 15 + rcl 13
+    )
+    gto 182
+
+    ( ce + rcl 13 )                           ;176
+    sto 11
+    sbr 275
+    (
+    ( ce
+    +
+    ( rcl 17 + rcl 18 )
+    × 2
+    +
+    rcl 16
+    )
+    / 6 )
+    iff 0 257
+    ( ce + rcl 14 )
+    sto 12
+    (
+    (
+    ( rcl 16 + rcl 17 + rcl 18 )
+    ÷ 6 + rcl 14
+    )
+    ×
+    rcl 15
+    +
+    rcl 13 )
+    sto 11
+    sto 13
+    x⇌t
+    rcl 12
+    sto 14
+    x⇌t
+    gto 267
+
+    ( ce + rcl 13 )                           ;257
+    sto 11
+    sto 13
+    dsz 9 46
+    inv stf 0
+    rtn
+
+    ( pgm 0 A' × rcl 15 )                     ;275
+    rtn
+
+    ( rcl 15 ÷ 2 )                            ;284
+    sum 10
+    rtn

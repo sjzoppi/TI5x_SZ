@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">TRAVERSE (FIELD ANGLE)</label>
+<label slot="titleright">SY-04</label>
+<label slot="a"><angle/>R+:<angle/>L-</label>
+<label slot="b">DfR+:DfL-</label>
+<label slot="c">D;V<angle/> <ArrowR/> HzD</label>
+<label slot="d"><ArrowR/> Dp;Lt;N;E</label>
+<label slot="e">Occupy<ArrowR/><Sigma/>D</label>
+<label slot="aprime">Ref N;E;Az</label>
+<label slot="cprime">Z<angle/> <ArrowR/> HzD</label>
+</carddef>

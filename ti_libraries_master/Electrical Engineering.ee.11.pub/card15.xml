@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">CONVOLUTION</label>
+<label slot="titleright">EE-15</label>
+<label slot="a">No. panels</label>
+<label slot="b">N</label>
+<label slot="c"><Delta/>t</label>
+<label slot="d"><ArrowR/> y(t) prt</label>
+<label slot="e"><ArrowR/> Prt out</label>
+<label slot="aprime">x(t)</label>
+<label slot="bprime">h(t)</label>
+<label slot="dprime"><ArrowR/> y(t) dspl</label>
+<label slot="eprime"><ArrowR/> Dsp out</label>
+</carddef>

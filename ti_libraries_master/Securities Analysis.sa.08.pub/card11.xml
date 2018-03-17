@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">STOCK INDICATORS</label>
+<label slot="titleright">SA-11</label>
+<label slot="a">Price</label>
+<label slot="b">Dividend</label>
+<label slot="c">Enter</label>
+<label slot="d"></label>
+<label slot="e"></label>
+<label slot="aprime">N</label>
+<label slot="bprime">Stock</label>
+<label slot="cprime">Compute</label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

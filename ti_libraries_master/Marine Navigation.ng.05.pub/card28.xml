@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">SMG, CMG, TIME TO LAY-LINE</label>
+<label slot="titleright">NG-28</label>
+<label slot="a"><ArrowR/>C<sub>tp</sub>;De<ArrowR/>C<sub>c</sub></label>
+<label slot="b"><ArrowR/>SMG<sub>p</sub>;CMG</label>
+<label slot="d"><ArrowR/>SMG<sub>s</sub>;CMG</label>
+<label slot="e"><ArrowR/>C<sub>ts</sub>;De<ArrowR/>C<sub>c</sub></label>
+<label slot="bprime"><ArrowR/> <Delta/><sub>tp</sub>; D<sub>p</sub></label>
+<label slot="cprime"><ArrowR/> <Delta/> t</label>
+<label slot="dprime"><ArrowR/> <Delta/>t<sub>s</sub>; D<sub>s</sub></label>
+<label slot="eprime">D, B<sub>t</sub></label>
+</carddef>

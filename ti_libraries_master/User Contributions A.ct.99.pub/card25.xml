@@ -1,0 +1,10 @@
+<carddef style="user">
+<label slot="titleleft">TREASURE ISLAND</label>
+<label slot="titleright">DR-25</label>
+<label slot="a">Left</label>
+<label slot="b">Right</label>
+<label slot="c">Up</label>
+<label slot="d">Down</label>
+<label slot="e">Init</label>
+<label slot="cprime">Restart</label>
+</carddef>

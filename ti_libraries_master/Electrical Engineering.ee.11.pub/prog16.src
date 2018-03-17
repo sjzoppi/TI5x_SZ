@@ -1,0 +1,195 @@
+
+lbl clr
+   fix 9
+   deg
+   0
+   inv sbr
+
+lbl A'
+   sto 08
+   x⇌t
+   10
+   sto 00
+   0
+   sto 01
+   x⇌t
+   inv sbr
+
+lbl B'
+   sto 09
+   x⇌t
+   36
+   sto 00
+   gto 016
+
+lbl A
+   op 21
+   st* 00
+   op 20
+   rcl 01
+   inv sbr
+   st* 00
+   op 20
+   gto 041
+
+lbl C
+   stflg 0
+   0
+   sto 03
+   rcl 08
+   sto 00
+   10
+   sto 01
+   rc* 01
+   ifflg 0 073
+   inv sum 03
+   2
+   sum 01
+   dsz 0 066
+   inv ifflg 0 101
+   inv stflg 0
+   rcl 09
+   sto 00
+   36
+   sto 01
+   gto 066
+   1
+   x⇌t
+   (
+   rcl 08
+   -
+   rcl 09
+   )
+   x≥t 116
+   +
+   =
+   inv sbr
+   (
+   sto 07
+   1/x
+   ×
+   rcl 03
+   )
+   adv
+   prt
+   inv sbr
+   (
+   180
+   ÷
+   rcl 07
+   )
+   adv
+   prt
+   inv sbr
+   (
+   ce
+   +
+   360
+   ÷
+   rcl 07
+   )
+   sbr 156
+   prt
+   inv sbr
+   gto 138
+   (
+   ce
+   ÷
+   360
+   )
+   (
+   inv int
+   ×
+   360
+   )
+   inv sbr
+
+lbl D
+   sbr 237
+   sbr 277
+   0
+   exc 03
+   sum 05
+   sbr 265
+   (
+   rcl 05
+   -
+   rcl 03
+   )
+   sbr 156
+   prt
+   inv sbr
+
+lbl E
+   sbr 237
+   1
+   +/-
+   prd 05
+   26
+   sum 04
+   sbr 277
+   0
+   exc 03
+   inv sum 05
+   sbr 265
+   (
+   rcl 05
+   +
+   rcl 03
+   )
+   sbr 156
+   prt
+   inv sbr
+   adv
+   prt
+   (
+   ce
+   ×
+   2
+   +
+   8
+   )
+   sto 04
+   36
+   sto 02
+   rcl 09
+   sto 01
+   0
+   sto 03
+   180
+   sto 05
+   inv sbr
+   10
+   sto 02
+   rcl 08
+   sto 01
+   sbr 277
+   inv sbr
+   (
+   rc* 04
+   -
+   rc* 02
+   )
+   sto 06
+   op 24
+   op 22
+   cp
+   x=t 295
+   inv stflg 0
+   (
+   rc* 04
+   -
+   rc* 02
+   )
+   inv ifflg 0 315
+   inv stflg 0
+   x=t 324
+   exc 06
+   x⇌t
+   rcl 06
+   inv p→r
+   sum 03
+   op 34
+   op 22
+   dsz 1 277
+   inv sbr

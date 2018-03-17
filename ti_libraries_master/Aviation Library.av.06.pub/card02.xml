@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">FLIGHT PLAN WITH WIND</label>
+<label slot="titleright">AV-02</label>
+<label slot="a">TC</label>
+<label slot="b">Dist</label>
+<label slot="c"><ArrowR/> TH ; MH</label>
+<label slot="d"><ArrowR/> GS ; ETE</label>
+<label slot="e"><ArrowR/> Fuel ; ETA</label>
+<label slot="aprime">Var(+W,-E)</label>
+<label slot="bprime">WD</label>
+<label slot="cprime">WV</label>
+<label slot="dprime">TAS ; Burn</label>
+<label slot="eprime">ETD <ArrowR/> tt ; tF</label>
+</carddef>

@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">SEA BATTLE</label>
+<label slot="titleright">LE-20</label>
+<label slot="a">Range</label>
+<label slot="b">Bear°</label>
+<label slot="c">Status</label>
+<label slot="d">Display</label>
+<label slot="e">Fire</label>
+<label slot="eprime">Start</label>
+</carddef>

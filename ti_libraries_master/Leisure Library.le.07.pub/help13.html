@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-13 — Craps</H1>
+
+<P>The game follows the rules of the familiar dice game:</P>
+
+<OL>
+  <LI>First roll of 7 or 11 wins
+  <LI>First roll of 2, 3, 12 loses
+  <LI>Any other first roll is your point and you win if it is rolled
+  again before 7 is rolled (making your point). If 7 is rolled before
+    your point, you lose.
+</OL>
+
+<P>The dice are represented on the display and printer as M.N where M
+  and N are the numbers of the dice. All bets are even odds (1 to 1)
+  and are made by entering the amount of the previous bet (0 for the
+  first roll). Your initial bankroll is $100, and is updated after
+  each round. You may continue playing until your bankroll is depleted
+  ($0.00).
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Press <SPAN CLASS="whitebutton">&nbsp;.&nbsp;</SPAN>, then key any number
+    and press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>. 100.00 will be displayed.
+
+  <LI>Key in your bet and
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>. This number will be
+    displayed and printed. If you enter a bet larger than your bankroll,
+    the display will flash 9's. You may press
+    <SPAN CLASS="brownbutton">CE</SPAN> and enter a correct amount to continue.
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> for your first roll
+    which will be displayed unless you roll 2, 3, 12, 7 or 11 causing
+    only your updated bankroll to be displayed. You may see what the
+    roll was by pressing <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>. If you
+    won or lost on the first roll, start again with step
+    above. Otherwise continue with following step.
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> for your next roll,
+    which will be displayed unless it is 7 or your point. In either
+    if these cases, your updated bankroll will be displayed.
+
+  <LI>Repeat step above until you will or lose.
+
+  <LI>Continue until your $100 is depleted.
+</UL>
+
+</BODY>

@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">SUNRISE, SUNSET, TWILIGHT</label>
+<label slot="titleright">NG-15</label>
+<label slot="a">L<sub>DR</sub></label>
+<label slot="b"><lambda/><sub>DR</sub></label>
+<label slot="c">L<sub>1</sub></label>
+<label slot="d">L<sub>2</sub></label>
+<label slot="e">t<sub>1</sub></label>
+<label slot="aprime">t<sub>2</sub></label>
+<label slot="bprime"><ArrowR/> GMT</label>
+</carddef>

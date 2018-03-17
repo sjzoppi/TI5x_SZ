@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">CURVE FITS</label>
+<label slot="titleright">RE-10</label>
+<label slot="a">Lin-x Entry</label>
+<label slot="b">Exp-x Entry</label>
+<label slot="c">Log-x Entry</label>
+<label slot="d">Delete x</label>
+<label slot="e">x <ArrowR/> y</label>
+<label slot="aprime"><ArrowR/> a (Intcpt)</label>
+<label slot="bprime"><ArrowR/> b (Slope)</label>
+<label slot="cprime"><ArrowR/> r<sup>2</sup></label>
+<label slot="dprime">y <ArrowR/> x'</label>
+<label slot="eprime">INIT</label>
+</carddef>

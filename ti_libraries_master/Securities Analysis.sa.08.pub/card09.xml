@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">WARRANT VALUATION</label>
+<label slot="titleright">SA-09</label>
+<label slot="a">Sh Price</label>
+<label slot="b">Ex Price</label>
+<label slot="c">C<ArrowR/>Val; HR</label>
+<label slot="d"><ArrowR/>Val</label>
+<label slot="e"></label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

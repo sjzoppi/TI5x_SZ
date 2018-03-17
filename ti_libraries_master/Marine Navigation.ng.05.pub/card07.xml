@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">DIST OFF 1 OBJECT AND TNA</label>
+<label slot="titleright">NG-07</label>
+<label slot="a">S, C<sub>c</sub>; De</label>
+<label slot="b">B<sub>r</sub></label>
+<label slot="c">t</label>
+<label slot="d"><ArrowR/> DMG; D<sub>2</sub></label>
+<label slot="e"><ArrowR/> <Delta/> tn; tn</label>
+<label slot="aprime">V</label>
+<label slot="bprime">Dr, St</label>
+<label slot="dprime"><ArrowR/> D<sub>n</sub></label>
+</carddef>

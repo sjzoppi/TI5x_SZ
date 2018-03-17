@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-15 — Area Navigation - Load Module</H1>
+
+<P>The area Navigation package consists of three programs: Area Nav
+  Load Module (AV-15); VOR Area Nav (AV-16); and DME Area Nav
+  (AV-14). The Load Module program is used to load position
+  information into your calculator's data register for use in the VOR
+  or DME Area Nav programs. The Load Module can handle numerous
+  waypoints which may be VOR's or other geographic fixes, and can 1)
+  Load the data registers directly, or 2) store the information on a
+  blank Flight Data card. These Flight Data cards are particularly
+  useful in that several may be recorded for a large area, and simply
+  reading one will load the data registers with the information
+  necessary to navigate in that section of the area.
+</P>
+
+<P>The VOR or DME Are Nav programs do the real work for the set. While
+  similar, the choice between them is based on the type of equipment
+  you have. Both use the same input data, and both programs compute
+  distance to go, magnetic course, GS, and ETA to a specified
+  waypoint.
+</P>
+
+<h2>Area Nav Load Module</h2>
+
+<P>The programs are based on prestored geographical positions
+  (referred to as 'waypoints') which may be navigational aids (VOR,
+  ADF Radio Beacon, etc.), fixes (intersections, landmarks, obstacles,
+  etc.), or other geographical locations (airports, towns, etc...)
+  that may be located relative to each other. Each waypoint is stored
+  so that it may be referred to by a number designation (0, 1, 2, ...,
+  N*). The radials supplied by on-board VOR receivers give the pilot a
+  means of accurately locating his aircraft in relation to those
+  points, and by extension, in relation to other waypoints.
+</P>
+
+<P>The general method is based on selection of an arbitrary point
+  (waypoint "0" with coordinates (0,0)) as the origin of a network of
+  other defined waypoints (numbered 1-N). These waypoints are defined
+  by their magnetic bearing and distance from either waypoint 0 or any
+  previously defined waypoint (see Remark 1).
+</P>
+
+<P>To use the Load Module, select suitable charts which cover the area
+  of interest and choose the navigational aids you wish to store as
+  waypoints. At least two of these must be VOR stations. (Actually,
+  one or both could be radio beacons if ADF reading were used and
+  converted to <i>magnetic bearing from the station</i>.) It is
+  desirable to define waypoints for departure, destination and
+  alternate airports. Select a waypoint near the center of the area to
+  be identified as "0", and others to be assigned number 1 - N as
+  desired. Select the Load Module  program (AV-15) and load the
+  network as follows:
+</p>
+
+<DL class="deflist">
+  <DT>Enter number of waypoint to be loaded
+    <DD>Press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> (Load FIX)
+  </DT>
+  <DT>Enter number of waypoint used as a reference
+    <DD>Press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN> (from FIX)
+  </DT>
+  <DT>Enter magnetic bearing from reference to new waypoint
+    <DD>Press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN> (RAD)
+  </DT>
+  <DT>Enter distance between waypoints
+    <DD>Press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN> (Dist)
+  </DT>
+</DL>
+
+</P>Repeat for each waypoint. Note that the reference point for each
+new fix must already have been defined to the calculator. Fix 0 is
+always assumed as (0, 0), thus is <i>must</i> be the reference for the
+first waypoint entered. The second waypoint entered may reference
+either fix 0 or the first point entered, etc... The location of any
+waypoint may be changed at any time before recording the data on
+magnetic cards. However, movement of the origin required redefining
+all other positions.
+</P>
+
+<P>If the network is one you might use frequently, it may then be
+  stored on a blank magnetic card, creating a Flight Data card. This
+  data card may then be read into memory at any time without even
+  having to select the Load Module program.
+</P>
+
+<P>By recording several Flight Data cards, "blocks" of waypoints may
+  be used to describe a long route. A new block would then be loaded
+  as the aircraft left the previous one. At least one VOR should be
+  common to adjacent blocks.
+</P>
+
+<P>Recording a network on a blank card does not affect the data
+  registers (which will still be used). Thus, whether or not a Flight
+  Data card is recorded, you may continue by immediately selecting the
+  required navigation program.
+</P>
+
+<P>If a waypoint needs to be "moved" while navigating, the Load Module
+  may be reselected for that purpose. Then, once the data has been
+  changed you may reselect the appropriate navigation program and
+  continue normally.
+</P>
+
+<h2>To Use Flight Data Card</h2>
+
+<P>If you have entered your flight data and recorded it on a magnetic
+  card or cards you may simply read this data into your calculator's
+  data memory when it is needed for the VOR or DME Area Nav
+  program. To do this simple
+  press <SPAN CLASS="brownbutton">&nbsp;CLR&nbsp;</SPAN> and feed the
+  card into the card slot. Once the card is read the number in the
+  display indicates which bank was read.
+</P>
+<P><i>Note that on this emulator there is a single virtual card
+  simulated, to read it
+    just <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;write&nbsp;</SPAN>
+</P>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.</DD>
+  </DT>
+
+  <h3>For each waypoint, do:</h3>
+
+  <DT>Enter number of waypoint to be entered
+    <DD>n <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">n</dd>
+  </DT>
+
+  <DT>Enter number of waypoint to be used as reference
+    <DD>m <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">m</dd>
+  </DT>
+
+  <DT>Enter radial from m to n in degrees
+    <DD>Rad <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">Rad</dd>
+  </DT>
+
+  <DT>Enter distance from m to n
+    <DD>Dist <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">Dist</dd>
+  </DT>
+
+  <h3>To record waypoint on a magnetic card:</h3>
+
+  <DT>Record data registers R<sub>00</sub> - R<sub>29</sub> on a
+  magnetic card
+    <DD>4 <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;write&nbsp;</SPAN>
+    <DD CLASS="display">4</dd>
+  </DT>
+
+  <DT>Record data registers R<sub>30</sub> - R<sub>59</sub> on a
+  magnetic card
+    <DD>3 <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;write&nbsp;</SPAN>
+    <DD CLASS="display">3</dd>
+  </DT>
+
+  <P>Initialize Load Module program for new network or go to VOR or
+  DME Area Nav program.</p>
+</DL>
+
+<P>Registers used: 00-03, 12-19, R20-Rxx
+
+</BODY>

@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-07 GOLF HANDICAPPER</H1>
+
+<P>
+	This program, which is usable with or without the print cradle,
+	allows a golfer to calculate his
+	handicap according to the handicap system of the USGA.
+	Some regional district members of
+	the USGA use a slightly different handicapping formula, 
+	but the same principles are followed.
+</P>
+
+<P>	
+	A current handicap is computed by taking 96 percent of the average of 
+	a golfer's 10 lowest differentials from his most recent 20 rounds.
+	A round's differential is the adjusted score
+	(result of an equitable stroke control procedure
+	for handicap purposes) less the course rating
+	(a difficulty rating assigned by representatives of the authoritative 
+	golf organization in the area of the course).  
+	A course rating is not necessarily an integer; 70.2 could be a course rating.
+</P>
+<P>
+	Handicaps are calculated to the nearest integer stroke.
+	They are normally positive.
+</P>
+<P>
+	Negative results from the handicap 
+	calculation can be interpreted as a scratch golfer's
+	obligation to his playing partner.  
+	(A handicap of -4 means the scratch golfer should
+	allocate a stroke to his partner on each of the four 
+	hardest handicap holes on the particular course they are playing.)
+</P>
+<P>
+	When at least 5 but fewer than 20 differentials are available, 
+	the handicap is calculated using the following table:
+	<table>
+		<tr>
+			<th>Differentials Available</th>
+			<th>Differentials Used in Handicap</th>
+		</tr>
+		<tr><td>5</td><td>Lowest 1</td></tr>
+		<tr><td>6</td><td>Lowest 2</td></tr>
+		<tr><td>7</td><td>Lowest 3</td></tr>
+		<tr><td>8 or 9</td><td>Lowest 4</td></tr>
+		<tr><td>10 or 11</td><td>Lowest 5</td></tr>
+		<tr><td>12 or 13</td><td>Lowest 6</td></tr>
+		<tr><td>14 or 15</td><td>Lowest 7</td></tr>
+		<tr><td>16 or 17</td><td>Lowest 8</td></tr>
+		<tr><td>18 or 19</td><td>Lowest 9</td></tr>
+	</table>
+</P>
+
+
+<P>
+	INSTRUCTIONS (<b>Display and Printer</b>)
+</P>
+
+<OL>
+
+	<LI>
+		Press
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>07
+		<SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+		<SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+		to initialize program.
+		0. is displayed.
+		<br />
+		Press 4
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;Op&nbsp;</SPAN>17
+		to reset partition for TI-58.
+	</LI>
+
+	<BR />
+  
+	<LI>
+		Enter number of rounds for handicap calculation, press
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>.
+		The number of rounds and differentials used in handicap
+		will be printed, the number of differentials will be 
+		displayed.
+	</LI>
+
+	<BR />
+
+	<LI>
+		Enter the adjusted score and course rating for each round using
+		the following format: AS.CR, press
+		<SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>.
+		The adjusted score, course rating and differential will be printed.
+		The differential will be displayed (example, AS = 82, CR = 71.2, enter 82.712, press
+		<SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>,
+		87.712, 10.8 will be printed, 10.8 will be displayed).
+		Repeat Step 3 until all rounds are entered.  
+		To edit a previous entry at any time before Step 4,
+		enter number of round miskeyed, press
+		<SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>.
+		Number of round will be displayed.  Enter correct 
+		data and press
+		<SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>.
+		Continue entering additional data.
+	</LI>
+	
+	<BR />
+
+	<LI>
+		Calculate handicap by pressing
+		<SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>.
+		The lowest differential used in handicap will be printed and
+		displayed approximately every 7 seconds.  The sum, average, and 96 percent of the 
+		average for the differentials will be printed and displayed along with the
+		rounded handicap.
+	</LI>
+</OL>
+<p>
+	<b>NOTES</b>
+</p>
+<p>
+	The TI-59 allows golfers to enter the data in Step 2 by using mag cards.  
+	The following procedure can be used with the TI-59 to update a golfer's handicap
+	based on his most recent 20 rounds.
+</p>	
+
+
+<OL>	
+	<BR />
+
+	<LI>
+		If bonus in effect, press
+		<SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>,
+		and 99. will be displayed.
+	</LI>
+
+	<BR />
+
+	<LI>
+		Enter number of wins and press
+		<SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>.
+	</LI>
+
+	<BR />
+
+	<LI>
+		Press 
+		<SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+		to find new rating.
+		<BR />
+		<BR />
+	</LI>
+
+	<BR />
+
+	<BR />
+
+
+</OL>
+</BODY>

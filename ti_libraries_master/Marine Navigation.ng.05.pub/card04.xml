@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">VELOCITY TO CHANGE REL POSITION</label>
+<label slot="titleright">NG-04</label>
+<label slot="a">S<sub>g</sub>, C<sub>tg</sub></label>
+<label slot="b">D<sub>1</sub>, B<sub>1</sub></label>
+<label slot="c">D<sub>2</sub>, B<sub>2</sub></label>
+<label slot="d"><Delta/> t</label>
+<label slot="e"><ArrowR/> S<sub>m</sub>; C<sub>tm</sub></label>
+<label slot="bprime">REL</label>
+<label slot="cprime">REL</label>
+</carddef>

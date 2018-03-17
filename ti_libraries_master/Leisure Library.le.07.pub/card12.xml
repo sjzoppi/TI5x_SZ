@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">ACEY-DEUCY</label>
+<label slot="titleright">LE-12</label>
+<label slot="a">Seed</label>
+<label slot="b">Number 1</label>
+<label slot="c">Number 2</label>
+<label slot="e">Odds</label>
+<label slot="aprime">Bet</label>
+<label slot="bprime">Number</label>
+<label slot="cprime">Bankroll</label>
+</carddef>

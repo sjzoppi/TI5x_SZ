@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-14 — Fix from Two Objects (LAT/LON)<BR></H1>
+<P>By taking simultaneous bearings ( B<SUB>c12</SUB> ) of two objects, this program may be used to compute the position of the vessel at the time of the observations (the <SPAN style="FONT-WEIGHT: bold">Chart Initialization</SPAN> program must be used for entering V L<SUB>1</SUB>, λ<SUB>1</SUB>,L<SUB>2</SUB>, λ<SUB>2</SUB> L<SUB>m</SUB> and λ<SUB>m</SUB> ).</P>
+<P>Calculation is begun by converting (x, y) to polar coordinates (r,&nbsp;θ) where x and y have been evaluated as:</P>
+<P>&nbsp;&nbsp;&nbsp; x = L<SUB>2</SUB> - L<SUB>1</SUB></P>
+<P>and</P>
+<P>&nbsp;&nbsp;&nbsp; y = - λ<SUB>m</SUB> ( λ<SUB>2</SUB> - λ<SUB>1</SUB>) / L<SUB>m</SUB></P>
+<P>Where:</P>
+<P>&nbsp;&nbsp;&nbsp; L<SUB>1</SUB>, λ<SUB>1</SUB> ( L<SUB>2</SUB>, λ<SUB>2</SUB> ) = latitude and longitude of object 1 (2), and</P>
+<P>&nbsp;&nbsp;&nbsp; L<SUB>m</SUB> ( λ<SUB>m</SUB> ) = number of nautical miles in a given interval of latitude (longitude).</P>
+<P>The true bearing (B<SUB>t</SUB>') from object 1 to object 2 is equal to θ and the distance (D) between the two is 60r.</P>
+<P>After the observed compass bearings are converted to true bearings (B<SUB>t</SUB> = B<SUB>c</SUB> - De - V), the distance off object 1 is given by the formula:</P>
+<P>&nbsp;&nbsp;&nbsp; D<SUB>1</SUB> = D * sin( B<SUB>t</SUB>' - B<SUB>t2</SUB> ) / sin( B<SUB>t2</SUB> - B<SUB>t1</SUB> ).</P>
+<P>The, the latitude (L) and logitude (λ) of the fix are computed from the equations:</P>
+<P>&nbsp;&nbsp;&nbsp; L = L<SUB>1</SUB> - ( D<SUB>1</SUB> / 60 ) * cos( B<SUB>t1</SUB> )</P>
+<P>and</P>&nbsp;&nbsp;&nbsp; λ = λ<SUB>1</SUB> + ( D<SUB>1</SUB> / 60 ) * ( L<SUB>m</SUB> / λ<SUB>m</SUB> ) * sin( B<SUB>t1</SUB> )<BR><BR><SPAN style="FONT-WEIGHT: bold">REMARK:</SPAN> if the navigator wishes to disregard the magnetic deviation, zero must be entered into the calculator.<BR>
+<P><BR></P>
+</BODY>

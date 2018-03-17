@@ -1,0 +1,100 @@
+
+lbl A
+   sto 10
+   inv sbr
+
+lbl B
+   sto 12
+   inv sbr
+
+lbl C
+   sto 14
+   inv sbr
+
+lbl D'
+   inv lbl d
+   stflg 0
+   1
+   gto 049
+
+lbl E'
+   inv lbl e
+   stflg 0
+   (
+   rcl 14
+   ÷
+   rcl 10
+   )
+   sto 16
+   0
+   sto 11
+   sto 13
+   rcl 12
+   sto 09
+   rcl 10
+   sum 11
+   rcl 11
+   sto 08
+   op 28
+   0
+   sto 15
+   sto 17
+   rcl 14
+   sum 13
+   (
+   rcl 15
+   pgm 00
+   a'
+   ×
+   (
+   rcl 13
+   -
+   rcl 15
+   )
+   pgm 00
+   b'
+   )
+   sum 17
+   sum 17
+   exc 15
+   cp
+   x=t 110
+   x⇌t
+   rcl 13
+   x⇌t
+   x=t 110
+   exc 15
+   gto 115
+   exc 15
+   inv sum 17
+   rcl 16
+   sum 15
+   dsz 8 070
+   (
+   rcl 16
+   ÷
+   2
+   )
+   prd 17
+   37
+   op 04
+   rcl 13
+   ifflg 0 153
+   pause
+   pause
+   pause
+   pause
+   pause
+   pause
+   rcl 17
+   inv sbr
+   gto 170
+   adv
+   op 06
+   45553756
+   op 04
+   rcl 17
+   op 06
+   dsz 9 051
+   inv stflg 0
+   inv sbr

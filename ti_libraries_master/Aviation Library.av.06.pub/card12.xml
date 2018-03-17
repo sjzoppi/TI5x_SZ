@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">LINE OF SIGHT; DME SPEED</label>
+<label slot="titleright">AV-12</label>
+<label slot="a">Terr</label>
+<label slot="b">Trans</label>
+<label slot="c">ALT</label>
+<label slot="d">Dist</label>
+<label slot="e">[calc] <ArrowR/></label>
+<label slot="aprime">MC</label>
+<label slot="bprime">R<sub>DME</sub></label>
+<label slot="cprime">DME<sub>SP</sub><ArrowR/>GS</label>
+<label slot="dprime">Dist<sub>DME</sub></label>
+<label slot="eprime"><Delta/><sub>h</sub> <ArrowR/> GS'</label>
+</carddef>

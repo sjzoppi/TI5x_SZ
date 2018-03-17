@@ -1,0 +1,6 @@
+<carddef style="system">
+<label slot="titleleft">PRIME FACTORS</label>
+<label slot="titleright">MU-09</label>
+<label slot="a">Integer</label>
+<label slot="b">Factor</label>
+</carddef>

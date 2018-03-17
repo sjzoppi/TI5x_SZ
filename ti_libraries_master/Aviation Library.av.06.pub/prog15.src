@@ -1,0 +1,56 @@
+
+lbl A
+   sto 03
+   ×
+   2
+   +
+   rcl 04
+   =
+   sto 01
+   rcl 03
+   inv sbr
+
+lbl B
+   sto 03
+   ×
+   2
+   +
+   rcl 05
+   =
+   sto 02
+   rcl 03
+   inv sbr
+
+lbl C
+   sto 00
+   inv sbr
+
+lbl D
+   sto 03
+   x⇌t
+   exc 00
+   p→r
+   sto ind 01
+   op 31
+   x⇌t
+   sto ind 01
+   rcl ind 02
+   sum ind 01
+   op 22
+   op 21
+   rcl ind 02
+   sum ind 01
+   rcl 03
+   inv sbr
+
+lbl clr
+   cms
+   12
+   sto 05
+   13
+   sto 04
+   inv fix
+   deg
+   0
+   inv sbr
+   gto clr

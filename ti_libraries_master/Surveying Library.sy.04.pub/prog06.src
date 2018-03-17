@@ -1,0 +1,97 @@
+;+
+; Partial recreation of the "Surveying Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A
+    exc 2
+    exc 1
+    rcl 2
+    prt
+    rtn
+
+lbl B
+    pgm 7 B
+    rtn
+
+lbl C
+    adv
+    ( rcl 3 - rcl 1 )
+    sto 18
+    sto 5
+    ( rcl 4 - rcl 2 )
+    sto 19
+    sto 6
+    ( x² + rcl 18 x² )
+    √x
+    sto 7
+    prt
+    rtn
+
+lbl D
+    cp
+    ( rcl 18 x=t 74 1/x × rcl 19 )
+    inv tan
+    x²
+    √x
+    gto 76
+    9 0 sto 16
+    fix 6
+    inv dms
+    prt
+    rtn
+
+lbl E
+    cp
+    rcl 18
+    x≥t 101
+    rcl 19
+    x≥t 110
+    3
+    gto 115
+    rcl 19
+    x≥t 114
+    4
+    gto 115
+
+    2
+    gto 115
+
+    1 sto 13
+    prt
+    rtn
+
+lbl A'
+    cp
+    rcl 10
+    x=t 151
+    (
+    (
+    ( rcl 2 × rcl 3 - rcl 4 × rcl 1 + rcl 10 )
+    ÷
+    2
+    )
+    x²
+    √x
+    +
+    rcl 17
+    )
+    sto 10
+    prt
+    rtn
+
+lbl B'
+    ( rcl 7 ÷ rcl 9 )
+    prt
+    adv
+    rtn
+
+LBL C'
+    sto 9
+    prt
+    rtn
+
+lbl D'
+    sto 10
+    prt
+    rtn

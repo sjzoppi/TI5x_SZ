@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">CURRENT SAILING</label>
+<label slot="titleright">NG-02</label>
+<label slot="a">ETD</label>
+<label slot="b"><Delta/> t<sub>n</sub></label>
+<label slot="c">SMG</label>
+<label slot="d">DIST</label>
+<label slot="e"><ArrowR/> ETA</label>
+<label slot="aprime">INIT</label>
+<label slot="cprime">Dr, St</label>
+<label slot="dprime">CMG <ArrowR/> C<sub>t</sub>;S</label>
+<label slot="eprime">ATA;<ArrowR/>tD;<Delta/>t</label>
+</carddef>

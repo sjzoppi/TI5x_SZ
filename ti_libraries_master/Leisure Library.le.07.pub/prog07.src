@@ -1,0 +1,180 @@
+Lbl CLR
+CMs
+Fix 9
+7
+STO 01
+INV Stflg 0
+0
+INV SBR
+Lbl B
+(
+RCL 03
++
+6
+)
+STO 00
+0
+STO 30
+7
+STO 01
+RCL 03
+STO 05
+RCL Ind 01
+STO 31
+GTO 048
+RCL 31
+x⇌t
+RCL Ind 01
+x≥t 056
+RCL 01
+STO 32
+RCL Ind 01
+Exc 31
+Op 21
+Dsz 5 040
+RCL 31
+Prt
+Pause
+SUM 30
+RCL Ind 00
+Exc Ind 32
+Op 30
+Op 33
+Dsz 6 026
+Op 00
+77
+Op 04
+RCL 30
+Adv
+Op 06
+Pause
+Op 00
+67
+Op 04
+(
+RCL 30
+÷
+RCL 02
+×
+Op 06
+Pause
+.96
+)
+STO 30
+Pause
+Op 00
+12076167
+Op 04
+RCL 30
+Op 06
+Op 00
+23
+Op 04
+0
+x⇌t
+(
+RCL 30
+INV x≥t 153
++
+.5
+)
+GTO 159
+(
+CE
+-
+.5
+)
+Int
+Op 06
+INV SBR
+Lbl A
+Fix 3
+Prt
+Fix 9
+STO 30
+(
+INV Int
+×
+100
+)
+x⇌t
+(
+RCL 30
+Int
+-
+x⇌t
+)
+Prt
+Adv
+STO Ind 01
+STO 29
+Op 21
+INV Ifflg 0 205
+RCL 28
+STO 01
+INV Stflg 0
+RCL 29
+INV SBR
+Lbl B'
+STO 04
+27
+STO 01
+RCL 04
+A
+7
+STO 01
+21
+STO 04
+RCL Ind 01
+Op 31
+STO Ind 01
+(
+RCL 01
++
+2
+)
+STO 01
+Dsz 4 229
+RCL 29
+INV SBR
+Lbl A'
+STO 03
+Prt
+8
+x⇌t
+(
+RCL 03
+INV x≥t 271
+÷
+2
+)
+Int
+GTO 278
+(
+RCL 03
+-
+4
+)
+Int
+STO 06
+STO 02
+Prt
+Adv
+INV SBR
+Lbl E
+(
+CE
++
+6
+)
+STO 27
+Stflg 0
+RCL 01
+STO 28
+RCL 27
+(
+STO 01
+-
+6
+)
+INV SBR

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">CASH FLOW ANALYSIS</label>
+<label slot="titleright">RE-13</label>
+<label slot="a">Mortg Value</label>
+<label slot="b">Dep Method</label>
+<label slot="c">Mortg Type</label>
+<label slot="d"><ArrowR/> Princ Red</label>
+<label slot="e">Oper Expse</label>
+<label slot="aprime"><ArrowR/> NOI</label>
+<label slot="bprime">Investment</label>
+<label slot="cprime">BTCF Entry</label>
+<label slot="dprime">Frac Dep Ent</label>
+<label slot="eprime">INIT</label>
+</carddef>

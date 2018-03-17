@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-16 — Root Locus Calculations</H1>
+
+<P>
+</P>
+
+<P>Given the open-loop poles and zeros of a linear feedback system,
+this program calculates the following root-locus parameters: asymptote
+intersection point, asymptote angles, departure angles from complex
+poles, and arrival angles at complex zeros.
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Enter number of poles, press <i>n</i>
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+  <LI>Enter real part of 1st pole,
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter imag. part of 1st pole,
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+    <P>Repeat both steps above until <i>n</i> poles have been entered.</p>
+
+  <LI>Enter number of zeros, press <i>m</i>
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+
+  <LI>Enter real part of 1st zero,
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter imag. part of 1st zero,
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+    <P>Repeat both steps above until <i>m</i> zeros have been entered.</p>
+
+  <LI>To Calculate asymptote intersection, press
+    <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>, then press
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> to calculate
+    the (<i>n</i>-<i>m</i>) asymptome angles.
+
+  <LI>To Calculate departure angles from poles, enter J (1 .. n) and press
+    <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+  <LI>To Calculate arrival angles at zeros, enter K (1 .. m) and press
+    <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+</UL>
+
+</BODY>

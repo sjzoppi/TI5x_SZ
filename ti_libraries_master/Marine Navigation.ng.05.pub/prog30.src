@@ -1,0 +1,71 @@
+Lbl A
+(
+CE
+×
+.0004937365
+)
+INV SBR
+Lbl B
+(
+CE
+×
+.86897624
+)
+INV SBR
+Lbl C
+(
+CE
+×
+3.785411784
+)
+INV SBR
+Lbl D
+(
+CE
+×
+.45359237
+)
+INV SBR
+Lbl E
+(
+(
+CE
+-
+32
+)
+×
+5
+÷
+9
+)
+INV SBR
+Lbl A'
+1/x
+A
+1/x
+INV SBR
+Lbl B'
+1/x
+B
+1/x
+INV SBR
+Lbl C'
+1/x
+C
+1/x
+INV SBR
+Lbl D'
+1/x
+D
+1/x
+INV SBR
+Lbl E'
+(
+CE
+×
+1.8
++
+32
+)
+INV SBR
+GTO A

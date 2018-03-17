@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">ANNUNITIES</label>
+<label slot="titleright">SA-04</label>
+<label slot="a">N</label>
+<label slot="b">%I</label>
+<label slot="c">PMT</label>
+<label slot="d">PV or FV</label>
+<label slot="e">Balloon</label>
+<label slot="aprime">Snkg Fund</label>
+<label slot="bprime">Ann Due/FV</label>
+<label slot="cprime">Ord Ann/PV</label>
+<label slot="dprime">Ann Due/PV</label>
+<label slot="eprime">Compute</label>
+</carddef>

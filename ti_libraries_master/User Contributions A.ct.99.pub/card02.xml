@@ -1,0 +1,12 @@
+<carddef style="user">
+<label slot="titleleft">Triangle Solution</label>
+<label slot="titleright">SB-02</label>
+<label slot="aprime"><alpha/></label>
+<label slot="bprime"><beta/></label>
+<label slot="cprime"><gamma/></label>
+<label slot="a">a</label>
+<label slot="b">b</label>
+<label slot="c">c</label>
+<label slot="d">INIT</label>
+<label slot="e">CALC</label>
+</carddef>

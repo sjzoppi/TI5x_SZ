@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">PASSIVE LOWPASS FILTERS</label>
+<label slot="titleright">EE-14</label>
+<label slot="a">n</label>
+<label slot="b"><epsilon/></label>
+<label slot="c">R</label>
+<label slot="d">f<sub>c</sub></label>
+<label slot="e"><ArrowR/> Print</label>
+<label slot="eprime"><ArrowR/> No Print</label>
+</carddef>

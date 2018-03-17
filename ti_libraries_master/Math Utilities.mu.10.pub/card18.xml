@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">DIFFERENTIAL EQUATIONS</label>
+<label slot="titleright">MU-18</label>
+<label slot="a">X<sub>0</sub></label>
+<label slot="b">Y<sub>0</sub></label>
+<label slot="c">Y<sub>0</sub></label>
+<label slot="d">n</label>
+<label slot="e"><Bar>X</Bar> <ArrowR/> <Bar>Y</Bar>(1st)</label>
+<label slot="eprime"><Bar>X</Bar> <ArrowR/> <Bar>Y</Bar>(2nd)</label>
+</carddef>

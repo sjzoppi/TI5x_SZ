@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">SEXTANT CORRECTION</label>
+<label slot="titleright">NG-18</label>
+<label slot="a">Hs, SC</label>
+<label slot="b">LL</label>
+<label slot="c">SD</label>
+<label slot="d">EYE</label>
+<label slot="e">HP</label>
+<label slot="aprime">T</label>
+<label slot="bprime">P</label>
+<label slot="cprime"><ArrowR/> Ho</label>
+<label slot="dprime">STORE Ho</label>
+<label slot="eprime">INIT</label>
+</carddef>

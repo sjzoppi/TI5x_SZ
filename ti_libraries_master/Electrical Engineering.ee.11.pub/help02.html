@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-02 — Phase Locked Loop</H1>
+
+<P>In this program, the user must input the loop gain G and a value
+  for C in farads. If the loop filter chosen is active, then N is
+  also required. At this point, the user has the option of either
+  inputting &omega;<sub>n</sub>, the natural angular frequency in
+  radians/second and &zeta;, the damping factor and solving for the
+  resistances R<sub>1</sub> and R<sub>2</sub> in ohms, or vice
+  versa. With a passive loop filter, a test is made before computing
+  R<sub>1</sub> and R<sub>2</sub> to insure that the resitance values
+  are greater than zero. Finally, after completing the above
+  computations, the loop-noise bandwidth can be computed.
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Enter loop gain, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter C for PLL filter in farads, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+  <LI>Enter integer divisor (omit this step for passive PLL filter),
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+  <LI>Enter remaining PLL parameters as required:
+    <UL>
+      <LI>Natural frequency in radians/second, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Damping factor, press
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+      <LI>R<sub>1</sub> in ohms, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>R<sub>2</sub> in ohms, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute desired PLL (active filter) parameters
+    <UL>
+      <LI>Natural frequency in radians/second, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Damping factor, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+      <LI>R<sub>1</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>R<sub>2</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute desired PLL (passive filter) parameters
+    <UL>
+      <LI>Natural frequency in radians/second, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Damping factor, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+      <LI>R<sub>1</sub> in ohms, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>R<sub>2</sub> in ohms, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute loop-noise bandwidth in, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+</UL>
+
+Registers: 10-13, 17, 18
+</BODY>

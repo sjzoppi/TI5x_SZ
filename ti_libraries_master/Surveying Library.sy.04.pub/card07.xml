@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">BALANCE (COMPASS RULE)</label>
+<label slot="titleright">SY-07</label>
+<label slot="a">N<sub>s</sub>, E<sub>s</sub></label>
+<label slot="b">N, E (unadj)</label>
+<label slot="c"><ArrowR/> N<sub>adj</sub></label>
+<label slot="d"><ArrowR/> E<sub>adj</sub></label>
+<label slot="e">[new pts] <ArrowR/></label>
+<label slot="aprime">N<sub>calc</sub>, E<sub>calc</sub></label>
+<label slot="bprime">N<sub>corr</sub>, E<sub>corr</sub></label>
+<label slot="cprime"><Sigma/> Dist</label>
+<label slot="dprime">[calc/store]<ArrowR/></label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

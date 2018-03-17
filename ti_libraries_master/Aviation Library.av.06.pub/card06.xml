@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">FREEZE LEVEL; LOWEST FLIGHT LEVEL</label>
+<label slot="titleright">AV-06</label>
+<label slot="a">T(°C)</label>
+<label slot="b">ALT</label>
+<label slot="c"><ArrowR/> DFzL</label>
+<label slot="d"><ArrowR/> WFzL</label>
+<label slot="e">ASET<ArrowR/>LUFL</label>
+<label slot="aprime">T(°F)</label>
+</carddef>

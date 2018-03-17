@@ -1,0 +1,625 @@
+#!/usr/bin/python3
+#+
+# Very simple symbolic assembler for ti5x programs. Reads a symbolic representation
+# from standard input, and writes a sequence of numeric codes to standard output.
+# Also supports location markers (sequence of digits ending with colon), and reports
+# an error if the current location does not equal the specified value.
+#
+# Copyright 2011 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+# Usage: cat prog | assemble [options]
+#
+#        options: --dumploc     : output progloc.src with location numbers
+#                 --checklabels : checks that all labels are defined
+#
+
+import sys
+import re
+
+def simpleop(opcode) :
+    return {"op" : opcode, "altop" : opcode}
+#end simpleop
+
+def simpleop2(opcode, altopcode) :
+    return {"op" : opcode, "altop" : altopcode}
+#end simpleop2
+
+def set_alt_state() :
+    global alt_state
+    if alt_state :
+        report_error("redundant \"2nd\"")
+    #end if
+    alt_state = True
+#end set_alt_state
+
+def regop(basecode, indcode) :
+    return {"op" : basecode, "indop" : indcode, "expect" : "reg"}
+#end regop
+
+def regop2(basecode, altcode, indcode, altindcode) :
+    return {"op" : basecode, "altop" : altcode, "indop" : indcode, "altindop" : altindcode, "expect" : "reg"}
+#end if
+
+def transferop(basecode, indcode = None) :
+    entry = \
+        {
+            "op" : basecode,
+            "expect" : "loc",
+        }
+    if indcode != None :
+        entry["indop"] = indcode
+    #end if
+    return entry
+#end transferop
+
+def fix() :
+    global expect
+    if pending_out == 22 :
+        out(58)
+        expect = None
+    else :
+        expect = "flag"
+    #end if
+#end fix
+
+def sbr() :
+    global expect, pending_out, loc
+    if pending_out == 22 :
+        pending_out = None
+        loc -= 1
+        out(92)
+        expect = None
+    else :
+        expect = "loc"
+    #end if
+#end sbr
+
+symbols = \
+    {
+        # note no entries for digits, these are handled specially
+        "a" : simpleop2(11, 16),
+        "b" : simpleop2(12, 17),
+        "c" : simpleop2(13, 18),
+        "d" : simpleop2(14, 19),
+        "e" : simpleop2(15, 10),
+        "a'" : simpleop(16),
+        "b'" : simpleop(17),
+        "c'" : simpleop(18),
+        "d'" : simpleop(19),
+        "e'" : simpleop(10),
+        "2nd" : {"act" : set_alt_state, "modifier" : True},
+        "inv" : simpleop2(22, 27),
+        "lnx" : simpleop2(23, 28),
+        "log" : simpleop(28),
+        "ce" : simpleop2(24, 29),
+        "cp" : simpleop(29),
+        "clr" : simpleop(25),
+        "%" : simpleop(20),
+        # no "lrn"
+        "pgm" : {"op" : 36, "expect" : "pgmno"},
+        "pg*" : {"op" : 62, "expect" : "reg"},
+        "x<>t" : simpleop2(32, 37),
+        "p->r" : simpleop(37),
+        "x2" : simpleop2(33, 38),
+        "sin" : simpleop(38),
+        "sqrt" : simpleop2(34, 39),
+        "cos" : simpleop(39),
+        "1/x" : simpleop2(35, 30),
+        "tan" : simpleop(30),
+        # no "sst"
+        # no "ins"
+        "sto" : regop(42, 72), # I don't correctly handle "2nd STO"
+        "st*" : {"op" : 72, "expect" : "reg"},
+        "cms" : simpleop(47),
+        "rcl" : regop2(43, 48, 73, 63),
+        "rc*" : {"op" : 73, "expect" : "reg"},
+        "exc" : regop(48, 63),
+        "ex*" : {"op" : 63, "expect" : "reg"},
+        "sum" : regop2(44, 49, 74, 64),
+        "sm*" : {"op" : 74, "expect" : "reg"},
+        "prd" : regop(49, 64),
+        "pd*" : {"op" : 64, "expect" : "reg"},
+        "y**x" : simpleop(45),
+        "ind" : {"modifier" : True, "isind" : True}, # special handling by parser
+        # no "bst"
+        # no "del"
+        "ee" : simpleop2(52, 57),
+        "eng" : simpleop(57),
+        "(" : simpleop2(53, 58),
+        "fix" : {"op" : 58, "act" : fix},
+        ")" : simpleop2(54, 59),
+        "int" : simpleop(59),
+        "÷" : simpleop2(55, 50),
+        "|x|" : simpleop(50),
+        "gto" : transferop(61, 83),
+        "pause" : simpleop(66),
+        "x=t" : transferop(67),
+        "nop" : simpleop(68),
+        "hir" : {"op" : 82, "expect" : "noindreg"},
+        "op" : regop(69, 84),
+        "op*" : {"op" : 84, "expect" : "reg"},
+        "×" : simpleop2(65, 60),
+        "deg" : simpleop(60),
+        "sbr" : {"op" : 71,  "act" : sbr},
+        "rtn" : simpleop(92),
+        "lbl" : {"op" : 76, "expect" : "label"},
+        "x≥t" : transferop(77),
+        "sigma" : simpleop(78),
+        "mean" : simpleop(79),
+        "-" : simpleop2(75, 70),
+        "rad" : simpleop(70),
+        "rst" : simpleop(81),
+        "stflg" : {"op" : 86, "expect" : "flag"},
+        "ifflg" : {"op" : 87, "expect" : "flag", "expect2" : "loc"},
+        "d.ms" : simpleop(88),
+        "pi" : simpleop(89),
+        "+" : simpleop2(85, 80),
+        "grad" : simpleop(80),
+        "r/s" : simpleop2(91, 96),
+        "write" : simpleop(96),
+        "dsz" : {"op" : 97, "expect" : "unitreg", "expect2" : "loc"},
+        "." : simpleop2(93, 98),
+        "adv" : simpleop(98),
+        "+/-" : simpleop2(94, 99),
+        "prt" : simpleop(99),
+        "=" : simpleop2(95, 90),
+        "list" : simpleop(90),
+    }
+for s in symbols.values() :
+    if "op" in s and "altop" not in s :
+        s["altop"] = s["op"]
+    #end if
+    if "indop" in s and "altindop" not in s :
+        s["altindop"] = s["indop"]
+    #end if
+#end for
+del s
+# synonyms
+for ch in ("a", "b", "c", "d", "e") :
+    symbols[ch + "´"] = symbols[ch + "'"]
+#end for
+symbols["x⇌t"] = symbols["x<>t"]
+symbols["x-t"] = symbols["x<>t"]
+symbols["x/t"] = symbols["x<>t"]
+symbols["x%t"] = symbols["x<>t"]
+symbols["p→r"] = symbols["p->r"]
+symbols["p/r"] = symbols["p->r"]
+symbols["sqr"] = symbols["x2"]
+symbols["x²"] = symbols["x2"]
+symbols["√x"] = symbols["sqrt"]
+symbols["**"] = symbols["y**x"]
+symbols["yx"] = symbols["y**x"]
+symbols["pow"] = symbols["y**x"]
+symbols["yˣ"] = symbols["y**x"]
+symbols["abs"] = symbols["|x|"]
+symbols["ixi"] = symbols["|x|"]
+symbols["/"] = symbols["÷"]
+symbols["mean(x)"] = symbols["mean"]
+symbols["*"] = symbols["×"]
+symbols["eq"] = symbols["x=t"]
+symbols["ge"] = symbols["x≥t"]
+symbols["x>=t"] = symbols["x≥t"]
+symbols["∑+"] = symbols["sigma"]
+symbols["s+"] = symbols["sigma"]
+symbols["sta"] = symbols["sigma"]
+symbols["iff"] = symbols["ifflg"]
+symbols["stf"] = symbols["stflg"]
+symbols["π"] = symbols["pi"]
+symbols["grd"] = symbols["grad"]
+symbols["dms"] = symbols["d.ms"]
+symbols["wrt"] = symbols["write"]
+symbols["lst"] = symbols["list"]
+
+check_labels = False
+dump_prog = False
+
+if len(sys.argv) == 2 and sys.argv[1] == "--checklabels" :
+    check_labels = True
+elif len(sys.argv) == 2 and sys.argv[1] == "--nochecklabels" :
+    check_labels = False
+elif len(sys.argv) == 2 and sys.argv[1] == "--dumploc" :
+    dump_prog = True
+elif len(sys.argv) > 1 :
+    raise RuntimeError("unexpected args")
+#end if
+
+exitstatus = 0 # to begin with
+
+def report_error(msg) :
+    global alt_state, was_modifier, expect, lastsym, exitstatus
+    sys.stderr.write("Assembler error at line %d, column %d: %s\n" % (line_nr, col_nr, msg))
+    exitstatus = 2
+    # reset everything to try to recover from error:
+    alt_state = False
+    was_modifier = False
+    expect = None
+    lastsym = None
+#end report_error
+
+alt_state = False
+ind_state = False
+was_modifier = False
+pending_out = None # hold back last byte for possible merging
+expect = None
+lastsym = None
+
+prog = []
+labels = {}
+
+lprog = []
+def outprog():
+    # print(labels)
+    count=0
+    for s in prog:
+        if s.isdigit():
+            sys.stdout.write(s)
+            count+=1
+        elif s in labels:
+            v = labels[s]
+            if v < 100:
+                sys.stdout.write("00 %02d" % v)
+            else:
+                sys.stdout.write("%02d %02d" % ((v // 100), (v % 100)))
+            count+=2
+        else:
+            report_error("unrecognized symbol \"%s\"" % s)
+
+        if count == 25 :
+            sys.stdout.write("\n")
+            count = 0
+        else:
+            sys.stdout.write(" ")
+
+def realout(b) :
+    """really outputs a single instruction byte."""
+    global prog
+    #end if
+    prog = prog + ["%02d" % b]
+#end realout
+
+def flushout() :
+    """writes out any pending instruction byte."""
+    global pending_out
+    if pending_out != None :
+        realout(pending_out)
+        pending_out = None
+    #end if
+#end flushout
+
+def out(b) :
+    """outputs a single instruction byte."""
+    global pending_out, loc
+    if loc == 1000 :
+        report_error("program too large, can't exceed 1000 steps")
+    #end if
+    flushout()
+    pending_out = b
+    loc += 1
+#end out
+
+def outloc(b) :
+    """outputs a single instruction byte."""
+    global pending_out, loc, prog
+    if loc == 1000 :
+        report_error("program too large, can't exceed 1000 steps")
+    #end if
+    flushout()
+    realout(b)
+    loc += 1
+#end out
+
+def outlabel(lab) :
+    """outputs a label, will be resolved on the second pass."""
+    global loc, prog
+    if loc == 1000 :
+        report_error("program too large, can't exceed 1000 steps")
+    #end if
+    flushout()
+    prog = prog + [lab]
+    loc += 2
+#end outlabel
+
+def outpgm(pgmno) :
+    """outputs a label, will be resolved on the second pass."""
+    global loc, prog
+    if loc == 1000 :
+        report_error("program too large, can't exceed 1000 steps")
+    #end if
+    flushout()
+    prog = prog + [pgmno]
+    loc += 1
+#end outlabel
+
+def recordlabel(lab) :
+    """outputs a label, will be resolved on the second pass."""
+    global loc, prog
+    flushout()
+    labels.update({lab[:-1]:loc})
+#end recordlabel
+
+curline = ""
+EOF = False
+cursym = None
+in_comment = False
+line_nr = 0
+was_newline = True
+is_dsz_op = False
+loc = 0
+labels_defined = set()
+labels_referenced = set()
+# fixme: checking for defined/referenced labels doesn't take synonyms into account
+while True :
+    if len(curline) == 0 and not EOF :
+        curline += sys.stdin.readline()
+        if len(curline) > 0:
+            if curline == "\n":
+                lprog = lprog + [ "\n" ]
+            elif re.search(r"^[ \t]*[;#]", curline) != None:
+                lprog = lprog + [ "      %s" % ( curline ) ]
+            else:
+                lprog = lprog + [ "%03d:  %s" % ( loc, curline ) ]
+        if len(curline) == 0 :
+            EOF = True
+        #end if
+    #end if
+    if len(curline) != 0 :
+        ch = curline[0]
+        curline = curline[1:]
+    else :
+        ch = " "
+    #end if
+    if was_newline :
+        line_nr += 1
+        col_nr = 0
+        was_newline = False
+    #end if
+    if ch == "\n" :
+        was_newline = True
+    else :
+        col_nr += 1
+    #end if
+    if in_comment :
+        if EOF :
+            break
+        if ch == "\n" :
+            in_comment = False
+        #end if
+    else :
+        if cursym == None :
+            if ch > " " :
+                if ch == ";" or ch == "#" :
+                    in_comment = True
+                else :
+                    cursym = ch # start collecting next symbol
+                #end if
+            else :
+                if EOF :
+                    break
+            #end if
+        else :
+            if ch > " " :
+                cursym += ch
+            else : # got a complete symbol
+                if re.search(r"^\d+\:$", cursym) != None :
+                    expectloc = int(cursym[:-1])
+                    if expectloc != loc :
+                        report_error("location mismatch, expecting %03d, actually %3d" % (expectloc, loc))
+                    #end if
+                else :
+                    lookup = cursym.lower()
+                    symbol = symbols.get(lookup)
+                    numeric = re.search(r"^[\+\-]?(?:\d+(?:\.\d*)?|\.\d+?)(?:[eE][\+\-]?\d+)?$", cursym) != None
+                    integral = re.search(r"^\d+$", cursym) != None
+                    if symbol != None:
+                        if "op" in symbol.keys() and symbol["op"] == 97:
+                            is_dsz_op = True
+                        else:
+                            is_dsz_op = False
+                    if expect != None :
+                        if expect != "label" and symbol != None and symbol.get("isind", False) :
+                            if expect == "noindreg" :
+                                report_error("\"ind\" not allowed")
+                            #end if
+                            if ind_state :
+                                report_error("redundant \"ind\"")
+                            #end if
+                            ind_state = True
+                            expect = "reg"
+                        #end if
+                        # ensure opcode has been output, if not already done so
+                        if lastsym != None and "op" in lastsym :
+                            if ind_state and "indop" in lastsym :
+                                out(lastsym[("indop", "altindop")[alt_state]])
+                            else :
+                                out(lastsym[("op", "altop")[alt_state]])
+                                if ind_state :
+                                    out(40)
+                                #end if
+                            #end if
+                            for k in ("op", "altop", "indop", "altindop") :
+                                lastsym.pop(k, None)
+                            #end for
+                        elif ind_state :
+                            out(40)
+                        #end if
+                        ind_state = False
+                    #end if
+                    if numeric :
+                        if expect != None :
+                            assert expect in ("label", "flag", "unitreg", "noindreg", "reg", "loc", "pgmno")
+                            if integral :
+                                opval = int(cursym)
+                                if expect == "loc" :
+                                    if is_dsz_op and opval == 51 and len(cursym) == 2:
+                                        out(opval)
+                                    elif opval < 1000 :
+                                        out(opval // 100)
+                                        out(opval % 100)
+                                    else :
+                                        report_error("address can't be > 999")
+                                    #end if
+                                elif expect == "reg" or expect == "noindreg" :
+                                    if opval < 100 :
+                                        out(opval)
+                                    else :
+                                        report_error("reg/op/pgm number can't be > 99")
+                                    #end if
+                                elif expect == "flag" :
+                                    if opval < 10 :
+                                        out(opval)
+                                    else :
+                                        report_error("flag number can't be > 9")
+                                    #end if
+                                elif expect == "unitreg" :
+                                    if opval != 40 :
+                                        out(opval)
+                                    else :
+                                        report_error("reg number can't be 40")
+                                    #end if
+                                elif expect == "pgmno" :
+                                    outpgm(cursym)
+                                else : # expect = "label"
+                                    report_error("expecting %s" % expect)
+                                #end if
+                            else :
+                                report_error("expecting integer")
+                            #end if
+                            if lastsym != None :
+                                expect = lastsym.get("expect") # further operand?
+                                if expect != None :
+                                    del lastsym["expect"]
+                                else :
+                                    lastsym = None # all done
+                                #end if
+                            else :
+                                pass # cleared on error
+                            #end if
+                        else :
+                            # not expecting special operand, so just output keystrokes for entering number
+                            was_signed = False
+                            for digit in cursym :
+                                if digit == "-" :
+                                    was_signed = True
+                                elif digit >= "0" and digit <= "9" :
+                                    out(ord(digit) - 48)
+                                elif digit == "." :
+                                    out(93) # "."
+                                elif digit == "e" or digit == "E" :
+                                    if was_signed :
+                                        out(94) # "+/-"
+                                        was_signed = False
+                                    #end if
+                                    out(52) # "EE"
+                                #end if
+                            #end for
+                            if was_signed :
+                                out(94) # "+/-"
+                            #end if
+                        #end if
+                    elif symbol != None :
+                        was_modifier = False
+                        if expect != None :
+                            if symbol.get("isind", False) :
+                                if expect == "label" :
+                                    report_error("cannot use \"ind\" as label")
+                                    expect = None
+                                else :
+                                    pass # already handled above
+                                #end if
+                            elif expect == "loc" or expect == "label" :
+                                which = ("op", "altop")[alt_state]
+                                if expect == "loc" :
+                                    labels_referenced.add((lookup, alt_state))
+                                elif expect == "label" :
+                                    if symbol.get("act") != set_alt_state :
+                                        if (lookup, alt_state) in labels_defined :
+                                            report_error("multiply-defined label %s" % repr((cursym, alt_state)))
+                                        #end if
+                                        labels_defined.add((lookup, alt_state))
+                                    #end if
+                                #end if
+                                if which in symbol :
+                                    outloc(symbol[which])
+                                    expect = None
+                                    alt_state = False
+                                elif symbol["act"] == set_alt_state :
+                                    symbol["act"]()
+                                else :
+                                    report_error \
+                                      (
+                                        "cannot use \"%s\" as label -- no %s" % (cursym, which)
+                                      )
+                                #end if
+                            else :
+                                report_error("not expecting symbol for %s" % expect)
+                                expect = None
+                            #end if
+                            if expect == None :
+                                lastsym = None
+                            #end if
+                        elif symbol.get("isind", False) :
+                            report_error("dangling \"ind\"")
+                        else :
+                            if "act" in symbol :
+                                symbol["act"]()
+                            else :
+                                expect = symbol.get("expect")
+                                if expect == None :
+                                    out(symbol[("op", "altop")[alt_state]])
+                                #end if
+                            #end if
+                            if expect != None :
+                                lastsym = dict((k, symbol[k]) for k in symbol if k not in ("expect", "expect2"))
+                                if "expect2" in symbol :
+                                    lastsym["expect"] = symbol["expect2"]
+                                #end if
+                            else :
+                                lastsym = None
+                            #end if
+                            if not symbol.get("modifier", False) :
+                                alt_state = False
+                            #end if
+                        #end if
+                    elif cursym.endswith(":"):
+                        # this is a label
+                        recordlabel(cursym)
+                    else :
+                        outlabel(cursym)
+                        expect = None
+                        #report_error("unrecognized symbol \"%s\"" % cursym)
+                    #end if
+                #end if
+                cursym = None
+                if EOF :
+                    break
+            #end if got complete symbol
+        #end if collecting symbol
+    #end if
+#end while
+flushout()
+if check_labels :
+    for sym in labels_referenced - labels_defined :
+        # fixme: can't make this an error unless I distinguish cross-bank label references
+        sys.stderr.write("Assembler warning: label \"%s\" referenced but not defined\n" % repr(sym))
+    #end for
+    for sym in labels_defined - labels_referenced - set((s, False) for s in ("a", "b", "c", "d", "e", "a'", "b'", "c'", "d'", "e'")) :
+        sys.stderr.write("Assembler warning: label \"%s\" defined but not referenced\n" % repr(sym))
+    #end for
+#end if
+outprog()
+if dump_prog:
+    with open('progloc.src', 'w') as f:
+        for l in lprog:
+            f.write(l)
+sys.exit(exitstatus)

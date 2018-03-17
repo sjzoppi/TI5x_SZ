@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">S<ArrowLR/>Y PARAMETER CONVERSIONS</label>
+<label slot="titleright">EE-03</label>
+<label slot="a">|S|<sub>11</sub>;<angle/><sub>11</sub></label>
+<label slot="b">|S|<sub>12</sub>;<angle/><sub>12</sub></label>
+<label slot="c">|S|<sub>21</sub>;<angle/><sub>21</sub></label>
+<label slot="d">|S|<sub>22</sub>;<angle/><sub>22</sub></label>
+<label slot="aprime"><ArrowR/> |S|<sub>11</sub>;<angle/><sub>11</sub></label>
+<label slot="bprime"><ArrowR/> |S|<sub>12</sub>;<angle/><sub>12</sub></label>
+<label slot="cprime"><ArrowR/> |S|<sub>21</sub>;<angle/><sub>21</sub></label>
+<label slot="dprime"><ArrowR/> |S|<sub>22</sub>;<angle/><sub>22</sub></label>
+<label slot="e">S <ArrowR/> Y</label>
+<label slot="eprime">S<ArrowL/>Y</label>
+</carddef>

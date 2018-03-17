@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>MU-18 — Differential Equations</H1>
+
+<P>Runge-Kutta methods are a particular set of numerical techniques
+  used for solving inital-value problems. This program uses a
+  fourth-order Runge-Kutta method to solve differential equations of
+  the type y' = f(x,y) and y'' = f(x,y,y').
+
+<P>Numerical methods consist of finding approximate solutions at
+  particular points x<sub>0</sub>, x<sub>1</sub>, ... x<sub>n</sub>
+  where the difference between successive x-values is a constant,
+  w (x<sub>n+1</sub> - x<sub>n</sub>) = w). The value for w is chosen
+  by the user with a smaller w generally yielding a more accurate
+  solution. In this program, w is determined by the number of
+  divisions, n, that the user chooses. Usually, w will be made smaller
+  by increasing n.
+
+<P>To use this program, you must enter a subroutine (as
+  <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+  <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>) which defines y' and y'' and the
+  initial values for x<sub>0</sub>, y<sub>0</sub> or x<sub>0</sub>,
+  y<sub>0</sub>, y'<sub>0</sub>.
+
+<UL>
+  <LI>Select learn mode
+  <LI>Use A' as label, <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+  <LI>Enter f(x,y) or f(x,y,y'), do not use
+    <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN> or
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>. Use register 10 for x, 11
+    for y and 12 for y'.
+  <LI>End with <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+  <LI>Leave learn mode
+  <LI>Select program, <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>
+    <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+    <SPAN CLASS="whitebutton">&nbsp;8&nbsp;</SPAN>
+
+  <LI>Enter initial x, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+  <LI>Enter initial y, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+  <LI>Enter initial y' if using a second-order equation,
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  <LI>Enter number of division,
+    press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+  <LI>To solve y' = f(x,y), enter value if independent variable for
+    which the solution is desired, press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+
+  <LI>Or to solve y'' = f(x,y,y'), enter value if independent variable for
+    which the solution is desired,
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+
+  <LI>Display slope at value of independent variable
+    using <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+</UL>
+
+<P>Registers used: 9-19
+
+</BODY>

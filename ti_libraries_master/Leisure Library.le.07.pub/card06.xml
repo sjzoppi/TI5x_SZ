@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">CHESS RATER</label>
+<label slot="titleright">LE-06</label>
+<label slot="a">Old Rating</label>
+<label slot="b">Opp. Rating</label>
+<label slot="c">Bonus</label>
+<label slot="d">Wins</label>
+<label slot="e">New Rating</label>
+<label slot="aprime">Prov Games</label>
+<label slot="bprime">Edit Opp.</label>
+</carddef>

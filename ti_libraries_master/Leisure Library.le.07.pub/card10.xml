@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">MEMO PAD</label>
+<label slot="titleright">LE-10</label>
+<label slot="a">Left</label>
+<label slot="b">Center</label>
+<label slot="c">Right</label>
+<label slot="d">Number</label>
+<label slot="e">Space</label>
+<label slot="aprime">New Line</label>
+<label slot="bprime">Print All</label>
+<label slot="cprime">Edit</label>
+<label slot="dprime">Line Print</label>
+</carddef>

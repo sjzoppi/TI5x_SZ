@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">DATA PACKING</label>
+<label slot="titleright">MU-08</label>
+<label slot="a">Format</label>
+<label slot="b">Store</label>
+<label slot="c">Recall</label>
+<label slot="d">Exchange</label>
+</carddef>

@@ -1,0 +1,132 @@
+Lbl A
+Pgm 16
+E'
+SUM 04
+INV SBR
+Lbl B
+Stflg 0
+INV SBR
+Lbl C
+Pgm 16
+E'
+Ifflg 0 023
++/-
+SUM 04
+Pgm 23
+A'
+INV Stflg 0
+INV SBR
+Lbl D
+Prt
+CP
+(
+√x
+×
+.01617
+)
++/-
+SUM 04
+(
+RCL 04
+-
+8
+)
+x≥t 079
+(
+RCL 04
+tan
+1/x
+×
+.0119
++
+.0236
+)
+GTO 098
+(
+RCL 04
+tan
+1/x
+×
+.0154
++
+.00117
+)
+INV SUM 04
+STO 02
+INV SBR
+Lbl E
+(
+Pgm 16
+E'
+×
+RCL 04
+cos
+)
+SUM 04
+INV SBR
+Lbl A'
+(
+(
+Prt
++
+460
+)
+1/x
+×
+510
+)
+(
+(
++/-
++
+1
+)
+×
+RCL 02
+)
+SUM 04
+INV SBR
+Lbl B'
+(
+(
+(
+Prt
+÷
+29.83
+)
++/-
++
+1
+)
+×
+RCL 02
+)
+SUM 04
+INV SBR
+Lbl C'
+0
+Exc 04
+INV D.MS
+Prt
+INV SBR
+Lbl D'
+D.MS
+STO Ind 00
+2
+SUM 00
+1
+SUM 03
+RCL 03
+Prt
+Adv
+INV SBR
+Lbl E'
+CMs
+8
+STO 00
+STO 20
+9
+STO 21
+0
+Adv
+INV SBR

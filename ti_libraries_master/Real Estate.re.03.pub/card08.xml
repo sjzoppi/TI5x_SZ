@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">COMPONENT AND COMPOSITE DEPRECIATION</label>
+<label slot="titleright">RE-08</label>
+<label slot="a">Print Sched</label>
+<label slot="b">Year</label>
+<label slot="c"><ArrowR/> Part DEP</label>
+<label slot="d"><ArrowR/> Part ACD</label>
+<label slot="e"><ArrowR/> Part RDV</label>
+<label slot="aprime"><ArrowR/> Yr Tot Dep</label>
+<label slot="bprime"><ArrowR/> Total DEP</label>
+<label slot="cprime"><ArrowR/> Total RDV</label>
+<label slot="dprime">Year + 1</label>
+<label slot="eprime">INIT</label>
+</carddef>

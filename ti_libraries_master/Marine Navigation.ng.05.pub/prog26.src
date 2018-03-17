@@ -1,0 +1,125 @@
+
+lbl A
+   adv
+   pgm 24 a
+   inv sbr
+
+lbl B
+   pgm 24 b
+   adv
+   inv sbr
+
+lbl C
+   pgm 16 e'
+   sto 02
+   (
+   +/-
+   +
+   rcl 00
+   )
+   sto 04
+   inv sbr
+
+lbl D
+   pgm 16 e'
+   sto 03
+   (
+   +/-
+   +
+   rcl 01
+   )
+   sto 05
+   (
+   (
+   rcl 04
+   cos
+   +/-
+   +
+   1
+   )
+   ÷
+   2
+   )
+   sto 07
+   (
+   (
+   (
+   rcl 05
+   cos
+   +/-
+   +
+   1
+   )
+   ÷
+   2
+   ×
+   rcl 00
+   cos
+   ×
+   rcl 02
+   cos
+   )
+   +
+   rcl 07
+   )
+   (
+   (
+   ce
+   ×
+   2
+   +/-
+   +
+   1
+   )
+   inv cos
+   ×
+   60
+   )
+   x²
+   √x
+   prt
+   adv
+   inv sbr
+
+lbl E
+   pgm 16 e'
+   sto 06
+   (
+   (
+   (
+   ce
+   -
+   rcl 01
+   )
+   sin
+   ×
+   rcl 02
+   tan
+   )
+   -
+   (
+   (
+   rcl 06
+   -
+   rcl 03
+   )
+   sin
+   ×
+   rcl 00
+   tan
+   )
+   )
+   (
+   ce
+   ÷
+   (
+   rcl 03
+   -
+   rcl 01
+   )
+   sin
+   )
+   inv tan
+   pgm 25 sbr grad
+   adv
+   inv sbr

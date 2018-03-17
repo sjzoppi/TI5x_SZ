@@ -1,0 +1,6 @@
+<carddef style="system">
+<label slot="titleleft">ELECTRICAL ENGINEERING MODULE CHECK</label>
+<label slot="titleright">EE-01</label>
+<label slot="primecenter">MODULE CHECK: <button>SBR</button> <button>2nd</button> <button>R/S</button></label>
+<label slot="basecenter">LINEAR REGRESSION INITIALIZATION: <button>SBR</button> <button>CLR</button></label>
+</carddef>

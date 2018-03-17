@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">MODIFIED WIND</label>
+<label slot="titleright">NG-27</label>
+<label slot="a">PORT</label>
+<label slot="b">S</label>
+<label slot="c">AW; HA</label>
+<label slot="d">W<sub>a</sub><sup>o</sup><ArrowR/>Tk;MW</label>
+<label slot="e">STDB</label>
+<label slot="aprime">V</label>
+<label slot="bprime">Dr, St</label>
+<label slot="dprime">C<sub>c</sub>;De<ArrowR/>W<sub>m</sub><sup>o</sup></label>
+<label slot="eprime">D, Bt</label>
+</carddef>

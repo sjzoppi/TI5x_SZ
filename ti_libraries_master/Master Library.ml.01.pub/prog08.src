@@ -1,0 +1,83 @@
+;+
+; Recreation of the "Master Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A                                  ;000
+    sto 1
+    rtn
+
+lbl B                                  ;005
+    ( sto 2 - x⇌t rcl 1 )
+    sto 3
+    . 0 1
+    sto 8
+    x⇌t
+    rtn
+
+lbl C                                  ;024
+    sto 3
+    rtn
+
+lbl D                                  ;029
+    sto 8
+    rtn
+
+lbl E                                  ;034
+    (
+    ce
+    rcl 2
+    x⇌t
+    rcl 1
+    x≥t abs
+    sto 4
+    +
+    rcl 3
+    )
+    sto 1
+    sto 5
+    pgm 0 A'
+    sto 7
+    (
+    rcl 4
+    sto 6
+    pgm 0 A'
+    cp
+    x=t rad
+    ×
+    exc 7
+    )
+    x≥t E
+
+lbl grad                                ;077
+    (
+    ( rcl 4 + rcl 5 )
+    ÷
+    2
+    )
+    sto 6
+    rcl 8
+    x⇌t
+    ( rcl 5 - rcl 4 )
+    inv x≥t rad
+    ( rcl 6 pgm 0 a' × rcl 7 )
+    cp
+    x=t rad
+    x≥t yˣ
+    rcl 6
+    sto 5
+    gto grad
+
+lbl yˣ                                  ;126
+    rcl 6
+    sto 4
+    gto grad
+
+lbl rad                                 ;134
+    rcl 6
+    rtn
+
+lbl abs                                 ;139
+    0
+    1/x
+    rtn

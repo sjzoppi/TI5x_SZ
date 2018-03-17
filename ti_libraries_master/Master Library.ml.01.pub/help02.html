@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>ML-02 — Matrix Inversion, Determinants and Simultaneous Equations</H1>
+
+<P>Three operations are performed by this program:
+  <OL>
+    <LI>Evaluation of the Determinant
+    <LI>Matrix Inversion
+    <LI>Solution of Linear Simultaneous Equations
+  </OL>
+</P>
+
+<P>First, enter order of matrix in
+  <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>. Then enter the
+  elements of the matrix A starting with column 1. (To correct an entry error
+  in column j, simply enter j and press
+  <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>. Then reenter the entire column
+  using the <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> key)
+</P>
+
+<UL>
+  <LI>Determinant
+    <P>Press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN> to calculate the
+      determinant. If |A| is different than 0 you can solve Ax=b or
+      A<sup>-1</sup></P>
+
+  <LI>Solution of Linear Simultaneous Equations
+
+<P>Enter elements of column vector b starting with b<sub>1</sub> and press
+  <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>, then enter b<sub>i</sub> in sequence using the
+  <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> key.
+  (To correct an entry error for b, simply enter <SPAN CLASS="whitebutton">&nbsp;i&nbsp;</SPAN> and
+  press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>, then reenter b<sub>i</sub> using
+  the <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> key.)
+
+<P>Calculate x,
+  <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN> <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>.
+  Display the elements of x, starting with x<sub>1</sub> by pressing
+  <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+  <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+  <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>,
+  then <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> to display the element in sequence,
+  x<sub>1</sub> .. x<sub>i</sub>.
+
+<P>To display x<sub>i</sub> only:
+  <SPAN CLASS="whitebutton">&nbsp;i&nbsp;</SPAN>
+  <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+  <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Matrix inversion
+    <P>Press <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN> to calculate
+      A<sup>-1</sup>.
+    <P>Look for result starting at column i by pressing
+      <SPAN CLASS="whitebutton">&nbsp;i&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN> and then press
+      <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> to display
+      a<sub>11</sub>, a<sub>21</sub> .. a<sub>nn</sub> in sequence.
+  <P>
+</UL>
+
+<H3>Formulas Used</H3>
+<P>The lower upper (LU) decomposition method is used in the calculations? The
+  LU decomposition method is described by the following equations.
+  If |A| &#8800; 0, then A =LU where L is the lower triangular matrix and U is
+  the upper triangular matrix. U(u<sub>ij</sub>) and L(l<sub>ij</sub>) are
+  calculated using the following equations (l<sub>kk</sub> = 1):
+<P>u<sub>kj</sub>
+  = a<sub>kj</sub> - &sum;<sub>p=1..k-1</sub> l<sub>kp</sub> u<sub>pj</sub>
+
+<P>l<sub>ik</sub>
+  = (a<sub>ikj</sub> - &sum;<sub>p=1..k-1</sub> l<sub>ip</sub> u<sub>pk</sub>)
+  / u<sub>kk</sub>
+
+<P>The determinant of A is found as the product of the diagonal elements of U
+  and the inverse of A is calculated as:
+
+<P>A<sup>-1</sup> = (LU)<sup>-1</sup> = U<sup>-1</sup> L<sup>-1</sup>
+
+<P>To complete this equation, if L<sup>-1</sup> = Y and U<sup>-1</sup> = Z,
+  then &delta;<sub>ij</sub> = 0 for i &#8800; j; 1 for i = j:
+
+<P>y<sub>ij</sub> =
+  (&delta;<sub>ij</sub> -
+  &sum;<sub>k=j;i=1</sub> l<sub>ik</sub> u<sub>kj</sub>) / l<sub>ii</sub>
+
+<P>z<sub>ij</sub> =
+  (&delta;<sub>ij</sub> -
+  &sum;<sub>k=i+1..j</sub> u<sub>ik</sub> z<sub>kj</sub>) / u<sub>ii</sub>
+
+<P>If b is an n x 1 column vector, then the system Ax = b is solved using the
+  following procedure.
+
+<P>First, Ly = b is solved for y where:
+
+<P>y<sub>ij</sub> =
+  (b<sub>i</sub> -
+  &sum;<sub>k=1..i-1</sub> l<sub>ik</sub> x<sub>k</sub>) / l<sub>ii</sub>
+
+<P>Then Ux = y is evaluated by:
+
+<P>x<sub>ij</sub> =
+  (b<sub>i</sub> -
+  &sum;<sub>k=i+1..n</sub> u<sub>ik</sub> x<sub>k</sub>) / u<sub>ii</sub>
+
+<P>Partial pivoting is performed to improve accuracy.
+
+<P>Reference: <i>Numerical Methods</i>, Germund Dahlquist and Ake Bjork,
+  Prentice Hall, 1974.
+
+<P>Registers used: 01-07
+<P>Plus for determinant and inverse matrix : 08 through n²+n+7
+<P>Plus for simultaneous equations : 08 through n²+2n+7
+
+</BODY>

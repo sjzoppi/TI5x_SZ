@@ -1,0 +1,434 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-13 — Active LP, HP, BP Filters</H1>
+
+<P>This program computes the necessary component values for use in the
+design of active lowpass, highpass, and bandpass filters as
+illustrated.
+</P>
+
+<H3>Active Lowpass Filter</H3>
+
+<P>
+<IMG ALT="Active Lowpass Filter" src="data:image/png;base64,
+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
+AAAASUVORK5CYII=
+">
+</P>
+
+<P>Given the peaking factor, the passband voltage gain in dB, the
+cutoff frequency in Hz, and C<sub>1</sub> in farads, the program
+calculates values of C, R<sub>1</sub>, R<sub>2</sub>, and
+R<sub>3</sub>.
+</P>
+
+<H3>Active Highpass Filter</H3>
+
+<IMG ALT="Active Highpass Filter" src="data:image/png;base64,
+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
+I=
+">
+
+<P>Given the peaking factor, the passband voltage gain in dB, the
+cutoff frequency in Hz, and C<sub>2</sub> in farads, the program
+calculates values of C, R<sub>1</sub>, and R<sub>2</sub>.
+</P>
+
+<H3>Active Bandpass Filter</H3>
+
+<IMG ALT="Active Highpass Filter" src="data:image/png;base64,
+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
+I=
+">
+
+<P>Given the 3-dB bandwidth in Hz, the midband voltage gain in dB, the center frequency in Hz, and C<sub>1</sub> and C<sub>2</sub> in farads, the program computes values for R<sub>1</sub>, R<sub>2</sub>, and R<sub>3</sub>.
+</P>
+
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <P>Enter the following as needed</p>
+
+  <UL>
+    <LI>peaking factor &alpha; (LP, HP), n, press
+      <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+    <LI>passband voltage gain A (LP, HP) or midband voltage gain (BP)
+      in dB, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+
+    <LI>cutoff frequency F (LP, HP) or center frenquency (BP) in hertz,
+      press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+    <LI>3-dB bandwidth B (BP) in hertz,
+      press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+    <LI>C<sub>1</sub> for (BP, LP) in farads,
+      press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+    <LI>C<sub>2</sub> for (BP, HP) in farads,
+      press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+  </UL>
+
+    <P>Compute component values:</P>
+
+  <LI>Bandpass, to display
+    <p>R<sub>1</sub> press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <p>R<sub>2</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <p>R<sub>3</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Lowpass, to display
+    <p>C press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <p>R<sub>2</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <p>R<sub>1</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <p>R<sub>3</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Highpass, to display
+    <p>C press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <p>R<sub>1</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <p>R<sub>2</sub> press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+</UL>
+
+<P>Registers: 10-18
+
+</BODY>

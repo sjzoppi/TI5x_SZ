@@ -1,0 +1,115 @@
+Lbl A'
+(
+CE
+INV D.MS
+÷
+100
+)
+D.MS
+INV SBR
+Lbl A
+Adv
+Prt
+A'
+STO 01
+INV SBR
+Lbl B
+Prt
+A'
+STO 06
+INV SBR
+(
+Prt
+×
+2
++
+6
+)
+STO 02
+RCL Ind 02
++/-
+x⇌t
+1
+SUM 02
+RCL Ind 02
+INV SBR
+Lbl C
+SBR 028
+STO 07
+P→R
+STO 03
+x⇌t
+STO 04
+INV SBR
+Lbl D
+SBR 028
+STO 02
+P→R
+STO 05
+(
+x⇌t
+-
+RCL 04
+-
+RCL 03
+×
+RCL 07
+tan
++
+RCL 05
+×
+RCL 02
+tan
+)
+STO 00
+(
+RCL 02
+tan
+-
+RCL 07
+tan
+)
+STO 05
+(
+(
+RCL 01
+cos
+×
+RCL 05
+)
+1/x
+×
+RCL 00
+)
+(
+A'
++
+RCL 06
+)
+Pgm 25
+SBR Grad
+INV SBR
+Lbl E
+(
+(
+RCL 00
+÷
+RCL 05
+-
+RCL 03
+)
+×
+RCL 07
+tan
+-
+RCL 04
+)
+(
+A'
++
+RCL 01
+)
+Pgm 25
+SBR Grad
+Adv
+INV SBR

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">OPTION VALUATION - Black Scholes Model</label>
+<label slot="titleright">SA-07</label>
+<label slot="a">Sh Price</label>
+<label slot="b">Ex Price</label>
+<label slot="c">Vol</label>
+<label slot="d">%I</label>
+<label slot="e"><ArrowR/> Val; HR(C)</label>
+<label slot="aprime">Today</label>
+<label slot="bprime">Expire</label>
+<label slot="cprime">Date; Val(D)</label>
+<label slot="dprime"></label>
+<label slot="eprime"><ArrowR/> Val; HR(P)</label>
+</carddef>

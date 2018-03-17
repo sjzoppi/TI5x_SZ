@@ -1,0 +1,474 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+
+<H1>JS-01 — Type and standard equation of conic sections</H1>
+
+<P>The program determines what the quadratic equation represents and
+  then, only for non-degenerate conics, canonical or standard form is
+  obtained.
+
+<P>Type and standard form of quadratic equations given the general quadratic equation:
+  <P><B><i>a</i>x<sup>2</sup> + <i>b</i>xy + <i>c</i>y<sup>2</sup>
+    + <i>d</i>x + <i>e</i>y
+    + <i>f</i> = 0</B>
+</P>
+
+
+<P>Make sure the calculator is in degree mode, if not, press 2nd DEG
+  (by default the emulator is in DEG).
+<UL>
+  <LI>Enter the coefficient <i>a</i> of the term ax<sup>2</sup> and
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter the coefficient <i>b</i> of the term bxy and
+    press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+
+  <LI>Enter the coefficient <i>c</i> of the term cyx<sup>2</sup> and
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+  <LI>Enter the coefficient <i>d</i> of the term dx and
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+  <LI>Enter the coefficient <i>e</i> of the term ex and
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+
+  <LI>Enter the independent term <i>f</i> and
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+
+  <LI>To start the computation press press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+</UL>
+
+<P>The results is displayed and corresponds to the following values:
+
+  <UL>
+    <LI> 0 - A point
+    <LI> 1 - Two perpendicular lines
+    <LI> 2 - Two intersecting lines
+    <LI> 3 - A single line
+    <LI> 4 - Two parallel lines
+    <LI> 5 - Nothing, no real solution
+    <LI> 6 - A circle
+    <LI> 7 - An ellipse
+    <LI> 8 - An hyperbole
+    <LI> 9 - A parabola
+  </UL>
+</P>
+
+<P>Then each press on <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> displays the following:
+
+  <UL>
+    <LI>Theta angle between initial and rotated coordinate axes
+    <LI>Translation along X axis of origin of coordinates
+    <LI>Translation along Y axis of origin of coordinates
+    <LI>Abscises of foci
+    <LI>Ordinates of foci
+    <LI>Eccentricity
+    <LI>Term <i>a</i> of ax<sup>2</sup> of standard form
+    <LI>Term <i>b</i> of bx (usually 0 since rotation has been performed)
+    <LI>Term <i>c</i> of cy<sup>2</sup>
+    <LI>Term <i>d</i> of dx (usually 0 since conic is translated to origin)
+    <LI>Term <i>e</i> of ey (usually 0 since conic is translated to origin)
+    <LI>Independent term <i>f</i>
+  </UL>
+
+<P>After the display of the term F,
+  pressing <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  once more, the  display flashes with "9.999999 99" indicating the end of data; at
+  that time, a program instruction erases all memories and resets the
+  flags. Press CE to eliminate display flashing.
+
+<H3>Example 1</H3>
+
+<P>Given the equation 21x<sup>2</sup> + 26√3xy - 3y<sup>2</sup> + 1 = 0</B>
+  <TABLE>
+    <TR><TH>Enter<TH>Display<TH>Meaning</TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN><TD>21.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;√x&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;x&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;6&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN><TD>45.033321
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN><TD>-3.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN><TD>1
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN><TD>8.<TD>Hyperbole
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>30.97255954
+        <TD>Theta angle
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Translation along X
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Translation along Y
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Abscises of foci
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>.2992077354
+        <TD>Ordinates of foci
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>1.215928907
+        <TD>Eccentricity
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>-34.51470164
+        <TD>Coefficient of X<sup>2</sup>
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Coefficient of XY
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>16.51470164
+        <TD>Coefficient of Y<sup>2</sup>
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Coefficient of X
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Coefficient of Y
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>-1
+        <TD>Independant term F
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>9.9999999 99 (flashing)
+        <TD>End of data
+    </TR>
+
+  </TABLE>
+
+  <P>So this means that the above mentioned equation is an hyperbola of equation :
+
+  <P>-34.51470164 X<sup>2</sup> + 16.51470164 Y<sup>2</sup> - 1 = 0
+
+  <P>After having its axes rotated by an angle of 30.97255954 and its
+    origin is not translated.
+  </P>
+
+<H3>Example 2</H3>
+
+<P>Given the equation 40x<sup>2</sup> + 20xy + 25y<sup>2</sup>
+    - 28x - 34y - 23 = 0
+  <TABLE>
+    <TR><TH>Enter<TH>Display<TH>Meaning</TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;4&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN><TD>40.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN><TD>20.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN><TD>25.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;8&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN><TD>-28.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;4&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN><TD>-34.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN><TD>-23.
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN><TD>7.<TD>Ellipse
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>26.56505118
+        <TD>Theta angle
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>.4472135955
+        <TD>Translation along X
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>.4472135955
+        <TD>Translation along Y
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0.
+        <TD>Abscises of foci
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>1.
+        <TD>Ordinates of foci
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>.7453559925
+        <TD>Eccentricity
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>1.25
+        <TD>Coefficient of X<sup>2</sup>
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Coefficient of XY
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>.5555555556
+        <TD>Coefficient of Y<sup>2</sup>
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Coefficient of X
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>0
+        <TD>Coefficient of Y
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>-1
+        <TD>Independant term F
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>9.9999999 99 (flashing)
+        <TD>End of data
+    </TR>
+
+  </TABLE>
+
+<P>This is an ellipse of equation :
+<P>1.25 X<sup>2</sup> + 0.5555555556 Y<sup>2</sup> - 1  = 0
+  whose set of coordinates has been rotated by an angle of 26.56505118
+  and translated along X by 0.4472135955 and along Y by 0.4472135955.
+</P>
+
+<H3>Example 3</H3>
+
+<P>Given the equation 3x<sup>2</sup> - 4xy + y<sup>2</sup> + x + y - 2 = 0
+  <TABLE>
+    <TR><TH>Enter<TH>Display<TH>Meaning</TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN><TD>3.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;4&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN><TD>-4.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN><TD>1.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN><TD>1.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN><TD>1.
+    </TR>
+
+    <TR><TD><SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;+/-&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN><TD>-2.
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN><TD>2.
+      <TD>Two intersecting lines
+    </TR>
+
+    <TR><TD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+        <TD>9.9999999 99 (flashing)
+        <TD>End of data
+    </TR>
+
+  </TABLE>
+
+<P>The above given equation is that of two lines y = x + 1 and y = 3 x -2, since :
+
+(x + 1 - y) * (3 x - 2 - y) = 3 x<sup>2</sup> - 4 xy + y<sup>2</sup> +
+  x + y - 2 = 0
+</P>
+
+<H3>Formulas Used</H3>
+
+<p>What does this equation represent?
+
+<P>To find out, the following is calculated
+
+<P>Matrix M = (f, d÷2, e÷2; d÷2, a, b÷2; e÷2, b÷2, c)
+
+<P>Determinant of M = a × c × f + ( b × d × e - b<sup>2</sup> × f - c
+  × d<sup>2</sup> - a × e<sup>2</sup> ) ÷ 4
+
+<P>Determinant of sub matrix M11 of M = a × c - b<sup>2</sup>÷4
+
+<P>Determinant of sub matrix M23 of M = d × e÷4 - b × f÷2
+
+<P>If the determinant of M equals zero, then it is a <B>degenerated conic</B> :
+  <UL>
+    <LI>If M11 is positive, it's a point
+    <LI>If M11 is negative, then if a + c equals 0, it represents two
+    perpendicular lines; if a + c does not equal to 0, they are two
+    intersecting lines
+    <LI>If M11 equals 0, then if M23 equals 0, then it's a single line
+    ; if M23 does not equal to 0, they are two parallel lines
+  </UL>
+</P>
+
+<P>If the determinant of M is not zero, it is a conic (<B>circle,
+    ellipse, parabola or hyperbole</B>):
+  <UL>
+    <LI>If M11 is positive, then two cases:
+      <UL>
+        <LI>If a * determinant of M is positive, <B>no (real) solution</B>
+        <LI>If a = c and b is zero, it is a <B>circle</B>, otherwise it is an <B>ellipse</B>
+      </UL>
+      <LI>If M11 is negative, it is a <B>hyperbole</B>
+      <LI>If M11 is zero, it is a <B>parabola</B>
+  </UL>
+</P>
+
+<P>The program determines what the quadratic equation represents and
+  then, only for non-degenerate conics, canonical or standard form is
+  obtained through the following computations:
+
+  <UL>
+    <LI>Removal of the term in xy by rotation of the coordinate axes,
+      the angle theta is calculated between the initial set and the set
+      in which the equation has its canonical form
+    <LI>Calculation of the translation of the origin of the coordinate axes
+    <LI>Calculate the coefficients of the standard equation of the conic
+  </UL>
+</P>
+
+</p>Subsequently the program calculates and displays the following:
+
+<UL>
+  <LI>Type of quadratic equation
+  <LI>Rotation angle of the coordinate axes
+  <LI>Translation in x and y of the origin of the coordinate axes
+  <LI>The x and y coordinates of the foci of the conic in the translated coordinates
+  <LI>The eccentricity of the conic section
+  <LI>The coefficients A, B, C, D, E and F of the standardized equation
+</UL>
+</BODY>

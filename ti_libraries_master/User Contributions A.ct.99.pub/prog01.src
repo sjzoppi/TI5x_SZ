@@ -1,0 +1,584 @@
+; program Coniques contributed by Jacobus Serpenti
+
+Lbl A
+STO 10
+R/S
+
+Lbl B
+STO 11
+R/S
+
+Lbl C
+STO 12
+R/S
+
+Lbl A'
+STO 13
+R/S
+
+Lbl B'
+STO 14
+R/S
+
+Lbl C'
+STO 15
+R/S
+
+Lbl E
+1
+EE
+15
++/-
+STO 21
+INV EE
+0
+STO 16
+RCL 10
+×
+RCL 12
+-
+RCL 11
+x²
+÷
+4
+=
+STO 18
+RCL 13
+×
+RCL 14
+÷
+4
+-
+RCL 11
+×
+RCL 15
+÷
+2
+=
+STO 19
+RCL 10
+×
+RCL 12
+×
+RCL 15
++
+(
+RCL 11
+×
+RCL 13
+×
+RCL 14
+-
+RCL 11
+x²
+×
+RCL 15
+-
+RCL 12
+×
+RCL 13
+x²
+-
+RCL 10
+×
+RCL 14
+x²
+)
+÷
+4
+=
+STO 20
+0
+x⇌t
+RCL 20
+INV x=t 197
+RCL 21
+x⇌t
+RCL 18
+INV x≥t 144
+0
+STO 17
+GTO 194
+RCL 21
++/-
+x⇌t
+RCL 18
+x≥t 177
+0
+x⇌t
+RCL 10
++
+RCL 12
+=
+INV x=t 171
+1
+STO 17
+GTO 174
+2
+STO 17
+GTO 194
+0
+x⇌t
+RCL 19
+INV x=t 191
+3
+STO 17
+GTO 194
+4
+STO 17
+GTO 297
+RCL 21
+x⇌t
+RCL 18
+INV x≥t 273
+0
+x⇌t
+RCL 10
+×
+RCL 20
+=
+INV x≥t 224
+5
+STO 17
+GTO 270
+RCL 12
+x⇌t
+RCL 10
+INV x=t 235
+Stflg 0
+0
+x⇌t
+RCL 11
+INV x=t 245
+Stflg 1
+INV Ifflg 0 264
+INV Ifflg 1 264
+6
+STO 17
+1
+STO 16
+GTO 270
+7
+STO 17
+2
+STO 16
+GTO 297
+RCL 21
++/-
+x⇌t
+RCL 18
+x≥t 291
+8
+STO 17
+3
+STO 16
+GTO 297
+9
+STO 17
+4
+STO 16
+RCL 12
+x⇌t
+RCL 10
+INV x=t 313
+45
+STO 22
+GTO 333
+RCL 11
+÷
+(
+RCL 10
+-
+RCL 12
+)
+=
+INV tan
+×
+0.5
+=
+STO 22
+RCL 22
+sin
+STO 23
+RCL 22
+cos
+STO 24
+RCL 10
+×
+RCL 24
+x²
++
+RCL 11
+×
+RCL 23
+×
+RCL 24
++
+RCL 12
+×
+RCL 23
+x²
+=
+STO 25
+RCL 10
+×
+RCL 23
+x²
+-
+RCL 11
+×
+RCL 23
+×
+RCL 24
++
+RCL 12
+×
+RCL 24
+x²
+=
+STO 26
+RCL 13
+×
+RCL 24
++
+RCL 14
+×
+RCL 23
+=
+STO 27
+RCL 13
++/-
+×
+RCL 23
++
+RCL 14
+×
+RCL 24
+=
+STO 28
+RCL 15
+STO 29
+1
+x⇌t
+RCL 16
+INV x=t 436
+Stflg 2
+2
+x⇌t
+RCL 16
+INV x=t 446
+Stflg 3
+RCL 27
++/-
+÷
+(
+2
+×
+RCL 25
+)
+=
+STO 31
+RCL 28
++/-
+÷
+(
+2
+×
+RCL 26
+)
+=
+STO 32
+RCL 25
+×
+RCL 31
+x²
++
+RCL 26
+×
+RCL 32
+x²
+-
+RCL 29
+=
+STO 49
+RCL 25
+÷
+RCL 49
+=
+STO 38
+RCL 26
+÷
+RCL 49
+=
+STO 40
+1
++/-
+STO 43
+CE
+Ifflg 2 521
+INV Ifflg 3 625
+RCL 40
+x⇌t
+RCL 38
+x≥t 577
+RCL 38
+1/x
+|x|
+STO 33
+RCL 40
+1/x
+|x|
+STO 34
+2
+x⇌t
+RCL 16
+INV x=t 574
+RCL 33
+-
+RCL 34
+=
+√x
+STO 35
+RCL 35
+STO 46
+0
+STO 47
+RCL 35
+÷
+RCL 33
+√x
+=
+STO 48
+GTO 622
+RCL 40
+1/x
+|x|
+STO 33
+RCL 38
+1/x
+|x|
+STO 34
+2
+x⇌t
+RCL 16
+INV x=t 622
+RCL 33
+-
+RCL 34
+=
+√x
+STO 35
+0
+STO 46
+RCL 35
+STO 47
+RCL 35
+÷
+RCL 33
+√x
+=
+STO 48
+GTO 881
+3
+x⇌t
+RCL 16
+INV x=t 722
+RCL 40
+x⇌t
+RCL 38
+INV x≥t 682
+RCL 38
+1/x
+|x|
+STO 33
+RCL 40
+1/x
+|x|
+STO 34
+RCL 33
++
+RCL 34
+=
+√x
+STO 35
+RCL 35
+STO 46
+0
+STO 47
+RCL 35
+÷
+RCL 33
+√x
+=
+STO 48
+GTO 719
+RCL 40
+1/x
+|x|
+STO 33
+RCL 38
+1/x
+|x|
+STO 34
+RCL 33
++
+RCL 34
+=
+√x
+STO 35
+0
+STO 46
+RCL 35
+STO 47
+RCL 35
+÷
+RCL 33
+√x
+=
+STO 48
+GTO 881
+4
+x⇌t
+RCL 16
+INV x=t 881
+RCL 26
+x⇌t
+RCL 25
+INV x≥t 810
+RCL 27
+÷
+(
+2
+×
+RCL 25
+)
+=
+STO 31
+(
+RCL 29
+-
+RCL 27
+x²
+÷
+(
+4
+×
+RCL 25
+)
+)
+÷
+RCL 28
+=
+STO 32
+1
+STO 38
+RCL 28
+÷
+RCL 25
+=
+STO 42
+RCL 42
++/-
+÷
+4
+=
+STO 36
+0
+STO 46
+RCL 36
+STO 47
+0
+STO 40
+0
+STO 41
+0
+STO 43
+GTO 878
+(
+RCL 29
+-
+RCL 28
+x²
+÷
+(
+4
+×
+RCL 26
+)
+)
+÷
+RCL 27
+=
+STO 31
+RCL 28
+÷
+(
+2
+×
+RCL 26
+)
+=
+STO 32
+1
+STO 40
+RCL 27
+÷
+RCL 26
+=
+STO 41
+RCL 41
++/-
+÷
+4
+=
+STO 36
+RCL 36
+STO 46
+0
+STO 47
+0
+STO 38
+0
+STO 42
+0
+STO 43
+1
+STO 48
+INV Stflg 0
+INV Stflg 1
+INV Stflg 2
+INV Stflg 3
+RCL 17
+R/S
+6
+x⇌t
+RCL 17
+INV x≥t 940
+RCL 22
+R/S
+RCL 31
+R/S
+RCL 32
+R/S
+RCL 46
+R/S
+RCL 47
+R/S
+RCL 48
+R/S
+RCL 38
+R/S
+RCL 39
+R/S
+RCL 40
+R/S
+RCL 41
+R/S
+RCL 42
+R/S
+RCL 43
+R/S
+0
+1/x
+CMs
+R/S

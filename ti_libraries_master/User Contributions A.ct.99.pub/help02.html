@@ -1,0 +1,252 @@
+<html><head>
+<title>Triangle Solution</title>
+<style type="text/css"><!--
+.yellowbutton
+{
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+}
+.brownbutton
+{
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+}
+.whitebutton
+{
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+}
+.alttext
+{
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+}
+.deflist DT
+{
+    display : compact;
+    font-weight : bold;
+}
+.deflist DD
+{
+    margin-left : 4em;
+}
+--></style>
+</head>
+<body>
+<h1>SB-02 — Triangle Solution</h1>
+<p>Copyright © 1979-1981 by Steffen Beyer.</p>
+<p>This program is free software, : you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version..</p>
+
+<h3>Description:</h3>
+<p>Given any* three values describing an arbitrary triangle,
+  such as length of side <i>a</i>, length of side <i>b</i>, length of
+  side <i>c</i>, angle <i>&alpha;</i>, angle <i>&beta;</i> or angle <i>&gamma;</i>, the
+  program will automatically calculate the missing other three
+  values.<br>
+  *: at least one side</p>
+
+<h3>Usage:</h3>
+<ul>
+  <li>To initialize, press
+    <span class="brownbutton">&nbsp;D&nbsp;</span><br>&nbsp;
+  </li><li>Enter the length of side a, then press
+    <span class="brownbutton">&nbsp;A&nbsp;</span>
+  </li><li>Enter the length of side b, then press
+    <span class="brownbutton">&nbsp;B&nbsp;</span>
+  </li><li>Enter the length of side c, then press
+    <span class="brownbutton">&nbsp;C&nbsp;</span>
+  </li><li>Enter the angle &alpha;, then press
+    <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+    <span class="alttext">&nbsp;A'&nbsp;</span>
+  </li><li>Enter the angle &beta;, then press
+    <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+    <span class="alttext">&nbsp;B'&nbsp;</span>
+  </li><li>Enter the angle &gamma;, then press
+    <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+    <span class="alttext">&nbsp;C'&nbsp;</span><br>&nbsp;
+  </li><li>To calculate the missing values, press
+    <span class="brownbutton">&nbsp;E&nbsp;</span><br>&nbsp;
+  </li><li>To display the length of side a, press
+    <span class="brownbutton">&nbsp;A&nbsp;</span>
+  </li><li>To display the length of side b, press
+    <span class="brownbutton">&nbsp;B&nbsp;</span>
+  </li><li>To display the length of side c, press
+    <span class="brownbutton">&nbsp;C&nbsp;</span>
+  </li><li>To display the angle &alpha;, press
+    <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+    <span class="alttext">&nbsp;A'&nbsp;</span>
+  </li><li>To display the angle &beta;, press
+    <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+    <span class="alttext">&nbsp;B'&nbsp;</span>
+  </li><li>To display the angle &gamma;, press
+    <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+    <span class="alttext">&nbsp;C'&nbsp;</span>
+</li></ul>
+<p>In case there is more than one solution
+  (indicated by a blinking 2 after pressing
+  <span class="brownbutton">&nbsp;E&nbsp;</span>),
+  press <span class="brownbutton">&nbsp;E&nbsp;</span>
+  again after viewing the first solution in order
+  to display the values of the second solution.</p>
+
+<h3>Example:</h3>
+<p>Enter the three sides:
+  <span class="brownbutton">&nbsp;D&nbsp;</span>
+  <span class="whitebutton">&nbsp;3&nbsp;</span>
+  <span class="brownbutton">&nbsp;A&nbsp;</span>
+  <span class="whitebutton">&nbsp;4&nbsp;</span>
+  <span class="brownbutton">&nbsp;B&nbsp;</span>
+  <span class="whitebutton">&nbsp;5&nbsp;</span>
+  <span class="brownbutton">&nbsp;C&nbsp;</span>
+
+<p>Then press <span class="brownbutton">&nbsp;E&nbsp;</span>
+
+<p>To display the other values:
+  <ul>
+    <li>To display &alpha;, press <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+      <span class="alttext">&nbsp;A'&nbsp;</span>, 36.86989765
+    <li>To display &beta;, press <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+      <span class="alttext">&nbsp;B'&nbsp;</span>, 53.13010235
+    <li>To display &gamma;, press <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+      <span class="alttext">&nbsp;C'&nbsp;</span>, 90
+  </ul>
+
+<h3>Good to know:</h3>
+<p>The program does not interfere with ongoing calculations.
+  None of the functions
+  <span class="brownbutton">&nbsp;A&nbsp;</span>,
+  <span class="brownbutton">&nbsp;B&nbsp;</span>,
+  <span class="brownbutton">&nbsp;C&nbsp;</span>,
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;A'&nbsp;</span>,
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;B'&nbsp;</span>,
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;C'&nbsp;</span>,
+  <span class="brownbutton">&nbsp;D&nbsp;</span>
+  and
+  <span class="brownbutton">&nbsp;E&nbsp;</span>
+  uses
+  <span class="yellowbutton">&nbsp;CLR&nbsp;</span>
+  or
+  <span class="yellowbutton">&nbsp;=&nbsp;</span>
+  internally.</p>
+<p>For example it is possible to enter
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;A'&nbsp;</span>
+  <span class="whitebutton">&nbsp;+&nbsp;</span>
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;B'&nbsp;</span>
+  <span class="whitebutton">&nbsp;+&nbsp;</span>
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;C'&nbsp;</span>
+  <span class="yellowbutton">&nbsp;=&nbsp;</span>
+  in order to make a sanity check that the sum of the angles is indeed
+  180 degrees (if
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;Deg&nbsp;</span>
+  is selected).</p>
+<p>The program of course also works with
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;Rad&nbsp;</span>
+  and
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;Grad&nbsp;</span>.</p>
+<p>The program checks the number of arguments and displays a blinking
+  9.9999999 99 if there are more or less than three arguments,
+  but it does no sanity checks on the arguments themselves in order to see
+  whether the values cannot possibly match a real triangle, such as for example
+  a = 3, b = 11 and &alpha; = 19.</p>
+<p>In fact the maximum angle &alpha; which is possible in this example
+  is easily calculated as
+  <span class="brownbutton">&nbsp;D&nbsp;</span>
+  <span class="whitebutton">&nbsp;3&nbsp;</span>
+  <span class="brownbutton">&nbsp;A&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="brownbutton">&nbsp;B&nbsp;</span>
+  <span class="whitebutton">&nbsp;9&nbsp;</span>
+  <span class="whitebutton">&nbsp;0&nbsp;</span>
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;B'&nbsp;</span>
+  <span class="brownbutton">&nbsp;E&nbsp;</span>
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;A'&nbsp;</span>
+  which yields 15.82662013.</p>
+<p>This example
+  <span class="brownbutton">&nbsp;D&nbsp;</span>
+  <span class="whitebutton">&nbsp;3&nbsp;</span>
+  <span class="brownbutton">&nbsp;A&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="brownbutton">&nbsp;B&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="whitebutton">&nbsp;9&nbsp;</span>
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;A'&nbsp;</span>
+  <span class="brownbutton">&nbsp;E&nbsp;</span>
+  allegedly gives two solutions,
+  the second of which yields negative values - an indication that something
+  is wrong.</p>
+<p>When the angle &alpha; is smaller than 15.82662013,
+  then there are indeed always two solutions.
+  For example
+  <span class="brownbutton">&nbsp;D&nbsp;</span>
+  <span class="whitebutton">&nbsp;3&nbsp;</span>
+  <span class="brownbutton">&nbsp;A&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="brownbutton">&nbsp;B&nbsp;</span>
+  <span class="whitebutton">&nbsp;1&nbsp;</span>
+  <span class="whitebutton">&nbsp;5&nbsp;</span>
+  <span class="yellowbutton">&nbsp;2nd&nbsp;</span>
+  <span class="alttext">&nbsp;A'&nbsp;</span>
+  <span class="brownbutton">&nbsp;E&nbsp;</span>
+  will yield the following two solutions:</p>
+
+<pre>
+  a = 3
+  b = 11
+  c = 11.57098371
+  &alpha; = 15
+  &beta; = 71.6230946
+  &gamma; = 93.3769054
+
+  a = 3
+  b = 11
+  c = 9.679384465
+  &alpha; = 15
+  &beta; = 108.3769054
+  &gamma; = 56.6230946
+</pre>
+
+<h3>Resources used:</h3>
+<p>This program uses registers 00 to 13, t and flags 0 and 1.
+
+  <h3>Formulas used:</h3>
+<p>&alpha; + &beta; + &gamma; = 180 or 2&pi; or 200</p>
+<p>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> - 2ab cos &gamma;</p>
+<p>a ÷ sin &alpha; = b ÷ sin &beta; = c ÷ sin &gamma;</p>
+
+<h3>Further development:</h3>
+<p>Maybe a sanity check could be added that the sum of the angles
+  which have been entered is less than 180.</p>
+<p>Maybe a function could be added to calculate the area of the triangle,
+  according to the following formula:</p>
+<p>A = sqrt (s (s-a) (s-b) (s-c)) with
+  s = ( a + b + c ) ÷ 2</p>
+</body>
+</html>

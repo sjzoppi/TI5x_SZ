@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+.monofont
+{
+  font-family: monospace;
+}
+P.monofont
+{
+  font-family: monospace;
+  line-height: 5%;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-19 — Computer Art</H1>
+
+<P>Using this program you may print any of the following patterns in
+  any quarter of the tape. These patterns are illustrated using an
+  asterisk, however, you may choose any character, number or symbol
+  that the PC-100A is capable of printing.
+</P>
+
+<P CLASS="monofont">|&nbsp;0&nbsp;&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;|&nbsp;5&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;8&nbsp;&nbsp;9&nbsp;|</P>
+<P CLASS="monofont">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</P>
+<P CLASS="monofont">|&nbsp;&nbsp;1st&nbsp;quarter&nbsp;&nbsp;|&nbsp;&nbsp;2nd&nbsp;quarter&nbsp;&nbsp;|</P>
+<P>&nbsp;</P>
+<P CLASS="monofont">|&nbsp;10&nbsp;11&nbsp;12&nbsp;13&nbsp;14&nbsp;|&nbsp;15&nbsp;16&nbsp;17&nbsp;18&nbsp;19&nbsp;|</P>
+<P CLASS="monofont">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|</P>
+<P CLASS="monofont">|&nbsp;&nbsp;&nbsp;3rd&nbsp;quarter&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;4th&nbsp;quarter&nbsp;&nbsp;|</P>
+</P>
+
+<P>The patterns correspond to the binary representation of the number:
+
+<TABLE>
+  <TR><TH>Pattern<TH>NO.<TH>Pattern<TH>No</TR>
+  <TR><TD CLASS="monofont">....*<TD CLASS="monofont">1<TD CLASS="monofont">.*..*<TD CLASS="monofont">9</TR>
+  <TR><TD CLASS="monofont">...*.<TD CLASS="monofont">2<TD CLASS="monofont">.*.*.<TD CLASS="monofont">10</TR>
+  <TR><TD CLASS="monofont">...**<TD CLASS="monofont">3<TD CLASS="monofont">.*.**<TD CLASS="monofont">11</TR>
+  <TR><TD CLASS="monofont">..*..<TD CLASS="monofont">4<TD CLASS="monofont">.**..<TD CLASS="monofont">12</TR>
+  <TR><TD CLASS="monofont">..*.*<TD CLASS="monofont">5<TD CLASS="monofont">.**.*<TD CLASS="monofont">13</TR>
+  <TR><TD CLASS="monofont">..**.<TD CLASS="monofont">6<TD CLASS="monofont">.***.<TD CLASS="monofont">14</TR>
+  <TR><TD CLASS="monofont">..***<TD CLASS="monofont">7<TD CLASS="monofont">.****<TD CLASS="monofont">15</TR>
+  <TR><TD CLASS="monofont">.*...<TD CLASS="monofont">8<TD CLASS="monofont">*....<TD CLASS="monofont">16</TR>
+</TABLE>
+
+<TABLE>
+  <TR><TH>Pattern<TH>NO.<TH>Pattern<TH>No</TR>
+  <TR><TD CLASS="monofont">*...*<TD CLASS="monofont">17<TD CLASS="monofont">**..*<TD CLASS="monofont">25</TR>
+  <TR><TD CLASS="monofont">*..*.<TD CLASS="monofont">18<TD CLASS="monofont">**.*.<TD CLASS="monofont">26</TR>
+  <TR><TD CLASS="monofont">*..**<TD CLASS="monofont">19<TD CLASS="monofont">**.**<TD CLASS="monofont">27</TR>
+  <TR><TD CLASS="monofont">*.*..<TD CLASS="monofont">20<TD CLASS="monofont">***..<TD CLASS="monofont">28</TR>
+  <TR><TD CLASS="monofont">*.*.*<TD CLASS="monofont">21<TD CLASS="monofont">***.*<TD CLASS="monofont">29</TR>
+  <TR><TD CLASS="monofont">*.**.<TD CLASS="monofont">22<TD CLASS="monofont">****.<TD CLASS="monofont">30</TR>
+  <TR><TD CLASS="monofont">*.***<TD CLASS="monofont">23<TD CLASS="monofont">*****<TD CLASS="monofont">31</TR>
+  <TR><TD CLASS="monofont">**...<TD CLASS="monofont">24<TD CLASS="monofont"><TD CLASS="monofont"></TR>
+</TABLE>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>. 0 is
+    Displayed. If calculator has fixed-decimal display format press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Fix&nbsp;</SPAN>
+    <SPAN CLASS="whitebutton">&nbsp;9&nbsp;</SPAN>.
+
+  <LI>Select the patter you desire and note its number (see above)
+
+  <LI>Choose a character from the following chart and determine its
+    code number. Each printed character is represented by a two-digit,
+    row-column address code according to the following table. For
+    example, A is code 13.
+
+    <TABLE>
+      <TR><TD>&nbsp;</TD><TD><I>x</I>0</TD><TD><I>x</I>1</TD><TD><I>x</I>2</TD><TD><I>x</I>3</TD><TD><I>x</I>4</TD><TD><I>x</I>5</TD><TD><I>x</I>6</TD><TD><I>x</I>7</TD></TR>
+      <TR STYLE="height : 1.63em"><TD>0<I>x</I></TD><TD ROWSPAN="8" COLSPAN="8">
+<IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAADeAQMAAACe4KlsAAAABlBMVEXo6OhlZWU/UcYXAAACnklE
+QVRYhdWYvY3DMAyFaRhQJfcCsoQrz+P08Q6qbp5UrgV4CQNe5khKSZxEj0npvMr5wKNEkdTPEf2A
+mpmaSFNsL0Sj20ZaLQzkKXWxpT40sR0dkTMxdsJDUs8DBx6SPyxsOukiXSiNPPVhtbDphO2auEn8
+fWthywlbBPkb9+zkHQNxGrprO101DbSRWy18bDXzqvPmqjpd6CS5HDaIoQKv4OhyVSX57i0MlPbW
+dLcGuC6naZg5DTxvtdaqAhiol4KgtyEBNp30r8EDDJ3IvKVdn9IA8A+omxM3CcfPTeKl00wM5GX7
+Y2tpe68fFjac0N067J1UcE3cJN0s1tM1Wye1BtieyVCfSQV/XpNUX5P01Zpwk2gaTrIPlqoC+Nji
+k4m7a+Kel/Nykx1Zd7Y6Rk6u69MW5mQdIUZO/kIXn6xJndQxduJ7sZ4iW+u8i5MaNtbE6ZAUznEh
+KuHUsbmw2VoDeDipYNMJp4G4T2QfLOHU8S/ouSA4Eyb+xskjDQB/cNJ6CrKXvTh5wdiJZ9Ned0MK
+dN8KqviDEx4yj5csXNVQLmdeL6x0axKAoZN8dT7HbF3SAPBviM+YLO++wG/iTmv+ZGfPR8KtpABG
+6pNeaPKbRAvCwkBOjn8uhZIGqSoDf5jJOZ6mnTXA1ppcxDqU4B3GpnTIcpvZHboAH1lOXmjy2BO1
+9+MfYKCB35ypueaY25EWE9fFR53c42VUyeXIuZR3GsA4nLzuvvxeyAWMoRMdj0uBh5SfuU8Ahk74
+0JVL/IMEjHE4Lt3SoNLgAT66ZDvW/cuXFdzG/BqtYqiU/ynAnabpXEq7AlyXHjBEO+vHufOOQTgy
+V5rmvXWAGK5JupVmPi/zkACb0oLIx/8+eICrKkNyGhbP1rc0AHwI/QPXE5iOEoqlNAAAAABJRU5E
+rkJggg==" ALT="Printer Character Set">
+      </TD></TR>
+      <TR STYLE="height : 1.63em"><TD>1<I>x</I></TD></TR>
+      <TR STYLE="height : 1.63em"><TD>2<I>x</I></TD></TR>
+      <TR STYLE="height : 1.63em"><TD>3<I>x</I></TD></TR>
+      <TR STYLE="height : 1.63em"><TD>4<I>x</I></TD></TR>
+      <TR STYLE="height : 1.63em"><TD>5<I>x</I></TD></TR>
+      <TR STYLE="height : 1.63em"><TD>6<I>x</I></TD></TR>
+      <TR STYLE="height : 1.63em"><TD>7<I>x</I></TD></TR>
+    </TABLE>
+
+  <LI>Enter the information from both steps above in the
+    for <b>Pattern#.Symbol#</b>.
+
+  <LI>Select the quarter of the tape you wish to use by pressing the
+    appropriate user-defined key.
+
+    <UL>
+      <LI><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> - First Quarter</LI>
+      <LI><SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN> - Second Quarter</LI>
+      <LI><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN> - Third Quarter</LI>
+      <LI><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN> - Fourth Quarter</LI>
+    </ul>
+
+  <LI>Repeat steps above for each quarter as desired, the press
+    <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> to print the entire
+    line.
+
+  <LI>Repeat for each line.
+
+</UL>
+
+Note: If you need more than one type of character in a specific
+quarter of the tape, you can fill the print buffer directly by using
+the special operation codes described in the User's Manual (Op
+01-04). Pressing <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> will
+print the contents of the print buffer.
+</BODY>

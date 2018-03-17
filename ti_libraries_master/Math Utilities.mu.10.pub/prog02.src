@@ -1,0 +1,147 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl sbr                              ;000
+    fix 9
+    1 7 3 1 3 7 1 7 3 5
+    op 01
+    1 5 1 3 3 5 1 6
+    op 02
+    rtn
+
+lbl a                                ;027
+    op 00
+    sbr sbr
+    1 sto 0
+    gto 54
+
+    ( pgm 0 sbr = - x⇌t sto 0 )     ;039
+    cp
+    inv x≥t 87
+
+    op 20                           ; #054
+
+;a56:
+    ( rcl 0
+    fix 6
+    op 03
+    fix 9
+    op 05
+    - x⇌t 1 )
+    inv write
+    inv stf 7
+    op 18
+    iff 7 39
+    ce
+    adv
+    gto 56
+
+;a87:                                ;087
+    3 3 3 5 1 7 3 6 3 6
+    op 01
+    3 5 3 6 3 7 0 0
+    op 02
+    3 5 6 3 3 6
+    fix 4
+    gto 323
+
+lbl a'                               ;120
+    ( op 0 + sto 0 1 )
+    fix 6
+    op 03
+    sbr sbr
+    op 05
+    rcl 00
+    nop
+    write
+    rtn
+
+lbl b                                ;#143
+    ce
+    1 3 1 6 4 5          ; EDY
+    fix 4
+    gto 184
+
+lbl b'                               ;157
+    ce
+    3 3 1 7 1 3 3 7      ; PEAT
+    gto 182
+
+lbl c                                ;171
+    ce
+    3 6 4 1 2 7 3 7      ; SULT
+
+;a182:                               ;182
+    fix 2
+
+                                     ;#184
+    op 00
+    op 03
+    3 5 1 7              ; RE
+    fix 9
+    gto 276
+
+lbl c'                               ;197
+    ce
+    3 2 3 3
+    op 00
+    fix 9
+    op 2
+    3 7 2 4 3 2 3 1
+    fix 2
+    gto 323
+
+lbl d                                ;223
+    ce
+    3 1 1 6              ; ND
+    fix 6
+    op 00
+    op 04
+    1 5 3 2 3 0 3 0 1 3  ; COMMA
+    fix 9
+    gto 266
+
+lbl d'                               ;249
+    ce
+    1 6 1 3 3 7 1 3      ; DATA
+    op 00
+
+    fix 2
+
+;a266:
+    op 03
+    1 4 1 3 1 6          ; BAD
+    fix 2                            ;#274
+
+;a274:                               ;#276
+    op 02
+    fix 9
+    op 05
+    0
+    rtn
+
+lbl e                                ;#284
+    ce
+    4 1 3 1 1 6 1 7
+    gto 307
+
+lbl e'                               ;#298
+    ce
+    3 2 4 2 1 7
+
+
+;a307:                               ;#307
+    fix 9
+    op 00
+    op 02
+    3 5 2 1 2 7 3 2 4 3
+
+
+                                     ;#323
+    op 03
+    fix 9
+    op 05
+    0
+    rtn

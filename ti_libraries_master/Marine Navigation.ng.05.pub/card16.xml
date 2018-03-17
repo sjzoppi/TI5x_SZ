@@ -1,0 +1,23 @@
+<!-- 
+
+	http://www.johndcook.com/blog/greek_letters/ 
+	Letter	TeX	Entity	Unicode
+	λ	\lambda	&lambda;	x3BB
+	ν	\nu	&nu;	x3BD
+
+You can create an XML numeric encoding from a Unicode character by
+adding &# on the left and ; on the right, such as &#x393; for Γ,
+Unicode value x393.
+-->
+<carddef style="system">
+<label slot="titleleft">PLANET LOCATION</label>
+<label slot="titleright">NG-16</label>
+<label slot="a">L<sub>DR</sub></label>
+<label slot="b">λ<sub>DR</sub></label>
+<label slot="c">GMT(MS)</label>
+<label slot="d">ν</label>
+<label slot="e">GHA</label>
+<label slot="aprime">d</label>
+<label slot="bprime">Dec <ArrowR/> Hc</label>
+<label slot="cprime"><ArrowR/> Zn</label>
+</carddef>

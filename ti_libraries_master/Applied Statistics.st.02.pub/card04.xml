@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">BIVARIATE DATA</label>
+<label slot="titleright">ST-04</label>
+<label slot="a">x</label>
+<label slot="b">y</label>
+<label slot="c"></label>
+<label slot="d">Pointer</label>
+<label slot="e"></label>
+<label slot="aprime">Delete x</label>
+<label slot="bprime">Delete y</label>
+<label slot="cprime"></label>
+<label slot="dprime">Compile</label>
+<label slot="eprime">Initialize</label>
+</carddef>

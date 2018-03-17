@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">CMG FROM 3 BEARINGS</label>
+<label slot="titleright">NG-09</label>
+<label slot="b">t1</label>
+<label slot="c">t2</label>
+<label slot="d">t3</label>
+<label slot="e"><ArrowR/> CMG</label>
+<label slot="aprime">V; De</label>
+<label slot="bprime">B<sub>c1</sub></label>
+<label slot="cprime">B<sub>c2</sub></label>
+<label slot="dprime">B<sub>c3</sub></label>
+</carddef>

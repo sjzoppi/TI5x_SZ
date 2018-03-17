@@ -1,0 +1,11 @@
+<carddef style="user">
+<label slot="titleleft">Type and standard equation of conic sections</label>
+<label slot="titleright">JS-01</label>
+<label slot="aprime"><ArrowR/> d</label>
+<label slot="bprime"><ArrowR/> e</label>
+<label slot="cprime"><ArrowR/> f</label>
+<label slot="a"><ArrowR/> a</label>
+<label slot="b"><ArrowR/> b</label>
+<label slot="c"><ArrowR/> c</label>
+<label slot="e"><ArrowR/> RUN</label>
+</carddef>

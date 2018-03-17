@@ -1,0 +1,165 @@
+; program Coniques contributed by Jacobus Serpenti
+
+Lbl A
+  STO 07
+  R/S
+
+Lbl A'
+  .001
+  STO 08
+  5
+  STO 09
+x016:
+  RCL 08
+  SUM 07
+  RCL 09
+  -
+  1
+  =
+  STO 10
+  PGM 0 E
+  STO Ind 10
+  RCL 08
+  INV SUM 07
+  .1
+  Prd 08
+  Dsz 9 x016
+  SBR +
+  RCL 04
+  CMs
+  R/S
+
+Lbl B
+  STO 12
+  R/S
+
+Lbl B'
+  5
+  STO 09
+  1000
+  ×
+  RCL 12
+  =
+  STO 07
+x070:
+  RCL 09
+  -
+  1
+  =
+  STO 10
+  PGM 0 E
+  STO Ind 10
+  10
+  Prd 07
+  Dsz 9 x070
+  SBR +
+  RCL 04
+  CMs
+  R/S
+
+Lbl C
+  STO 12
+  R/S
+
+Lbl C'
+  5
+  STO 09
+  1000
+  ×
+  RCL 12
+  =
+  STO 07
+x115:
+  RCL 09
+  -
+  1
+  =
+  STO 10
+  PGM 0 E
+  ÷
+  RCL 07
+  =
+  STO Ind 10
+  10
+  Prd 07
+  Dsz 9 x115
+  SBR +
+  RCL 04
+  STO 05
+  10000
+  ×
+  RCL 12
+  =
+  STO 07
+  PGM 0 E
+  -
+  RCL 05
+  ×
+  RCL 07
+  =
+  STO 06
+  RCL 05
+  R/S
+  RCL 06
+  R/S
+  10101010
+  +/-
+  CMs
+  R/S
+
+Lbl D
+  STO 09
+  R/S
+
+Lbl D'
+  0
+  STO 03
+  STO 04
+x195:
+  1
+  SUM 07
+  PGM 0 E
+  SUM 03
+  -
+  Exc 04
+  )
+  Dsz 9 x195
+  1/x
+  +/-
+  ×
+  RCL 04
+  x²
+  +
+  RCL 03
+  )
+  CMs
+  R/S
+
+Lbl +
+  4
+  STO 09
+x227:
+  4
+  Prd 11
+  3
+  SUM 11
+  SBR =
+  SBR =
+  SBR =
+  SBR =
+  Dsz 9 x227
+
+Lbl =
+  RCL 00
+  -
+  Exc 04
+  Exc 03
+  Exc 02
+  Exc 01
+  STO 00
+  )
+  ÷
+  RCL 11
+  )
+  SUM 04
+  INV SBR

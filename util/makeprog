@@ -1,0 +1,151 @@
+#!/usr/bin/python3
+#+
+# This script builds program or library files that can be loaded into the
+# calculator app. Invoke it as follows:
+#
+#    makeprog outfile name=infile [name=infile...]
+#
+# where outfile is the name of the file to create (the app expects program
+# files to end with .ti5p, while libraries end with .ti5l), followed by a
+# sequence of items to be included, where name is the component name and infile
+# is the file to read the contents from. Valid values for name are as follows
+# (in all cases, nn indicates a two-digit number in in [00 .. 99]):
+#
+#     cardnn
+#         infile is the name of a PNG file to be included as the specified card image
+#     cardsrcnn
+#         infile is the name of an XML template file to be rendered through rendercard
+#         and included as the specified card image
+#     help
+#         infile is the name of an HTML text file to be included as help for
+#         the overall library
+#     helpnn
+#         infile is the name of an HTML text file to be included as help for the
+#         specified program number
+#     prognn
+#         infile is the name of a text file containing a sequence of two-digit
+#         numbers indicating compiled program instructions to be loaded into the
+#         specified program bank
+#     progsrcnn
+#         infile is the name of a text file containing program source to be assembled
+#         and loaded into the specified program bank
+#
+# To build a program file, include just a prog00 or progsrc00 component, plus optionally
+# a card00 or cardsrc00 component, and a help00 component.
+# To build a library file, include one or more components from prog01/progsrc01
+# up to prog99/progsrc99, optionally together with corresponding cardnn and helpnn components
+# and a help component.
+#
+# Copyright 2011, 2013 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#-
+
+import sys
+import os
+import re
+import subprocess
+import zipfile
+
+utildir = os.path.dirname(sys.argv[0])
+
+if len(sys.argv) < 2 :
+    raise RuntimeError("need at least one arg, the name of the output file to create")
+#end if
+outfile = sys.argv[1]
+components = {}
+for arg in sys.argv[2:] :
+    type, index, infile = re.search(r"^([a-z]+)(\d*)\=(.+)$", arg).groups()
+    if type == "help" and len(index) == 0 :
+        index = 0
+    else :
+        index = int(index)
+    #end if
+    assert index < 100, "component index out of range"
+    if index not in components :
+        components[index] = {}
+    #end if
+    assert type in ("card", "cardsrc", "help", "prog", "progsrc"), "invalid type"
+    assert type not in components[index], "duplicate type for component %02d" % index
+    components[index][type] = infile
+#end for
+for index in components :
+    if (
+            (index != 0 or len(components) == 1)
+        and
+            "prog" not in components[index]
+        and
+            "progsrc" not in components[index]
+    ) :
+        raise RuntimeError("no prog or progsrc for component %02d" % index)
+    #end if
+#end for
+out = zipfile.ZipFile(outfile, mode = "w", compression = zipfile.ZIP_DEFLATED)
+mimetype = zipfile.ZipInfo()
+mimetype.filename = "mimetype"
+mimetype.compress_type = zipfile.ZIP_STORED
+mimetype.external_attr = 0o644 << 16
+mimetype.date_time = (2011, 4, 14, 13, 8, 44) # about when I first got mlmake working
+out.writestr(mimetype, b"application/vnd.nz.gen.geek_central.ti5x")
+for index in range(0, 100) :
+    if index in components :
+        component = components[index]
+        if "progsrc" in component :
+            prog = subprocess.check_output \
+              (
+                args = (os.path.join(utildir, "assemble"),),
+                stdin = open(component["progsrc"], "r"),
+                close_fds = True
+              )
+        elif "prog" in component :
+            prog = open(component["prog"], "rb").read()
+        else :
+            prog = None
+        #end if
+        if prog != None :
+            out.writestr \
+              (
+                "prog%02d" % index,
+                    b"<state>\n    <calc>\n        <prog>\n"
+                +
+                    b"".join(b" " * 12 + line + b"\n" for line in prog.rstrip(b"\n").split(b"\n"))
+                +
+                    b"        </prog>\n    </calc>\n</state>\n"
+              )
+        #end if
+        if "cardsrc" in component :
+            carddata = subprocess.check_output \
+              (
+            	args = (os.path.join(utildir, "rendercard"),),
+            	stdin = open(component["cardsrc"], "r"),
+            	close_fds = True
+              )
+        elif "card" in component :
+            carddata = open(component["card"], "rb").read()
+        else :
+            carddata = None
+        #end if
+        if carddata != None :
+            out.writestr("card%02d" % index, carddata)
+        #end if
+        for type in ("help",) :
+            if type in component :
+                out.writestr \
+                  (
+                    ("help", "%s%02d" % (type, index))[type != "help" or index != 0 or len(components) == 1],
+                    open(component[type], "rb").read()
+                  )
+            #end if
+        #end for
+    #end if
+#end for
+out.close()

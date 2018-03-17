@@ -1,0 +1,144 @@
+
+lbl A'
+   rad
+   (
+   ( rcl 1 + 1 )
+   x²
+   +
+   rcl 2
+   x²
+   )
+   √x
+   rtn
+   ( ( rcl 1 - 1 )
+   x²
+   +
+   rcl 2
+   x²
+   )
+   √x
+   rtn
+   ( ( a' + sbr 0 18 )
+   ÷ 2
+   +
+   ( ( ee inv ee x² - 1 )
+   √x
+   iff 0 061
+   ×
+   rcl 0
+   inv stf 0
+   ) )
+   lnx
+   rtn
+
+lbl A
+   pgm 4 a
+   rtn
+
+lbl B
+   rad
+   ( rcl 1 sin × pgm 5 e' )
+   x⇌t
+   ( rcl 1 cos × pgm 5 c' )
+   sto 2
+   x⇌t
+   sto 1
+   rtn
+
+lbl C
+   rad
+   ( rcl 1 cos × pgm 5 e' )
+   x⇌t ( rcl 1 sin +/- × pgm 5 c' )
+   sto 2
+   x⇌t
+   sto 1
+   rtn
+
+lbl D
+   rcl 1
+   sto 3
+   rcl 2
+   sto 4
+   c
+   pgm 4 e'
+   b
+   pgm 4 c'
+   rtn
+
+lbl B'
+   rcl 2
+   op 10
+   sto 0
+   (
+   ( a' - sbr 0 18 )
+   ÷ 2
+   )
+   inv sin
+   x⇌t
+   sbr 033
+   sto 2
+   x⇌t
+   sto 1
+   rtn
+
+lbl C'
+   rcl 2
+   op 10
+   sto 0
+   (
+   (
+   ( a' - sbr 018 )
+   ÷
+   2
+   )
+   inv cos
+   ×
+   rcl 0 )
+   x⇌t
+   stf 0
+   sbr 033
+   +/-
+   sto 2
+   x⇌t
+   sto 1
+   rtn
+
+lbl D'
+   (
+   ( 1 - rcl 1 x² - rcl 2 x² )
+   x⇌t
+   )
+   2 × rcl 1
+   )
+   rad
+   inv p→r
+   ÷
+   2
+   )
+   x⇌t
+   (
+   (
+   ( rcl 1 x² +
+   ( rcl 2 + 1 )
+   x²
+   )
+   ÷
+   ( rcl 1 x² +
+   ( rcl 2 - 1 )
+   x²
+   )
+   )
+   lnx
+   ÷
+   4
+   )
+   sto 2
+   x⇌t
+   sto 1
+   rtn
+
+lbl p→r
+   inv stf 1
+   pgm 4 sbr
+   p→r
+   rtn

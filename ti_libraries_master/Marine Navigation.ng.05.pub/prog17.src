@@ -1,0 +1,132 @@
+Lbl A
+Pgm 16
+A
+INV SBR
+Lbl B
+Pgm 16
+B
+INV SBR
+Lbl C
+Pgm 16
+E'
+STO 02
+INV SBR
+Lbl D
+CP
+Prt
+STO 03
+sin
+x≥t 032
+Stflg 0
+RCL 03
+INV SBR
+Lbl E
+Pgm 16
+E'
+STO 04
+INV SBR
+Lbl A'
+Prt
+D.MS
+STO 08
+INV SBR
+Lbl tan
+(
+RCL 01
+sin
+×
+RCL 02
+sin
++
+RCL 01
+cos
+×
+RCL 02
+cos
+×
+RCL 03
+cos
+)
+INV sin
+INV SBR
+Lbl B'
+(
+RCL 08
+×
+15.042
++
+RCL 04
+-
+RCL 06
+)
+STO 09
+SBR tan
+STO 05
+(
+INV D.MS
+×
+100
+)
+D.MS
+Prt
+INV SBR
+Lbl C'
+CP
+(
+RCL 05
+cos
+×
+RCL 01
+cos
+)
+1/x
+STO 07
+(
+(
+(
+RCL 01
+sin
+×
+RCL 05
+sin
+)
++/-
++
+RCL 02
+sin
+)
+×
+RCL 07
+)
+INV cos
+Ifflg 0 161
+(
++/-
++
+360
+)
+(
+INV Stflg 0
+-
+RCL 09
+)
+x≥t 179
+(
+CE
++
+360
+)
+(
+INV D.MS
+×
+100
+)
+D.MS
+Prt
+Adv
+INV SBR
+Lbl D'
+CMs
+0
+Adv
+INV SBR

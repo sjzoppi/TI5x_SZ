@@ -1,0 +1,254 @@
+
+lbl A'
+   adv
+   sto 05
+   fix 9
+   421335
+   op 04
+   fix 4
+   rcl 05
+   op 06
+   inv sbr
+
+lbl B'
+   sto 07
+   fix 9
+   4316
+   op 04
+   fix 4
+   rcl 07
+   op 06
+   inv sbr
+
+lbl C'
+   sto 06
+   fix 9
+   4342
+   op 04
+   fix 4
+   rcl 06
+   op 06
+   inv sbr
+
+lbl D'
+   sto 08
+   fix 9
+   371336
+   op 04
+   fix 4
+   rcl 08
+   op 06
+   inv sbr
+   sto 11
+   fix 9
+   14413529
+   op 04
+   fix 4
+   rcl 11
+   op 06
+   inv sbr
+
+lbl A
+   adv
+   sto 18
+   fix 9
+   3715
+   op 04
+   fix 4
+   rcl 18
+   op 06
+   inv sbr
+
+lbl B
+   sto 10
+   fix 9
+   16243637
+   op 04
+   fix 4
+   rcl 10
+   op 06
+   inv sbr
+
+lbl C
+   adv
+   rcl 18
+   pause
+   +
+   (
+   (
+   ce
+   +/-
+   +
+   rcl 06
+   sto 00
+   rcl 07
+   )
+   exc 00
+   x⇌t
+   exc 00
+   p→r
+   x⇌t
+   exc 00
+   x⇌t
+   ÷
+   rcl 08
+   )
+   inv sin
+   =
+   sto 09
+   -
+   rcl 18
+   =
+   cos
+   ×
+   rcl 08
+   -
+   rcl 00
+   =
+   sto 17
+   rcl 09
+   sbr 222
+   sto 09
+   fix 9
+   3723
+   op 04
+   fix 4
+   rcl 09
+   op 06
+   +
+   rcl 05
+   =
+   -
+   cp
+   x≥t 229
+   0
+   +
+   360
+   =
+   cp
+   inv x≥t 222
+   sto 03
+   rcl 09
+   inv sbr
+   fix 9
+   2823
+   op 04
+   fix 4
+   rcl 03
+   op 06
+   inv sbr
+
+lbl D
+   fix 9
+   16243637
+   op 04
+   fix 4
+   rcl 10
+   op 06
+   pause
+   ÷
+   fix 9
+   2236
+   op 04
+   fix 4
+   rcl 17
+   op 06
+   =
+   sto 14
+   ×
+   rcl 11
+   =
+   sto 15
+   rcl 17
+   inv sbr
+   rcl 14
+   inv d.ms
+   x⇌t
+   fix 9
+   173717
+   op 04
+   fix 4
+   x⇌t
+   op 06
+   inv sbr
+
+lbl E
+   fix 9
+   21411727
+   op 04
+   fix 4
+   rcl 15
+   op 06
+   inv sbr
+   rcl 14
+   +
+   rcl 16
+   -
+   24
+   =
+   cp
+   x≥t 365
+   +
+   24
+   =
+   inv d.ms
+   x⇌t
+   fix 9
+   173713
+   op 04
+   fix 4
+   x⇌t
+   op 06
+   inv sbr
+
+lbl E'
+   x⇌t
+   fix 9
+   173716
+   op 04
+   fix 4
+   x⇌t
+   op 06
+   pause
+   d.ms
+   sto 16
+   rcl 15
+   sum 13
+   rcl 14
+   sum 12
+   rcl 12
+   inv d.ms
+   x⇌t
+   fix 9
+   3737
+   op 04
+   fix 4
+   x⇌t
+   op 06
+   inv sbr
+   fix 9
+   3721
+   op 04
+   fix 4
+   rcl 13
+   op 06
+   inv sbr
+
+lbl clr
+   fix 9
+   cms
+   deg
+   0
+   op 00
+   21
+   op 02
+   2724222337
+   op 03
+   0016133713
+   op 04
+   op 05
+   0
+   fix 4
+   adv
+   inv sbr
+   gto clr

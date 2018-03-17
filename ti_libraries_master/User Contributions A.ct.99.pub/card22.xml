@@ -1,0 +1,8 @@
+<carddef style="user">
+<label slot="titleleft">LANDING</label>
+<label slot="titleright">PO-22</label>
+<label slot="a">START</label>
+<label slot="b">FUEL</label>
+<label slot="c">ALT</label>
+<label slot="d">SPEED</label>
+</carddef>

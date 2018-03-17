@@ -1,0 +1,82 @@
+
+lbl B
+   (
+   prt
+   -
+   rcl 15
+   )
+   exc 02
+   exc 01
+   inv sbr
+
+lbl A'
+   (
+   ce
+   +
+   rcl 16
+   )
+   sto 15
+   prt
+   inv sbr
+
+lbl E
+   (
+   rcl 10
+   -
+   rcl 08
+   )
+   x⇌t
+   (
+   (
+   (
+   rcl 09
+   -
+   rcl 11
+   )
+   ×
+   rcl 05
+   ÷
+   rcl 04
+   )
+   inv p→r
+   pgm 10 sbr st*
+   -
+   rcl 02
+   )
+   p→r
+   (
+   ce
+   ÷
+   (
+   rcl 02
+   -
+   rcl 01
+   )
+   sin
+   )
+   x⇌t
+   rcl 01
+   p→r
+   (
+   ce
+   ÷
+   rcl 05
+   ×
+   rcl 04
+   +
+   rcl 09
+   )
+   sto 29
+   (
+   x⇌t
+   +/-
+   +
+   rcl 08
+   )
+   sto 28
+   adv
+   inv d.ms
+   prt
+   inv sbr
+   rcl 29
+   gto 102

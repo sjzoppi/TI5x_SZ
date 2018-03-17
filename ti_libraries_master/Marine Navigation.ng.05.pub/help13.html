@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-12 — Chart Initialization (LAT/LON) </H1>The constants listed below are necessary inputs to the short range <SPAN style="FONT-WEIGHT: bold">LAT/LON</SPAN> programs described in the pages following this program.&nbsp; The function of this routine is to store these constants in teh proper registers for use in the <SPAN style="FONT-WEIGHT: bold">LAT/LON</SPAN> programs.&nbsp; These constants depend on location, and once the constants fora&nbsp; particular area have been entered, tehy may be recorded on a blank card.&nbsp; Thereafter, the navigator need only load the data card, select this program, and press&nbsp;&nbsp;<SPAN class=yellowbutton>&nbsp;E&nbsp;</SPAN> to properly store the constants.<BR><BR>The constants are<BR>
+<TABLE style="WIDTH: 100%; TEXT-ALIGN: left" cellSpacing=2 cellPadding=2 border=1>
+<TBODY>
+<TR>
+<TD style="WIDTH: 52px; VERTICAL-ALIGN: top; LEFT: 2px; TOP: 2px">V </TD>
+<TD style="VERTICAL-ALIGN: top">= </TD>
+<TD style="VERTICAL-ALIGN: top">magnetic variation, the difference between true and magnetic north in decimal (DDD.ddd) degrees (Western variation is taken to be positive and eastern is assigned a negative value.) </TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>m</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">= </TD>
+<TD style="VERTICAL-ALIGN: top">nautical miles in a given interval of latitude (e.g., nautical miles per degree times number of degrees) </TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">λ<SUB>m</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">= </TD>
+<TD style="VERTICAL-ALIGN: top">nautical miles in a given interval of longitude </TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>1,2</SUB> </TD>
+<TD style="VERTICAL-ALIGN: top">= </TD>
+<TD style="VERTICAL-ALIGN: top">latitudes of objects 1 and 2 on a map (northern latitudes are given positive values and eastern longitudes are taken to be negative.) </TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">λ<SUB>1,2</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">= </TD>
+<TD style="VERTICAL-ALIGN: top">longitudes of objects 1 and 2 on a map. (Western longitudes are assigned positive values and eastern longitudes are taken to be negative.) </TD></TR></TBODY></TABLE><BR>
+<P>Accurate values for L<SUB>m</SUB> and λ<SUB>m</SUB> are provided by tables found in <SPAN style="FONT-STYLE: italic">Bowditch</SPAN> and elsewhere.&nbsp; These quantities vary, however one minute of latitude is approximately equal to&nbsp; one nautical mile (1° = 60 nautical miles) and one minute of Longitude may be estimated by taking the cosine of the latitude and expressing the result in nautical miles.&nbsp; If the navigator does not have access to the appropriate tables, he may enter the midpoint of the latitude interval he wishes to use and press <SPAN class=brownbutton>&nbsp;2nd&nbsp;</SPAN> <SPAN class=alttext>&nbsp;C'&nbsp;</SPAN>. The calculator will then store the constants described above using latitude and longitude intervals of one minute. (The calculator simply enters an average value and does not restrict the use to computation within the above intervals.)</P>
+<P><B>REMARKS:</B></P>The intervals used for determining L<SUB>m</SUB> and λ<SUB>m</SUB> must be equivalent (in degrees, not actual distance).
+</BODY>

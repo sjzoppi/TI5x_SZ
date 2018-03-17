@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>ML-13 — Curve Solution</H1>
+
+<P>Given an arc of a circle of radius <I>r</I>, angle <I>&theta;</I>; let the length of the
+arc be <I>s</I>, and the chord length be <I>c</I>. Given any 2 of these parameters, this
+program will compute the other 2. It can also compute the sector area and the segment
+area.
+
+<P>
+<IMG ALT="Curve Diagram" src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAV4AAADbCAYAAAAlIfnFAAAABHNCSVQICAgIfAhkiAAAAA
+lwSFlzAAASOwAAEjsBV4n0CwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vu
+PBoAAA/USURBVHic7d17mB11fcfxd3bZXIEAIeFiEjZouBhAoAiWayrl4SJBiqUCBggWFC
+MWpSAFRYIgFkuBAA+WpyACAtJiKoigT6q1JUHlUe4GDIjI1SIEISSUe//4njFL2GTP7pk5
+vzkz79fznCe7m3NmP8uSOTO/md/nB5IkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZ
+IkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSZIkSSqpjYHe1CFUvGGp
+A0gC4HhgLWAacCfwT2njSFL1/Sfwl8TB0JqJs6hgHvGq7MYSp+AbAOMbn48GRgHr9vl4LL
+HD6lnp9cuBV/p8/n/AklU8ngWeXOn57bIjcA1wF3Ac8EyCDGoTd7xKaSTwHmBq4zGR2Mlu
+CGzUeIxqPPc1Yse4HPgjsKzx8dLGY3njay/3eU1/1lvFY0zj798CngJ+23g82ufjXwNPt/
+IDr0b2hnEqsDXw1wV9H5WAO161w3hge2L8ciordraTgC7geeAh4HfEju33xM7vf4kj0Gca
+HxdpBLED3gSY0nj09vl4MrFz/ANwT+Nxb+PPB4BXW/z+FwJ/D4wD5gIfbXF7KjF3vMrbJG
+Inu12fPycSp/iLiB1s9lgMPEwcyZZdN/GG8b4+j22In/c1Yge8oPFYSLx5DMZsYDrxhnMu
+8EQeoVVO7njVim7itHj3xmNXYix2KXA3cXX+rsafDwCvp4lZqPWAbYEPADsDuwDrEG8oC4
+HbgPnAY6kCqnzc8WowuoAdgL8AdiN2tGOJneptjccdxE7nzUQZU+sihlR2JXbCuxNHxb8C
+bgV+QBwVp7iAJ6lDrAccAlxFjLO+AfwSuAA4CJiQLlrHmEaM384nhlxeAm4EPk6M6UoSU4
+FTiFPl14kx2GuBmcSFMg3dGGAG8HXiQuJrwA+BY/C/rVQ7U4lbme4ibqm6FziLGLfsTpir
+yrqIoYgLiYtprxMTKY7ESRRSZW0InEhc/HoLuA84DdgiZaia6iLGhC8kzjCWAlcQdzp4LU
+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
+">
+
+<P>First, enter any 2 of the following:
+<UL>
+<LI>Angle <I>&theta;</I> (in current angle units): <I>&theta;</I>
+<SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+<LI>Radius <I>r</I>: <I>r</I> <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+<LI>Arc length <I>s</I>: <I>s</I> <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+<LI>Chord <I>c</I>: <I>c</I> <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+</UL>
+
+<P>Now you can determine the remaining 2 unknowns and also the areas:
+<UL>
+<LI>Angle <I>&theta;</I> (in current angle units): <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+<SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+<LI>Radius <I>r</I>: <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">B´</SPAN>
+<LI>Arc length <I>s</I>: <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">C´</SPAN>
+<LI>Chord <I>c</I>: <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">D´</SPAN>
+<LI>Sector area <I>A</I>: <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+<LI>Segment area <I>a</I>: <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">E´</SPAN>
+</UL>
+
+<H3>Formulas Used</H3>
+
+<P><I>s</I> = <I>r&theta;</I> (in radians)
+
+<P><I>c</I> = 2<I>r</I> sin (<I>&theta;</I> ÷ 2)
+
+<P><I>A</I> = <I>sr</I> ÷ 2
+
+<P><I>a</I> = <I>sr</I> ÷ 2 - (<I>cr</I> ÷ 2) cos (<I>&theta;</I> ÷ 2)
+
+<P>If <I>c</I> and <I>s</I> are the only knowns, then <I>&theta;</I> is computed
+by Newton-Raphson iteration. Note this can take some time.
+
+<P>Registers used: 01-06.

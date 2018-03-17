@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">COURSE CORRECTION</label>
+<label slot="titleright">AV-17</label>
+<label slot="a">DOC(+L,-R)</label>
+<label slot="b">Dist</label>
+<label slot="c">DBSC</label>
+<label slot="d">MC<sub>i</sub></label>
+<label slot="e"><ArrowR/> MC<sub>to fly</sub></label>
+<label slot="cprime">D<sub>fln</sub></label>
+<label slot="dprime">MC<sub>fln</sub></label>
+<label slot="eprime"><ArrowR/> D<sub>to go</sub></label>
+</carddef>

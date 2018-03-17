@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">GENERAL WEIGHT AND BALANCE</label>
+<label slot="titleright">AV-19</label>
+<label slot="a">Wt</label>
+<label slot="b">Mmt Arm</label>
+<label slot="c"><ArrowR/> tot Wt</label>
+<label slot="d"><ArrowR/> tot Mmt</label>
+<label slot="e"><ArrowR/> C of G</label>
+<label slot="aprime">del Lst Pr</label>
+<label slot="bprime">Mmt</label>
+<label slot="cprime">gas gal<ArrowR/>lbs</label>
+<label slot="dprime">lbs <ArrowR/> kgs</label>
+<label slot="eprime">del Nxt Pr</label>
+</carddef>

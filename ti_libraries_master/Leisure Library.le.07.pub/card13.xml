@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">CRAPS</label>
+<label slot="titleright">LE-13</label>
+<label slot="a">Roll</label>
+<label slot="c">Bet</label>
+<label slot="d">Last Roll</label>
+<label slot="e">Seed</label>
+</carddef>

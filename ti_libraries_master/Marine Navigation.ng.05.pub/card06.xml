@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">COURSE TO STEER, SMG</label>
+<label slot="titleright">NG-06</label>
+<label slot="a">S</label>
+<label slot="b">CMG</label>
+<label slot="c">Dr, St</label>
+<label slot="d"><ArrowR/> C<sub>m</sub>; De<ArrowR/>C<sub>c</sub></label>
+<label slot="e"><ArrowR/> SMG</label>
+<label slot="aprime">V</label>
+<label slot="dprime">Dist <ArrowR/> <Delta/> t</label>
+<label slot="eprime">ts <ArrowR/> ETA</label>
+</carddef>

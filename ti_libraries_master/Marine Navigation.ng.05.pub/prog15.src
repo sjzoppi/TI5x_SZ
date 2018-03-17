@@ -1,0 +1,95 @@
+Lbl A
+Pgm 16
+A
+INV SBR
+Lbl B
+Pgm 16
+B
+INV SBR
+Lbl C
+Prt
+STO 02
+INV SBR
+Lbl D
+Prt
+STO 03
+INV SBR
+Lbl E
+Prt
+D.MS
+STO 04
+INV SBR
+Lbl A'
+Prt
+D.MS
+STO 05
+INV SBR
+Lbl B'
+(
+RCL 02
+-
+RCL 03
+)
+STO 08
+(
+(
+RCL 01
+-
+RCL 03
+)
+÷
+RCL 08
+)
+STO 10
+(
+x²
+×
+.558
++
+RCL 10
+×
+.379
++
+.024
+)
+STO 09
+(
+(
+RCL 04
+-
+RCL 05
+)
+×
+RCL 09
+)
+(
+(
+CE
++
+RCL 05
+)
++
+RCL 06
+÷
+15
+)
+CP
+x≥t 122
+(
+CE
++
+24
+)
+STO 00
+(
+Int
+-
+RCL 00
+)
++/-
+STO 07
+RCL 00
+INV D.MS
+Prt
+Adv
+INV SBR

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-15 — Jive Turkey</H1>
+
+<P>This game resembles the classic game of Hi-Lo; but only up to a point. This program sometimes
+  "jives" you.
+</P>
+
+<P>To play the game, you try to guess a number that the program has generated. It then tells you whether
+  your guess is high, low, or correct. However, at the beginning of the game you have to enter a
+  "probability of truth"", a number between 0 to 100. This entry determine how often the program "jives"
+  you.
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Enter the "probability of truth" as a number between 0 and 100 and press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter a seed number between 0 and 199017 and press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>. The program then
+    generates an integer between 0 and 100.
+
+  <LI>Enter a guess (0 to 100) press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>. If your guess is too high, 1 is displayed;
+    too low, -1 is displayed. If your guess is correct, the correct number is flashed in the display.
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN> to display how many guesses you have taken.
+</UL>
+
+</BODY>

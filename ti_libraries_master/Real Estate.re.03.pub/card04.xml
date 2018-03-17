@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">COMPOUND INTEREST</label>
+<label slot="titleright">RE-04</label>
+<label slot="a">N</label>
+<label slot="b">%I</label>
+<label slot="c">PV</label>
+<label slot="d">FV</label>
+<label slot="e"></label>
+<label slot="aprime">Snkg Fund</label>
+<label slot="bprime">Ann Due/FV</label>
+<label slot="cprime">Ord Ann/PV</label>
+<label slot="dprime">Ann Due/PV</label>
+<label slot="eprime">INIT</label>
+</carddef>

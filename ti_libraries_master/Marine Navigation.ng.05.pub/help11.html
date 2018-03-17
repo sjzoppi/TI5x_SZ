@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-11 — Rhumbline (Mercator) Navigation<BR></H1>Given the position coordinates of the starting and destination points specified by the navigator, this program is designed to compute the rhumbline course from the start to the destination.&nbsp; The routine will also give the distance between the two points along the rhumbline and keep track of the cumulative distance if more than one leg is computed.&nbsp; Another computation possible is the speed over the bottom (SMG) necessary to complete the voyage in a time interval (Δt) established by the navigator.<BR>
+<P>L<SUB>DR</SUB> = ( Δt × SMG × cos(CMG) ) / 60 + L<SUB>S</SUB>.</P>
+<P><BR></P>
+<TABLE style="HEIGHT: 149px; WIDTH: 751px; TEXT-ALIGN: left" cellSpacing=2 cellPadding=2 border=0>
+<TBODY>
+<TR>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; TEXT-ALIGN: right"><FONT size=+2>tan(CMG)<BR></FONT></TD>
+<TD style="VERTICAL-ALIGN: middle; TEXT-ALIGN: center"><FONT size=+1>=<BR></FONT></TD>
+<TD style="VERTICAL-ALIGN: top" colSpan=2>
+<P><FONT size=+1>[π ( λ<SUB>S</SUB> - λ<SUB>D</SUB>)/180] / </FONT></P>
+<P><FONT size=+1>[ ln[ tan(45° + L<SUB>D</SUB>/2) / tan(45° + L<SUB>S</SUB>/2)]</FONT></P></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: bold; TEXT-ALIGN: right" rowSpan=2><FONT size=+2><SPAN style="FONT-WEIGHT: normal">Dist</SPAN><SPAN style="FONT-WEIGHT: normal"> </SPAN></FONT></TD>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: bold; TEXT-ALIGN: center" rowSpan=2>
+<P><FONT size=+1>={<BR></FONT></P></TD>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: bold; TEXT-ALIGN: left">
+<P><FONT size=+1><SPAN style="FONT-WEIGHT: normal">60 | ( λ<SUB>D</SUB></SPAN><SUB><SPAN style="FONT-WEIGHT: normal"></SPAN></SUB><SPAN style="FONT-WEIGHT: normal"> - </SPAN></FONT><FONT size=+1><SPAN style="FONT-WEIGHT: normal">λ<SUB>s</SUB></SPAN></FONT><FONT size=+1><SPAN style="FONT-WEIGHT: normal">) cos(</SPAN> L<SUB>s</SUB> ) |<BR></FONT></P></TD>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; COLOR: rgb(0,102,0); TEXT-ALIGN: left"><FONT size=+1>if L<SUB>D</SUB> = </FONT><FONT size=+1>L<SUB>S</SUB> </FONT><FONT size=+1>&nbsp;</FONT> </TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: bold; TEXT-ALIGN: left">
+<P><FONT size=+1><SPAN style="FONT-WEIGHT: normal">60 | ( λ<SUB>D</SUB></SPAN><SUB><SPAN style="FONT-WEIGHT: normal"></SPAN></SUB><SPAN style="FONT-WEIGHT: normal"> - </SPAN></FONT><FONT size=+1><SPAN style="FONT-WEIGHT: normal">λ<SUB>s</SUB></SPAN></FONT><FONT size=+1><SPAN style="FONT-WEIGHT: normal">) cos(</SPAN> CMG<SUB></SUB> ) |</FONT></P></TD>
+<TD style="VERTICAL-ALIGN: middle; FONT-WEIGHT: normal; COLOR: rgb(0,102,0); TEXT-ALIGN: left"><FONT size=+1>elsewhere</FONT></TD></TR></TBODY></TABLE>
+<P>In the above equations<BR></P>
+<UL>
+<LI>L<SUB>S,D</SUB> = the latitudes of the starting and destination positions (Northern latitudes are considered positive and southern latitudes are given negative values.), and </LI></UL>
+<UL>
+<LI>λ<SUB>S,D</SUB> = the longitudes of the starting and destination positions. (Western latitudes are assigned positive values and eastern latitudes are considered to be negative.) </LI></UL>
+<P><B>REMARKS:</B></P>
+<OL>
+<LI>A rhumbline course should not pass through a pole 
+<LI>This routine loses accuracy near the poles<BR>
+<LI>Accuracy diminishes for legs less than 2 or 3 miles long </LI></OL>
+</BODY>

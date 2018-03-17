@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">DEAD RECKONING</label>
+<label slot="titleright">AV-09</label>
+<label slot="a">[DR <ArrowR/> S]</label>
+<label slot="b">L<sub>S</sub>(+N,-S)</label>
+<label slot="c">TC</label>
+<label slot="d">GS</label>
+<label slot="e"><ArrowR/>L<sub>DR</sub>(+N-S)</label>
+<label slot="aprime">tS</label>
+<label slot="bprime"><lambda/><sub>S</sub>(+W,-E)</label>
+<label slot="dprime">t<sub>DR</sub></label>
+<label slot="eprime"><ArrowR/><lambda/><sub>DR</sub>(+W,-E)</label>
+</carddef>

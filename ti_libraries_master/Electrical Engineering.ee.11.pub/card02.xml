@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">PHASE LOCKED LOOP</label>
+<label slot="titleright">EE-02</label>
+<label slot="a">G</label>
+<label slot="b"><omega/><sub>n</sub></label>
+<label slot="c">C</label>
+<label slot="d"><zeta/></label>
+<label slot="e">Execute(AF)</label>
+<label slot="aprime">N</label>
+<label slot="bprime">R<sub>1</sub></label>
+<label slot="cprime">R<sub>2</sub></label>
+<label slot="dprime"><ArrowR/> B</label>
+<label slot="eprime">Execute(PF)</label>
+</carddef>

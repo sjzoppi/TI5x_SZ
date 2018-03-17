@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-14 — Mars Lander</H1>
+
+<P>This program simulates landing a spacecraft on the Martian soil. When you
+  take control, the spacecraft is at an altitude of 2603 feet with a downward
+  velocity of 487 ft/src. These conditions are displayed as -487.2603. The
+  object is to make a perfect landing; that is, land with a final velocity of
+  zero at altitude zero. To accomplish this task, you have 630 units of fuel
+  to burn in one-second bursts. Each burn must be 0 to 65 units. Initially each
+  unit of fuel provides an acceleration of 1 ft/sec away from the surface. For
+  realism, the effect of the burn changes as the fuel is consumed and the mass
+  of the spacecraft changes. Gravitation of Mars is assumed to be 13 fr/sec.
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>, -487.2603 will be displayed as
+    the initial status of velocity and altitude.
+
+  <LI>Key in amount of burn (0 to 75), press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>.
+    The revised status will be displayed.
+
+  <LI>Repeat step above until you land or crash the spacecraft. A perfect
+    landing will be displayed as 0. A number flashing in the display or printed
+    with a question mark is the velocity at which you crashed.
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN> at any time to get the
+    current status.
+</UL>
+
+</BODY>

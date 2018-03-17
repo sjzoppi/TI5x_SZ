@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-06 — Predicting Freezing Levels, Lowest Usable Flight Level</H1>
+
+<P>This program contains two routines which operate independently:
+</P>
+
+<h2>Predicting Freezing Levels</h2>
+
+<P>This routine predicts the freezing level in feet above mean sea
+  level, given a known temperature (°F or °C) and altitude (feet above
+  MSL). The freezing level both in clear weather and in clouds is
+  predicted.</p>
+
+<h2>Lowest Usable Flight Level</h2>
+
+<P>This routine computes the lowest usable flight level (LUFL) given
+  the altimeter setting (ASET).
+</p>
+
+<table>
+  <tr><td><b>ALT</b><td>= altitude in feet</tr>
+  <tr><td><b>DFzL</b><td>= dry freezing level (clear weather)</tr>
+  <tr><td><b>WFzL</b><td>= wet freezing level (clouds)</tr>
+  <tr><td><b>ASET</b><td>= altimeter setting</tr>
+  <tr><td><b>LUFL</b><td>= lowest usable flight level</tr>
+</table>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.</DD></DT>
+
+  <h3>Freezing Levels:</h3>
+
+  <DT>Enter temperature
+    <DD>T(°C) <SPAN CLASS="alttext">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">T(°C)</dd>
+      or
+    <DD>T(°F) <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">T(°C)
+  </DT>
+
+  <DT>Enter altitude (ft)
+    <DD>ALT <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">ALT</DD>
+  </DT>
+
+  <DT>Calculate freezing levels
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">DFzL (ft)</DD>
+    or
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">WFzL (ft)</DD>
+  </DT>
+
+  <h3>Lowest usable flight level:</h3>
+
+  <DT>Enter altimeter setting (in Hg) and calculate LUFL
+    <DD>ASET <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">LUFL (ft)
+  </DT>
+</DL>
+
+<P>Registers used: 10-11
+
+</BODY>

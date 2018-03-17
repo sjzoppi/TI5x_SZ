@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-16 — Planet Location<BR></H1>
+<P>The four navigational planets (Venus, Mars, Jupiter, and Saturn) are very helpful to the navi¬gator when they are visible during either a.m. or p.m. twilight. The planets generally appear among the brighter objects in the sky emitting a warm, brilliant, steady light that distinguishes them from stars which emit a bluish, twinkling light.</P>
+<P>The planet location program is important for three reasons:</P>
+<OL style="MARGIN-LEFT: 40px">
+<LI>It tells the navigator which planets he will have available (i.e., above the horizon). 
+<LI>It enables the navigator to distinguish the navigational planets from stars. 
+<LI>It tells the navigator approximately where to look, and how to initially adjust his sextant to find the planets.<BR></LI></OL>
+<P>This program is designed to be used by itself or in conjunction with the <SPAN style="FONT-WEIGHT: bold">TIME OF SUNSET/ SUNRISE/TWILIGHT</SPAN> program. When used with NG-15, the navigator does not need to reenter the coordinates and time of his dead reckoning position.</P>
+<P>The Greenwich hour angle (GHA) of the desired planet should be extracted for the whole hours of GMT for a.m. or p.m. twilight of the day of observation. Information on how to extract data for planets from the Nautical Almanac is found on pages 79-80. Usually, the navigator of slower yachts will obtain sufficient accuracy if he uses the GMT of the previous day's a.m. or p.m. twilight for his entry. The increments (minutes and seconds) of the previous day's GMT are entered in step 5. However, the navigator of faster vessels, particularly those steaming on east-west courses, would be advised to use NG-15 to obtain a more accurate estimate of GMT. Navigators on vessels of this type should also estimate the location of the planets every day. Since the location of the planets changes relatively slowly, particularly for smaller vessels such as yachts under sail, navigators on these vessels need only predict the location of planets every several days.</P>
+<P>The skipper of a yacht may want to estimate the location of the planets for the duration of a voyage. The best way to do this is to obtain planet location data for the mid-week of each expected week of a voyage. The navigator, of course, will have to project his vessel's progress (when sailing the great circle route, program NG-26 may be of use here) and assume a DR position for the mid-week of each week of the trip. As long as the vessel's actual progress is within several hundred miles of the planning DR, the planet data will be sufficiently accurate to help the navigator locate the bodies.</P>
+<P>The print cradle can be useful, particularly when forecasting the positions of the planets for an extended trip.</P>
+<P>The calculations performed by this program are:<BR></P>
+<DIV style="MARGIN-LEFT: 40px">
+<P>LHA = GHA - λ<SUB>DR</SUB> * ( υ + 15) MS</P>
+<P>Dec' = Dec + ( δ × MS)</P>
+<P>HC = sin<SUP>-1</SUP><BIG>[</BIG> <BIG><SPAN style="COLOR: rgb(51,51,255)">(</SPAN></BIG> sin( L<SUB>DR</SUB> ) * sin( Dec' ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> + <BIG><SPAN style="COLOR: rgb(51,51,255)">(</SPAN></BIG> cos( L<SUB>DR</SUB> ) * cos( Dec' ) * cos( LHA ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> <BIG>]</BIG></P>
+<P>Zn = cos<SUP>-1</SUP><BIG>[</BIG> <BIG><SPAN style="COLOR: rgb(51,51,255)">(</SPAN></BIG> sin(Dec') - sin( L<SUB>DR</SUB> ) * sin( Hc ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> / <BIG style="COLOR: rgb(51,51,255)">(</BIG> cos(Hc) * cos( L<SUB>DR</SUB> ) <BIG><SPAN style="COLOR: rgb(51,51,255)">)</SPAN></BIG> <BIG>]</BIG></P></DIV>
+<P>The variables used in the above equation are:</P>
+<TABLE style="MARGIN-LEFT: 40px">
+<TBODY>
+<TR>
+<TD style="VERTICAL-ALIGN: top">λ<SUB>DR</SUB></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">dead reckoning longitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">L<SUB>DR</SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">dead reckoning latitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">MS<SUB></SUB><BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">minutes and seconds of GMT at DR position<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">υ, δ<SUB></SUB> </TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">corrections taken from tables<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">GHA<BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">Greenwich hour angle<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">LHA<SUB></SUB></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">Local hour angle<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">Dec</TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">Declination of planet<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">Hc<BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">estimated altitude<BR></TD></TR>
+<TR>
+<TD style="VERTICAL-ALIGN: top">Zn<BR></TD>
+<TD style="VERTICAL-ALIGN: top">=<BR></TD>
+<TD style="VERTICAL-ALIGN: top">estimated azimuth<BR></TD></TR></TBODY></TABLE>
+<P>REMARKS</P>
+<OL>
+<LI>If the navigator obtains a negative altitude, that means that the particular planet at the time is below the visible horizon and obviously will not be available for use. 
+<LI>The navigator using a vessel's compass to locate planets should be aware of any significant variation and/or deviation in these instruments.<BR></LI></OL>
+</BODY>

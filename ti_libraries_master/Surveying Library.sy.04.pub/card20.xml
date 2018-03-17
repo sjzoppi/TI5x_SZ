@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">THREE POINT RESECTION</label>
+<label slot="titleright">SY-20</label>
+<label slot="a">A<sub>N</sub>, A<sub>E</sub></label>
+<label slot="b">B<sub>N</sub>,Az<sub>BA</sub>,D<sub>BA</sub></label>
+<label slot="c">C<sub>N</sub>,Az<sub>CA</sub>,D<sub>CA</sub></label>
+<label slot="d">P1</label>
+<label slot="e">P2</label>
+<label slot="aprime"><ArrowR/> Az<sub>AP</sub>,D<sub>AP</sub></label>
+<label slot="bprime"><ArrowR/> Az<sub>BP</sub>,D<sub>BP</sub></label>
+<label slot="cprime"><ArrowR/> Az<sub>CP</sub>,D<sub>CP</sub></label>
+<label slot="dprime"><ArrowR/> P<sub>N</sub>, P<sub>E</sub></label>
+<label slot="eprime">Code No.</label>
+</carddef>

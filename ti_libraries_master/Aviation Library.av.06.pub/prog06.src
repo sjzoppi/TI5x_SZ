@@ -1,0 +1,61 @@
+
+lbl clr
+   clr
+   inv sbr
+   gto clr
+
+lbl A'
+   -
+   32
+   =
+   ÷
+   1.8
+   =
+
+lbl A
+   sto 10
+   fix 2
+   inv sbr
+
+lbl B
+   sto 11
+   fix 0
+   inv sbr
+
+lbl D
+   4
+   ÷
+   3
+   ×
+
+lbl C
+   rcl 10
+   ×
+   500
+   +
+   rcl 11
+   =
+   fix 0
+   inv sbr
+
+lbl E
+   ×
+   2
+   +/-
+   +
+   60.32
+   =
+   inv ee
+   fix 0
+   ee
+   inv ee
+   cp
+   inv x≥t y**x
+   ×
+   500
+   +
+
+lbl y**x
+   18000
+   =
+   inv sbr

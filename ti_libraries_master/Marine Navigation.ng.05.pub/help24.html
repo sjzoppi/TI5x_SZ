@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-24 — Time of Local Apparent Noon and Sun Lines<BR></H1>
+<P>On days when the sun and the horizon are visible, it is possible to obtain a running fix by combining an a.m. and p.m. sun line and a 'fix from observing the sun at local apparent noon (LAN). LAN is the GMT of the sun's passage over your meridian of longitude. By careful observation and timing of the sun at LAN, the navigator can calculate both latitude and longitude.</P>
+<P>The a.m. and p.m. sun lines in this program refer to those times when, because of the sun's travels around the heavens, the most accurate running fixes from morning and afternoon observations will occur. With the a.m. and p.m. sun lines, however, the navigator can make the observations several minutes earlier or later than the indicated times without noticeably affect¬ing the accuracy of the resulting lines of position.</P>
+<P>When using this program to predict the approximate time for a.m. and p.m. lines and LAN, the navigator should use as his dead reckoning (DR) longitude and latitude the position he expects to be around LAN. The declination, since it changes very little during a day, should be the declination for the whole hour nearest LAN. If the DR position (particularly the longitude) is uncertain, the navigator should compensate by beginning his LAN observation several minutes early. In any case, it is a good idea to begin observing LAN a little before the indicated time, since the sun must be observed and timed during its actual meridian passage.</P>
+<P>This program requires the navigator to obtain the equation of time (EQ) for the sun for 12 hours from the bottom of the sun-moon page of the Almanac (table 1) for the appropriate day. The navigator must also check the time of the sun's meridian passage (Mer) t6 see if the sun on that day arrived at Greenwich a little before or after noon (1200 hours).</P>
+<P>Be careful when handling this data to remember (a) to copy down any zeroes in the minutes or seconds; and (b) to place the indicated decimal point in front of the equation of time when it is entered.</P>
+<P>The equations used by this program are:</P>
+<UL>
+<LI>LAN = ( λ<SUB>DR</SUB> / 15 ) + 12 - EQ 
+<LI>p.m. sun sight = LAN + | L<SUB>DR</SUB> - EQ | / 15 
+<LI>a.m. sun sight = LAN - |L<SUB>DR</SUB> - EQ | / 15<BR></LI></UL><BR>The variables are defined as: 
+<DIV style="MARGIN-LEFT: 40px">
+<DL>
+<DT>L<SUB>DR</SUB> 
+<DD>= latitude of dead reckoning position<BR>
+<DT>λ<SUB>DR</SUB> 
+<DD>= longitude of dead reckoning position<BR>
+<DT>EQ<SUB></SUB> 
+<DD>= equation of time for sun for 12 hours<BR>
+<DT>LAN<SUB></SUB> 
+<DD>= local apparent noon </DD></DL></DIV>
+<P><BR></P>
+<P><SPAN style="FONT-WEIGHT: bold">REMARKS</SPAN>:</P>
+<OL>
+<LI>Step 7 is completed only if the meridian passage occurred after 12 hours 00 minutes GMT.<BR><BR></LI></OL>
+</BODY>

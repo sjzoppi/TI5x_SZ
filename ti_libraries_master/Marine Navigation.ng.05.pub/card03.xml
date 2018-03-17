@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">HORIZON DISTANCES</label>
+<label slot="titleright">NG-03</label>
+<label slot="a">EYE</label>
+<label slot="b">Hs</label>
+<label slot="c"><ArrowR/> D<sub>h</sub>; ft</label>
+<label slot="d"><ArrowR/> D<sub>b</sub>; ft</label>
+<label slot="e"><ArrowR/> D; ft</label>
+<label slot="aprime">H</label>
+<label slot="bprime">IC</label>
+<label slot="cprime"><ArrowR/> D<sub>v</sub>; fr</label>
+<label slot="dprime"><ArrowR/> D<sub>d</sub>; fr</label>
+<label slot="eprime">D <ArrowR/> H</label>
+</carddef>

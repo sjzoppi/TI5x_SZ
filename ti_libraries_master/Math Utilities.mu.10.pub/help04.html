@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+.tdletter
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+.tdnumber
+{
+  padding:0em .5em .5em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>MU-04 — Printer Formatting</H1>
+
+<P>Computer print statements which combine alpha messages and data on
+  the same line can be simulated when this program is used in
+  conjunction with Program MU-03, Alpha Messages. This is accomplished
+  in three steps:
+
+  <UL>
+    <LI>Store the alpha message, leaving space for data, using MU-03.
+    <LI>Enter data into the line using the format statement of this
+      program.
+    <LI>Print the combined line.
+  </UL>
+
+<UL>
+  <LI>Store alpha message using MU-03, leaving space for data.
+
+  <LI>Select
+    program, <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>
+    <SPAN CLASS="whitebutton">04</SPAN>
+
+  <LI>Enter data, press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN> to place it
+    in T-register.
+
+  <LI>Enter format statement, for no leading zeros
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> or with leading zeros
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+  <LI>Print line by pressing, <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+</UL>
+
+<P>The format statement is [skip][left].[right][line]
+
+  <UL>
+    <LI>[skip], number of spaces data is intended from left side of tape.
+    <LI>[left], number of digits to left of decimal.
+    <LI>[right], number of decimal digits.
+    <LI>[line], line number (same as corresponding alpha message)
+  </UL>
+
+<P>Registers: 00 - 07
+
+</BODY>

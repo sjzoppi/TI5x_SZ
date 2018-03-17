@@ -1,0 +1,94 @@
+
+lbl B
+   (
+   prt
+   d.ms
+   ×
+   rcl 12
+   )
+   prt
+   inv sbr
+
+lbl D
+   (
+   prt
+   d.ms
+   ×
+   rcl 14
+   )
+   prt
+   inv sbr
+
+lbl B'
+   +/-
+   x⇌t
+   rcl 13
+   p→r
+   sto 18
+   rcl 11
+   x⇌t
+   sto 17
+   rcl 10
+   p→r
+   sum 18
+   (
+   rcl 17
+   +
+   x⇌t
+   )
+   x⇌t
+   rcl 18
+   inv p→r
+   x⇌t
+   sto 20
+   x⇌t
+   (
+   ce
+   +
+   cp
+   inv x≥t 066
+   0
+   -
+   360
+   )
+   inv x≥t 056
+   sto 17
+   rcl 20
+   sto 18
+   adv
+   prt
+   inv sbr
+   rcl 17
+   prt
+   adv
+   inv sbr
+
+lbl D'
+   +/-
+   x⇌t
+   rcl 15
+   gto 028
+
+lbl A
+   prt
+   exc 13
+   exc 12
+   inv sbr
+
+lbl E
+   prt
+   exc 15
+   exc 14
+   inv sbr
+
+lbl E'
+   pgm 27 e'
+   inv sbr
+
+lbl C'
+   rcl 17
+   sto 10
+   rcl 18
+   sto 11
+   0
+   inv sbr

@@ -1,0 +1,65 @@
+#! /bin/sh
+
+if test "$1" = ""; then
+    echo Usage: $0 \<prog\>
+    exit 1
+fi
+
+# convert to UNIX format
+
+dos2unix $1 > /dev/null 2>&1
+
+# convert to lowercase
+
+sed -i 's/\(.*\)/\L\1/' $1
+
+# removes empty lines
+
+sed -i '/^$/d' $1
+
+# indent 3 characters
+
+sed -i 's/^ *//g; s/^\(.*\)/   \1/g' $1
+
+# remote trailing white spaces
+
+sed -i 's/\([^ ]*\) *$/\1/g' $1
+
+# replace some commands
+
+sed -i \
+    "s/ \*/ ×/g;
+     s/ge/x≥t/g;
+     s/eq/x=t/g;
+     s, /, ÷,g;
+     s/x%t/x⇌t/g;
+     s,x/t,x⇌t,g;
+     s,ixi,|x|,g;
+     s/x2/x²/g;
+     s/yx/yˣ/g;
+     s/sqr/√x/g;
+     s/s+/∑+/g;
+     s/pi/π/g;
+     s,p/r,P→R,g;
+     s/^ *lbl a$/lbl A/g;
+     s/^ *lbl b$/lbl B/g;
+     s/^ *lbl c$/lbl C/g;
+     s/^ *lbl d$/lbl D/g;
+     s/^ *lbl e$/lbl E/g;
+     s/^ *lbl a'$/lbl A'/g;
+     s/^ *lbl b'$/lbl B'/g;
+     s/^ *lbl c'$/lbl C'/g;
+     s/^ *lbl d'$/lbl D'/g;
+     s/^ *lbl e'$/lbl E'/g;
+     s/^ *lbl a /lbl A /g;
+     s/^ *lbl b /lbl B /g;
+     s/^ *lbl c /lbl C /g;
+     s/^ *lbl d /lbl D /g;
+     s/^ *lbl e /lbl E /g;
+     s/^ *lbl a' /lbl A' /g;
+     s/^ *lbl b' /lbl B' /g;
+     s/^ *lbl c' /lbl C' /g;
+     s/^ *lbl d' /lbl D' /g;
+     s/^ *lbl e' /lbl E' /g;
+     s/^ *lbl /\nlbl /g;
+     " $1

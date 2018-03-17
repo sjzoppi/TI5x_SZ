@@ -1,0 +1,86 @@
+#! /usr/bin/python
+
+import getopt
+import sys
+import os
+import string
+
+file = sys.argv[1]
+
+print file
+
+content = open(file, 'r').readlines()
+newcontent = []
+
+style = [ '<STYLE TYPE="text/css">',
+          '.yellowbutton',
+          '  {',
+          '    background : #ce8c3b;',
+          '    padding : 1pt;',
+          '    border : 1pt solid black;',
+          '    font-weight : bold;',
+          '  }',
+          '',
+          '.brownbutton',
+          '  {',
+          '    background : #4e3836;',
+          '    padding : 1pt;',
+          '    border : 1pt solid black;',
+          '    font-weight : bold;',
+          '    color : #ac9e80;',
+          '  }',
+          '',
+          '.whitebutton',
+          '  {',
+          '    background : #ac9e80;',
+          '    padding : 1pt;',
+          '    border : 1pt solid black;',
+          '    font-weight : bold;',
+          '    color : #222424;',
+          '  }',
+          '',
+          '.alttext',
+          '  {',
+          '    background : #222424;',
+          '    padding : 1.5pt;',
+          '    font-weight : bold;',
+          '    color : #ac9e80;',
+          '  }',
+          '',
+          '.deflist DT',
+          '  {',
+          '    display : compact;',
+          '    font-weight : bold;',
+          '  }',
+          '.deflist DD',
+          '  {',
+          '    margin-left : 4em;',
+          '  }',
+          '',
+          '.display',
+          '  {',
+          '     color : red;',
+          '     font-weight : bold;',
+          '     text-align : right;',
+          '     margin-right : 2em;',
+          '  }',
+          '</STYLE>' ]
+
+is_style=False
+
+for c in content:
+    if string.find(string.lower(c), "<style") != -1:
+        is_style=True
+        for s in style:
+            newcontent.append(s + "\n")
+
+    if not is_style:
+        newcontent.append(c);
+
+    if string.find(string.lower(c), "</style") != -1:
+        is_style=False
+
+# write new content
+f = open(file, "w+");
+f.writelines(newcontent)
+f.close()

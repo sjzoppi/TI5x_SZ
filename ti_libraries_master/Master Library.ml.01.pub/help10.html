@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>ML-10 — Simpson's Approximation (Discrete)</H1>
+
+<UL>
+  <LI>First enter n and press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+  <LI>Enter h and press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+  <LI>Start with f<sub>0</sub> <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+    <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  <LI>Then enter f<sub>0</sub> .. f<sub>n</sub>, each value followed by
+    <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  <LI>Then calculate integral by pressing
+    <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+</UL>
+
+<H3>Formulas Used</H3>
+
+<P><SPAN style="font-size:200%">&int;</SPAN><sub>x<sub>0</sub>..x<sub>n</sub></sub> f(x) dx &asymp; (h / 3) (f<sub>0</sub> +
+  4f<sub>1</sub> + 2f<sub>2</sub> + 4f<sub>3</sub> + 2f<sub>4</sub>
+  + ... 2f<sub>n-2</sub> + 4f<sub>n-1</sub> +f<sub>n</sub>)
+
+<P>Where h = (x<sub>n</sub> - x<sub>0</sub>) / n, x<sub>n</sub> > x<sub>0</sub>
+
+<P>Registers used: 01-05 + 06 through n+6 for f(x) values
+
+</BODY>

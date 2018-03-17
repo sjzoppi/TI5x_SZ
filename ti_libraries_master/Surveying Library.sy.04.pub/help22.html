@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-22 — Earthwork Volume</H1>
+
+<P>This program computes the volume of materials to be excavated or
+  embanked on an engineering project. At each cross section station,
+  the elevation and distance from the centerline of each point
+  (corner) of the cross-sectional figure is entered, along with the
+  interval from the last station; and the end area, incremental
+  volume, and cumulative volume are computed. Although not exact, this
+  method is the most often used since errors tend to be on the high
+  side.
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>. Displayed 1.
+
+  <LI>For each point:
+    <UL>
+      <LI>Enter elevation, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Enter distance from centerline, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    </UL>
+
+  <LI>For each station:
+    <UL>
+      <LI>Enter interval from previous station, press
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Calculate, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    </UL>
+
+  <LI>Optional, display results:
+    <UL>
+      <LI>Display station area, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+      <LI>Display station volume, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>Display cumulative volume, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>Display next station number, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    </UL>
+
+</UL>
+
+Registers: 01-12
+</BODY>

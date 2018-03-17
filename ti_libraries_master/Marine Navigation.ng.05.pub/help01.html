@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-01 — Navigation Library Diagnostic</H1>
+<DL class=deflist>
+<DT><SPAN class=brownbutton>&nbsp;SBR&nbsp;</SPAN> <SPAN class=yellowbutton>&nbsp;=&nbsp;</SPAN>
+<DD>Run diagnostic
+<DD>
+<P>This program performs the following functions separately.</P>
+<OL>
+<LI>Diagnostic/Library Module Check
+<LI>Linear Regression Initialization </LI></OL>
+<H4>Diagnostic/Library Module Check</H4>
+<P>This routine checks the operation of your calculator and most of its functions, including conversion and statistics functions that are preprogrammed in the calculator, trigonometric functions, data register operations, program transfers, and comparisons. It also uses other navigation library programs to verify that the module is connected and operating correctly. If this diagnostic routine runs successfully, in approximately 15 seconds the number 5. will be displayed. If the calculator is attached to a PC-100A print cradle, the following will be printed: <BR><BR>NAVIGATION <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. <BR><BR>If there is a malfunction in the calculator or the Solid State Software module, a flashing number will be displayed. Refer to Appendix A of the Owner's Manual for an explanation of the various procedures to be followed when you have difficulties. <BR><BR>When you simply want to know which of your Solid State Software modules is in the calculator without physically looking at it, you can call the Library Module check portion of the routine directly. If the Navigation Library Module is in the calculator, the number 5. will be displayed. This number is unique to the Navigation Library (other optional libraries use other identifying digits).</P>
+<DT><SPAN class=brownbutton>&nbsp;SBR&nbsp;</SPAN> <SPAN class=yellowbutton>&nbsp;CLR&nbsp;</SPAN>
+<DD>Clear memories 01-06 and display and T registers to initialize for statistics operations.
+<DD>
+<H4>Linear Regression Initialization</H4>
+<P>This routine initializes the calculator for linear regression by clearing data registers R01 through R06 and the T-register. It should be used whenever linear regression or other built-in statistics functions are to be started. You can also use the routine at any time to clear these registers selectively without disturbing any other registers.</P></DD></DL>
+</BODY>

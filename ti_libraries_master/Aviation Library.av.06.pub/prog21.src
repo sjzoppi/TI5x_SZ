@@ -1,0 +1,112 @@
+
+lbl A
+   sbr 067
+   1
+   sbr 082
+   inv sbr
+
+lbl B
+   sbr 067
+   .3048
+   sbr 082
+   inv sbr
+
+lbl C
+   sbr 067
+   1000
+   sbr 082
+   inv sbr
+
+lbl D
+   sbr 067
+   1852
+   sbr 082
+   inv sbr
+
+lbl E
+   sbr 067
+   1609.344
+   sbr 082
+   inv sbr
+
+   ifflg 0 078
+   stflg 0
+   sto 15
+   sto 16
+   inv sbr
+
+   inv stflg 0
+   inv sbr
+
+   ifflg 0 092
+   inv prd 16
+   rcl 16
+   inv sbr
+
+   prd 16
+   rcl 15
+   inv sbr
+
+lbl A'
+   ifflg 1 cp
+   (
+   (
+   ce
+   -
+   32
+   )
+   ÷
+   1.8
+   )
+   inv sbr
+
+lbl cp
+   inv stflg 1
+   (
+   ce
+   ×
+   1.8
+   +
+   32
+   )
+   inv sbr
+
+lbl B'
+   sto 15
+   6
+   sbr 179
+   inv sbr
+
+lbl C'
+   sto 15
+   .26417786
+   sbr 179
+   inv sbr
+
+lbl D'
+   sto 15
+   .45359243
+   sbr 179
+   inv sbr
+
+lbl E'
+   stflg 1
+   inv sbr
+
+; 179
+   ifflg 1 188
+   prd 15
+   rcl 15
+   inv sbr
+
+; 188
+   inv stflg 1
+   inv prd 15
+   rcl 15
+   inv sbr
+
+lbl clr
+   0
+   inv fix
+   inv sbr
+   gto clr

@@ -1,0 +1,41 @@
+; debug SY-05
+
+; t-register store in context for ( )?
+; this programs clear T-register at exit as the emulator.
+; ? a bug in the SY ROM listing? In the doc?
+
+    5
+    x<>t
+
+    2 6 1 . 5 2 1 5 1 0 2
+    sto 11
+
+    7 4
+    sto 05
+
+lbl B'
+    ( 1 +/- ×
+
+lbl B
+    rcl 5 + 1 8 0
+    sbr nop
+    sto 12
+    inv dms
+    rtn
+
+lbl nop
+    +
+    rcl 11
+jump1:
+    cp               ; #026  If CP is not done (at least first run) all is ok.
+    -
+    x≥t jump2
+    0 +
+jump2:
+    3 6 0            ; #033
+    )
+    inv x≥t jump1
+    rtn
+
+; jump2 052
+; jump1 045

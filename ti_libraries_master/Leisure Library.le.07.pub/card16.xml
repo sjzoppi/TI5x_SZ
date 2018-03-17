@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">HANGMAN</label>
+<label slot="titleright">LE-16</label>
+<label slot="a">Left</label>
+<label slot="b">Center</label>
+<label slot="c">Right</label>
+<label slot="d">Enter</label>
+<label slot="e">Word Guess</label>
+</carddef>

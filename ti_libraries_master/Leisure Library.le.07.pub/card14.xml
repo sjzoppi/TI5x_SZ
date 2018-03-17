@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">MARS LANDER</label>
+<label slot="titleright">LE-14</label>
+<label slot="a">Burn</label>
+<label slot="b">Fuel</label>
+<label slot="c">Vel. Alt</label>
+<label slot="e">Start</label>
+</carddef>

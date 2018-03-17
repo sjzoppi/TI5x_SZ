@@ -1,0 +1,139 @@
+
+lbl A
+   99
+   sto 05
+   10
+   sto 03
+   87
+   sto 04
+   rc* 04
+   exc ind 05
+   st* 04
+   op 34
+   op 35
+   dsz 3 014
+   inv sbr
+
+lbl E
+   6
+   op 17
+   cms
+   9
+   op 17
+   77
+   sto 02
+   76
+   sto 01
+   rcl 89
+   sto 00
+   rc* 01
+   int
+   ÷
+   10
+   =
+   sto 06
+   int
+   sto 05
+   inv sum 06
+   10
+   prd 06
+   rcl 05
+   sto 07
+   rc* 02
+   sto 09
+   .1
+   x⇌t
+   rc* 01
+   inv int
+   x=t 129
+   rcl 05
+   sbr 154
+   cp
+   rcl 06
+   x=t 134
+   sto 07
+   sbr 154
+   rcl 05
+   sto 07
+   rc* 02
+   +/-
+   sto 09
+   rcl 06
+   sbr 154
+   rcl 06
+   sto 07
+   rcl 05
+   sbr 154
+   gto 134
+   rcl 06
+   sbr 154
+   2
+   +/-
+   sum 01
+   sum 02
+   dsz 0 050
+   10
+   op 17
+   a
+   pgm 19 e
+   gto e
+   sto 08
+   rcl 87
+   -
+   10
+   =
+   ×
+   rcl 07
+   -
+   rcl 87
+   sto 04
+   prd 04
+   +
+   rcl 08
+   +
+   deg
+   9
+   +
+   rcl 07
+   ×
+   1
+   nop
+   0
+   =
+   sto 03
+   sum 04
+   nop
+   .2
+   x⇌t
+   rc* 01
+   inv int
+   nop
+   x≥t 207
+   rcl 09
+   sm* 03
+   inv sbr
+
+   x⇌t
+   2
+   ×
+   rcl 78
+   ×
+   rcl 09
+   ×
+   deg
+   π
+   =
+   sto 88
+   .3
+   x=t 233
+   rcl 88
+   +/-
+   1/x
+   sto 88
+   deg
+   rcl 88
+   sm* 04
+   inv sbr
+
+   nop
+   nop

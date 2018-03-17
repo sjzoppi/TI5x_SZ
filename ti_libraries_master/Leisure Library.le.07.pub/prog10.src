@@ -1,0 +1,131 @@
+;+
+; Partial recreation of the "Leisure Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+; Memo Pad
+
+lbl A
+    x⇌t
+    0
+    eq 106
+    1
+    gto 30
+
+lbl B
+    x⇌t
+    0
+    x=t 111
+    2
+    gto 30
+
+lbl C
+    x⇌t
+    0
+    x=t 116
+    3 ( ce + 3 × ( x⇌t - 1 ) )
+    x⇌t 5
+    x≥t 81
+    1 2
+    x≥t 86
+    2 0
+    x≥t 91
+    2 6
+    x≥t 96
+    2 0
+    gto 124
+
+lbl D
+    x⇌t 6
+    x≥t 77
+    3
+    gto 98
+
+    1 gto 98
+
+    1 2 gto 98
+
+    1 5 gto 98
+
+    1 7 gto 98
+
+    2 0 ( ce + x⇌t ) gto 124
+
+    5 7 gto 124
+
+    4 0 gto 124
+
+    7 1 gto 124
+
+lbl E
+    0
+    x⇌t
+    1 0 0 prd 1
+    x⇌t
+    sum 1
+    rcl 1
+    dsz 3 149
+    op 20
+    st* 0
+    5 sto 3
+    0 sto 1
+    cp
+    op 32
+    rcl 2
+    inv x=t 176
+    iff 1 169
+    rcl 0
+    sto 3
+    sbr 177
+    5 sto 3
+    2 0 sto 2
+    rtn
+
+    4 sto 1
+    rc* 3
+    op* 1
+    op 33
+    dsz 1 180
+    op 5
+    op 0
+    rtn
+
+lbl A'
+    rcl 3
+    x⇌t 5
+    x=t 224
+    op 20
+    2
+    prd 3
+    ( rcl 3 inv log ee inv ee × 0 exc 1 )
+    st* 0
+    ( rcl 2 ÷ 5 )
+    int sum 0
+    gto 158
+
+lbl B'
+    3 sto 3
+    rcl 0
+    x⇌t
+    4 sum 3
+    sbr 177
+    4 sum 3
+    rcl 3
+    inv x=t 244
+    5 sto 3
+    0
+    rtn
+
+lbl D'
+    ( ( ce × 4 - 1 ) sto 3 + 4 )
+    gto 243
+
+lbl clr
+    cms
+    inv stf 1
+    1
+
+lbl C'
+    ( ce × 4 - 1 )
+    sto 0
+    0 sto 1
+    gto 169

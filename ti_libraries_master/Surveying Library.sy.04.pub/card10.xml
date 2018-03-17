@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">HORIZ. CURVE DESIGN (1)</label>
+<label slot="titleright">SY-10</label>
+<label slot="a">Radius</label>
+<label slot="b">Tan Dist</label>
+<label slot="c">Ext Dist</label>
+<label slot="d"><intersect/> Degree</label>
+<label slot="e"><intersect/> Length</label>
+<label slot="aprime"><Delta/></label>
+<label slot="bprime">[Arc def.] <ArrowR/></label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

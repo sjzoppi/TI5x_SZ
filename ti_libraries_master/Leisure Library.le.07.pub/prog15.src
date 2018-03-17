@@ -1,0 +1,90 @@
+;+
+; Partial recreation of the "Leisure Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+; registers
+; 01  -  number to find
+; 02  -  my guess
+
+lbl A
+    sto 4
+    prt
+    rtn
+
+lbl B
+    sto 9
+    prt
+    ( sbr dms × 1 0 0 )
+    int
+    sto 1
+    0
+    rtn
+
+lbl clr
+    fix 9
+    0 sto 5
+    rtn
+
+lbl E
+    inv stf 1
+    sto 2
+    prt
+    op 25
+    sbr dms
+    ( ce × 1 0 0 )
+    int
+    sto 3
+    x⇌t
+    rcl 4
+    inv x≥t sto    ; do not lie
+    stf 1
+
+lbl sto
+    rcl 2
+    x⇌t
+    rcl 1
+    x=t cos
+    inv x≥t tan
+    iff 1 √x
+
+lbl x²
+    1
+    prt
+    adv
+    rtn
+
+lbl tan
+    iff 1 x²
+
+lbl √x
+    1 +/-
+    prt
+    adv
+    rtn
+
+lbl cos
+    rcl 2
+    +/-
+    √x
+    x²
+    prt
+    adv
+    rtn
+
+lbl C
+    sbr dms
+    prt
+    rtn
+
+lbl D
+    rcl 5
+    prt
+    rtn
+
+lbl dms
+    fix 9
+    (
+    ( 2 4 2 9 8 × rcl 9 + 9 9 9 9 1 )
+    ÷ 1 9 9 0 1 7 sto 10 )
+    ( ( inv int × rcl 10 ) sto 9 ÷ rcl 10 )
+    rtn

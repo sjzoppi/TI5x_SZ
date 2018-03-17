@@ -1,0 +1,298 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A'                               ;000
+    sto 2
+    rtn
+
+lbl A                                ;005
+    sto 3
+    inv int
+    inv sum 3
+    sto 4
+    1 0 0 prd 4
+    op 33
+    op 34
+    rcl 6
+    prd 3
+    prd 4
+    sto 5
+    7 sum 3
+    sum 4
+    x⇌t
+    rcl 3
+    inv x≥t 48
+    sto 0
+    inv stf 1
+    rcl 4
+    inv x≥t 59
+    sto 0
+    inv stf 2
+    inv stf 3
+    inv stf 4
+    inv stf 5
+    inv stf 6
+    0
+    rtn
+
+lbl B'                               ;075
+    inv stf 0
+    sto 1
+    sto 6
+    inv int
+    ( inv sum 1 × 1 0 0 )
+    exc 6
+    rtn
+
+lbl B                                ;098
+    cp
+    x≥t 106
+    abs
+    inv    ; cont
+    stf 6                            ;106
+    sto 0
+    iff 6 128
+    adv
+    3 5 3 2 4 3                      ; ROW
+    op 4
+    rcl 0
+    op 6
+    adv
+    op 30
+    rcl 6
+    prd 0
+    x⇌t 7
+    sum 0
+    0
+    iff 6 155
+    x⇌t
+    sto 2
+    rc* 0
+    prt
+    op 20
+    dsz 2 146
+    rtn
+
+lbl C'                                ;156
+    cp
+    x≥t 164
+    abs
+    inv
+    stf 6                             ;164, flag 6 set if number > 0
+    sto 0
+    inv int
+    inv sum 0
+    op 30
+    sto 4
+    1 0 0
+    prd 4
+    rcl 6
+    ( prd 0 - rcl 4
+    inv x=t 195
+    1 sum 0 + 2
+    )
+    sto 4
+    6 sum 0
+    0
+    iff 6 155
+    rc* 0
+    rtn
+
+lbl C                                 ;213
+    iff 6 224
+    op 20
+    rc* 0
+    rtn
+
+    inv dsz 4 234                     ;224
+    st* 0
+    op 20
+    rtn
+
+    + = rtn                           ;234
+
+lbl D'                                ;237
+    stf 6
+    sto 4
+    rcl 6
+    sto 5
+    rcl 4
+    cp
+    x≥t 285
+    abs
+    sto 4
+    sum 3
+    inv sum 5
+    op 24
+    iff 0 271
+    op 35
+    op 24
+    rc* 3
+    op 23
+    st* 0
+    op 2
+    dsz 5 271
+    0
+    rtn
+
+    rcl 5                             ;285
+    sum 3
+    sum 0
+    rcl 4
+    inv sum 3
+    inv sum 5
+    iff 0 309
+    op 30
+    op 33
+    op 35
+    op 33
+    rc* 3
+    op 30
+    st* 0
+    dsz 5 309
+    rcl 4
+    inv sum 0
+    op 24
+    0
+    rtn
+
+lbl D                                 ;330
+    sto 2
+    op 22
+    ( rcl 6 - 2 sto 4 )
+    sto 3
+    op 30
+    (
+    rc* 0 × rcl 2 ×
+    op 2 st* 0
+    dsz 3 352
+    1 )
+    inv iff 0 382
+    op 34
+    rc* 0
+    prd 2
+    rcl 2
+    op 20
+    st* 0
+    op 20
+    rtn
+
+lbl E'                                ;385
+    inv
+
+lbl E                                 ;388
+    stf 1
+    cp
+    x≥t 403
+    abs
+    sto 0
+    6 sum 0
+    inv stf 2
+    inv iff 2 416
+    b
+    rcl 6
+    gto 418
+
+    rcl 1                             ;416
+    sto 3
+    rcl 6
+    sto 4
+    iff 0 430
+    op 33
+    ( rc* 0
+    iff 1 441
+    ×
+    gto 442
+
+    + 1                               ;441
+    iff 2 449
+    rcl 4
+    sum 0
+    dsz 3 431
+    0
+    iff 1 461
+    1
+    )
+    x⇌t
+    2
+    exc 4
+    inv iff 0 480
+    inv iff 2 477
+    1
+    inv sum 0
+    x⇌t
+    stf 6
+    rtn
+
+lbl yˣ                                ;485
+    stf 5
+    gto -
+
+lbl +                                 ;490
+    stf 3
+    gto -
+
+lbl ×                                 ;496
+    stf 3
+
+lbl ÷                                 ;500
+    stf 4
+
+lbl -                                 ;504
+    op 35
+    inv stf 6
+    ( rcl 2
+    iff 1 522
+    rc* 3
+    op 23
+    iff 4 535
+    inv iff 5 539
+    yˣ
+    gto 540
+
+    × gto 540                         ;535
+
+    + rcl 2
+    iff 2 550
+    rc* 4
+    op 24
+    iff 3 567
+    iff 4 566
+    iff 5 567
+    +/-
+    gto 567
+
+    1/x                               ;566
+    )
+    st* 0
+    iff 6 61
+    op 20
+    dsz 5 511
+    stf 6
+    iff 0 511
+    ( rcl 6 - 1 )
+    sto 5
+    x⇌t
+    iff 5 612
+    iff 1 633
+    iff 2 633
+    inv iff 4 511
+    ( op 30 rc* 0 +
+    dsz 5 613
+    0
+    )
+    x⇌t
+    sum 0
+    x⇌t
+    st* 0
+    gto 61
+
+    iff 4 643                         ;633
+    x⇌t
+    prd 2
+    gto 511
+
+    iff 2 511                         ;643
+    gto 612

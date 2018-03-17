@@ -1,0 +1,249 @@
+;+
+; Partial recreation of the "Surveying Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A
+    adv
+    fix 3
+    sto 2
+    prt
+    rtn
+
+    sto 3
+    prt
+    rtn
+
+lbl B
+    adv
+    fix 3
+    sto 20
+    prt
+    sto 4
+    rtn
+
+    sto 21
+    prt
+    sto 5
+    sbr 306
+    sto 10
+    sbr 478
+    x⇌t
+    sto 11
+    x⇌t
+    rtn
+
+lbl C
+    adv
+    fix 3
+    sto 22
+    prt
+    sto 4
+    rtn
+
+    sto 23
+    prt
+    sto 5
+    sbr 306
+    sto 12
+    sbr 478
+    x⇌t
+    sto 13
+    ( rcl 12 - rcl 10 )
+    abs
+    ( sto 14 - 1 8 0 )
+    cp
+    inv x≥t 100
+    ( 3 6 0 - rcl 14 )
+    sto 14
+    fix 6
+    rcl 13
+    x⇌t
+    rcl 12
+    inv dms
+    rtn
+
+lbl D
+    adv
+    fix 6
+    prt
+    dms
+    sto 15
+    rtn
+
+lbl E
+    prt
+    dms
+    sto 16
+    op 10
+    sto 18
+    prd 16
+    rcl 1
+    x⇌t
+    3
+    x=t 163
+    (
+    (
+    ( rcl 15 + rcl 16 + rcl 14 )
+    ÷ 2
+    )
+    +/-
+    +
+    1 8 0
+    )
+    gto 177
+
+    (
+    ( rcl 14 - rcl 15 - rcl 16 )
+    ÷ 2
+    )
+    sto 6
+    ( fix 4 ee inv ee - 9 0 )
+    cp
+    inv x=t 197
+    0
+    1/x
+    rtn
+
+    (
+    (
+    ( rcl 15 sin ÷ rcl 16 sin × rcl 11 ÷ rcl 13 )
+    inv tan
+    + 4 5
+    )
+    tan
+    1/x
+    ×
+    rcl 6
+    tan
+    )
+    inv tan
+    ( sto 7 + rcl 6 )
+    abs
+    sto 8
+    ( rcl 6 - rcl 7 )
+    abs
+    sto 9
+    ( 1 8 0 - rcl 8 - rcl 16 )
+    prd 18
+    ( rcl 18 + rcl 10 + 1 8 0 )
+    sto 19
+    sbr 399
+    ( rcl 8 sin ÷ rcl 16 sin × rcl 11 )
+    sto 17
+    x⇌t
+    rcl 19
+    P→R
+    sum 3
+    x⇌t
+    sum 2
+    rcl 16
+    fix 6
+    rtn
+
+    ( rcl 2 - rcl 4 )
+    sto 6
+    ( rcl 3 - rcl 5 )
+    sto 7
+    ( rcl 6 x² + rcl 7 x² )
+    √x
+    sto 8
+    rcl 6
+    cp
+    inv x=t 348
+    9 0
+    gto 357
+
+    ( 1/x × rcl 7 )
+    inv tan
+    abs
+    sto 9
+    rcl 6
+    x≥t 377
+    rcl 7
+    x≥t 390
+    ( 1 8 0 + gto 395
+
+    rcl 7
+    x≥t 395
+
+    (
+    3 6 0
+    -
+    gto 395
+    ( 1 8 0 - rcl 9 )
+    rtn
+
+    rcl 19
+    cp
+    x≥t 413
+    3 6 0
+    sum 19
+    gto 399
+
+    ( ce - 3 6 0 )
+    x≥t 424
+    rtn
+
+    3 6 0
+    inv sum 19
+    rcl 19
+    gto 413
+
+lbl A'
+    rcl 19
+    adv
+    fix 9
+    inv dms
+    fix 6
+    prt
+    x⇌t
+    rcl 17
+    prt
+    x⇌t
+    rtn
+
+lbl B'
+    rcl 20
+    sto 4
+    rcl 21
+    gto 472
+
+lbl C'
+    rcl 22
+    sto 4
+    rcl 23
+    sto 5
+    sbr 306
+    adv
+    fix 9
+    inv dms
+    fix 6
+    prt
+    x⇌t
+    rcl 8
+    prt
+    x⇌t
+    rtn
+
+lbl D'
+    adv
+    fix 3
+    rcl 2
+    prt
+    x⇌t
+    rcl 3
+    prt
+    x⇌t
+    rtn
+
+lbl E'
+    inv eng
+    cms
+    fix 9
+    sto 1
+    adv
+    prt
+    deg 0
+    fix 3
+    rtn

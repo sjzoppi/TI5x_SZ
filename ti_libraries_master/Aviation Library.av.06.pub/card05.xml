@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">STD ATM; SPD; TEMP; ALT</label>
+<label slot="titleright">AV-05</label>
+<label slot="a">PALT</label>
+<label slot="b">IT(°C)</label>
+<label slot="c">CAS<ArrowR/>TAS;M</label>
+<label slot="d"><ArrowR/> TAT(°C)</label>
+<label slot="e"><ArrowR/> DALT</label>
+<label slot="aprime">REC</label>
+<label slot="bprime"><ArrowR/> T(°C)</label>
+<label slot="cprime"><ArrowR/> a/a<sub>0</sub></label>
+<label slot="dprime"><ArrowR/> P/P<sub>0</sub></label>
+<label slot="eprime"><ArrowR/> <rho/>/<rho/><sub>0</sub></label>
+</carddef>

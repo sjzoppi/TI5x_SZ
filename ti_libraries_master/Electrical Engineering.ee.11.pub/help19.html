@@ -1,0 +1,459 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-19 — Network Analysis</H1>
+
+<P>This programs is designed for use with the TI-59 and the
+printer. The program computes frequency response of a general linear
+network made up of resistors, capacitors, inductors, and voltage
+controlled dependent current soucres. Network of up to 5 nodes
+(exclusive of ground) and 9 components, 4 nodes and 14 componenets, or
+3 or 2 nodes and 24 components can be analyzed. The analysis is
+accomplished by interfacing three blocks of code as illustrated below.
+</P>
+
+<table>
+  <tr><td style="border: 3px solid black; padding:.5em .5em .5em .5em">
+      [1] <b>Input Network Parameters</b>
+      <br>
+      (order of NAM, starting frequency, frequency increment, component values including nodal data)
+      <br>
+      Program Memory - Input Card
+  </td></tr>
+  <tr><td style="font-size: 4em; padding: 0">&darr;</td></tr>
+  <tr><td style="border: 3px solid black; padding:.5em .5em .5em .5em">
+      [2] <b>Consruct Node Admittance Matrix</b>
+      <br>
+      Program Memory - Construct NAM Car
+  </td></tr>
+  <tr><td style="font-size: 4em; padding: 0">&darr;</td></tr>
+  <tr><td style="border: 3px solid black; padding:.5em .5em .5em .5em">
+      [3] <b>Matrix Reduction</b>
+      <br>
+      EE Module - Program 19
+  </td></tr>
+  <tr><td style="font-size: 4em; padding: 0">&olarr;</td></tr>
+  <tr><td style="border: 3px solid black; padding:.5em .5em .5em .5em">
+      [4] Program Memory - EE-19 Interface
+      <br>
+      Perform Netwok Analysis
+      <br>
+      Linear Frequency Sweep
+      <br>
+      <B>LOOP BACK TO [2]</B>
+  </td></tr>
+</table>
+
+<P>The first block consists of the input code and should be keyed into
+program memory and recorded on the designated magnetic car per
+specified instructions. Execution of the code in User Instructions
+specified the order of NAM (Node Admittance Matrix), starting
+frequency and increment in hertz to initiate a linear frequency sweep,
+and remaining network parameters by entering component values and node
+numbers associated with each component. The number of a component is
+printed following input of its data to provide easy editing reference.
+</P>
+
+<P>The second block consisting of the Construct NAM code should be
+keyed into program memory and recorded on the designated card per
+specified instructions. Execution of this code in User Instructions
+constructs the network node admittance matrix and initiates the loop
+between program memory and the third block of code, EE module program
+  19, which performs the matrix reduction.
+</P>
+
+<P>Program output is in form of a linear frequency sweep which depends
+on starting frequency and increment specifications. Printout consists
+of the frequency in hertz, magnitude of the output voltage in dB and
+the phase in degrees
+</P>
+
+<P>Two magnetic cards are used in conjunction with this
+program. Instructions for coding and recording these cards are
+included in the following sections.
+</P>
+
+<H2>Input Card Preparation</h2>
+
+<UL>
+  <LI>Clear program memory, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;CP&nbsp;</SPAN>,
+
+    <LI>Enter learn mode,
+      press <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+
+    <LI>Key in input code (see listing)
+
+    <LI>Check input code against listing,
+      press <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>,
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;List&nbsp;</SPAN>
+
+    <LI>Prepare to record Input Card,
+      press <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>,
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;Write&nbsp;</SPAN>
+</UL>
+
+<H2>Construct NAM Card Preparation</h2>
+
+<UL>
+  <LI>Clear program memory, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;CP&nbsp;</SPAN>,
+
+    <LI>Enter learn mode,
+      press <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+
+    <LI>Key in Construct NAM code (see listing)
+
+    <LI>Check construct NAM code against listing,
+      press <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>,
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;List&nbsp;</SPAN>
+
+    <LI>Prepare to record Input Card,
+      press <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>,
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;Write&nbsp;</SPAN>
+</UL>
+
+<P>Note: The DEG and NOP instructions which appear at various places
+from location 160 to location 239 form a necessary part of the code
+since this part of the program memory is recovered from program data
+in EE-19 to afford maximum register availability for analysis.
+</P>
+
+<H2>Program Assumptions</h2>
+
+<OL>
+  <LI>Phase output is always -90° and 270°.
+  <LI>No independent current sources exist and all dependent sources
+    are voltage controlled current sources.
+  <LI>Node 0 is the reference or ground node, node 1 is the input
+    node, and node 2 is the output node.
+  <LI>A one-volt source is connected between node 1 and node 0.
+  <LI>The From Node is not zero when entering the node numbers that a
+    component (R, L, C, or g<sub>m</sub>) is connected between.
+  <LI>Active components (voltage controoled sources) are specified as
+    follows:
+<P>
+<IMG ALT="Active Components" src="data:image/png;base64,
+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
+5ErkJggg==
+    ">
+
+    <p>The controlling voltage, V, is measured between the nodes
+      V<sup>+</sup> and V<sup>-</sup> (may be ground or node 0).
+    <p>The controlled current g<sub>m</sub>V leaves the From node and
+      enters teh To node.
+
+  <LI>Networks with inductors are not analyzed at, or very near, zero
+    frequency. (Insure specification of non-zero starting frequency).
+
+  <LI>DC analysis is realized by redesigning the network, shorting all
+  inductors and specifying a starting frequency of zero.
+</OL>
+
+<H2>Outline of Program Usage</h2>
+
+<OL>
+  <LI>Review Program Assumptions carefully.
+  <LI>Draw circuit to be analyzed.
+  <LI>Number the nodes.
+  <LI>Enter data as specified.
+  <LI>Perform Network Analysis.
+  <LI>Terminate sweep after desired number of intervals.
+</OL>
+
+<P>Once a sweep has been completed, the following instructions can be
+  performed to modify existing network. (This assumes that Input Card,
+  side 2 was recorded per User Instruction Note)
+</P>
+
+<OL>
+  <LI>Prepare to load Input Card.
+  <LI>Load Input Card (side 1).
+  <LI>Press <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN> and
+    repeat step above, Load Input Card (side 2).
+  <LI>To effect a change in starting frequency and/or increment,
+    perform corresponding User Instruction entering desired frequency
+    changes. If no changes desired, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>. Old NAM order,
+    starting frequency, and increment will be printed.
+  <LI>To change existing component value, see corresponding User
+    Instruction.
+  <LI>To add component values to existing network, perform
+    corresponding User Instruction as needed.
+  <LI>For further network updating, re-record bank 4 data.
+  <LI>Perform Network Analysis using new data.
+  <LI>Terminate sweep after desired number of intervals.
+</OL>
+
+<H2>User Instructions</h2>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;CMs&nbsp;</SPAN>,
+    <SPAN CLASS="brownbutton">&nbsp;RST&nbsp;</SPAN>,
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;CP&nbsp;</SPAN>,
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Load input card</LI>
+
+  <LI>Enter order  of NAM, n
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter starting frequency in hertz,f,
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Enter frequency increment in hertz, &Delta;f
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Initialize for component input,
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>,
+
+    <P>Enter, in any order, values and nodal data for both passive and active
+      components. Repeat until all components are entered.
+
+      <LI>Enter one of:
+      <UL>
+        <LI>Enter resistor value R in ohms,
+          press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+        <LI>Enter inductor value L in henrys,
+          press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+        <LI>Enter capacitor value C in farads,
+          press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+        <LI>Enter source value g<sub>m</sub> in mhos,
+          press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+          <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>,
+      </UL>
+
+   <LI>Then enter modal data, from node To node,
+     press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+   <LI>Prepare to load Construct NAM card,
+     press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;CP&nbsp;</SPAN>,
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+   <LI>Load Construct NAM card.
+
+  <P>If NAM order is 2, 3, or 4 do the steps below</P>
+
+  <UL>
+    <LI>Enter learn mode,
+      press <SPAN CLASS="brownbutton">&nbsp;GTO&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>,
+      <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>, display is 031 06.
+    <LI>If NAM order = 4, press
+      <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+    <LI>If NAM order = 3 or 2, press
+      <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+  </UL>
+
+  <LI>Perform network analysis,
+    press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>, it displays
+    Frequency, Magnitude (dB), Phase (deg)
+    <p>(A linear sweep continues until user termination in step below).</p>
+
+  <LI>Terminate linear sweep,
+    press <SPAN CLASS="brownbutton">&nbsp;RST&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+</UL>
+
+Registers: 00-09, 78-79, 80--99
+</BODY>

@@ -1,0 +1,75 @@
+; simple landing game
+
+10
+×
+rcl 02
++
+(
+2
+×
+rcl 04
+-
+16
+)
+sto 03
+sum 02
+×
+5
+=
+sum 01
+
+;;;;;;;;;;;;;;;;;;;;;;;;; A
+
+lbl A
+    rcl 01
+    inv x≥t A'
+    ÷
+    4
+    inv log
+    +
+    rcl 02
+    |x|
+    int
+    =
+    r/s
+    sto 04
+    inv sum 00
+    rcl 00
+    pause
+    rst
+
+;;;;;;;;;;;;;;;;;;;;;;;;; A'
+
+lbl A'
+    ×
+    rcl 03
+    ÷
+    5
+    +/-
+    +
+    rcl 02
+    x²
+    =
+    √x
+    int
+    r/s
+
+;;;;;;;;;;;;;;;;;;;;;;;;; B
+
+lbl B
+    2nd fix 4
+    cp
+    sto 00
+    r/s
+
+;;;;;;;;;;;;;;;;;;;;;;;;; C
+
+lbl C
+    sto 01
+    r/s
+
+;;;;;;;;;;;;;;;;;;;;;;;;; D
+
+lbl D
+    sto 02
+    r/s

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-03 — S x⇌t Y Parameter Conversions</H1>
+
+<P>Small-signal, two-port "black boxes" are often characterized in
+  terms of complex scattering (S) parameters normalized to a common
+  input and output transmission line impedance Z<sub>0</sub>. The
+  translation of these parameters to admittance (Y) parameters is
+  necessary to create equivalent circuit models. This program converts
+  S parameters to Y parameters or vice versa.
+</P>
+
+<TABLE>
+  <TR><TD>Y11<TD>Y12
+  <TR><TD>Y21<TD>Y22
+</TABLE>
+
+<P>=</p>
+
+<TABLE>
+  <TR><TD>1-S<sub>11</sub>+S<sub>22</sub>-&Delta;S / C<TD>-2S<sub>12</sub>/C
+  <TR><TD>-2S<sub>21</sub>/C<TD>1-S<sub>11</sub>-S<sub>22</sub>-&Delta;S / C
+</TABLE>
+
+<P>Where &Delta;S = S<sub>11</sub> S<sub>22</sub>
+  - S<sub>12</sub> S<sub>21</sub> and S parameters are input in polar
+  form (R, &theta;).
+
+<P>And C = 1 + S<sub>11</sub> + S<sub>22</sub> + &Delta;S
+
+<P>When converting from S to Y parameters, once the matrix elements
+  are calculated, the U matrix is multiplied by the real scalar
+  Z<sub>0</sub><sup>-1</sup> to give the actual Y parameter.
+
+<P>When converting from Y to S parameters, the Y parameters are
+  multiplied by Z<sub>0</sub> before the matrix elements are
+  calculated to give the actual S parameters.
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Enter polar form of S (or Y) matrix
+    <UL>
+      <LI>Magnitude S<sub>11</sub> (or Y<sub>11</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+      <LI>Angle S<sub>11</sub> (or Y<sub>11</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+      <LI>Magnitude S<sub>12</sub> (or Y<sub>12</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+      <LI>Angle S<sub>12</sub> (or Y<sub>12</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+
+      <LI>Magnitude S<sub>21</sub> (or Y<sub>21</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+      <LI>Angle S<sub>21</sub> (or Y<sub>21</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+      <LI>Magnitude S<sub>22</sub> (or Y<sub>22</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+      <LI>Angle S<sub>22</sub> (or Y<sub>22</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    </UL>
+
+  <LI>Enter real characteristic impedance in ohms and press one of the
+    following:
+
+    <UL>
+      <LI>Convert S -> Y, press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+      <LI>Convert Y -> S, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    </UL>
+
+  <LI>Display conversion results
+
+    <UL>
+      <LI>Magnitude Y<sub>11</sub> (or S<sub>11</sub>),
+        press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+      <LI>Angle S<sub>11</sub> (or Y<sub>11</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+      <LI>Magnitude Y<sub>12</sub> (or S<sub>12</sub>),
+        press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+      <LI>Angle S<sub>12</sub> (or Y<sub>12</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+      <LI>Magnitude Y<sub>21</sub> (or S<sub>21</sub>),
+        press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>Angle S<sub>21</sub> (or Y<sub>21</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+
+      <LI>Magnitude Y<sub>22</sub> (or S<sub>22</sub>),
+        press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+      <LI>Angle S<sub>22</sub> (or Y<sub>22</sub>),
+        press <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+    </UL>
+
+</UL>
+
+Registers: 01-17
+</BODY>

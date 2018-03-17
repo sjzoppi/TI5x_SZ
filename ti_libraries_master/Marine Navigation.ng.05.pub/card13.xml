@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">RUNNING FIX FROM 1 OBJECT</label>
+<label slot="titleright">NG-13</label>
+<label slot="a">S, C<sub>c</sub>; De</label>
+<label slot="b">B<sub>c</sub></label>
+<label slot="c">t</label>
+<label slot="d">OBJ 1</label>
+<label slot="e"><ArrowR/> L; <lambda/></label>
+<label slot="aprime">De(B)</label>
+<label slot="bprime">Dr, St</label>
+<label slot="dprime">OBJ 2</label>
+<label slot="eprime">SAVE 1</label>
+</carddef>

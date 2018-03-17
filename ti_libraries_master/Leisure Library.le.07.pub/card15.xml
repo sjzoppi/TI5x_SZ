@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">JIVE TURKEY</label>
+<label slot="titleright">LE-15</label>
+<label slot="a">% Truth</label>
+<label slot="b">Seed</label>
+<label slot="d">Score</label>
+<label slot="e">Guess</label>
+</carddef>

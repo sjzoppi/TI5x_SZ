@@ -1,0 +1,264 @@
+Lbl D'
+(
+(
+STO 15
++
+350
++
+|x|
+-
+(
+RCL 15
+-
+350
++
+|x|
+)
+)
+÷
+2
+-
+350
+)
+INV SBR
+Lbl B
+(
+STO 05
+SUM 06
+-
+RCL 04
+)
+Ifflg 3 048
+D'
+STO 03
+SUM 01
+Op 22
+(
+RCL 05
+-
+1200
+)
+Ifflg 3 068
+D'
+STO 14
+SUM 12
+RCL 05
+INV SBR
+Lbl B'
+RCL 03
+INV SUM 01
+RCL 14
+INV SUM 12
+Op 32
+RCL 05
+INV SUM 06
+0
+INV SBR
+Lbl A
+B
+Stflg 1
+INV Stflg 2
+INV Stflg 3
+STO 04
+x⇌t
+Fix 0
+0
+STO 01
+STO 06
+STO 02
+STO 12
+1199
+INV x≥t 131
+Stflg 2
+RCL 04
+INV SBR
+Lbl A'
+Stflg 3
+STO 11
+INV SBR
+Lbl C
+Stflg 1
+99
+INV SBR
+Lbl D
+STO 07
+Fix 1
+INV SBR
+Lbl E
+Fix 0
+(
+(
+RCL 06
++
+400
+×
+(
+2
+×
+RCL 07
+-
+RCL 02
+)
+STO 10
+)
+÷
+RCL 02
+)
+STO 09
+(
+(
+RCL 12
+÷
+25
++
+1200
++
+16
+×
+RCL 10
+)
+-
+(
+RCL 01
+÷
+25
++
+RCL 04
++
+16
+×
+RCL 10
+)
+STO 08
+)
+STO 16
+Ifflg 3 317
+INV Ifflg 2 266
+RCL 09
+x⇌t
+RCL 04
+INV x≥t 248
+RCL 08
+INV SBR
+1200
+x≥t 263
+(
+RCL 08
++
+RCL 16
+)
+INV SBR
+RCL 09
+INV SBR
+RCL 08
+Ifflg 1 276
+SBR 373
+INV SBR
+(
+(
+CE
+-
+RCL 04
+)
+-
+24
+x⇌t
+(
+16
++
+2
+×
+RCL 02
+)
+x≥t 300
+x⇌t
+)
+x⇌t
+0
+x≥t 307
+x⇌t
+(
+CE
++
+RCL 08
+)
+SBR 373
+INV SBR
+(
+RCL 11
+×
+(
+1200
+-
+RCL 04
+)
+÷
+(
+RCL 11
++
+RCL 02
+)
+)
+STO 16
+(
+(
+RCL 11
+×
+RCL 04
++
+400
+×
+RCL 10
++
+RCL 06
+)
+÷
+(
+RCL 11
++
+RCL 02
+)
+)
+STO 08
+GTO 231
+STO 13
+x⇌t
+2300
+INV x≥t 386
+x⇌t
+INV SBR
+x⇌t
+RCL 04
+x≥t 408
+(
+RCL 13
+-
+(
+CE
+-
+2300
+)
+÷
+2
+)
+INV SBR
+(
+RCL 13
+-
+(
+CE
+-
+RCL 04
+)
+÷
+2
+)
+INV SBR
+Lbl CLR
+CMs
+Fix 9
+INV Stflg 1
+INV Stflg 2
+INV Stflg 3
+0
+INV SBR

@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">COMPLEX TRIGONOMETRIC FUNCTIONS</label>
+<label slot="titleright">EE-06</label>
+<label slot="bprime"><ArrowR/> sin<sup>-1</sup> X</label>
+<label slot="cprime"><ArrowR/> cos<sup>-1</sup> X</label>
+<label slot="dprime"><ArrowR/> tan<sup>-1</sup> X</label>
+<label slot="a">X</label>
+<label slot="b"><ArrowR/> sin X</label>
+<label slot="c"><ArrowR/> cos X</label>
+<label slot="d"><ArrowR/> tan X</label>
+</carddef>

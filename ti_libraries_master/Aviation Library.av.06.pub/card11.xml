@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">GREAT CIRCLE FLYING</label>
+<label slot="titleright">AV-11</label>
+<label slot="a">L<sub>s</sub>(+N,-S)</label>
+<label slot="b">L<sub>d</sub>(+N,-S)</label>
+<label slot="c"><lambda/> <ArrowR/> L (<sub>I</sub> or <sub>v</sub>)</label>
+<label slot="d"><ArrowR/> Dist</label>
+<label slot="e"><ArrowR/> <lambda/> <sub>v</sub></label>
+<label slot="aprime"><lambda/><sub>s</sub> (+W,-E)</label>
+<label slot="bprime"><lambda/><sub>d</sub> (+W,-E)</label>
+<label slot="dprime"><ArrowR/> TC<sub>i</sub></label>
+</carddef>

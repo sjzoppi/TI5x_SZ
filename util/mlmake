@@ -1,0 +1,94 @@
+#!/usr/bin/python3
+#+
+# This script builds the master library file.
+#
+# Copyright 2011-2013 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+#-
+
+import sys
+import os
+import subprocess
+import errno
+
+def mtime_if(filename) :
+    """returns the last-modified time of the file if it exists, else 0."""
+    if os.path.isfile(filename) :
+        result = os.path.getmtime(filename)
+    else :
+        result = 0
+    #end if
+    return result
+#end mtime_if
+
+utildir = os.path.dirname(sys.argv[0])
+srcdir = sys.argv[1]
+dstdir = sys.argv[2]
+name = sys.argv[3]
+dstfile = os.path.join(os.path.dirname(utildir), os.path.join(dstdir, name + ".ti5l"))
+sys.stderr.write("%s => %s\n" % (srcdir, dstfile)) # debug
+libhelpname = "help.html"
+
+sources = []
+nr = 0
+libhelp = os.path.join(srcdir, libhelpname)
+mtime = mtime_if(libhelp)
+for nr in range(1, 100) :
+    # collect source files for all modules
+    srcfile = os.path.join(srcdir, "prog%02d.src" % nr)
+    if os.path.isfile(srcfile) :
+        entry = {"nr" : nr, "src" : srcfile}
+        mtime = max(mtime, os.path.getmtime(srcfile))
+        for key, namefmt in (("card", "card%02d.xml"), ("help", "help%02d.html")) :
+          # additional optional files: card image and help
+            thefile = os.path.join(srcdir, namefmt % nr)
+            if os.path.isfile(thefile) :
+                mtime = max(mtime, mtime_if(thefile))
+                entry[key] = thefile
+            #end if
+        #end for
+        sources.append(entry)
+    #end if
+#end while
+if not os.path.isfile(dstfile) or os.path.getmtime(dstfile) < mtime :
+    try :
+        os.makedirs(dstdir)
+    except OSError as Err :
+        if Err.errno != errno.EEXIST :
+            raise # else ignore
+        #end if
+    #end try
+    dstfile_new = dstfile + "-new"
+    args = []
+    if os.path.isfile(libhelp) :
+        args.append("help=%s" % libhelp)
+    #end if
+    for module in sources :
+        if "card" in module :
+            args.append("cardsrc%02d=%s" % (module["nr"], module["card"]))
+        #end if
+        if "help" in module :
+            args.append("help%02d=%s" % (module["nr"], module["help"]))
+        #end if
+        args.append("progsrc%02d=%s" % (module["nr"], module["src"]))
+    #end for
+    subprocess.check_call \
+      (
+        args = [os.path.join(utildir, "makeprog"), dstfile_new] + args,
+        close_fds = True
+      )
+    os.rename(dstfile_new, dstfile)
+    sys.stderr.write("%s rebuilt\n" % dstfile)
+else :
+    sys.stderr.write("%s is up to date\n" % dstfile)
+#end if

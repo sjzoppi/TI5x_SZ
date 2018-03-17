@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">DAYS BETWEEN DATES</label>
+<label slot="titleright">SA-15</label>
+<label slot="abprime">(MMDD.YYYY)</label>
+<label slot="c"></label>
+<label slot="d"></label>
+<label slot="e"></label>
+<label slot="aprime">Date 1</label>
+<label slot="bprime">Date 2</label>
+<label slot="cprime">No. Days</label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

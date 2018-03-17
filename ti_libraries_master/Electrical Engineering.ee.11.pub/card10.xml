@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">CHAINED MULTIPLICATION OF POLYNOMIALS</label>
+<label slot="titleright">EE-10</label>
+<label slot="a">Initialize</label>
+<label slot="b">Multiply</label>
+<label slot="c"><ArrowR/> Product</label>
+<label slot="d">Print</label>
+<label slot="e">TI-59</label>
+<label slot="aprime">Exit</label>
+<label slot="eprime">TI-58</label>
+<label slot="dprime">No Print</label>
+</carddef>

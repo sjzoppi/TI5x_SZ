@@ -1,0 +1,323 @@
+; program Coniques contributed by Jacobus Serpenti
+
+Lbl A
+   Ifflg 0 079
+   STO 01
+   INV SBR
+
+Lbl B
+   Ifflg 0 082
+   STO 02
+   INV SBR
+
+Lbl C
+   Ifflg 0 085
+   STO 03
+   INV SBR
+
+Lbl A'
+   Ifflg 0 088
+   STO 04
+   INV SBR
+
+Lbl B'
+   Ifflg 0 091
+   STO 05
+   INV SBR
+
+Lbl C'
+   Ifflg 0 094
+   STO 06
+   INV SBR
+
+Lbl D
+   INV Stflg 0
+   INV Stflg 1
+   5
+   Op 17
+   0
+   STO 01
+   STO 02
+   STO 03
+   STO 04
+   STO 05
+   STO 06
+   INV SBR
+   RCL 01
+   INV SBR
+   RCL 02
+   INV SBR
+   RCL 03
+   INV SBR
+   RCL 04
+   INV SBR
+   RCL 05
+   INV SBR
+   RCL 06
+   INV SBR
+   0
+   1/x
+   INV SBR
+
+Lbl E
+   Ifflg 1 522
+   0
+   STO 09
+   STO 10
+   1
+   STO 07
+   11
+   STO 08
+   3
+   STO 00
+   CP
+   RCL Ind 07
+   x=t 135
+   RCL 07
+   SUM 10
+   STO Ind 08
+   Op 28
+   Op 27
+   Dsz 0 122
+   3
+   STO 00
+   RCL Ind 07
+   x=t 157
+   RCL 07
+   STO Ind 08
+   Op 29
+   Op 28
+   Op 27
+   Dsz 0 144
+   3
+   x⇌t
+   (
+   RCL 08
+   -
+   11
+   )
+   INV x=t 097
+   RCL 09
+   x⇌t
+   x=t 097
+   9
+   Exc 10
+   INV SUM 10
+   1
+   +/-
+   INV cos
+   EE
+   INV EE
+   STO 00
+   0
+   x=t 302
+   2
+   x=t 337
+   CP
+   RCL Ind 10
+   x=t 427
+   RCL 11
+   STO 10
+   RCL 12
+   STO 08
+   RCL 13
+   STO 07
+   3
+   INV SUM 13
+   SUM 10
+   SUM 08
+   (
+   RCL Ind 11
+   x²
+   +
+   RCL Ind 12
+   x²
+   -
+   2
+   ×
+   RCL Ind 11
+   ×
+   RCL Ind 12
+   ×
+   RCL Ind 07
+   cos
+   )
+   √x
+   STO Ind 13
+   SBR 274
+   (
+   RCL 00
+   -
+   RCL Ind 10
+   -
+   RCL Ind 07
+   )
+   STO Ind 08
+   Stflg 0
+   0
+   INV SBR
+   (
+   (
+   RCL Ind 12
+   x²
+   +
+   RCL Ind 13
+   x²
+   -
+   RCL Ind 11
+   x²
+   )
+   ÷
+   2
+   ÷
+   RCL Ind 12
+   ÷
+   RCL Ind 13
+   )
+   INV cos
+   STO Ind 10
+   INV SBR
+   4
+   STO 10
+   SBR 274
+   5
+   STO 10
+   RCL 11
+   Exc 13
+   Exc 12
+   STO 11
+   SBR 274
+   (
+   RCL 00
+   -
+   RCL 04
+   -
+   RCL 05
+   )
+   STO 06
+   GTO 270
+   (
+   15
+   -
+   RCL 12
+   -
+   RCL 13
+   )
+   STO 07
+   (
+   RCL 00
+   -
+   RCL Ind 12
+   -
+   RCL Ind 13
+   )
+   STO Ind 07
+   (
+   RCL 11
+   STO 12
+   +
+   1
+   -
+   (
+   Int
+   ÷
+   4
+   )
+   Int
+   ×
+   2
+   )
+   STO 13
+   STO 07
+   3
+   SUM 12
+   SUM 07
+   SBR 412
+   (
+   6
+   -
+   RCL 11
+   -
+   RCL 13
+   )
+   STO 13
+   STO 07
+   3
+   SUM 07
+   SBR 412
+   GTO 270
+   (
+   RCL Ind 07
+   sin
+   ÷
+   RCL Ind 12
+   sin
+   ×
+   RCL Ind 11
+   )
+   STO Ind 13
+   INV SBR
+   RCL 13
+   STO 11
+   (
+   15
+   -
+   RCL 13
+   -
+   RCL 10
+   )
+   STO 12
+   STO 07
+   RCL 10
+   STO 08
+   3
+   INV SUM 11
+   INV SUM 12
+   INV SUM 08
+   RCL Ind 11
+   x⇌t
+   RCL Ind 12
+   INV x≥t 470
+   Stflg 1
+   (
+   RCL Ind 12
+   ÷
+   RCL Ind 11
+   ×
+   RCL Ind 13
+   sin
+   )
+   INV sin
+   STO Ind 07
+   (
+   RCL 00
+   -
+   RCL Ind 13
+   -
+   RCL Ind 07
+   )
+   STO Ind 10
+   (
+   RCL Ind 10
+   sin
+   ÷
+   RCL Ind 13
+   sin
+   ×
+   RCL Ind 11
+   )
+   STO Ind 08
+   INV Ifflg 1 270
+   Stflg 0
+   0
+   1/x
+   2
+   INV SBR
+   INV Stflg 1
+   (
+   RCL 00
+   -
+   RCL Ind 07
+   )
+   STO Ind 07
+   GTO 485

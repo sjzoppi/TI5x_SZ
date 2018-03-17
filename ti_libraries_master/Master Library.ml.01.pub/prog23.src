@@ -1,0 +1,39 @@
+;+
+; Recreation of the "Master Library" module
+; that came with the original TI-58C/59 calculators.
+
+lbl B                                 ;000
+    ( dms +
+
+lbl E                                 ;005
+    rcl 1
+    )
+    ( ce +
+    ( ce ÷ abs )
+    ce
+    ×
+    5
+    +/-
+    inv log
+    )
+    inv dms
+    fix 4
+    rtn
+
+lbl C                                 ;030
+    (
+    ce
+    ×
+    gto e
+
+lbl D                                 ;037
+    (
+    1/x
+    ×
+    gto e
+
+lbl A                                 ;044
+    fix 9
+    dms
+    sto 1
+    rtn

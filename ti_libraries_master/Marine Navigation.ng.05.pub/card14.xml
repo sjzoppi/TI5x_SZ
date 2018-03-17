@@ -1,0 +1,7 @@
+<carddef style="system">
+<label slot="titleleft">FIX FROM 2 OBJECTS</label>
+<label slot="titleright">NG-14</label>
+<label slot="b">B<sub>c1</sub>, B<sub>c2</sub></label>
+<label slot="e"><ArrowR/> L; <lambda/></label>
+<label slot="aprime">De</label>
+</carddef>

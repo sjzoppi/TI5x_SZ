@@ -1,0 +1,69 @@
+
+lbl A
+   inv ifflg 0 008
+   inv sum 12
+   sto 10
+   inv sbr
+
+lbl B
+   ×
+   rcl 10
+   =
+
+lbl B'
+   inv ifflg 0 027
+   inv sum 13
+   sto 11
+   inv stflg 0
+   inv sbr
+
+lbl A'
+   rcl 10
+   inv sum 12
+   rcl 11
+   inv sum 13
+   clr
+   inv sbr
+
+lbl E'
+   stflg 0
+   clr
+   inv sbr
+
+lbl C
+   rcl 12
+   inv sbr
+
+lbl D
+   rcl 13
+   inv sbr
+
+lbl E
+   d
+   ÷
+   c
+   =
+   inv sbr
+
+lbl C'
+   (
+   ce
+   ×
+   6
+   )
+   inv sbr
+
+lbl D'
+   (
+   ce
+   ×
+   .4536
+   )
+   inv sbr
+
+lbl clr
+   cms
+   0
+   fix 2
+   inv sbr
+   gto clr

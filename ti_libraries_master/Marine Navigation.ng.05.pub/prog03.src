@@ -1,0 +1,137 @@
+Lbl C
+(
+SBR 028
+×
+1.144
+)
+Prt
+INV SBR
+(
+CE
+×
+6076.12
+)
+Prt
+INV SBR
+RCL 01
+√x
+INV SBR
+(
+INV D.MS
+÷
+100
+)
+D.MS
+INV SBR
+Lbl C'
+(
+(
+SBR 028
++
+RCL 02
+√x
+)
+GTO 006
+Lbl E'
+(
+CE
+×
+SBR 067
+Prt
+INV SBR
+(
+RCL 03
++
+RCL 00
+)
+tan
+)
+INV SBR
+Lbl E
+(
+RCL 02
+÷
+SBR 067
+Lbl x²
+÷
+SBR 018
+INV SBR
+(
+CE
+×
+GTO 018
+Lbl D'
+(
+RCL 01
+÷
+(
+RCL 03
++
+RCL 00
++
+.97
+÷
+60
+×
+SBR 028
+)
+tan
+GTO x²
+Lbl D
+(
+(
+(
+RCL 03
++
+RCL 00
+-
+.97
+÷
+60
+×
+SBR 028
+)
+tan
+÷
+.000246
+)
+STO 15
+x²
++
+(
+RCL 02
+-
+RCL 01
+)
+÷
+.74736
+)
+(
+√x
+-
+RCL 15
+)
+Prt
+INV SBR
+(
+CE
+×
+GTO 018
+Lbl A
+STO 01
+Prt
+INV SBR
+Lbl B
+SBR 032
+STO 03
+Prt
+INV SBR
+Lbl A'
+STO 02
+Prt
+INV SBR
+Lbl B'
+SBR 032
+STO 00
+Prt
+INV SBR

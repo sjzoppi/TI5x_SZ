@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+
+<H1>JS-03 — Limits of functions and infinite series</H1>
+
+<P>Given a function f(x), this program computes :
+
+  <ul>
+    <li>lim f(Xo + h), where h -&gt; 0</li>
+    <li>lim f(x), where x -&gt; infinite</li>
+    <li>if of significance, its slanted asymptote</li>
+  </ul>
+
+<P>Since the Ti59 has a limited number of significant digits, a
+  Richardson extrapolation is used to increase precision with only a
+  small amount of iterations. For more info,
+  see <a href="https://en.wikipedia.org/wiki/Richardson_extrapolation">
+    Richardson extrapolation</a> on Wikipedia.
+
+<P>Given a U<sub>n</sub> series, it calculates its infinite sum.
+
+<P>Again due to precision issues, an Aitken precision enhancement algorithm
+  has been used.
+  See <a href="https://en.wikipedia.org/wiki/Aitken%27s_delta-squared_process">
+    Aitken's delta squared process</a> &nbsp;on Wikipedia.<br>
+
+<P>First you need to enter the function in <B>Lbl E</B> into bank 0:
+  <UL>
+    <LI>Press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+    <LI>Entrer programming mode, press
+      <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+    <LI>
+      Press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;Lbl&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+      and enter <B>f(x)</B> or <B>U<sub>n</sub></B> The
+      variable <i>x</i> or <i>n</i> is in the register <B>07</B>.
+    <LI>Always terminate
+      with <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN> and then
+      <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <LI>Then quit the programming mode by pressing
+      <SPAN CLASS="brownbutton">&nbsp;LRN&nbsp;</SPAN>
+    <LI>Then go back to the limit program, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+      <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+  </UL>
+
+<P><B>Limit of f(x) where x tends to x<sub>o</sub></B></P>
+
+<ul>
+  <li>Actually f(x<sub>o</sub>+h) is calculated with h becoming
+    smaller every iteration, starting at 0.001 and divided by 10 at
+    each iteration.</span>
+</li>
+<li>Five iterations are done in order to have data for calculating a Richardson
+  triangle</li>
+</ul>
+
+<P><B>Limit of f(x) where x tends to +/- infinite</B></P>
+<ul>
+  <li>f(x) is calculated with x starting at 1000, at each iteration it is
+    multiplied by 10.</li>
+  <li>Five iterations are done in order to have data for calculating a
+    Richardson triangle</li>
+</ul>
+
+<p><B>Asymptotes</B></p>
+<ul>
+  <li>Lim f(x) where x -&gt; X<sub>o</sub> may compute a vertical asymptote</li>
+  <li>Lim f(x) where x-&gt; +/- infinite may compute a horizontal asymptote</li>
+  <li>the equation of y = ax + b is calculated</li>
+  <li>where a = lim f(x) ÷ x, with x -&gt; infinite</li>
+  <li>where b = lim f(x) - ax, with x -&gt; infinite</li>
+</ul>
+
+<P><B>Infinite series</B>
+  <ul>
+    <li>the sum of U<sub>n</sub> is calculated with n starting from 1
+      to infinite, to find out whether  it converges or not
+    </li>
+    <li>Aitken process is done at the end of the summing</li>
+  </ul>
+
+<H3>Example 1</H3>
+
+<P>Lim (x<sup>3</sup> - 1) ÷ (x - 1), with x -&gt; 1
+
+<P>Enter routine as described above.
+
+<P><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+  <SPAN CLASS="alttext">&nbsp;Lbl&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+
+<P><SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;RCL&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;X<sup>y</sup>&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+  <SPAN CLASS="yellowbutton">&nbsp;-&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+
+<P><SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN>
+
+<P><SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;RCL&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>
+  <SPAN CLASS="yellowbutton">&nbsp;-&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+
+<P><SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+
+<P>Then:
+  <UL>
+    <LI>Enter 1, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>To compute limite, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>, it displays
+      2.999998019
+  </UL>
+
+<H3>Example 2</H3>
+
+<P>Lim (1 + 1 ÷ x) <sup>(x + 5)</sup>, with x -&gt; +infinite equals <i>e</i>
+
+<P>Enter routine as described above.
+
+<P><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+  <SPAN CLASS="alttext">&nbsp;Lbl&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+
+<P><SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+  <SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;RCL&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;1/x&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+
+<P><SPAN CLASS="brownbutton">&nbsp;X<sup>y</sup>&nbsp;</SPAN>
+
+<P><SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;RCL&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>
+  <SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN>
+  <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+
+<P><SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;INV&nbsp;</SPAN>
+  <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+
+<P>Then:
+  <UL>
+    <LI>Enter 1, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <LI>To compute limite, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>, it displays
+      2.718273747
+    <LI>To compute limite with a better precision enter 1000 instead
+       of 1 above, it displays 2.718282155
+  </UL>
+
+<H3>Example 3</H3>
+
+<P>The curve y = (x<sup>2</sup> + 2x - 1) ÷ x has two asymptotes:
+  <UL>
+    <LI>the Y axis, line x = 0
+    <LI>the line y = x + 2
+  </UL>
+
+<P>To compute both asymptotes, enter function as above, then:
+
+  <UL>
+    <LI>Enter 0, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <LI>To compute the limite,
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>, it displays
+      -14026222.738, it means -Inf, hence the line x=0 is an
+      asymptote.
+    <LI>Enter 100, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <LI>Then press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>, it displays
+      .9999999868
+    <LI>Press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> it
+      displays 2.0132049.
+    <LI>Press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> it
+      displays -10101010 (end of data)
+  </UL>
+
+<H3>Example 4</H3>
+
+<P>The sum of -1<sup>n-1</sup> ÷ 5<sup>n</sup>, with n=1..Inf equals 1÷6.
+
+<P>Enter U<sub>n</sub> as above, again <i>n</i> is in register 07.
+
+  <UL>
+    <LI>Enter 50, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <LI>Then press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>, it displays .1666666667.
+  </UL>
+
+<H3>Example 5</H3>
+
+<P>The sum of 1 ÷ (n x (n + 1)), with n=1..Inf equals 1
+
+<P>Enter U<sub>n</sub> as above, again <i>n</i> is in register 07.
+
+  <UL>
+    <LI>Enter 50, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <LI>Then press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>, it displays .99
+    <LI>Enter 100, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <LI>Then press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>, it displays
+      .995 (better precision)
+  </UL>
+
+  </body>
+</html>

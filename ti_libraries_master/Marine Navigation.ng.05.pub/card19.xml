@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">SIGHT REDUCTION (SUN)</label>
+<label slot="titleright">NG-19</label>
+<label slot="a">L<sub>DR</sub></label>
+<label slot="b"><lambda/><sub>DR</sub></label>
+<label slot="c">GMT (MS)</label>
+<label slot="d">GHA</label>
+<label slot="e">d</label>
+<label slot="aprime">Dec <ArrowR/> Hc</label>
+<label slot="bprime"><ArrowR/> a</label>
+<label slot="cprime"><ArrowR/> Zn</label>
+<label slot="dprime">STORE Zn</label>
+</carddef>

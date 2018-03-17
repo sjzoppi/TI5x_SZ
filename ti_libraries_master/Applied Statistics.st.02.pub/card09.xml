@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">HISTOGRAM CONSTRUCTION</label>
+<label slot="titleright">ST-09</label>
+<label slot="a"><ArrowR/> x&#x304;</label>
+<label slot="b"><ArrowR/> Count</label>
+<label slot="c"><ArrowR/> x<sub>max</sub></label>
+<label slot="d"></label>
+<label slot="e"></label>
+<label slot="aprime"><ArrowR/> s</label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime">Initialize</label>
+</carddef>

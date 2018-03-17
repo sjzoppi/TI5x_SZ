@@ -1,0 +1,958 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+ul.spaced li
+  {
+     padding-bottom: 6pt;
+  }
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+TABLE.keycodes
+  {
+    border-collapse : collapse;
+  }
+TABLE.keycodes > TBODY > TR > TD
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.keycodes > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>Help Page for the ti5x app</H1>
+<P><A NAME="Topics"></A>Topics:
+<UL>
+<LI><A HREF="#Intro">Introduction</A>
+<LI><A HREF="#BasicOps">Basic Operation</A>
+<LI><A HREF="#Display">Display Control</A>
+<LI><A HREF="#CopyPaste">Copy/Paste</A>
+<LI><A HREF="#AdditionalOps">Additional Operations</A>
+<LI><A HREF="#Memories">Memories</A>
+<LI><A HREF="#Trigonometry">Trigonometry</A>
+<LI><A HREF="#Statistics">Statistics Functions</A>
+<LI><A HREF="#ProgramEntry">Program Entry</A>
+<UL>
+<LI><A HREF="#ControlTransfer">Transfer of Control</A>
+<LI><A HREF="#Comparisons">Comparisons</A>
+<LI><A HREF="#Flags">Flags</A>
+<LI><A HREF="#Looping">Looping</A>
+<LI><A HREF="#OtherControl">Other Control</A>
+<LI><A HREF="#UserDefinedKeys">User-Defined Keys</A>
+<LI><A HREF="#KeyCodes">Key Codes</A>
+</UL>
+<LI><A HREF="#ProgramExecution">Program Execution</A>
+<LI><A HREF="#LibraryPrograms">Library Programs</A>
+<LI><A HREF="#Import">Importing Data</A>
+<LI><A HREF="#Printer">Printer Emulation</A>
+<LI><A HREF="#Export">Exporting Data</A>
+<LI><A HREF="#Undocumented">Undocumented Features</A>
+<LI><A HREF="#OptionsMenu">Options Menu</A>
+<LI><A HREF="#Additional">Additional Information</A>
+</UL>
+
+<H2><A NAME="Intro">Introduction</A></H2>
+<P>ti5x is an emulator for the TI-58/58C/59 family of programmable scientific
+calculators which were manufactured by Texas Instruments from the late 1970s.
+It mostly tries to follow the original functionality; features marked “extension”
+are additions not present in the original.
+
+<H2><A NAME="BasicOps"></A>Basic Operation</H2>
+<UL class="spaced">
+<LI><SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>, <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>,
+<SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN>, <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>,
+<SPAN CLASS="whitebutton">&nbsp;4&nbsp;</SPAN>, <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>,
+<SPAN CLASS="whitebutton">&nbsp;6&nbsp;</SPAN>, <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>,
+<SPAN CLASS="whitebutton">&nbsp;8&nbsp;</SPAN>, <SPAN CLASS="whitebutton">&nbsp;9&nbsp;</SPAN>,
+— number entry.
+<LI><SPAN CLASS="whitebutton">&nbsp;.&nbsp;</SPAN> — decimal point. Also lets you continue
+mantissa entry after entering exponent.
+<LI><SPAN CLASS="brownbutton">EE</SPAN> (during number entry) — enter exponent
+<LI><SPAN CLASS="whitebutton">+/-</SPAN> — change sign of mantissa or exponent
+<LI><SPAN CLASS="brownbutton">CE</SPAN> — clear current number without losing rest of calculation.
+<LI><SPAN CLASS="yellowbutton">CLR</SPAN> — clear entire current calculation.
+<LI><SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN>, <SPAN CLASS="yellowbutton">&nbsp;-&nbsp;</SPAN>,
+<SPAN CLASS="yellowbutton">&nbsp;×&nbsp;</SPAN> and <SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN>
+— four-function arithmetic operators with usual algebraic precedence.
+<LI><SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN>, <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+— lets you override normal arithmetic operator precedence.
+<LI><SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN> — completes entire pending calculation,
+automatically supplying any missing closing parentheses.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Display"></A>Display Control</H2>
+<UL class="spaced">
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Fix</SPAN> or <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Fix</SPAN> <B>9</B>
+— switch display to default format. This uses up to 9 decimal places (trailing zeroes
+omitted) with no exponent displayed, provided the magnitude of the number is within
+[5.0 × 10<SUP>-9</SUP> .. 1.0 × 10<SUP>10</SUP>], otherwise it will show 8 figures with an exponent.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Fix</SPAN> <I>n</I> (<I>n</I> ∈ 0 .. 8) — switch display to fixed point with exactly <I>n</I> decimal places, provided number is
+within the range above, otherwise 8 figures will be shown with exponent.
+<LI><SPAN CLASS="brownbutton">EE</SPAN> (after a result has been computed) — round displayed
+number to only digits shown. Display will also switch to exponential format for subsequent results.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">EE</SPAN> — switch
+display to default format.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Eng</SPAN> — switch display
+to engineering notation (with exponent that is always a multiple of 3).
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Eng</SPAN> — switch display to default format.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="CopyPaste"></A>Copy/Paste</H2>
+<P>If you long-tap the display, a context menu will appear with “Copy Number”,
+“Copy Full-Precision Number” and “Paste Number” options in it. Select “Copy Number” to copy
+the currently-displayed number to the Clipboard, or “Copy Full-Precision Number” to copy
+it with all significant figures intact, regardless of how many are being displayed.
+From here it may be pasted into other applications. Select “Paste Number” to enter a number
+from the Clipboard, perhaps copied from another application. If it is not a valid number,
+you will get an error message.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="AdditionalOps"></A>Additional Operations</H2>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> — modify next key to perform function written just
+above it, rather than on key itself.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> — modify next key to perform “inverse” function
+(meaning depends on key).
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN>
+— <B>extension:</B> remainder on division.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">&nbsp;%&nbsp;</SPAN>
+— <B>extension:</B> compute percent of current number (X <SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN> 100)
+or if an operand is on the stack the percent of the operand multiplied by the current number
+(Op * X <SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN> 100). Example: 15 <SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN> 25 <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;%&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN> 18.75
+<LI><SPAN CLASS="brownbutton">y<sup>x</sup></SPAN> — raise number entered before to power of number
+entered after.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">y<sup>x</sup></SPAN> — raise number
+entered before to power of reciprocal of number entered after.
+<LI><SPAN CLASS="brownbutton">lnx</SPAN> — replaces last-entered number with its log
+base <I>e</I>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">lnx</SPAN> — replaces last-entered
+number with its antilog base <I>e</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">log</SPAN> — replaces last-entered number
+with its log base 10.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">log</SPAN>
+— replaces last-entered number with its antilog base 10.
+<LI><SPAN CLASS="brownbutton">x²</SPAN> — replaces last-entered number with its square.
+<LI><SPAN CLASS="brownbutton">√x</SPAN> — replaces last-entered number with its square root.
+<LI><SPAN CLASS="brownbutton">1/x</SPAN> — replaces last-entered number with its reciprocal.
+<LI><SPAN CLASS="brownbutton">x⇌t</SPAN> — interchanges contents of X (displayed number) and
+T registers.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <I>nn</I> —
+performs various special operations, depending on the value of <I>nn</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>50</B> —
+<B>extension:</B> return the current time in seconds since 00:00:00 1st January 1970 UTC.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>51</B> —
+<B>extension:</B> return a cryptographically-strong random value in [0.0 .. 1.0).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>98</B> —
+<B>extension:</B> Trace execution: the result of each calculation step will
+be printed on the printer. A second <SPAN CLASS="alttext">Op</SPAN> <B>98</B> will revert.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>99</B> —
+<B>extension:</B> run the integrated test suite, return the number
+of tests passed or the flashing number of the test in error.
+</UL>
+
+<P>If you use both <SPAN CLASS="yellowbutton">2nd</SPAN> and <SPAN CLASS="brownbutton">INV</SPAN>,
+they can be pressed in either order. If you press one of these by mistake, just press it
+again to cancel it before pressing another key.
+
+<P>The following operations are mainly useful when writing programs:</P>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Int</SPAN> — replace
+the displayed number with its integer part.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Int</SPAN> — replace the displayed number with its fractional part.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">|x|</SPAN> — replace
+the displayed number with its absolute value.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>10</B> —
+signum: replace displayed number with <B>1</B> if positive, <B>0</B> if zero, or <B>-1</B> if negative.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Nop</SPAN> — does nothing.
+May be inserted in program sequences in place of deleted instructions to avoid changing
+the positions of following instructions.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Memories"></A>Memories</H2>
+<P>There are 100 memory registers available, numbered <B>00</B> to <B>99</B>.
+<UL class="spaced">
+<LI><SPAN CLASS="brownbutton">STO</SPAN> <I>nn</I> — store current number into memory <I>nn</I>.
+<LI><SPAN CLASS="brownbutton">RCL</SPAN> <I>nn</I> — replace current number with copy of memory <I>nn</I>.
+<LI><SPAN CLASS="brownbutton">SUM</SPAN> <I>nn</I> — add current number to memory <I>nn</I>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">SUM</SPAN> <I>nn</I> — subtract
+current number from memory <I>nn</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">CMs</SPAN> — set all memories to zero.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Exc</SPAN> <I>nn</I> — exchange
+current number and contents of memory <I>nn</I>
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prd</SPAN> <I>nn</I> — multiply
+contents of memory <I>nn</I> by current number.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prd</SPAN> <I>nn</I>
+— divide contents of memory <I>nn</I> by current number.
+</UL>
+
+<P>The following operations are mainly useful when writing programs:</P>
+<UL class="spaced">
+<LI><SPAN CLASS="brownbutton">STO</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Ind</SPAN> <I>nn</I>, <SPAN CLASS="brownbutton">RCL</SPAN>
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Ind</SPAN> <I>nn</I> etc —
+all the above memory operations on single registers are also available in <I>indirect</I>
+versions, where the contents of the specified memory register are taken as the number of
+the actual register to operate on.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>2</B><I>n</I> —
+adds 1 to memory <B>0</B><I>n</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>3</B><I>n</I> —
+subtracts 1 from memory <B>0</B><I>n</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>52</B> —
+<B>extension:</B> returns the current <I>register offset</I> as <I>nn</I>
+(<I>nn</I> ∈ <B>00</B> .. <B>99</B>).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>53</B> —
+<B>extension:</B> sets the register offset to the current number <I>nn</I>
+(<I>nn</I> ∈ <B>00</B> .. <B>99</B>).
+</UL>
+<P>The register offset is an adjustment to the numbering of all the memory registers:
+when the offset is set to <I>nn</I>, all references to register <I>ii</I> actually become
+references to register <I>ii</I> + <I>nn</I> (modulo 100). The purpose of this is to
+minimize register conflicts when one program calls another. For example, you might want
+to call two library programs that both use registers <B>01</B> .. <B>06</B>; rather than
+move the registers one by one into different registers and then back again, simply change
+the register offset before calling one or both of them, to cause them to use different registers.
+You can also use this to give yourself more convenient numbering for your own register usage;
+thus, if you want to use 10 registers, but want to call a library routine that will
+use registers from <B>00</B> onwards, simply add 10 to the register offset before calling
+that routine, then subtract 10 back after it returns. That way your own code can use
+the register numbers <B>00</B> .. <B>09</B> without conflict.
+<P>The preferred way to make adjustments to the register offset is to always <I>add</I>
+to or <I>subtract</I> from the current value, never unconditionally <I>set</I> it to
+a new value. In the previous example, you might use a key sequence like
+<SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Op</SPAN> <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+<SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN>
+<SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN> <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+<SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN>
+<SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN> <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+before invoking the routine, and
+<SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Op</SPAN> <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN>
+<SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;-&nbsp;</SPAN>
+<SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN> <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN>
+<SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN>
+<SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN> <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN>
+to restore the previous offset afterwards. The reason for this is to allow the same trick
+to be pulled on your routine to relocate its register usage by some other routine that
+wants to call it.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Trigonometry"></A>Trigonometry</H2>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">π</SPAN> — enter π.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">π</SPAN> — <B>extension:</B> enter the equivalent of 1 radian in the current angle units
+(1 if in radians, 180 ÷ π if in degrees, 200 ÷ π if in gradians). Dividing an angle in the
+current angle units by this number converts it to radians; multiplying a value in radians
+by this number converts it to the current angle units. Many algorithms are easiest to express
+if all angles are in radians; at the same time, you can make your program more user-friendly
+if it accepts inputs and displays results in the current angle units.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Deg</SPAN> — switches angle units
+to degrees (default).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Rad</SPAN> — switches angle units
+to radians.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Grad</SPAN> — switches angle units
+to gradians (100 gradians = 90°).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">D.MS</SPAN> — converts a number
+<I>d</I>.<I>mmss</I> (representing degrees, minutes and seconds) to degrees and fractions of
+a degree.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">D.MS</SPAN> — converts a number representing degrees and fractions of a degree to
+<I>d</I>.<I>mmss</I> (representing degrees, minutes and seconds).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Sin</SPAN> — sine of last-entered
+number.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Sin</SPAN>
+— arcsine of last-entered number.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Cos</SPAN> — cosine of last-entered
+number.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Cos</SPAN>
+— arccosine of last-entered number.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Tan</SPAN> — tangent of last-entered
+number.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Tan</SPAN>
+— arctangent of last-entered number.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">P→R</SPAN> — polar-to-rectangular
+coordinate conversion; input angle in X register and magnitude in T register, output will be X-coordinate in
+T register and Y-coordinate in X register.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">P→R</SPAN>
+— rectangular-to-polar coordinate conversion: input X-coordinate in T register and Y-coordinate in
+X register, output will be angle in X register and magnitude in T register.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Statistics"></A>Statistics Functions</H2>
+<P>Note these accumulate totals in registers <B>01</B> to <B>06</B> as follows:
+<UL>
+<LI><B>01</B> — ∑y
+<LI><B>02</B> — ∑y²
+<LI><B>03</B> — N
+<LI><B>04</B> — ∑x
+<LI><B>05</B> — ∑x²
+<LI><B>06</B> — ∑xy
+</UL>
+<P>so these need to be cleared before use. (The Master Library provides a function in
+Program <B>01</B> for doing this: <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Pgm</SPAN> <B>01</B> <SPAN CLASS="brownbutton">SBR</SPAN>
+<SPAN CLASS="yellowbutton">CLR</SPAN>.)</P>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">∑+</SPAN> — accumulate a data point;
+independent variable in T register, dependent variable in X register. T register automatically
+incremented for next entry.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">∑+</SPAN>
+— remove a data point. Can be used to undo an incorrect entry. Note that T still increments!
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext"><i>x</i>&#773;</SPAN> — compute sample mean:
+T = ∑x / N, X = ∑y / N.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext"><i>x</i>&#773;</SPAN> — compute population standard deviation:
+T = sqrt(∑x² - (∑x)² / N(N - 1)), X = sqrt(∑y² - (∑y)² / N(N - 1)).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>11</B> — compute
+sample variance: T = ∑x² / N - (∑x)² / N², X = ∑y² - (∑y)² / N².
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>12</B> — compute
+linear regression slope and intercept: T = <I>m</I>, X = ∑y - <I>m</I> * ∑x / N where <I>m</I> =
+(∑xy - ∑x∑y / N) / (∑x² - (∑x)² / N).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>13</B> — compute
+correlation coefficient: X = <I>m</I> * sqrt(∑x² - (∑x)² / N(N - 1)) / sqrt(∑y² - (∑y)² / N(N - 1))
+where <I>m</I> = (∑xy - ∑x∑y / N) / (∑x² - (∑x)² / N).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>14</B> — compute
+estimated <I>y</I> from <I>x</I>: X = <I>m</I> * X + (∑y² - <I>m</I> * ∑x) / N where
+<I>m</I> = (∑xy - ∑x∑y / N) / (∑x² - (∑x)² / N).
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>15</B> — compute
+estimated <I>x</I> from <I>y</I>: X = (X - (∑y² - <I>m</I> * ∑x) / N) / <I>m</I> where
+<I>m</I> = (∑xy - ∑x∑y / N) / (∑x² - (∑x)² / N).
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="ProgramEntry"></A>Program Entry</H2>
+<P>Programs are stored as a sequence of 2-digit numbers that (mostly) correspond to the position
+of the keys on the keyboard. There are 960 program locations available for holding a user-entered
+program. These are numbered from <B>000</B> to <B>959</B>.
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">CP</SPAN> — in calculation mode,
+set all program locations to zero.
+<LI><SPAN CLASS="brownbutton">LRN</SPAN> — toggle between calculation and program-entry modes.
+<LI><SPAN CLASS="brownbutton">SST</SPAN> — in program-entry mode: skip to the following program
+location.
+<LI><SPAN CLASS="brownbutton">BST</SPAN> — in program-entry mode: step back to the previous
+program location.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Ins</SPAN> — in program-entry mode,
+insert a zero at the current location and move the following instructions down one.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Del</SPAN> — in program-entry mode,
+delete the instruction at the current location and move the following instructions up one.
+</UL>
+<P>Other keys will enter keystrokes that will perform their function when executed.
+<P>Note that all register, flag and location operands allow indirection: simply enter
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Ind</SPAN> <I>nn</I> in place
+of the operand to specify the register which will supply the value of the operand.
+
+<H3><A NAME="ControlTransfer"></A>Transfer of Control</H3>
+
+<P>Enter <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Lbl</SPAN> followed
+by just about any other key (except the above program-entry functions, the digit keys
+or <SPAN CLASS="alttext">Ind</SPAN>) to use that key to label the current location.
+The same label key can then be specified as the <I>loc</I> operand to any of the branch/call/loop
+instructions.
+<UL class="spaced">
+<LI><SPAN CLASS="brownbutton">GTO</SPAN> <I>loc</I> — unconditional transfer of control to <I>loc</I>.
+<LI><SPAN CLASS="brownbutton">SBR</SPAN> <I>loc</I> — unconditional transfer of control to
+<I>loc</I>, until the next <SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">SBR</SPAN>
+instruction is executed, in which case control returns here to continue from the following
+instruction.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">SBR</SPAN> — return
+from the last subroutine entered.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">GTO</SPAN> <I>loc</I> —
+<B>extension:</B> put the address of <I>loc</I> into the display register.
+</UL>
+<P>Any of the preceding that take a <I>loc</I> operand may be prefixed by
+<SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Pgm</SPAN> <I>nn</I> (or <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Pgm</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Ind</SPAN> <I>nn</I>) to refer to the specified location
+in library program <I>nn</I> (or the library program given by the contents of register <I>nn</I>)
+rather than the current program.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H3><A NAME="Comparisons"></A>Comparisons</H3>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">x=t</SPAN> <I>loc</I> —
+if X is equal to T, branch to location <I>loc</I>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN>  <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">x=t</SPAN> <I>loc</I> — if X is not equal to T, branch to location <I>loc</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">x≥t</SPAN> <I>loc</I> —
+if X is greater than or equal to T, branch to location <I>loc</I>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN>  <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">x≥t</SPAN> <I>loc</I> — if X is less than T, branch to location <I>loc</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">CP</SPAN> — when executed
+in a program, this just clears the T-register. It does <I>not</I> clear the program.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H3><A NAME="Flags"></A>Flags</H3>
+<P>There are 10 flags (numbered 0 to 9), each of which may be set, unset, or tested.</P>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">St flg</SPAN> <I>n</I> —
+set flag <I>n</I>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">St flg</SPAN> <I>n</I> — clear flag <I>n</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">If flg</SPAN> <I>n</I> <I>loc</I> —
+if flag <I>n</I> is set, branch to location <I>loc</I>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">If flg</SPAN> <I>n</I> <I>loc</I> — if flag <I>n</I> is unset, branch to
+location <I>loc</I>.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>18</B> —
+if there is no error condition, set flag 7, otherwise leave it unchanged.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Op</SPAN> <B>18</B> —
+if there is no error condition, clear flag 7, otherwise leave it unchanged.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>19</B> —
+if there is an error condition, set flag 7, otherwise leave it unchanged.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Op</SPAN> <B>19</B> —
+if there is an error condition, clear flag 7, otherwise leave it unchanged.
+</UL>
+
+<P>Stop on error: if flag 8 is set when an error condition occurs during program execution,
+execution immediately stops.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H3><A NAME="Looping"></A>Looping</H3>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Dsz</SPAN> <I>n</I> <I>loc</I> —
+decrement register <B>0</B><I>n</I>, and branch to <I>loc</I> if its new value is nonzero,
+otherwise continue with the following instruction.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Dsz</SPAN> <I>n</I> <I>loc</I> —
+decrement register <B>0</B><I>n</I>, and branch to <I>loc</I> if its new value is zero,
+otherwise continue with the following instruction.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H3><A NAME="OtherControl"></A>Other Control</H3>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Pause</SPAN> — pauses execution
+of the program just long enough for the user to see the displayed value before continuing.
+<LI><SPAN CLASS="brownbutton">R/S</SPAN> — when this is encountered in a program,
+execution stops. The user may resume from that point by pressing
+<SPAN CLASS="brownbutton">R/S</SPAN>.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H3><A NAME="UserDefinedKeys"></A>User-Defined Keys</H3>
+<P>The keys <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>,
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">A´</SPAN>,
+<SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>,
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">B´</SPAN>,
+<SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>,
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">C´</SPAN>,
+<SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>,
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">D´</SPAN>,
+<SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> and
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">E´</SPAN>
+may be used as labels just like most other keys. They are special in that
+they can be invoked as subroutines without being prefixed with
+<SPAN CLASS="brownbutton">SBR</SPAN>. They are intended to behave as user-definable
+function keys.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H3><A NAME="KeyCodes"></A>Key Codes</H3>
+<P>Note that some codes represent <I>merged</I> keystrokes. This not only saves
+space; some sequences cannot be represented unambiguously otherwise
+(<SPAN CLASS="alttext">Ind</SPAN> versus register 40).
+<P>Note also that <SPAN CLASS="brownbutton">INV</SPAN> is (usually) a separate keystroke,
+while <SPAN CLASS="yellowbutton">2nd</SPAN> is not.
+<TABLE CLASS="keycodes">
+<TR>
+<TD>01 <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN></TD>
+<TD>02 <SPAN CLASS="whitebutton">&nbsp;2&nbsp;</SPAN></TD>
+<TD>03 <SPAN CLASS="whitebutton">&nbsp;3&nbsp;</SPAN></TD>
+<TD>04 <SPAN CLASS="whitebutton">&nbsp;4&nbsp;</SPAN></TD>
+<TD>05 <SPAN CLASS="whitebutton">&nbsp;5&nbsp;</SPAN></TD>
+</TR>
+<TR>
+<TD>06 <SPAN CLASS="whitebutton">&nbsp;6&nbsp;</SPAN></TD>
+<TD>07 <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN></TD>
+<TD>08 <SPAN CLASS="whitebutton">&nbsp;8&nbsp;</SPAN></TD>
+<TD>09 <SPAN CLASS="whitebutton">&nbsp;9&nbsp;</SPAN></TD>
+<TD>00 <SPAN CLASS="whitebutton">&nbsp;0&nbsp;</SPAN></TD>
+</TR>
+
+<TR>
+<TD>11 <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN></TD>
+<TD>12 <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN></TD>
+<TD>13 <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN></TD>
+<TD>14 <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN></TD>
+<TD>15 <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN></TD>
+</TR>
+<TR>
+<TD>16 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">&nbsp;A´&nbsp;</SPAN></TD>
+<TD>17 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">&nbsp;B´&nbsp;</SPAN></TD>
+<TD>18 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">&nbsp;C´&nbsp;</SPAN></TD>
+<TD>19 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">&nbsp;D´&nbsp;</SPAN></TD>
+<TD>10 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">&nbsp;E´&nbsp;</SPAN></TD>
+</TR>
+
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>22 <SPAN CLASS="brownbutton">INV</SPAN></TD>
+<TD>23 <SPAN CLASS="brownbutton">ln<I>x</I></SPAN></TD>
+<TD>24 <SPAN CLASS="brownbutton">CE</SPAN></TD>
+<TD>25 <SPAN CLASS="yellowbutton">CLR</SPAN></TD>
+</TR>
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>27 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="brownbutton">INV</SPAN></TD>
+<TD>28 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Log</SPAN></TD>
+<TD>29 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">CP</SPAN></TD>
+<TD>20 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="yellowbutton">CLR</SPAN></TD>
+</TR>
+
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>32 <SPAN CLASS="brownbutton">x⇌t</SPAN></TD>
+<TD>33 <SPAN CLASS="brownbutton">x²</SPAN></TD>
+<TD>34 <SPAN CLASS="brownbutton">√x</SPAN></TD>
+<TD>35 <SPAN CLASS="brownbutton">1/x</SPAN></TD>
+</TR>
+<TR>
+<TD>36 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Pgm</SPAN></TD>
+<TD>37 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">P→R</SPAN></TD>
+<TD>38 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">sin</SPAN></TD>
+<TD>39 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">cos</SPAN></TD>
+<TD>30 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">tan</SPAN></TD>
+</TR>
+
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>42 <SPAN CLASS="brownbutton">STO</SPAN></TD>
+<TD>43 <SPAN CLASS="brownbutton">RCL</SPAN></TD>
+<TD>44 <SPAN CLASS="brownbutton">SUM</SPAN></TD>
+<TD>45 <SPAN CLASS="brownbutton">y<sup>x</sup></SPAN></TD>
+</TR>
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>47 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">CMs</SPAN></TD>
+<TD>48 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Exc</SPAN></TD>
+<TD>49 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prd</SPAN></TD>
+<TD>40 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Ind</SPAN></TD>
+</TR>
+
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>52 <SPAN CLASS="brownbutton">EE</SPAN></TD>
+<TD>53 <SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN></TD>
+<TD>54 <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN></TD>
+<TD>55 <SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN></TD>
+</TR>
+<TR>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>57 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Eng</SPAN></TD>
+<TD>58 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Fix</SPAN></TD>
+<TD>59 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Int</SPAN></TD>
+<TD>50 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">|x|</SPAN></TD>
+</TR>
+
+<TR>
+<TD>61 <SPAN CLASS="brownbutton">GTO</SPAN></TD>
+<TD>62 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Pgm</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>  <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>63 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Exc</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>64 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prd</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>65 <SPAN CLASS="yellowbutton">&nbsp;×&nbsp;</SPAN>
+</TR>
+<TR>
+<TD>66 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Pause</SPAN></TD>
+<TD>67 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">x=t</SPAN></TD>
+<TD>68 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Nop</SPAN></TD>
+<TD>69 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN></TD>
+<TD>60 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Deg</SPAN></TD>
+</TR>
+
+<TR>
+<TD>71 <SPAN CLASS="brownbutton">SBR</SPAN></TD>
+<TD>72 <SPAN CLASS="brownbutton">STO</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>  <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>73 <SPAN CLASS="brownbutton">RCL</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>  <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>74 <SPAN CLASS="brownbutton">SUM</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>  <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>75 <SPAN CLASS="yellowbutton">&nbsp;-&nbsp;</SPAN>
+</TR>
+<TR>
+<TD>76 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Lbl</SPAN></TD>
+<TD>77 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">x≥t</SPAN></TD>
+<TD>78 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">∑+</SPAN</TD>
+<TD>79 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext"><i>x</i>&#773;</SPAN</TD>
+<TD>70 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Rad</SPAN></TD>
+</TR>
+
+<TR>
+<TD>81 <SPAN CLASS="brownbutton">RST</SPAN></TD>
+<TD CLASS="unused">&nbsp;</TD>
+<TD>83 <SPAN CLASS="brownbutton">GTO</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>  <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>84 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>  <SPAN CLASS="alttext">Ind</SPAN></TD>
+<TD>85 <SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN>
+</TR>
+<TR>
+<TD>86 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">St flg</SPAN></TD>
+<TD>87 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">If flg</SPAN></TD>
+<TD>88 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">D.MS</SPAN></TD>
+<TD>89 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">π</SPAN></TD>
+<TD>80 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Grad</SPAN></TD>
+</TR>
+
+<TR>
+<TD>91 <SPAN CLASS="brownbutton">R/S</SPAN></TD>
+<TD>92 <SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">SBR</SPAN></TD>
+<TD>93 <SPAN CLASS="whitebutton">&nbsp;.&nbsp;</SPAN></TD>
+<TD>94 <SPAN CLASS="whitebutton">+/-</SPAN></TD>
+<TD>95 <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN>
+</TR>
+<TR>
+<TD>96 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="brownbutton">R/S</SPAN></TD>
+<TD>97 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Dsz</SPAN></TD>
+<TD>98 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Adv</SPAN></TD>
+<TD>99 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prt</SPAN></TD>
+<TD>90 <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">List</SPAN></TD>
+</TR>
+
+</TABLE>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="ProgramExecution"></A>Program Execution</H2>
+<UL class="spaced">
+<LI><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>, <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">A´</SPAN>, <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>,
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">B´</SPAN> etc — execute the subroutines with those
+labels.
+<LI><SPAN CLASS="brownbutton">SBR</SPAN> followed by another key, or by 3 digits — execute the
+subroutine labelled by the following key, or starting at the specified location.
+<LI><SPAN CLASS="brownbutton">GTO</SPAN> followed by another key, or by 3 digits — in
+calculation mode, set the current location to that labelled by the following key, or the
+specified number.
+<LI><SPAN CLASS="brownbutton">R/S</SPAN> — in calculation mode, start execution at the current
+location, or stop execution if already running.
+<LI><SPAN CLASS="brownbutton">SST</SPAN> — in calculation mode: execute one instruction.
+<LI><SPAN CLASS="brownbutton">RST</SPAN> — clear all flags and the subroutine return stack,
+and set the current location to <B>000</B>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">RST</SPAN> — <B>extension:</B>
+close the current data-import and data-export files.
+</UL>
+<P>While a program is running, you can hold down the
+<SPAN CLASS="brownbutton">GTO</SPAN>/<SPAN CLASS="alttext">Pause</SPAN>
+key to slow down execution and see intermediate results appearing in the display. Release
+to resume full-speed execution.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="LibraryPrograms"></A>Library Programs</H2>
+<P>It is possible to load external library modules into the
+  calculator. Six modules come preloaded with the calculator.
+
+  <UL>
+    <LI>The Master Library
+    <LI>Leisure Library
+    <LI>Math Utilities Library
+    <LI>Surveying Library
+    <LI>Electrical Engineering Library (partial)
+    <LI>Contribution Library
+  </UL>
+
+<P>A library module can provide up to 99 separate program banks, which
+  can be selected for execution instead of programbank <B>00</B>,
+  which is where your user-entered program is kept. Only one library
+  module can be loaded at a time.
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Pgm</SPAN> <I>nn</I>
+— select program bank <I>nn</I> from loaded library module (if <I>nn</I> in
+[<B>01</B> .. <B>99</B>]), or select user-entered program bank (if <I>nn</I> = <B>00</B>).
+If the selected program bank has a label card, it will appear just under the display.
+If the program bank has a help page, it can be shown by tapping in the label card area.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>09</B> — copies
+the currently-selected program bank into the user program area.
+</UL>
+
+<P><B>Extension:</B> pressing <SPAN CLASS="brownbutton">LRN</SPAN> while a nonzero program
+number is selected will display the contents of the selected program, rather than the
+user-program-entry area. The program number additionally appears to the left of the program
+location number. Library programs cannot be edited.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Import"></A>Importing Data</H2>
+<P>You can read numbers from a data file, instead of having to enter them manually.
+You choose a file to open from the “Import Data...” item in the
+<A HREF="#OptionsMenu">Options Menu</A>. The file must contain a sequence of numbers
+separated by newlines, whitespace or commas. Thereafter, you can read the next
+number into the display using <SPAN CLASS="brownbutton">INV</SPAN>
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prt</SPAN> (either from
+the keyboard or in a program). An attempt to read past the last number will set flag 7
+and leave the display unchanged. If a number was successfully read, flag 7 will be cleared.
+<P>The import file can also be immediately closed by <SPAN CLASS="brownbutton">INV</SPAN>
+<SPAN CLASS="brownbutton">RST</SPAN>.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Printer"></A>Printer Emulation</H2>
+<P>The app also includes emulation for a connected PC-100<I>x</I> dot-matrix printer
+capable of printing 20 text columns per line, from a limited character set. The printer
+output can be viewed by selecting the “Printer” item from the options menu.
+<TABLE>
+<TR>
+<TD>Alphanumeric text is output via the <I>print register</I>, which is set up
+using <SPAN CLASS="alttext">Op</SPAN> <B>00</B>&nbsp;..&nbsp;<B>04</B> (below). Each character
+is represented by a two-digit code <I>nn</I>, where each digit <I>n</I> ∈ 0 .. 7.
+This table shows the available character set; the first digit is
+given by the row, and the second digit by the column.</TD><TD>
+<TABLE>
+<TR><TD>&nbsp;</TD><TD><I>x</I>0</TD><TD><I>x</I>1</TD><TD><I>x</I>2</TD><TD><I>x</I>3</TD><TD><I>x</I>4</TD><TD><I>x</I>5</TD><TD><I>x</I>6</TD><TD><I>x</I>7</TD></TR>
+<TR STYLE="height : 1.63em"><TD>0<I>x</I></TD><TD ROWSPAN="8" COLSPAN="8">
+<IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAADeAQMAAACe4KlsAAAABlBMVEXo6OhlZWU/UcYXAAACnklE
+QVRYhdWYvY3DMAyFaRhQJfcCsoQrz+P08Q6qbp5UrgV4CQNe5khKSZxEj0npvMr5wKNEkdTPEf2A
+mpmaSFNsL0Sj20ZaLQzkKXWxpT40sR0dkTMxdsJDUs8DBx6SPyxsOukiXSiNPPVhtbDphO2auEn8
+fWthywlbBPkb9+zkHQNxGrprO101DbSRWy18bDXzqvPmqjpd6CS5HDaIoQKv4OhyVSX57i0MlPbW
+dLcGuC6naZg5DTxvtdaqAhiol4KgtyEBNp30r8EDDJ3IvKVdn9IA8A+omxM3CcfPTeKl00wM5GX7
+Y2tpe68fFjac0N067J1UcE3cJN0s1tM1Wye1BtieyVCfSQV/XpNUX5P01Zpwk2gaTrIPlqoC+Nji
+k4m7a+Kel/Nykx1Zd7Y6Rk6u69MW5mQdIUZO/kIXn6xJndQxduJ7sZ4iW+u8i5MaNtbE6ZAUznEh
+KuHUsbmw2VoDeDipYNMJp4G4T2QfLOHU8S/ouSA4Eyb+xskjDQB/cNJ6CrKXvTh5wdiJZ9Ned0MK
+dN8KqviDEx4yj5csXNVQLmdeL6x0axKAoZN8dT7HbF3SAPBviM+YLO++wG/iTmv+ZGfPR8KtpABG
+6pNeaPKbRAvCwkBOjn8uhZIGqSoDf5jJOZ6mnTXA1ppcxDqU4B3GpnTIcpvZHboAH1lOXmjy2BO1
+9+MfYKCB35ypueaY25EWE9fFR53c42VUyeXIuZR3GsA4nLzuvvxeyAWMoRMdj0uBh5SfuU8Ahk74
+0JVL/IMEjHE4Lt3SoNLgAT66ZDvW/cuXFdzG/BqtYqiU/ynAnabpXEq7AlyXHjBEO+vHufOOQTgy
+V5rmvXWAGK5JupVmPi/zkACb0oLIx/8+eICrKkNyGhbP1rc0AHwI/QPXE5iOEoqlNAAAAABJRU5E
+rkJggg==" ALT="Printer Character Set">
+</TD></TR>
+<TR STYLE="height : 1.63em"><TD>1<I>x</I></TD></TR>
+<TR STYLE="height : 1.63em"><TD>2<I>x</I></TD></TR>
+<TR STYLE="height : 1.63em"><TD>3<I>x</I></TD></TR>
+<TR STYLE="height : 1.63em"><TD>4<I>x</I></TD></TR>
+<TR STYLE="height : 1.63em"><TD>5<I>x</I></TD></TR>
+<TR STYLE="height : 1.63em"><TD>6<I>x</I></TD></TR>
+<TR STYLE="height : 1.63em"><TD>7<I>x</I></TD></TR>
+</TABLE>
+</TD></TR>
+</TABLE>
+<UL class="spaced">
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prt</SPAN> — print
+the number currently being displayed.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>00</B> —
+initialize the print register to all blanks.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>01</B> —
+load the 10-digit integer part of the displayed value into the leftmost 5 columns of the
+print register.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>02</B> —
+load the 10-digit integer part of the displayed value into the next-to-leftmost 5 columns of the
+print register.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>03</B> —
+load the 10-digit integer part of the displayed value into the next-to-rightmost 5 columns of the
+print register.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>04</B> —
+load the 10-digit integer part of the displayed value into the rightmost 5 columns of the
+print register.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>05</B> —
+print the contents of the print register.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>06</B> —
+print the number currently being displayed, followed by the last four characters in the
+print register.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>07</B> —
+plot an asterisk preceded by <I>n</i> spaces, where <I>n</I> (which must be in [0 .. 19])
+is taken from the integer part of the displayed number.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>08</B> —
+print a listing of the names and locations of all labels in the user program.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>40</B> —
+set flag 7 to indicate that a printer is attached.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <B>98</B> —
+Activate the trace mode.Trace execution: the result of each calculation step will
+be printed on the printer.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Adv</SPAN> — advance
+the paper by 1 line.
+<LI><SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">List</SPAN> — print out
+the user program contents in mnemonic form, starting from the current
+program counter. Press <SPAN CLASS="brownbutton">RST</SPAN> first to ensure the
+listing starts from <B>000</B>.
+<LI><SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">List</SPAN> — print out the memory contents, starting from the
+register with the number showing in the display.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Export"></A>Exporting Data</H2>
+<P>Calculation results can also be exported, in either of two ways:
+<OL>
+<LI>The printer emulation can write text representations of every printed line
+to an output file. Every line sent to the printer, whether via
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prt</SPAN> or any of the
+printer-related <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <I>nn</I>
+functions, will be written to the file. Note that characters with no obvious Unicode
+equivalent are ignored. The <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Adv</SPAN> function will write a blank line.
+<P>Note this file typically cannot be re-imported by ti5x, since exponents are
+separated from mantissas by a space or nothing before a minus sign (instead of the more
+conventional <B>e</B> character). Other programs are also likely to have trouble reading
+such numbers.
+<LI>Only numbers are exported, in standard exponential format; the current calculation
+result is written out every time the <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Prt</SPAN> key is pressed (or that function is invoked from a program).
+This file format can be re-imported by ti5x, and should also be readable by other programs.
+</OL>
+<P>To close the current export file, press (or execute in a program)
+<SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Adv</SPAN>. It is also closed by <SPAN CLASS="brownbutton">INV</SPAN>
+<SPAN CLASS="brownbutton">RST</SPAN>.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Undocumented"></A>Undocumented Features</H2>
+
+Only available in programs.
+
+<H3>The HIR instuction</H3>
+
+<P>The HIR instructions can be used to access the stack values. The
+  stack comprises the last 8 values entered and not yet used in the
+  computation. <b>HIR Cn</b> where <b>n</b> is in range 0 .. 7 and
+  corresponds to the 8 internal registers with 0 being the currently
+  displayed value (X) and <b>C</b> is a number corresponding to a
+  special operation.
+
+<UL class="spaced">
+  <LI>HIR 0n (<i>code 82 0n</i>)
+    like <SPAN CLASS="brownbutton">STO</SPAN>, x -> Stack(N).
+  <LI>HIR 1n (<i>code 82 1n</i>)
+    like <SPAN CLASS="brownbutton">RCL</SPAN>, Stack(N) -> x
+  <LI>HIR 3n (<i>code 82 3n</i>)
+    like <SPAN CLASS="brownbutton">SUM</SPAN>, Stack(N) += x
+  <LI>HIR 4n (<i>code 82 4n</i>)
+    like <SPAN CLASS="alttext">Prd</SPAN>, Stack(N) *= x
+  <LI>HIR 5n (<i>code 82 5n</i>)
+    like <SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="brownbutton">SUM</SPAN>, Stack(N) -= x
+  <LI>HIR 6n (<i>code 82 6n</i>)
+    like <SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="alttext">Prd</SPAN>, Stack(N) /= x
+</UL>
+
+<P>To enter HIR 12 for example:
+  <UL class="spaced">
+    <LI>Key in <SPAN CLASS="brownbutton">STO</SPAN> 82 to put <i>42 82</i>
+      into program memory.
+    <LI>Key in <SPAN CLASS="brownbutton">STO</SPAN> 12 to pu <i>42 82 42 12</i>
+      into program memory.
+    <LI>Go back and delete both <i>42</i> keycode, we have <i>82 12</i>
+  </UL>
+
+<H3>Decrement no-jump</H3>
+
+<UL>
+  <LI><SPAN CLASS="alttext">Dsz</SPAN> nn 51 — decrement register
+  nn and do not jump.
+</UL>
+
+<P>To enter <SPAN CLASS="alttext">Dsz</SPAN> 36 51 for example:
+  <UL>
+    <LI>Key in <SPAN CLASS="alttext">Dsz</SPAN> 00 A, to put the keycodes <i>97 00 11</i> into program memory.
+    <LI> Then go back and delete the <i>00</i>.
+    <LI> Insert two steps between the <i>97</i> and <i>11</i> and key in <SPAN CLASS="brownbutton">STO</SPAN> 36.
+    <LI> You will then have <i>97 42 36 11</i> as keycodes.
+    <LI> Go back and delete the <i>42</i>. Then delete the <i>11</i>.
+    <LI> You will now have <i>97 36</i>. Now key in after the <i>36</i> keycode <SPAN CLASS="brownbutton">STO</SPAN> 51.
+    <LI>You will then have <i>97 36 42 51</i>. Then delete the <i>42</i>.
+    <LI> The final code is: <i>97 36 51</i>
+  </UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="OptionsMenu"></A>Options Menu</H2>
+<P>Pressing the Menu button (or, on Android 3.0 or later, the on-screen icon that looks
+something like this:
+<IMG SRC="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAyCAIAAADTHmxxAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A
+/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB9wEGAEjGosMS2gAAAA1SURBVEjH
+Y2AYBSQBRjT+////8almRFHPRInNo5pHhuZRMJolRzWPZsnRLDmaPEc1jwIqAQAiywk6eQCZrwAA
+AABJRU5ErkJggg==" ALT="Overflow Icon" HEIGHT="20px">) brings up a menu with the following options:
+<UL>
+<LI>Calc Help — bring up this help page. This can also be brought up
+by tapping the question-mark icon in the application title bar.
+<LI>Key Codes — toggle the display of program key codes next to the corresponding keys.
+<LI>Module Help — bring up the main help page for the currently-loaded library module, if any.
+<LI>Printer — bring up the virtual printer display. (Use the Back button to return to
+the main calculator display.)
+<LI>Load Program... — load a library module or saved program from a file on the SD card.
+The list to pick from is built from the contents of the “Programs” and “Download”
+directories.
+<LI>Feedback... — lets you choose what kind of feedback is used to indicate a button
+press; either a click (the default), a short pulse of the vibrator, or nothing.
+<LI>Save Program... — save the user-entered program to a file on the SD card. The file is
+saved in the “Programs” directory.
+<LI>Import Data... — lets you open a data file in the “Download” directory on the SD card
+to begin importing numbers from. (See <A HREF="#Import">Importing Data</A> for more details.)
+<LI>Export Data... — lets you create a data file on the SD card (or append to an existing data file)
+to write exported data to. The file is saved in the “Download” directory.
+(See <A HREF="#Export">Exporting Data</A> for more details.)
+<LI>About ti5x... — displays version and copyright information for the app.
+<LI>Off — simulate a complete power down and quit the app. <B>This completely wipes all user
+program and memory contents.</B> The next time the app is started, it will initialize
+as though freshly installed.
+</UL>
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Additional"></A>Additional Information</H2>
+<P>Copies of the user manuals for the original products can be found at
+<A HREF="http://www.rskey.org/tidocs.htm">rskey.org</A>
+<!-- (in particular
+“<A HREF="ftp://gateway.vttoth.com/pub/CALCDOCS/TI/TI-58C-59.pdf">Personal Programming</A>”)
+-->
+and <A HREF="http://www.datamath.org/Manuals.htm">datamath.org</A>.
+
+</BODY>

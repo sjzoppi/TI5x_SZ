@@ -1,0 +1,82 @@
+
+lbl A
+   pgm 16 e'
+   sto 00
+   inv sbr
+
+lbl B
+   pgm 16 e'
+   sto 01
+   inv sbr
+
+lbl C
+   prt
+   d.ms
+   sto 02
+   inv sbr
+
+lbl D
+   1
+   +/-
+   prd 02
+   prt
+   inv sbr
+
+lbl E
+   pgm 16 e'
+   sto 03
+   inv sbr
+
+lbl A'
+   (
+   rcl 01
+   ÷
+   15
+   +
+   12
+   -
+   rcl 02
+   )
+   sto 04
+   inv d.ms
+   prt
+   inv sbr
+
+lbl B'
+   (
+   rcl 00
+   -
+   rcl 03
+   )
+   x²
+   (
+   (
+   √x
+   ×
+   4
+   ÷
+   60
+   )
+   sto 05
+   +
+   rcl 04
+   )
+   inv d.ms
+   prt
+   inv sbr
+
+lbl C'
+   (
+   rcl 04
+   -
+   rcl 05
+   )
+   inv d.ms
+   prt
+   inv sbr
+
+lbl D'
+   cms
+   0
+   adv
+   inv sbr

@@ -1,0 +1,167 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+; 10   X0
+; 11   DeltaX
+; 12   Ymin
+; 13   Ymax - Ymin
+; 21   Func #
+; 22   Nb points
+
+Lbl a                                       ;000
+    sto 10
+    rtn
+
+lbl B                                       ;005
+    sto 11
+    rtn
+
+lbl C                                       ;010
+    sto 12
+    rtn
+
+lbl D                                       ;015
+    ( sto 13 - rcl 12 )
+    exc 13
+    rtn
+
+lbl D'                                      ;027
+    sto 21
+    rtn
+
+lbl E                                       ;032
+    (
+    ( sto 25 sto 24 - 1 )
+    ×
+    2 0 + 1 9
+    )
+    inv prd 13
+    rtn
+
+lbl E'                                      ;054
+    sto 22
+
+jump1:                                      ;058
+    sto 9
+    0 sto 23
+
+jump2:                                      ;063
+    dsz 23 80
+    1 0
+    sto 23
+    7 2 2 0 2 0 2 0 2                       ; "÷ - - - -"
+
+jump3:                                      ;080
+    0 sto 15
+    sto 16
+    sto 17
+    sto 18
+    rcl 21                                  ; func #
+    sto 8                                   ; into 8
+    rcl 10                                  ; X into T
+    x⇌t
+    pgm 0 a' sbr 308                        ; call A', B' ... until R08 is 0
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 b' sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 c' sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 d' sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 e' sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 a sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 b sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 c sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 d sbr 308
+    inv dsz 8 228 rcl 10 x⇌t pgm 0 e sbr 308
+
+jump4:                                      ;228
+    rcl 15
+    op 01
+    rcl 16
+    op 02
+    rcl 17
+    op 03
+    rcl 18
+    op 04
+    op 05
+    rcl 11
+    sum 10                                 ; next step
+    dsz 9 63
+    iff 1 306
+    adv adv adv adv
+    4 0 4 0 4 0 4 0 4 0                    ; ". . . . ."
+    op 1
+    op 2
+    op 3
+    op 4
+    op 5
+    adv adv adv adv
+    inv dsz 24 306
+    ( rcl 22 × rcl 11 )
+    inv sum 10
+    rcl 22
+    gto 58
+
+jump5:                                      ;306
+    0
+    rtn
+
+jump6:                                      ;308, trace value X, char to print T
+    (
+    ( ce - rcl 12 )
+    ÷ rcl 13
+    )
+    (
+    fix 0
+    dms
+    fix 9
+    ÷
+    5
+    +
+    1 5
+    -
+    ( rcl 25 - rcl 24 )
+    ×
+    4
+    )
+    sto 14
+    (
+    ( inv int × 1 0 +/- + 8 )
+    inv log
+    ee
+    inv ee
+    sto 20
+    )
+    1 9
+    x⇌t
+    sto 19
+    rcl 14
+    x≥t 442
+    x⇌t
+    1 5
+    x⇌t
+    inv x≥t 442
+    ( rc* 14 ÷ rcl 20 )
+    ( int ÷ 1 0 0 )
+    inv int
+    cp
+    x=t 434
+    ( ce × 1 0 0 × x⇌t rcl 20 )
+    inv sm* 14
+    2 0 x=t 434
+    7 2 x=t 434
+    rcl 19
+    x=t 436
+    5 0
+    gto 436
+
+jump7:                                       ;434
+    rcl 19
+
+jump8:                                       ;436
+    prd 20
+    rcl 20
+    sm* 14
+
+jump9:                                       ;442
+    ce
+    rtn

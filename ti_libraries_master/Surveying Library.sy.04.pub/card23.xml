@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">TRIANGLE SOLUTION (1)</label>
+<label slot="titleright">SY-23</label>
+<label slot="aprime">[SSS] <ArrowR/> <angle/> A</label>
+<label slot="bprime">[SS<angle/>] <ArrowR/> c</label>
+<label slot="cprime">[S <angle/> S] <ArrowR/> c</label>
+<label slot="a">a</label>
+<label slot="b">b</label>
+<label slot="c">c : <angle/> A : <angle/> C</label>
+<label slot="d"><ArrowR/> <angle/>B</label>
+<label slot="e"><ArrowR/> <angle/> A : <angle/> C</label>
+</carddef>

@@ -1,0 +1,7 @@
+<carddef style="system">
+<label slot="titleleft">FOOTBALL PREDICTOR</label>
+<label slot="titleright">LE-04</label>
+<label slot="b">Home</label>
+<label slot="dprime">Opponent</label>
+<label slot="e">Prediction</label>
+</carddef>

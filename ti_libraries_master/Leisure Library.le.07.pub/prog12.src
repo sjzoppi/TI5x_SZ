@@ -1,0 +1,94 @@
+;+
+; Partial recreation of the "Leisure Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+; registers
+; 01 .. 08 - Used
+; 09 10    - For random number from pgm 15
+
+lbl B
+    pgm 15 sbr dms
+    fix 2
+    sto 2
+    rtn
+
+lbl C
+    pgm 15 sbr dms
+    fix 2
+    sto 3
+    x⇌t
+    rcl 2
+    inv x≥t rcl
+    rcl 2
+    exc 3
+    sto 2
+
+lbl rcl
+    x⇌t
+    cp
+    rtn
+
+lbl E
+    ( rcl 3 - rcl 2 - . 1 )
+    cp
+    x≥t π
+    1 0
+    gto mean
+
+lbl π
+    ( ( ce + . 1 ) 1/x - 1 )
+
+lbl mean
+    sto 5
+    rtn
+
+lbl A'
+    cp
+    inv x≥t
+    rtn
+
+    sto 6
+    pgm 15 sbr dms
+    fix 2
+    ( sto 4 - rcl 2 )
+    x≥t prt
+    gto adv
+
+lbl prt
+    ( rcl 3 - rcl 4 )
+    x≥t dsz
+
+lbl adv
+    rcl 6
+    +/-
+    gto grad
+
+lbl dsz
+    ( rcl 5 × rcl 6 )
+
+lbl grad
+    sum 7
+    rtn
+
+lbl B'
+    rcl 4
+    rtn
+
+lbl C'
+    rcl 7
+    rtn
+
+lbl A
+    sto 9
+    1 0 0
+    sto 7
+    rtn
+
+lbl clr
+    fix 2
+    rtn
+
+lbl rtn
+    0
+    1/x
+    rtn

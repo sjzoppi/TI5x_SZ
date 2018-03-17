@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">DMS OPERATIONS</label>
+<label slot="titleright">ML-23</label>
+<label slot="abprime">(d d. m m s s)</label>
+<label slot="a">n</label>
+<label slot="b">±p <ArrowR/> n ± p</label>
+<label slot="c">a <ArrowR/> n × a</label>
+<label slot="d">a <ArrowR/> n ÷ a</label>
+</carddef>

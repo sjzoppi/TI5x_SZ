@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">UNEVEN CASH FLOWS</label>
+<label slot="titleright">SA-05</label>
+<label slot="a">Invest</label>
+<label slot="b">Receive</label>
+<label slot="c">Pay</label>
+<label slot="d"><ArrowR/> %I</label>
+<label slot="e">%I <ArrowR/> PV</label>
+<label slot="aprime">CF No.</label>
+<label slot="bprime">New Rec</label>
+<label slot="cprime">New Pay</label>
+<label slot="dprime"></label>
+<label slot="eprime">%I <ArrowR/> FV</label>
+</carddef>

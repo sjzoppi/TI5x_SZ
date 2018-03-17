@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">INTERSECTION (BRG-BRG)</label>
+<label slot="titleright">SY-16</label>
+<label slot="a">N<sub>1</sub>, E<sub>1</sub></label>
+<label slot="b">N<sub>2</sub>, E<sub>2</sub></label>
+<label slot="c">Brg<sub>1</sub>, Q<sub>1</sub></label>
+<label slot="d">Brg<sub>2</sub>, Q<sub>2</sub></label>
+<label slot="e"><ArrowR/> N<sub>I</sub></label>
+<label slot="aprime"><ArrowR/> E<sub>I</sub></label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

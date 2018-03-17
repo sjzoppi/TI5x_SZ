@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="134.39926mm"
+   height="77.272675mm"
+   viewBox="0 0 476.21785 273.80081"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="rhumbline-navigation.svg"
+   inkscape:export-filename="/home/obry/text6602.png"
+   inkscape:export-xdpi="47.349884"
+   inkscape:export-ydpi="47.349884">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker4554"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4556"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker4518"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path4520"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path4142"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lend"
+       style="overflow:visible"
+       inkscape:isstock="true"
+       inkscape:collect="always">
+      <path
+         id="path4145"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="185.00961"
+     inkscape:cy="46.952524"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:window-width="1154"
+     inkscape:window-height="1028"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-180.20129,-464.55325)">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart);marker-end:url(#Arrow1Lend)"
+       d="m 624.28571,509.50506 -407.14285,201.42857 0,-207.14285"
+       id="path4136"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/obry/text6602-6.png"
+       inkscape:export-xdpi="47.349884"
+       inkscape:export-ydpi="47.349884" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker4554)"
+       id="path4546"
+       sodipodi:type="arc"
+       sodipodi:cx="212.132"
+       sodipodi:cy="683.78339"
+       sodipodi:rx="85"
+       sodipodi:ry="76.428574"
+       sodipodi:start="4.7739346"
+       sodipodi:end="6.1440965"
+       d="m 217.36008,607.49952 a 85,76.428574 0 0 1 78.95106,65.68775"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/obry/text6602-6.png"
+       inkscape:export-xdpi="47.349884"
+       inkscape:export-ydpi="47.349884" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="181.82745"
+       y="481.62601"
+       id="text6586"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/text6602-6.png"
+       inkscape:export-xdpi="47.349884"
+       inkscape:export-ydpi="47.349884"><tspan
+         sodipodi:role="line"
+         id="tspan6588"
+         x="181.82745"
+         y="481.62601">N (true)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="271.91681"
+       y="615.19061"
+       id="text6594"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/text6602-6.png"
+       inkscape:export-xdpi="47.349884"
+       inkscape:export-ydpi="47.349884"><tspan
+         sodipodi:role="line"
+         id="tspan6596"
+         x="271.91681"
+         y="615.19061">TC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="582.05267"
+       y="499.59314"
+       id="text6602"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/text6602-6.png"
+       inkscape:export-xdpi="47.349884"
+       inkscape:export-ydpi="47.349884"><tspan
+         sodipodi:role="line"
+         id="tspan6629"
+         x="582.05267"
+         y="499.59314">(L<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan6633">d</tspan>, λ<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan6631">d</tspan>)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="178.2677"
+       y="733.64697"
+       id="text6602-6"
+       sodipodi:linespacing="125%"
+       inkscape:export-filename="/home/obry/text6602-6.png"
+       inkscape:export-xdpi="47.349884"
+       inkscape:export-ydpi="47.349884"><tspan
+         sodipodi:role="line"
+         id="tspan6629-2"
+         x="178.2677"
+         y="733.64697">(L<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan6633-4">S</tspan>, λ<tspan
+   style="font-size:64.99999762%;baseline-shift:sub"
+   id="tspan6659">S</tspan>)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="412.60715"
+       y="628.75665"
+       id="text6661"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6663"
+         x="412.60715"
+         y="628.75665">Dist</tspan></text>
+  </g>
+</svg>

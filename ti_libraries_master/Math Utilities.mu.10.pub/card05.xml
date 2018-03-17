@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">SUPERPLOTTER</label>
+<label slot="titleright">MU-05</label>
+<label slot="a">X<sub>0</sub></label>
+<label slot="b"><Delta/>X</label>
+<label slot="c">Y<sub>min</sub></label>
+<label slot="d">Y<sub>max</sub></label>
+<label slot="e"># Tapes</label>
+<label slot="dprime"># Functions</label>
+<label slot="eprime"># Pts <ArrowR/> Plot</label>
+</carddef>

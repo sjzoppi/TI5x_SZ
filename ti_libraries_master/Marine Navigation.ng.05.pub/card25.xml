@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">NOON SIGHT FIX (LAN)</label>
+<label slot="titleright">NG-25</label>
+<label slot="a">LAN</label>
+<label slot="b">EQ (12 hrs)</label>
+<label slot="c">Mer (PM)</label>
+<label slot="d"><ArrowR/> <lambda/></label>
+<label slot="e">d</label>
+<label slot="aprime">Dec</label>
+<label slot="bprime">L<sub>DR</sub> <ArrowR/> L</label>
+</carddef>

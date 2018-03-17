@@ -1,0 +1,279 @@
+
+lbl A
+   sto 02
+   fix 9
+   ifflg 1 056
+   stflg 1
+   rcl 05
+   b'
+   433300
+   c'
+   op 25
+   fix 9
+   271337
+   op 04
+   fix 4
+   rcl 02
+   op 06
+   rcl 02
+   fix 6
+   d.ms
+   sto ind 00
+   op 20
+   1
+   ifflg 1 055
+   adv
+   inv sbr
+   inv stflg 1
+   273229
+   op 04
+   gto 034
+
+lbl B'
+   x⇌t
+   fix 9
+   inv sbr
+
+lbl C'
+   op 04
+   fix 4
+   x⇌t
+   op 06
+   inv sbr
+
+   inv lbl e'
+   sum 00
+
+lbl D'
+   rcl ind 00
+   inv sbr
+
+lbl E
+   b'
+   173716
+   c'
+   d.ms
+   sto 04
+   ifflg 2 265
+   stflg 2
+   1
+   sbr 086
+   -
+   rcl 13
+   =
+   cos
+   ×
+   1
+   sbr 086
+   cos
+   ×
+   rcl 12
+   cos
+   +
+   d'
+   sin
+   ×
+   rcl 12
+   sin
+   =
+   inv cos
+   ×
+   60
+   =
+   b'
+   16243637
+   c'
+   ÷
+   rcl 08
+   =
+   sto 03
+   inv d.ms
+   b'
+   173717
+   c'
+   d.ms
+   +
+   rcl 04
+   -
+   24
+   =
+   cp
+   x≥t 190
+   +
+   24
+   =
+   inv ifflg 3 197
+   sto 04
+   inv d.ms
+   b'
+   173713
+   c'
+   rcl 03
+   ×
+   rcl 07
+   =
+   b'
+   172135
+   c'
+   ifflg 3 233
+   +/-
+   +
+   rcl 06
+   =
+   gto 238
+   inv sum 06
+   rcl 06
+   b'
+   172127
+   c'
+   adv
+   ifflg 3 262
+   14
+   sto 00
+   0
+   sto 05
+   2
+   gto 265
+   4
+   e'
+   clr
+   inv sbr
+
+lbl B
+   b'
+   223600
+   c'
+   sto 08
+   inv sbr
+
+lbl C
+   b'
+   21411727
+   c'
+   sto 06
+   inv sbr
+
+lbl D
+   b'
+   14413529
+   c'
+   sto 07
+   inv sbr
+
+lbl A'
+   stflg 3
+   op 25
+   rcl 05
+   b'
+   271722
+   c'
+   d'
+   inv stflg 0
+   inv d.ms
+   b'
+   16271337
+   c'
+   1
+   e'
+   inv d.ms
+   b'
+   16273229
+   c'
+   d.ms
+   -
+   2
+   sbr 086
+   =
+   sto 02
+   cos
+   ×
+   rcl 02
+   sin
+   cp
+   x≥t 375
+   stflg 0
+   1
+   sbr 086
+   cos
+   ×
+   2
+   e'
+   cos
+   +
+   d'
+   sin
+   ×
+   2
+   sbr 086
+   sin
+   =
+   inv cos
+   sto 03
+   ×
+   60
+   =
+   sto 09
+   b'
+   16243637
+   c'
+   sum 01
+   rcl 01
+   b'
+   37163637
+   c'
+   rcl 03
+   cos
+   ×
+   d'
+   sin
+   +/-
+   +
+   2
+   e'
+   sin
+   =
+   ÷
+   rcl 03
+   sin
+   ÷
+   2
+   sbr 086
+   cos
+   =
+   inv cos
+   ifflg 0 463
+   +/-
+   +
+   360
+   =
+   b'
+   371500
+   c'
+   rcl 09
+   gto 158
+
+lbl clr
+   cms
+   fix 9
+   op 00
+   2732292200
+   op 01
+   3513292217
+   op 02
+   0021273700
+   op 03
+   3327132900
+   op 04
+   op 05
+   clr
+   fix 4
+   deg
+   inv stflg 1
+   inv stflg 2
+   inv stflg 3
+   adv
+   12
+   sto 00
+   0
+   inv sbr
+   gto clr

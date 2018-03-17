@@ -1,0 +1,265 @@
+;+
+; Recreation of the "Master Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A                                   ;000
+    gto 378
+
+lbl B                                   ;005
+    gto 292
+
+lbl C                                   ;010
+    gto 443
+
+lbl D                                   ;015
+    gto 501
+
+lbl E                                   ;020
+    gto 539
+
+    1 sto 9                             ;025
+    7 +/-
+    inv log
+    x⇌t
+    ( rcl 4 ÷ rcl 3 )
+    sto 10
+    iff 3 136
+    iff 4 136
+    ( ce ÷ rcl 1 x² - rcl 10 1/x )
+    sto 8
+    sum 9
+    pgm 18 A'
+    sto 14
+    iff 1 80
+    ( ce * rcl 9 )
+    ( ce - rcl 10 )
+    sto 13
+    (
+    rcl 14 ÷ rcl 8
+    -
+    rcl 1 × rcl 12
+    ÷
+    rcl 9 ÷ rcl 8
+    )
+    iff 1 120
+    ( ce × rcl 9 - rcl 14 )
+    inv prd 13
+    rcl 13
+    sum 8
+    sum 9
+    abs
+    x≥t 65
+    gto 280
+
+    (                                     ;136
+    rcl 5
+    ÷
+    rcl 3
+    +
+    sto 14
+    rcl 1
+    prd 14
+    -
+    rcl 10
+    )
+    sto 8
+    (
+    rcl 1
+    +
+    x²
+    ÷
+    2
+    +
+    rcl 14
+    ÷
+    rcl 1
+    )
+    iff 3 184
+    ( rcl 11 + x² ÷ 2 + rcl 14 )
+    inv prd 8
+    rcl 8
+    sum 9
+    pgm 18 C'
+    sto 6
+    iff 3 206
+    ( ce × rcl 9 )
+    (
+    ce
+    +
+    rcl 14
+    ÷
+    rcl 1
+    ÷
+    rcl 12
+    -
+    rcl 10
+    )
+    sto 13
+    (
+    rcl 6 ÷ rcl 8
+    - rcl 1 ÷ rcl 12
+    ÷
+    rcl 9
+    ÷
+    rcl 8
+    )
+    iff 3 255
+    ( ce × rcl 9 + rcl 6 )
+    ( ce + rcl 14 ÷ rcl 12 ÷ rcl 9 )
+    inv prd 13
+    rcl 13
+    sum 8
+    sum 9
+    abs
+    x≥t 191
+    ( rcl 8 × 1 0 0 )
+    cp
+    x=t 295
+    x=t 25
+    fix 4
+    pgm 18 E
+    rtn
+
+    nop                                   ;301
+    rcl 3
+    sto 11
+    sto 10
+    rcl 9
+    iff 2 319
+    iff 4 319
+    1
+    prd 11
+    prd 10
+    ( rcl 4 × rcl 8 )
+    iff 1 354
+    iff 2 354
+    +/-
+    sum 10
+    ( rcl 5 × rcl 8 )
+    +/-
+    sum 11
+    gto 356
+
+    sum 11                                ;354
+    rcl 11
+    lnx
+    sto 11
+    rcl 10
+    lnx
+    +/-
+    sum 11
+    rcl 9
+    lnx
+    1/x
+    prd 11
+    rcl 11
+    x=t 381
+    x=t 301
+    sto 1
+    +/-
+    sto 11
+    +/-
+    fix 9
+    nop
+    rtn
+
+    nop                                   ;391
+    iff 1 422
+    iff 2 416
+    iff 3 410
+    pgm 18 D'
+    gto 425
+
+    pgm 18 C'                             ;410
+    gto 425
+
+    pgm 18 B'                             ;416
+    gto 425
+
+    pgm 18 A'                             ;422
+    (
+    ce
+    ÷
+    ( rcl 4 - rcl 5 ÷ rcl 12 )
+    )
+    1/x
+    x=t 446
+    x=t 391
+    sto 3
+    fix 2
+    nop
+    rtn
+
+    nop                                   ;452
+    iff 1 483
+    iff 2 477
+    iff 3 471
+    pgm 18 D'
+    gto 486
+
+    pgm 18 C'                             ;471
+    gto 486
+
+    pgm 18 B'                             ;477
+    gto 486
+
+    pgm 18 A'                             ;483
+    (
+    ce
+    ×
+    rcl 3
+    +
+    rcl 5
+    ÷
+    rcl 12
+    )
+    x=t 504
+    x=t 452
+    sto 4
+    fix 2
+    nop
+    rtn
+
+    nop                                   ;510
+    pgm 18 D'
+    iff 4 521
+    pgm 18 C'
+    (
+    ( ce × rcl 3 - rcl 4 )
+    +/-
+    ×
+    rcl 12
+    )
+    x=t 542
+    x=t 510
+    sto 5
+    fix 2
+    nop
+    rtn
+
+lbl A'                                    ;548
+    stf 1
+    rtn
+
+lbl B'                                    ;553
+    stf 2
+    rtn
+
+lbl C'                                    ;558
+    stf 3
+    rtn
+
+lbl D'                                    ;563
+    stf 4
+    rtn
+
+lbl E'                                    ;568
+    inv stf 1
+    inv stf 2
+    inv stf 3
+    inv stf 4
+    0 sto 5
+    fix 9
+    cp
+    rtn

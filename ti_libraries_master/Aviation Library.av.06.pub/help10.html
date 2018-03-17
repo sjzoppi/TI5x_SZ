@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-10 — Rhumbline Navigation</H1>
+
+<P>This program calculates the rhumbline course between two points on
+  the earth's surface. The rhumb line connecting two points is that
+  one which makes the same oblique angle to all medians. While not
+  always the shortest route, flying a rhumbline course has the
+  advantage of allowing the pilot to maintain a single course. (See
+  test note of AV-04).
+</P>
+
+<P>Input for the program are the latitude and longitude of two points
+  (start and destination), and magnetic variation. Outputs are the
+  true course, magnetic course, distance along the rhumb line, and
+  cumulative distance for several legs. The single keystroke
+  <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> causes the
+  dstrination coordinates for the present leg to become the start
+  coordinates for the succeeding leg, thus facilitating multiple-leg
+  computations.
+</P>
+<P>
+<IMG ALT="Rhumbline Navigation" src="data:image/png;base64,
+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
+">
+
+<table>
+  <tr><td><b>L<sub>s</sub></b><td>= latitude of start
+  <tr><td><b>&lambda;<sub>s</sub></b><td>= longitude of start
+  <tr><td><b>L<sub>d</sub></b><td>= latitude of destination
+  <tr><td><b>&lambda;<sub>d</sub></b><td>= longitude of destination
+  <tr><td><b>MC</b><td>= magnetic course</tr>
+  <tr><td><b>TC</b><td>= true course</tr>
+  <tr><td><b>Var</b><td>= magnetic variation
+  <tr><td><b>Dist</b><td>= distance of leg
+</table>
+
+<DL class="deflist">
+  <DT>Select degree mode
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+  </DT>
+
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.00</DD>
+  </DT>
+
+  <DT>Enter mag. variation (if needed) (+W, -E)
+    <DD>Var (deg)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">Var</dd>
+  </DT>
+
+  <DT>Enter latitude of start
+    <DD>L<sub>s</sub> (DD.MMSS) <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">L<sub>s</sub></dd>
+  </DT>
+  <DT>Enter longitude of start
+    <DD>&lambda;<sub>s</sub>  (DD.MMSS)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">&lambda;<sub>s</sub></dd>
+  </DT>
+
+  <DT>Enter latitude of destination
+    <DD>L<sub>d</sub> (DD.MMSS) <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">L<sub>d</sub></dd>
+  </DT>
+  <DT>Enter longitude of destination
+    <DD>&lambda;<sub>d</sub>  (DD.MMSS)
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">&lambda;<sub>d</sub></dd>
+  </DT>
+
+  <DT>Calculate results
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">0.00</dd>
+  </DT>
+
+  <DT>Display true course
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">TC (deg)</dd>
+    <p>optionally magnetic course
+    <DD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">MC (deg)</dd>
+  </DT>
+
+  <DT>Display distance
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">Dist</dd>
+  </DT>
+
+  <DT>Display total distance
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">tot Dist</dd>
+  </DT>
+
+  <DT>For multiple legs, make (L<sub>d</sub>, &lambda;<sub>d</sub>)
+  the new (L<sub>s</sub>, &lambda;<sub>s</sub>), then restart above
+    but skip entering L<sub>s</sub> and &lambda;<sub>s</sub>.
+    <DD><SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">0.00</dd>
+  </DT>
+</DL>
+
+<P>Registers used: 00-11
+
+</BODY>

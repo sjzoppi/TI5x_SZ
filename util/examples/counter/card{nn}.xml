@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">[Title]</label>
+<label slot="titleright">MM-NN</label>
+<label slot="a"></label>
+<label slot="b"></label>
+<label slot="c"></label>
+<label slot="d"></label>
+<label slot="e"></label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

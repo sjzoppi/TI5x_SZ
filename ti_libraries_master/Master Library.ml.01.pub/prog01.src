@@ -1,0 +1,112 @@
+;+
+; My (partial) recreation of the "Master Library" module
+; that came with the original TI-58C/59 calculators.
+;
+; Written by Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+;-
+
+lbl clr
+; clear out registers used for stats calculations
+    ce
+    0
+    x<>t
+    0
+    sto 01
+    sto 02
+    sto 03
+    sto 04
+    sto 05
+    sto 06
+    inv sbr
+
+lbl =
+; self-test diagnostics
+; use op 99 extension which runs a set of test, see class Tester
+  op 99
+; check for error condition
+  op 18          ; set flags 7 if no error
+  ifflg 7 Nop
+  r/s
+
+lbl Nop
+; on success, print "MASTER" and print and display result "1"
+    clr
+    op 00
+    30  ; "M"
+    op 03
+    1336371735 ; "ASTER"
+    op 04
+    op 05 ; print line
+    clr
+    1
+    =
+    prt
+    inv sbr
+
+lbl write
+; master library check, same as-above
+    gto Nop
+
+;+
+; function indirection with printing of inputs and outputs
+;-
+
+lbl A
+    prt
+    pg* 00 a
+    prt
+    inv sbr
+
+lbl B
+    prt
+    pg* 00 b
+    prt
+    inv sbr
+
+lbl C
+    prt
+    pg* 00 c
+    prt
+    inv sbr
+
+lbl D
+    prt
+    pg* 00 d
+    prt
+    inv sbr
+
+lbl E
+    prt
+    pg* 00 e
+    prt
+    inv sbr
+
+lbl A'
+    prt
+    pg* 00 a'
+    prt
+    inv sbr
+
+lbl B'
+    prt
+    pg* 00 b'
+    prt
+    inv sbr
+
+lbl C'
+    prt
+    pg* 00 c'
+    prt
+    inv sbr
+
+lbl D'
+    prt
+    pg* 00 d'
+    prt
+    inv sbr
+
+lbl E'
+    prt
+    pg* 00 e'
+    prt
+    inv sbr

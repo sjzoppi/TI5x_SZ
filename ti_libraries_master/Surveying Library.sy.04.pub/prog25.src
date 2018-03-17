@@ -1,0 +1,145 @@
+;+
+; Partial recreation of the "Surveying Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl A
+    E'
+    rtn
+
+    d'
+    sbr 27
+    ( rcl 0 × π × 1 8 0 1/x × rcl 1 )
+    sto 2
+    prt
+    adv
+    rtn
+
+    (
+    ( rcl 0 ÷ 2 )
+    sin
+    ×
+    2
+    ×
+    rcl 1
+    )
+    sto 3
+    rtn
+
+lbl B
+    E'
+    rtn
+
+    prt
+    ( ( sto 3 ÷ 2 ÷ rcl 1 ) inv sin × 2 )
+    sto 0
+    gto 8
+
+lbl C
+    E'
+    rtn
+
+    prt
+    ( ( sto 2 ÷ rcl 1 ) × 1 8 0 × π 1/x )
+    sto 0
+    sbr 27
+    prt
+    adv
+    rtn
+
+lbl D
+    sto 3
+    prt
+    rtn
+
+    (
+    ( d' ÷ 2 )
+    sin
+    1/x
+    ×
+    rcl 3
+    ÷
+    2
+    )
+    sto 1
+    gto 8
+
+lbl E
+    D'
+    rtn
+
+    prt
+    ( sto 2 ×
+    ( rcl 0 × π × 1 8 0 1/x )
+    1/x
+    )
+    sto 1
+    sbr 27
+    prt
+    adv
+    rtn
+
+lbl A'
+    rcl 0
+    inv dms
+    prt
+    rtn
+
+    rcl 1
+    prt
+    rtn
+
+lbl B'
+    rcl 2
+    prt
+    rtn
+
+    rcl 3
+    prt
+    rtn
+
+lbl C'
+    ( rcl 1 × rcl 2 ÷ 2 )
+    sto 4
+    prt
+    rtn
+
+    ( ( ( rcl 0 ÷ 2 )
+    cos
+    ×
+    rcl 1
+    ×
+    rcl 3
+    ÷
+    2
+    )
+    +/-
+    +
+    rcl 4
+    )
+    prt
+    rtn
+
+lbl E'
+    cp
+    fix 6
+    sto 1
+    x≥t 228
+    lnx
+    rcl 1
+    prt
+    rtn
+
+lbl D'
+    cp
+    fix 6
+    prt
+    dms
+    sto 0
+    sin
+    x≥t 244
+    lnx
+    rcl 0
+    rtn
+
+    gto a

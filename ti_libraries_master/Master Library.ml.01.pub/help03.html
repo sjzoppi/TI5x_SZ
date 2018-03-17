@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>ML-03 — Matrix Addition and Multiplication</H1>
+
+<P>First, enter the number of rows in <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>,
+  and the number of columns in <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>. Then enter the
+  elements of the matrix A starting with column 1. (To correct an entry error in column j, simply
+  enter j and press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>. Then reenter the entire column
+  using the <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> key)
+
+<P>For Matrix Addition:
+  <UL>
+    <LI>1 <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <LI>Then enter the elements of matrix B using the <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+      key. To correct en entry error in column j, simply enter j and press
+      <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>. Then reenter the entire column using the
+      <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> key.
+    <LI>Enter &lambda;<sub>1</sub> <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <LI>Enter &lambda;<sub>2</sub> <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN> (steps to be done in
+      sequence even if &lambda;<sub>1</sub> and &lambda;<sub>2</sub> are equal to 1)
+    <LI>Calculate &lambda;<sub>1</sub> A + &lambda;<sub>2</sub> B
+      <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN> <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <LI>Display the elements of C starting with column 1,
+      <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>,
+      then press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> to show
+      c<sub>11</sub>, c<sub>21</sub>, ... c<sub>mn</sub> in sequence.
+  </UL>
+
+<P>For Matrix Multiplication
+  <UL>
+    <LI>Enter the elements of column j of matrix B starting with b<sub>1j</sub>.
+      To correct an entry error for b<sub>ij</sub>, enter i, press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN> and reenter b<sub>ij</sub> using the
+      <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN> key.
+    <LI>Calculate column j of matrix C,
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <LI>Display the elements of column j of matrix C, starting with c<sub>1j</sub>:
+      <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+      and press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>.
+      c<sub>1j</sub> .. c<sub>mj</sub> are displayed in sequence.
+    <LI>To display c<sub>ij</sub> only :
+      <SPAN CLASS="whitebutton">&nbsp;i&nbsp;</SPAN>
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+      <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+  </UL>
+
+<H3>Formulas Used</H3>
+<P>If C = &lambda;<sub>1</sub> A + &lambda;<sub>2</sub> B, then:
+<P>c<sub>ij</sub> = &lambda;<sub>1</sub> a<sub>ij</sub> + &lambda;<sub>2</sub> b<sub>ij</sub>
+<P>If C = AB, then:
+<P>c<sub>ij</sub> = &sum;<sub>k=1..n</sub> a<sub>ik</sub> b<sub>kj</sub>
+
+<P>Registers used: 01-07
+<P>Plus for addition substraction : 08 through 2mn+7
+<P>Plus for multiplication : 08 through mn+2n+7
+
+</BODY>

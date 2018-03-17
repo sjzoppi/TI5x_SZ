@@ -1,0 +1,49 @@
+Lbl E
+RCL 20
+Adv
+Prt
+STO 16
+RCL 21
+Prt
+STO 08
+RCL 22
+Prt
+STO 09
+RCL 23
+Prt
+STO 10
+RCL 24
+Prt
+STO 11
+RCL 12
+Prt
+STO 04
+RCL 13
+Prt
+STO 05
+0
+INV SBR
+Lbl A'
+STO 20
+INV SBR
+Lbl B
+D.MS
+Exc 22
+Exc 21
+INV SBR
+Lbl B'
+D.MS
+Exc 24
+Exc 23
+INV SBR
+Lbl C
+Exc 13
+Exc 12
+INV SBR
+Lbl C'
+D.MS
+cos
+STO 13
+1
+STO 12
+INV SBR

@@ -1,0 +1,5 @@
+<carddef style="user">
+<label slot="titleleft">CALCULATOR DIAGNOSTIC</label>
+<label slot="titleright">SZ-30</label>
+<label slot="e">Execute</label>
+</carddef>

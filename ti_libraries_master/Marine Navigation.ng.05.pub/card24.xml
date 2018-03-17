@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">TIME (GMT) FOR SUN SHOTS</label>
+<label slot="titleright">NG-24</label>
+<label slot="a">L<sub>DR</sub></label>
+<label slot="b"><lambda/><sub>DR</sub></label>
+<label slot="c">EQ (12 hrs)</label>
+<label slot="d">Mer (PM)</label>
+<label slot="e">Dec</label>
+<label slot="aprime"><ArrowR/> LAN</label>
+<label slot="bprime"><ArrowR/> PM</label>
+<label slot="cprime"><ArrowR/> AM</label>
+<label slot="dprime">INIT</label>
+</carddef>

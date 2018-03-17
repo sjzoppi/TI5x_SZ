@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-11 — Blackjack</H1>
+
+<P>This program simulates the well-known game if Twenty-One. The calculator plays as dealer against
+  one player.
+</P>
+
+Rules:
+
+<OL>
+  <LI>The object of the game is to get closer to a total of 21 with your cards than the dealer's total.
+
+  <LI>Point values of cards: face cards (Jack, Queen, Kind) count as 10; numbered cards count as their
+    value; an Ace count as either 1 or 11. Cards are printed and displayed by the calculator as numbers
+    1 through 13 for Ace through King, respectively. Therefore, a displayed 1 may count as 1 or 11 points,
+    and a displayed 11, 12, 13 counts as 10 points.
+
+  <LI>You and the dealer are each dealt two cards. The dealer's second card is turned face up so you may
+    see it. You may choose to stop with the two cards or you may take more cards. Each card is dealt to
+    you face up and you may continue to take cards as long as your total remains less than 21.
+
+  <LI>When you finished playing and if you have not broken 21 (and therefore lost) the dealer takes more
+    cards, if needed, until his total is greater than 16 or the total number of points accumulated by
+    your "show" cards.
+
+  <LI>You win if your total is greater than the dealer's total if you did not break 21. You also win if the
+    dealer's total goes over 21. Otherwise you loose.
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>. 0 is displayed.
+
+  <LI>Key in a number (0 to 199017) and press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>. The dealer's show card,
+    your hole card, and your show card are briefly displayed. You total number of points is then displayed
+    and printed.
+
+
+  <LI>Player Hits (Optional)
+    <UL>
+      <LI>If you wish to be dealt additional cards, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> for each
+        new card. The card is briefly displayed and printed followed by your new total.
+      <LI>Each Ace dealt to you is automatically counted as 1 point. If you wish an Ace to be scored
+        as 11 points, press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN><SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN> after you have taken all the cards
+        you desire.
+    </UL>
+
+  <LI>After taking all the cards you desire, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>. The dealer then
+    reveals his hole card and takes other cards as needed. The cards are displayed and printed along
+    with the dealer's total, in the same way as for the player.
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN> and go Player Hits for a new hand.
+</UL>
+
+</BODY>

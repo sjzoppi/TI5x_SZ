@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">RATE OF CLIMBS; TURNS</label>
+<label slot="titleright">AV-18</label>
+<label slot="a">Dist</label>
+<label slot="b">ROC</label>
+<label slot="c"><ArrowR/> Diam</label>
+<label slot="d"><ArrowR/> t</label>
+<label slot="e"><ArrowR/> Stall</label>
+<label slot="aprime"><Delta/> ALT</label>
+<label slot="bprime">TAS</label>
+<label slot="cprime">Bank <angle/></label>
+<label slot="dprime">Nstall</label>
+<label slot="eprime"><ArrowR/> G force</label>
+</carddef>

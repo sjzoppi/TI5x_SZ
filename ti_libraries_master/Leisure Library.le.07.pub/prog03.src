@@ -1,0 +1,33 @@
+;+
+; Partial recreation of the "Leisure Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl clr
+    cms
+    fix 9
+    0
+    rtn
+
+lbl a
+    ( x⇌t 2 yˣ x⇌t )
+    1/x
+    sto 1
+    1/x
+    rtn
+
+lbl b
+    1/x
+    sto 2
+    1/x
+    rtn
+
+lbl c
+    ( sto 3 ÷
+    ( rcl 2 - rcl 1 )
+    √x sto 4 )
+    rtn
+
+lbl d
+    ( 1/x × rcl 3 ÷ rcl 4 )
+    rtn

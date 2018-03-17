@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">FORECASTING - AUTO CURVE CHOICE</label>
+<label slot="titleright">RE-11</label>
+<label slot="a">x Entry</label>
+<label slot="b">y Entry</label>
+<label slot="c"><ArrowR/> "best fit"</label>
+<label slot="d"><ArrowR/> a (Intcpt)</label>
+<label slot="e"><ArrowR/> b (Slope)</label>
+<label slot="aprime"><ArrowR/> r<sup>2</sup></label>
+<label slot="bprime">y <ArrowR/> x'</label>
+<label slot="cprime">x <ArrowR/> y'</label>
+<label slot="dprime">Delete x</label>
+<label slot="eprime">INIT</label>
+</carddef>

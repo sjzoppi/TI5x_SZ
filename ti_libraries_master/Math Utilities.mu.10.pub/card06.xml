@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">SORTING</label>
+<label slot="titleright">MU-06</label>
+<label slot="a">Enter</label>
+<label slot="b">Sort</label>
+<label slot="c">List</label>a
+<label slot="d">Next Et</label>
+<label slot="e">INIT</label>
+</carddef>

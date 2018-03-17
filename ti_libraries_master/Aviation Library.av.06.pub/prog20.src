@@ -1,0 +1,108 @@
+
+lbl A
+   sto 10
+   inv sbr
+
+lbl A'
+   sto 11
+   inv sbr
+
+lbl B
+   sto 12
+   inv sbr
+
+lbl B'
+   sto 13
+   inv sbr
+
+lbl C'
+   sto 14
+   inv sbr
+
+lbl D'
+   sto 15
+   inv sbr
+
+lbl E'
+   sto 16
+   inv sbr
+
+lbl C
+   clr
+   3
+   sto 00
+   12
+   sto 19
+   0
+   sto 17
+   sto 18
+   rcl 09
+   sum 17
+   rcl 08
+   +
+   rcl 01
+   ×
+   (
+   rcl 10
+   ×
+   6
+   )
+   sum 17
+   +
+   rcl 02
+   ×
+   (
+   rcl 11
+   ×
+   6
+   )
+   sum 17
+   =
+   sto 18
+   rcl ind 00
+   ×
+   rcl ind 19
+   sum 17
+   =
+   sum 18
+   rcl 00
+   -
+   7
+   =
+   cp
+   x=t 110
+   1
+   sum 00
+   sum 19
+   gto 083
+   rcl 17
+   inv sbr
+
+lbl D
+   rcl 18
+   inv sbr
+
+lbl E
+   rcl 18
+   ÷
+   rcl 17
+   =
+   inv sbr
+   8
+   sto 00
+   9
+   sto 19
+
+lbl y**x
+   inv dsz 0 127
+   1
+   sum 19
+   rcl ind 19
+   inv sbr
+   gto y**x
+
+lbl clr
+   0
+   fix 2
+   inv sbr
+   gto clr

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">NORMAL DISTRIBUTION</label>
+<label slot="titleright">ST-19</label>
+<label slot="a">z <ArrowR/> <phi/>(z)</label>
+<label slot="b">z <ArrowR/> P(z)</label>
+<label slot="c">z <ArrowR/> Q(z)</label>
+<label slot="d">z <ArrowR/> A(z)</label>
+<label slot="e"></label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

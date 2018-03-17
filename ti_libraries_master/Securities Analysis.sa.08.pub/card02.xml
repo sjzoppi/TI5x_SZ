@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">EARNINGS PER SHARE ESTIMATION</label>
+<label slot="titleright">SA-02</label>
+<label slot="a">N</label>
+<label slot="b">S; S<sub>N</sub></label>
+<label slot="c"><Pi/>; <Pi/><sub>N</sub></label>
+<label slot="d">T; T<sub>N</sub></label>
+<label slot="e">L; L<sub>N</sub></label>
+<label slot="aprime">PNW; PNW<sub>N</sub></label>
+<label slot="bprime">DPO; DPO<sub>N</sub></label>
+<label slot="cprime">B/M</label>
+<label slot="dprime"></label>
+<label slot="eprime">EPS; EPS<sub>N</sub></label>
+</carddef>

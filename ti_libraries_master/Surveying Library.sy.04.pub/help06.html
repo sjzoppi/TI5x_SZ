@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-06 — Closure</H1>
+
+<P>The closure of a traverse is that line which will exactly close the
+  traverse. Given the calculated and the correct endpoints, this
+  program will compute the closure distance (horizontal), bearing
+  (error bearing) and quadrant, latitude, departure, and precision ratio.
+</P>
+
+<P>When used in conjunction with the traverse programs, a routine is
+  included to complete calculation of the area of a closed traverse.
+</P>
+
+<UL>
+  <LI>Select degree mode, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+
+  <LI>If used standalone:
+    <UL>
+      <LI>Enter total distance traversed, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+      <LI>Enter partial area, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+      <LI>Enter sector area, press
+        <SPAN CLASS="brownbutton">&nbsp;STO&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;1&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;7&nbsp;</SPAN>
+      <LI>Enter calculated North, press
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Enter calculated East, press
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Continue below...
+    </UL>
+
+  <LI>If used with a Traverse program, start here:
+    <UL>
+      <LI>Enter correct North, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Enter correct East, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+      <LI>Compute closure distance, press
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Compute error bearing (DD.MMSSss), press
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+      <LI>Compute quadrant, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+      <LI>Compute Area, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+      <LI>Compute precision ratio, press
+        <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    </UL>
+</UL>
+
+<P>Registers used: 01-07, 09, 10, 13, 16-19
+
+</BODY>

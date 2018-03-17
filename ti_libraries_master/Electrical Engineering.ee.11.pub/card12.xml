@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">SERIES/PARALLEL IMPEDANCE CONVERSIONS</label>
+<label slot="titleright">EE-12</label>
+<label slot="a">R<sub>S</sub></label>
+<label slot="b">X<sub>S</sub></label>
+<label slot="c">R<sub>P</sub></label>
+<label slot="d">X<sub>P</sub></label>
+<label slot="e"><ArrowR/> Execute</label>
+</carddef>

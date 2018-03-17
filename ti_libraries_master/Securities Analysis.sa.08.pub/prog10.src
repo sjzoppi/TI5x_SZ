@@ -1,0 +1,4 @@
+; a simple counter
++ 1 =
+pause
+rst

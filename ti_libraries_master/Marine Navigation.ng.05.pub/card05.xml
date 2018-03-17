@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">VEL, VMG, AND CR VECTORS</label>
+<label slot="titleright">NG-05</label>
+<label slot="a">S, C<sub>m</sub></label>
+<label slot="b">Dr, St</label>
+<label slot="c">SMG, CMG</label>
+<label slot="e">COMPUTE</label>
+<label slot="aprime">V</label>
+</carddef>

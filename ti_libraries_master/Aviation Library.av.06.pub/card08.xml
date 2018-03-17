@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">WIND TRIANGLE</label>
+<label slot="titleright">AV-08</label>
+<label slot="a">[calc] <ArrowR/></label>
+<label slot="b">MC</label>
+<label slot="c">GS</label>
+<label slot="d">Dist</label>
+<label slot="e">t<sub>1</sub> , t<sub>2</sub></label>
+<label slot="aprime">Var(+W,-E)</label>
+<label slot="bprime">WD</label>
+<label slot="cprime">WV</label>
+<label slot="dprime">MH</label>
+<label slot="eprime">TAS</label>
+</carddef>

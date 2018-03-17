@@ -1,0 +1,9 @@
+<carddef style="system">
+<label slot="titleleft">dB,Np,P,V,I RATIO CONVERSIONS</label>
+<label slot="titleright">EE-07</label>
+<label slot="a">P<sub>2</sub>/P<sub>1</sub></label>
+<label slot="b">V<sub>2</sub>/V<sub>1</sub>=I<sub>2</sub>/I<sub>1</sub></label>
+<label slot="c">Np</label>
+<label slot="d">dB</label>
+<label slot="e"><ArrowR/> Execute</label>
+</carddef>

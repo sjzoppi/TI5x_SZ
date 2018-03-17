@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">STOCK VALUATION</label>
+<label slot="titleright">SA-06</label>
+<label slot="a">Tax, CGT</label>
+<label slot="b">Div</label>
+<label slot="c">Buy; Com</label>
+<label slot="d">Sell; Com</label>
+<label slot="e">%I</label>
+<label slot="aprime">Div No.</label>
+<label slot="bprime">New Div</label>
+<label slot="cprime">Growth</label>
+<label slot="dprime">Div; N</label>
+<label slot="eprime">Compute</label>
+</carddef>

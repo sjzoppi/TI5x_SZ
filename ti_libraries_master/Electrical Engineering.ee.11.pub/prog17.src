@@ -1,0 +1,167 @@
+
+lbl E'
+   gto 009
+
+lbl E
+   stflg 0
+   sto 10
+   sto 11
+   (
+   ce
+   -
+   1
+   )
+   sto 04
+   sto 01
+   ifflg 0 032
+   (
+   ce
+   +
+   32
+   )
+   sto 03
+   12
+   sum 01
+   sum 03
+   0
+   sto 07
+   rad
+   0
+   sto 05
+   sto 06
+   rcl 04
+   sto 02
+   rcl 03
+   sto 09
+   rcl 01
+   sto 00
+   (
+   rcl 02
+   ×
+   rcl 07
+   ×
+   2
+   ×
+   π
+   ÷
+   rcl 11
+   )
+   sto 08
+   (
+   cos
+   ×
+   rc* 00
+   )
+   sum 05
+   rcl 08
+   (
+   sin
+   ×
+   rc* 09
+   )
+   inv sum 06
+   1
+   inv sum 09
+   inv sum 00
+   dsz 2 061
+   rc* 00
+   sum 05
+   adv
+   adv
+   rcl 07
+   pause
+   prt
+   ifflg 0 141
+   (
+   (
+   rcl 05
+   +
+   rcl 06
+   )
+   ÷
+   rcl 11
+   )
+   sbr 250
+   prt
+   x⇌t
+   gto 180
+   deg
+   rcl 05
+   sbr 250
+   prt
+   x⇌t
+   rcl 06
+   sbr 250
+   prt
+   adv
+   inv p→r
+   x⇌t
+   sbr 250
+   prt
+   (
+   log
+   ×
+   20
+   )
+   sbr 250
+   prt
+   x⇌t
+   sbr 250
+   prt
+   x⇌t
+   ce
+   1
+   sum 07
+   dsz 10 043
+   inv stflg 0
+   x⇌t
+   inv sbr
+
+lbl A
+   adv
+   (
+   sto 00
+   +
+   12
+   )
+   exc 00
+   prt
+   inv sbr
+
+lbl B
+   st* 00
+   prt
+   inv sbr
+
+lbl C
+   b
+   inv sbr
+
+lbl D
+   sto 01
+   x⇌t
+   rc* 00
+   x⇌t
+   p→r
+   x⇌t
+   st* 00
+   32
+   sum 00
+   x⇌t
+   st* 00
+   rcl 01
+   prt
+   inv sbr
+
+lbl clr
+   deg
+   cms
+   fix 9
+   inv stflg 0
+   0
+   inv sbr
+   pause
+   pause
+   pause
+   pause
+   inv sbr

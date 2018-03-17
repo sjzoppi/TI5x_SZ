@@ -1,0 +1,190 @@
+
+lbl E
+   stf 2
+   rtn
+
+lbl A
+   sto 10
+   rtn
+
+lbl B
+   iff 2 045
+   ( ce ÷ 2 0 )
+   inv log
+   sto 11
+   rtn
+
+lbl C
+   iff 2 081
+   sto 12
+   rtn
+
+lbl D
+   iff 2 114
+   sto 13
+   rtn
+   inv stf 2
+   sbr 170
+   iff 0 203
+   rcl 12
+   cp
+   sbr 223
+   iff 0 203
+   sbr 333
+   (
+   ( ce - rcl 14 )
+   log × 2 0
+   )
+   rtn
+   inv stf 2
+   sbr 170
+   iff 0 203
+   1 1 sto 16
+   sbr 209
+   iff 0 203
+   ( x⇌t + rcl 14 )
+   sbr 240
+   sto 12
+   rtn
+   inv stf 2
+   rcl 12
+   sbr 223
+   iff 0 203
+   sbr 333
+   sto 15
+   1 1 sto 16
+   sbr 209
+   iff 0 203
+   x⇌t
+   inv sum 15
+   1 0 sto 16
+   sbr 209
+   iff 0 203
+   ( x⇌t ÷ rcl 15 )
+   1/x
+   sbr 240
+   sto 13
+   rtn
+   rcl 13
+   sbr 223
+   inv iff 0 181
+   rtn
+   sbr 333
+   sto 14
+   1 0 sto 16
+   sbr 209
+   inv iff 0 199
+   rtn
+   x⇌t
+   prd 14
+   rtn
+   inv stf 0
+   ÷
+   =
+   rtn
+   inv stf 0
+   cp rc* 16
+   x⇌t
+   inv x≥t 222
+   stf 0
+   rtn
+   inv stf 0
+   inv x≥t 237
+   x⇌t
+   1
+   x⇌t
+   x≥t 237
+   rtn
+   stf 0
+   rtn
+   inv stf 1
+   cp
+   x≥t 250
+   stf 1
+   |x|
+   (
+   ( sto 17 x² inv lnx × 2 × π )
+   √x
+   1/x
+   ×
+   (
+   ( rcl 17 × . 3 3 2 6 7 + 1 )
+   1/x
+   sto 18
+   ×
+   . 4 3 6 1 8 3 6
+   -
+   . 1 2 0 1 6 7 6
+   × rcl 18
+   x²
+   +
+   . 9 3 7 2 9 8
+   ×
+   rcl 18
+   yˣ
+   3
+   )
+   )
+   inv iff 1 332
+   ( +/- + 1 )
+   inv stf 1
+   rtn
+   inv stf 1
+   x⇌t
+   . 5
+   inv x≥t 346
+   gto 354
+   stf 1
+   ( 1 - x⇌t )
+   x⇌t
+   (
+   ( 2 . 5 1 5 5 1 7
+   +/-
+   -
+   x⇌t
+   x²
+   1/x
+   lnx
+   √x
+   sto 17
+   ×
+   . 8 0 2 8 5 3
+   -
+   rcl 17
+   x²
+   ×
+   . 0 1 0 3 2 8
+   )
+   ÷
+   (
+   1
+   +
+   rcl 17
+   ×
+   1 . 4 3 2 7 8 8
+   +
+   rcl 17
+   x²
+   ×
+   . 1 8 9 2 6 9
+   +
+   rcl 17
+   yˣ
+   3
+   ×
+   . 0 0 1 3 0 8
+   )
+   +
+   rcl 17
+   )
+   inv iff 1 448
+   +/-
+   inv stf 1
+   rtn
+
+lbl clr
+   cp
+   fix 9
+   0
+   inv stf 2
+   rtn

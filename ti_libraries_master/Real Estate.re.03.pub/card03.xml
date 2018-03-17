@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">REMAINING BAL/ACCUMULATED INTEREST</label>
+<label slot="titleright">RE-03</label>
+<label slot="a">N</label>
+<label slot="b">%I</label>
+<label slot="c">PMT</label>
+<label slot="d">PV</label>
+<label slot="e">H</label>
+<label slot="aprime"><ArrowR/> Balance</label>
+<label slot="bprime">G</label>
+<label slot="cprime"><ArrowR/> Interest</label>
+<label slot="dprime"></label>
+<label slot="eprime">INIT</label>
+</carddef>

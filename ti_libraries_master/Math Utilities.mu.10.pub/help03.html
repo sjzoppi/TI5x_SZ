@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+.tdletter
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+.tdnumber
+{
+  padding:0em .5em .5em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>MU-03 — Alpha Messages</H1>
+
+<P>Printing and storing alpha messages is sometimes time consuming and
+  tedious. The following program when used with the PC-100 can save
+  you time when you desire to store alpha messages on magnetic cards
+  to reprint at a later time or when you want to incorporate prompting
+  messages into your program.
+
+<P>This program uses a phone-pad entry method for entering letters and
+  some symbols and utilizes labels to enter digits, spaces, other
+  symbols and the following special messages: "ENTER", "PRESS", "PRESS
+  SBR". These characters can be arranged in any order with the
+  exception of the special messages which should be placed only at the
+  beginning of a line.
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>. 20 is displayed.
+
+  <LI>To enter characters from the diagram:
+    <TABLE style="padding:1em">
+      <TR> <TD CLASS="tdletter">STU<TD CLASS="tdletter">VWX<TD CLASS="tdletter">YZ-
+      <TR> <TD CLASS="tdnumber">7<TD CLASS="tdnumber">8<TD CLASS="tdnumber">9
+
+      <TR> <TD CLASS="tdletter">JKL<TD CLASS="tdletter">MNO<TD CLASS="tdletter">PQR
+      <TR> <TD CLASS="tdnumber">4<TD CLASS="tdnumber">5<TD CLASS="tdnumber">6
+
+      <TR> <TD CLASS="tdletter">ABC<TD CLASS="tdletter">DEF<TD CLASS="tdletter">GHI
+      <TR> <TD CLASS="tdnumber">1<TD CLASS="tdnumber">2<TD CLASS="tdnumber">3
+
+      <TR> <TD CLASS="tdletter">,.?<TD><TD>
+      <TR> <TD CLASS="tdnumber">0<TD><TD>
+    </TABLE>
+
+    Key in the number beneath the character, then:
+
+    <UL>
+      <LI>Press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> if the character is to the left of the number
+      <LI>Press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN> if the character is centered above the number
+      <LI>Press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN> if the character is to the right of the number
+    </UL>
+
+  <LI>To enter a digit (0-9),
+    <SPAN CLASS="whitebutton">&nbsp;n&nbsp;</SPAN> <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+
+  <LI>Some symbols can be entered with <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+
+    <UL>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;+&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;-&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;×&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;÷&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="yellowbutton">&nbsp;=&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="whitebutton">&nbsp;.&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;(&nbsp;</SPAN>
+      <LI><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;)&nbsp;</SPAN>
+    </UL>
+
+  <LI>To leave a space: <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+
+  <LI>Some special messages:
+
+    <UL>
+      <LI>"ENTER", press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+      <LI>"PRESS", press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+      <LI>"PRESS SBR", press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+        <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    </UL>
+
+  <LI>To begin a new line, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+
+  <LI>To enter a specific line,
+    press <SPAN CLASS="whitebutton">&nbsp;n&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+
+  <LI>To print a specific line,
+    press <SPAN CLASS="whitebutton">&nbsp;n&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+
+  <LI>To print line XX through YY,
+    press <SPAN CLASS="whitebutton">&nbsp;XX.YY&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+</UL>
+
+<P>Registers: 00 5 count; 01 Used; 02 20 Count; 03 IND; 04 and up for
+  the data, four registers for each line.
+
+</BODY>

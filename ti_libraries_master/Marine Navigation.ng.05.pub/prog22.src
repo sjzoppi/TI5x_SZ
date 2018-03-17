@@ -1,0 +1,51 @@
+
+lbl A
+   adv
+   pgm 16 a
+   inv sbr
+
+lbl B
+   pgm 16 b
+   inv sbr
+
+lbl C
+   prt
+   (
+   d.ms
+   ×
+   15.0417
+   )
+   sto 03
+   inv sbr
+
+lbl D
+   pgm 16 e'
+   sum 03
+   inv sbr
+
+lbl E
+   pgm 19
+   d
+   inv sbr
+
+lbl A'
+   pgm 16 e'
+   sto 02
+   pgm 17
+   sbr tan
+   sto 04
+   inv d.ms
+   prt
+   inv sbr
+
+lbl B'
+   pgm 19 b'
+   inv sbr
+
+lbl C'
+   pgm 19 c'
+   inv sbr
+
+lbl D'
+   pgm 19 d'
+   inv sbr

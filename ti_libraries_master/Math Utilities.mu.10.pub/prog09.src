@@ -1,0 +1,60 @@
+;+
+; Partial recreation of the "Math/Utilities Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+
+lbl a
+    sto 10
+    adv adv
+    prt
+    adv
+    stf 1
+    inv stf 2
+    1 sto 11
+    2
+
+;#17:
+    sto 12
+
+lbl b
+    iff 2 81
+    rcl 12
+    x⇌t
+    rcl 10
+    √x
+    x≥t 41
+    rcl 10
+    stf 2
+    prt
+    adv
+    rtn
+
+;#41:
+    ( rcl 10 ÷ rcl 12 - int )
+    cp x=t 87
+    inv iff 1 71
+    6
+    x⇌t
+    rcl 12
+    inv x≥t 71
+    2 sum 11
+    inv
+
+;#71:
+    stf 1
+    2 sum 11
+    rcl 11
+    gto 17
+
+;#81:
+   adv adv
+   0
+   1/x
+   1
+   rtn
+
+;#87:
+   rcl 12
+   inv prd 10
+   prt
+   rtn

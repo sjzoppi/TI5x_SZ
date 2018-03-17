@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>MU-08 — Data Packing</H1>
+
+<P>The effective number of available data registers can be increased
+  by packing data. Using this program, each register starting with
+  R<sub>04</sub> is divided into a selected number of smaller
+  registers as specified by a single format statement. For example,
+  the following statement divides each data register into three pseudo
+  registers and specifies the length of each pseudo register.
+
+<P>3.526
+  <UL>
+    <LI>3 pseudo registers per data register
+    <LI>5 digits for pseudo register 1
+    <LI>2 digits for pseudo register 2
+    <LI>6 digits for pseudo register 3
+  </UL>
+</P>
+
+<P>The format is flexible within the limits of 1 to 9 pseudo registers
+  per data register. Maximum length of a pseudo register is 9 digits
+  and the maximum combined length for all pseudo registers in a data
+  register is 13 digits. (only 11 digits in this implementation).
+
+<P>The program handles only integer values.
+
+<UL>
+  <LI>Enter format, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+  <LI>Then enter data:
+    <UL>
+      <LI>Enter data, press  <SPAN CLASS="brownbutton">&nbsp;x⇌t&nbsp;</SPAN>
+      <LI>Enter pseudo register number, press:
+        <UL>
+          <LI>to store : <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+          <LI>to recall : <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+          <LI>to exchange : <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+        </UL>
+    </UL>
+</UL>
+
+<P>Registers: 00-03
+</BODY>

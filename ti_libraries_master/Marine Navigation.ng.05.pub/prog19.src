@@ -1,0 +1,105 @@
+Lbl A
+Adv
+Pgm 16
+A
+INV SBR
+Lbl B
+Pgm 16
+B
+INV SBR
+Lbl C
+Prt
+(
+D.MS
+STO 02
+×
+15
+)
+STO 03
+INV SBR
+Lbl D
+(
+Pgm 16
+E'
+-
+RCL 06
+)
+SUM 03
+RCL 03
+sin
+CP
+x≥t 048
+Stflg 0
+INV SBR
+Lbl E
+Pgm 16
+E'
+Prd 02
+INV SBR
+Lbl A'
+Pgm 16
+E'
+SUM 02
+Pgm 17
+SBR tan
+STO 04
+INV D.MS
+Prt
+INV SBR
+Lbl B'
+RCL 04
+INV SUM Ind 20
+60
+Prd Ind 20
+RCL Ind 20
+Prt
+INV SBR
+Lbl C'
+(
+RCL 04
+cos
+×
+RCL 01
+cos
+)
+1/x
+STO 05
+(
+(
+(
+RCL 01
+sin
+×
+RCL 04
+sin
+)
++/-
++
+RCL 02
+sin
+)
+×
+RCL 05
+)
+Lbl Rad
+INV cos
+Ifflg 0 139
+(
++/-
++
+360
+)
+Prt
+INV Stflg 0
+INV SBR
+Lbl D'
+STO Ind 21
+2
+SUM 20
+SUM 21
+1
+SUM 07
+RCL 07
+Prt
+Adv
+INV SBR

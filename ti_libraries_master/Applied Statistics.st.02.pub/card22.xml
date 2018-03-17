@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">F DISTRIBUTION</label>
+<label slot="titleright">ST-22</label>
+<label slot="a"><upsilon/><sub>1</sub></label>
+<label slot="b"><upsilon/><sub>2</sub></label>
+<label slot="c">F <ArrowR/> Q(F)</label>
+<label slot="d"></label>
+<label slot="e"></label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

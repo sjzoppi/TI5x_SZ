@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG-23 — Fix by Two Observations<BR></H1>
+<P>To obtain a reliable fix from visual bearings, navigators select objects that have adequate angular separation. This same principal also applies to celestial observations. When selecting celestial bodies for observation, the navigator should try to obtain sights from general different directions. Try to get a star or planet that is astern, another star off the starbeam beam. Look to port and see if you can find yet another body that is visible before twilight ends.</P>
+<P>By searching out bodies from around the compass so to speak the celestial observer, like the navigator in pilot waters, is taking his bearings by selecting objects that he knows will yield a more reliable position. Bearings on two objects with adequate angular separation will yield lines of position that cross in the form of a fix. The navigator that is able to obtain bearings from three adequately separated objects will have a fix in which he can place a lot of confidence.</P>
+<P>That is why the 3-star fix has been so popular with navigators. When taking sightings for a 3-star fix, the navigator should try to shoot each star twice. Then if he finds an error in one of the sights, he can work out the second sights to see where the error occurred.</P>
+<P>This program may be combined with the SEXTANT CORRECTION and SIGHT REDUCTION programs to create a system capable of processing data for as many as six sights at one time.</P>
+<P>When using this system you must first use the SEXTANT CORRECTION program to correct all the sextant readings (up to a maximum of 6) that you will be working with. At the top of the suggested workform, you should consecutively number your sights 1 through 6 in the space provided. Then as you complete the last step (storing the observed altitude), make sure that the displayed number (1 through 6) agrees with the sight number recorded on the workform.</P>
+<P>The navigator should then proceed with the FIX BY TWO OBSERVATIONS program which computes his fix from any two of the selected sights.</P>
+<P>A workform may be used to assist the navigator in recording the data To use this form, the navigator first draws and labels each sight's azimuth lines in the circle of our sample</P>
+<P>workform. By inspecting the azimuth lines the navigator can determine which combinations are likely to yield the most accurate fixes. Celestial fixes like fixes resulting from visual bearings are more accurate if the objects have a significant angular separation. In other words, fixes resulting from sights whose azimuth lines are very close together will be less accurate than those produced by azimuth lines that are further apart. In this regard, sights with around 60° of separation are ideal. Two sights whose azimuths are separated by only a few degrees should not be used since the results would be inherently unreliable. Incidentally, navigators plotting results by hand on a chart would face the same problem.</P>
+<H2>Simplified Data Entries</H2>
+<P>If the navigator is working out a simultaneous (e.g., 3-star) fix in which all the sights were taken at the same DR position, the DR latitude and longitude is entered only once in the first sight reduction program. These items, then, are stored in the calculator, used with the other sight reduction programs and are automatically retained for use with the FIX BY TWO OBSERVA¬TIONS program.</P>
+<P>If the navigator working with this system wants to compute a running fix based on obser¬vations with different dead reckoning positions, he should make sure he enters the data from his sights in the order the sights were taken. This ensures that the DR which is retained for use with NG-23 will be the correct, e.g., the most recent DR.</P>
+<P>Assuming the navigator is working out a 3-star fix, and that he has completed and stored the results of two observations of each of the stars in his calculator, he initially records the longitude-latitude of the first round of observations. if they closely agree with one another, he plots his fix. If there is a problem with one of the combinations, the navigator should try various combinations including pairing the back up observations with various sights from the first round to see which sight is in error.</P>
+<P>Each fix is computed according to the following equations:</P>
+<DIV style="MARGIN-LEFT: 40px">L = L<SUB>DR </SUB>- ΔL<SUB>1</SUB> + tan(Zn<SUB>1</SUB>) <BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; × <BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [<SPAN style="FONT-WEIGHT: bold"> <SPAN style="COLOR: rgb(0,153,0)">(</SPAN> </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)">(</SPAN> ΔL<SUB>2</SUB> - ΔL<SUB>1</SUB> - <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">(</SPAN> Δλ<SUB>1</SUB> × tan( Zn<SUB>1</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">)</SPAN> + <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">(</SPAN> Δλ<SUB>2</SUB> × tan( Zn<SUB>2</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">)</SPAN> <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)">)</SPAN> <BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; / <BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="FONT-WEIGHT: bold"></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">(</SPAN> tan( Zn<SUB>2</SUB> ) - tan( Zn<SUB>1</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">)</SPAN> <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(0,153,0)">)</SPAN><BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; - Δλ<SUB>1 </SUB>]<BR><BR>λ = λ<SUB>DR</SUB> + <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(0,153,0)">( </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)">(</SPAN> ΔL<SUB>2</SUB> - ΔL<SUB>1</SUB> - <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)"></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">( </SPAN>Δλ<SUB>1</SUB> × tan( Zn<SUB>1</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">)</SPAN> + <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">(</SPAN> Δλ<SUB>2</SUB> × tan( Zn<SUB>2</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">) </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)">)</SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)"><SPAN style="COLOR: rgb(0,153,0)"></SPAN><BR></SPAN>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; / <BR>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<SPAN style="FONT-WEIGHT: bold"></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)">( </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">(</SPAN> tan( Zn<SUB>2</SUB> ) - tan( Zn<SUB>1</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)">)</SPAN> × cos( L<SUB>DR</SUB> ) <SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)"></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)">) </SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(51,51,255)"></SPAN><SPAN style="FONT-WEIGHT: bold; COLOR: rgb(204,0,0)"><SPAN style="COLOR: rgb(0,153,0)">)</SPAN></SPAN></DIV>The variables are defined as: 
+<DIV style="MARGIN-LEFT: 40px">
+<DL>
+<DT>L<SUB>DR</SUB> 
+<DD>= dead reckoning latitude<BR>
+<DT>λ<SUB>DR</SUB> 
+<DD>= dead reckoning longitude<BR>
+<DT>ΔL<SUB>i</SUB> 
+<DD>= a<SUB>i</SUB> cos(Zn<SUB>i</SUB>)<BR>
+<DT>Δλ<SUB>i</SUB> 
+<DD>= a<SUB>i</SUB> sin(Zn<SUB>i</SUB>) 
+<DT>a<SUB>i</SUB> 
+<DD>= intercept of sight i, and<BR>
+<DT>Zn<SUB>i</SUB> 
+<DD>= observed azimuth of sight i 
+<DT><BR></DT></DL></DIV>
+<P>(i = 1, 2 denotes either the first or second sight chosen for the fix, not the number of the sight as it is stacked.)</P>
+<P><SPAN style="FONT-WEIGHT: bold">REMARKS</SPAN>:</P>
+<OL>
+<LI>This program cannot compute a fix using a sight with an azimuth of 90° or 270°.<BR><BR></LI></OL>
+</BODY>

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">1-WAY ANALYSIS OF VARIANCE</label>
+<label slot="titleright">ST-15</label>
+<label slot="a"><ArrowR/> F</label>
+<label slot="b"><ArrowR/> <upsilon/><sub>1</sub></label>
+<label slot="c"><ArrowR/> ESS</label>
+<label slot="d"><ArrowR/> TSS</label>
+<label slot="e"><ArrowR/> SS</label>
+<label slot="aprime"></label>
+<label slot="bprime"><ArrowR/> <upsilon/><sub>2</sub></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

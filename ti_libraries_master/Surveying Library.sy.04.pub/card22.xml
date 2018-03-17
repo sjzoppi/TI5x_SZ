@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">EARTHWORK VOLUME</label>
+<label slot="titleright">SY-22</label>
+<label slot="a">Elev</label>
+<label slot="b">Dist</label>
+<label slot="c">Intv'l</label>
+<label slot="d">[calc] <ArrowR/></label>
+<label slot="aprime"><ArrowR/> Sta Area</label>
+<label slot="bprime"><ArrowR/> Sta Vol</label>
+<label slot="cprime"><ArrowR/> <Sigma/>Vol</label>
+<label slot="dprime"><ArrowR/> Nxt Sta</label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

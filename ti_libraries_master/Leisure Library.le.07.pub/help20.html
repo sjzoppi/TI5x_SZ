@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-20 — Sea Battle</H1>
+
+<P>Because of battle damage, your missile frigate has no radar and no engine. A nuclear submarine
+  whose last reported position was about 15,000 yards at an unknown bearing was coming toward you
+  at 30 knots. You are armed with 15 small missiles which require 1 minute to manually insert the
+  estimated range in yards and bearing in degrees. Previous intelligence reports show the following
+  expectations versus missile-miss distance with this class of sub.
+</P>
+
+<TABLE>
+  <TR><TH>Miss Distance (yds)<TH>Intelligence Report
+  <TR><TD>Over 500<TD>No damage to sub. Sub comes straight at you after a miss of the distance.
+  <TR><TD>500 and under
+    <TD><UL>
+        <LI>Sub suffers damage which decreases speed 6 knots per close hit until speed has decreased
+          to 6 knots. No further decrease.
+        <LI>Sub takes evasive action making 45° turn away from missile impact area.
+        <LI>Repeated close hits cause the sub to continue on this 45° line if the miss is in the same
+          direction or to veer 90° if the next miss is on the opposite side of the sub.
+        <LI>A miss distance greater than 500 yards after a near miss causes the sub to come straight
+          at you again.
+      </UL>
+  <TR><TD>50 and under<TD>Sinks sub.
+</TABLE>
+
+<P>You frigate will be sunk if you have fired all missiles without sinking the sub or if the sub comes
+  within 500 yards of your frigate.
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>. Displayed
+    value will not be changed.
+
+  <LI>To start the game press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>. The display will show 15000.15
+    which indicates a range of 15000 yards and 15 missiles remaining.
+
+  <LI>Key in estimated range in yards and press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>. Remember the 1 minute
+    interval between the range report and the missile firing. The sub will move during this time.
+
+  <LI>Key in the estimated bearing in degrees (0 to 360°, positive or negative) and press
+    <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>. Remember to account for movement of the sub since the last
+    report.
+
+  <LI>Range and bearing can be entered in either order. Changes can be made after entry if made
+    before firing. You may elect not to fire a missile by keying 0, pressing
+    <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN> and then <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>. This preserves your
+    missile supply but brings the sub closer.
+
+  <LI>Press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN> to fire a missile at range and bearing selected. Display
+    depends on miss distance. Sub takes action as noted in the intelligence Report. Display will be of
+    following types:
+
+    <TABLE>
+      <TR><TH>Display<TH>Miss Distance<TH>Remarks
+      <TR><TD>0.NN<TD>Over 5000<TD>No range information, only number of missiles lefts.
+      <TR><TD>XXXX.NN<TD>5000 and under<TD>Missile transmits miss distance, sub comes straight at you.
+      <TR><TD>XXX.NN<TD>500 and under<TD>See Intelligence Report for sub's action.
+      <TR><TD>XX.NN (flashing)<TD>50 and under<TD>Sub has been sunk. Last missile number is preserved.
+      <TR><TD>XXX.NN (flashing)<TD><TD>Sub came within 500 yards. You have been sunk.
+      <TR><TD>XXX.00 (flashing)<TD><TD>All missiles have been fired. In case you sink sub with last missile, the calculator will preserve the missile number to avoid confusion.
+    </TABLE>
+
+  <LI>For a new game, start over above. Each game after the first does not necessary start with 15,000
+    yards (but it will be within 500 yards of this) and will appear from a new bearing angle.
+</UL>
+
+</BODY>

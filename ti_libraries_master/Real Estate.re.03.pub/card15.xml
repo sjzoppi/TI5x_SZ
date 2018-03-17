@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">INVESTMENT FEASIBILITY ANALYSIS</label>
+<label slot="titleright">RE-15</label>
+<label slot="a">NOI</label>
+<label slot="b">Debt Cov</label>
+<label slot="c">Mrtg Cons</label>
+<label slot="d">Rtn on Eq</label>
+<label slot="e">Price</label>
+<label slot="aprime"><ArrowR/> NOI</label>
+<label slot="bprime"><ArrowR/> Debt Cov</label>
+<label slot="cprime"><ArrowR/> Mrtg Cons</label>
+<label slot="dprime"><ArrowR/> Rtn on Eq</label>
+<label slot="eprime"><ArrowR/> Price</label>
+</carddef>

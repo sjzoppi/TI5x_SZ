@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">FLIGHT PLAN AND VERIFICATION</label>
+<label slot="titleright">AV-03</label>
+<label slot="a">ETD</label>
+<label slot="b"><Delta/>t</label>
+<label slot="c">GS/Burn</label>
+<label slot="d">Dist/Fuel</label>
+<label slot="e"><ArrowR/> ETA</label>
+<label slot="bprime">WD</label>
+<label slot="cprime">WV</label>
+<label slot="dprime">TC<ArrowR/> TH;TAS</label>
+<label slot="eprime">ATA <ArrowR/> tD;tt</label>
+</carddef>

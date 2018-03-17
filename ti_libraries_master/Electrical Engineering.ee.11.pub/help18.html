@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-18 — Smith Chart Calculations</H1>
+
+<P>Graphical constructions on the Smith Chart require some special
+techniques, and it can be difficult to obtain accurate results. The
+program given here performs various transmission-line calculations
+equivalent to the graphical constructions on the Smith Chart.The
+program makes provisions for lines with attenuation and complex
+characteristic impedance. Thus you can obtain accurate results quickly
+and easily with your programmable calculator.
+</P>
+
+<P>Consider a transmission line with characteristic impedance
+Z<sub>0</sub> (possibly complex). The normalized impedance (z) at any
+point wilml be the impedance Z at that point divided by Z<sub>0</sub>
+(z = Z/Z<sub>0</sub>). Le the normalized distance in wavelengths from
+the load end of the line be x = d/&lambda;. Then the per-wavelength
+phase constant is given by:
+</P>
+<P>b = &beta;&lambda; = 2&pi; (radians)
+<P>and the attenuation constant is
+<P>a = 8.686&alpha;&lambda; (dB per wavelength)
+<P>when &alpha; is the attenuation factor (nepers per unit length).
+
+<P>This program has subroutines which will perform different
+calculations depending on the various inputs.
+
+<P>The program uses rectangular representation a+bj for entry of
+complex quantities. If polar to rectangular conversion is desired, see
+Program EE-05.
+<P>The program allows calculation of the input impedance
+Z<sub>i</sub>, the reflection factor P, and the VSWR &sigma; when the
+characteristic impedance Z<sub>0</sub>, the termination resistance
+Z<sub>L</sub>, the attenuation a, and the distance in wavelengths X
+  from the termination are entered. Provisions are made to allow conversion from admittance to impedance.
+
+<P>This program is designed for use with the printer.
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <LI>Enter complex characteristic impedance. Omit for Z<sub>0</sub> =
+    50 + 0j ohms, enter Re(Z<sub>0</sub>)
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>,
+    enter Im(Z<sub>0</sub>)
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Enter termination impedance Z<sub>L</sub> in ohms.
+    If admittance given, see last step below, enter Re(Z<sub>L</sub>)
+    press <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>,
+    enter Im(Z<sub>L</sub>)
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Enter attenuation in dB, Omit for a = 0, enter a and press
+    press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+
+  <LI>Enter distance X in wavelengths from termination, enter X and press
+    press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+
+  <LI>To compute input impedance, Z<sub>i</sub>
+    press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+
+  <LI>Display magnitude of P<sub>i</sub><sup>2</sup>,
+    press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    then display angle of P<sub>i</sub>
+    press <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+
+  <LI>Enter magnitude P,
+    press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN> to calculate VSWR.
+
+  <LI>Perform Y &rlhar; Z conversions,
+      enter Re(Y) press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>, enter
+      Im(Y) <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>, then
+      Re(Z) and Im(Z) are displayed.
+      enter Re(Z) press
+      <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+      <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>, enter
+      Im(Z) <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>, then
+      Re(Y) and Im(Y) are displayed.
+</UL>
+
+Registers: 01-10, 14-17, 20
+</BODY>

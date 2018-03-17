@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">EDM SLOPE REDUCT'N (S <angle/>)</label>
+<label slot="titleright">SY-13</label>
+<label slot="a">SDist</label>
+<label slot="b">Z<angle/></label>
+<label slot="c">DMH, RH</label>
+<label slot="d">ThH; TH</label>
+<label slot="e">DMElev</label>
+<label slot="aprime"><ArrowR/>HzDist(IEL)</label>
+<label slot="bprime"><ArrowR/>HzDist(SL)</label>
+<label slot="cprime"><ArrowR/> <Delta/>Elev</label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

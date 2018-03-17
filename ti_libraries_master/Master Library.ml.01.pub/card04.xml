@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">COMPLEX ARITHMETIC</label>
+<label slot="titleright">ML-04</label>
+<label slot="aprime">Y</label>
+<label slot="bprime"><ArrowR/> X-Y</label>
+<label slot="cprime"><ArrowR/> X<div/>Y</label>
+<label slot="dprime"><ArrowR/> log<sub>y</sub>X</label>
+<label slot="eprime">X<ArrowLR/>Y</label>
+<label slot="a">X</label>
+<label slot="b"><ArrowR/> X+Y</label>
+<label slot="c"><ArrowR/> X<mul/>Y</label>
+<label slot="d"><ArrowR/> Y<sup>x</sup></label>
+<label slot="e"><ArrowR/> <supb>x</supb><sqrt/>Y</label>
+</carddef>

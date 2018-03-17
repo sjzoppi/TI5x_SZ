@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+TABLE.functions
+  {
+    border-collapse : collapse;
+  }
+TABLE.functions > TBODY > TR > TD, TABLE.functions > TBODY > TR > TH
+  {
+    border : 1px solid;
+    border-color : #C0C0C0;
+    padding : 0.25em;
+  }
+TABLE.functions > TBODY > TR > TD.unused
+  {
+    background : #D5D5D5;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-14 — EDM Slope Reduction (&Delta; Elevation)</H1>
+
+<P>This program converts slope distance measured by an
+  electronic distance measuring (EDM or DM) unit to horizontal
+  distance at sea level, at the EDM unit elevation and at any
+  specified elevation, given the difference in elevation (&Delta;
+  Elev) of the two stations. Included are corrections for EDM unit
+  height and reflector height.
+
+<UL>
+  <LI>Select degree mode, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN>
+  <LI>Initialize, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+  <LI>Enter slope distance, press <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+  <LI>Enter DM unit elevation, press <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+  <LI>Enter reflector elevation, press <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+  <LI>Enter DM unit height, press <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+  <LI>Enter reflector height, press <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+  <LI>Compute Hz Dist (IEL), press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+  <LI>Compute Hz Dist (SL), press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+  <LI>Enter specified elevation and compute Hz Dist, press
+    <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+    <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+</UL>
+
+<P>Registers used: 01-03, 05, 06, 12, 17, 18
+
+</BODY>

@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>AV-02 — Flight Plan with Wind</H1>
+
+<P>This program may be used to determine a flight plan for a trip of
+several legs with winds aloft. The wind triangle is solved using wind
+direction and velocity, magnetic compass variation, true airspeed, and
+true course to indicate magnetic heading and ground speed. The flying
+time, ETA, and fuel for each leg are computed, as are total time
+enroute and total fuel required.
+</P>
+
+<P>The user should note that WD, WV, TAS, Burn and Var are assumed to
+be <i>average and constant</i> values for each leg, while in fact they
+may vary significantly and could seriously affect the accuracy of
+Fuel, GS (thus ETE), and MH.
+</P>
+
+<table>
+  <tr><td><b>TH</b><td>= true heading</tr>
+  <tr><td><b>TC</b><td>= true course</tr>
+  <tr><td><b>MH</b><td>= magnetic heading</tr>
+  <tr><td><b>Var</b><td>= magnetic compass variation (+West, -East)</tr>
+  <tr><td><b>WD</b><td>= wind direction (true)</tr>
+  <tr><td><b>WV</b><td>= wind velocity</tr>
+  <tr><td><b>TAS</b><td>= true airspeed</tr>
+  <tr><td><b>GS</b><td>= ground speed</tr>
+  <tr><td><b>Dist</b><td>= distance of leg</tr>
+  <tr><td><b>ETE</b><td>= estimated time enroute for leg</tr>
+  <tr><td><b>ETA</b><td>= estimated time of arrival</tr>
+  <tr><td><b>ETD</b><td>= estimated time of departure</tr>
+  <tr><td><b>tt</b><td>= total time of fligh</tr>
+  <tr><td><b>Burn</b><td>= fuel flow (gal/hr or lbs/hr)</tr>
+  <tr><td><b>Fuel</b><td>= fuel consumed for leg</tr>
+  <tr><td><b>tF</b><td>= total fuel consumed for all legs</tr>
+</table>
+
+<DL class="deflist">
+  <DT>Initialize
+    <DD><SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN> <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+    <DD CLASS="display">0.000</DT>
+
+  <DT>Select degree mode
+    <DD><SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;Deg&nbsp;</SPAN></DT>
+
+  <DT>Enter initial take-off time
+    <DD>ETD<sub>i</sub> <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">ETD / tt (HH.MMSS)
+    <DD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">tF (gal or lbs)
+  </DT>
+</DL>
+
+<h3>For each leg</h3>
+
+<DL class="deflist">
+  <DT>Enter magnetic variation (+W, -E)
+    <DD>Var <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;A'&nbsp;</SPAN>
+    <DD CLASS="display">Var (deg)</DT>
+
+  <DT>Enter wind direction (true) in degrees
+    <DD>WD <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>
+    <DD CLASS="display">WD (deg)</DT>
+
+  <DT>Enter wind velocity
+    <DD>WV <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+    <DD CLASS="display">WV
+  </DT>
+
+  <DT>Enter TAS and Burn (gal/hr or lbs/hr) in that order
+    <DD>TAS <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>
+    <DD CLASS="display">TAS
+    <DD>Burn <SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">Burn
+  </DT>
+
+  <DT>Enter true course
+    <DD>TC <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+    <DD CLASS="display">TC (deg)
+  </DT>
+
+  <DT>Enter distance of leg
+    <DD>Dist <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    <DD CLASS="display">Dist
+  </DT>
+
+  <DT>Compute true heading and magnetic heading
+    <DD><SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+    <DD CLASS="display">TC (deg) / TH (deg)
+    <DD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">MH (deg)
+  </DT>
+
+  <DT>Compute ground speed and estimated time enroute
+    <DD><SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    <DD CLASS="display">GS
+    <DD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">ETE
+  </DT>
+
+  <DT>Compute fuel (for leg) and ETA
+    <DD><SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+    <DD CLASS="display">Fuel (gas or lbs)
+    <DD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">ETA (hrs)
+  </DT>
+
+  <DT>Enter estimated time of departure for next leg and display total time and Fuel thus far
+    <DD>ETD <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;E'&nbsp;</SPAN>
+    <DD CLASS="display">ETD / tt (HH.MMSS)
+    <DD><SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>
+    <DD CLASS="display">tF (gal or lbs)
+  </DT>
+</DL>
+
+
+<P>For next leg, restart above by making appropriate change for Var, WD, WV, TAS and Burn if necessary and continue.
+
+<H3>Formulas Used</H3>
+
+<P>TH = TC + arcsin [ (WV/TAS) x sin (WD - TC) ]
+<P>MH = TH + Var
+<P>GS = TAS x cos (TH - TC) - WV x cos (WD - TC)
+
+<P>Registers used: 00, 05-18
+
+</BODY>

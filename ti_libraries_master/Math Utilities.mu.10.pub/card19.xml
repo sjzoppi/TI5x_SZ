@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">DISCRETE FOURIER SERIES</label>
+<label slot="titleright">MU-19</label>
+<label slot="a"># Points</label>
+<label slot="b">Register #</label>
+<label slot="c">Y<sub>i</sub></label>
+<label slot="d">n <ArrowR/> a<sub>n</sub>,b<sub>n</sub></label>
+</carddef>

@@ -1,0 +1,72 @@
+
+lbl clr
+   pgm 07
+   sbr clr
+   inv sbr
+
+lbl E
+   stflg 0
+   inv sbr
+
+lbl A
+   ifflg 0 021
+   sto 10
+   inv sbr
+   (
+   rcl 12
+   1/x
+   +
+   rcl 12
+   ÷
+   rcl 13
+   x²
+   )
+   1/x
+   sto 10
+   gto 113
+
+lbl B
+   ifflg 0 048
+   sto 11
+   inv sbr
+   sbr 021
+   (
+   ce
+   ×
+   rcl 12
+   ÷
+   rcl 13
+   )
+   sto 11
+   gto 113
+
+lbl C
+   ifflg 0 074
+   sto 12
+   inv sbr
+   (
+   rcl 10
+   +
+   rcl 11
+   x²
+   ÷
+   rcl 10
+   )
+   sto 12
+   gto 113
+
+lbl D
+   ifflg 0 099
+   sto 13
+   inv sbr
+   sbr 074
+   (
+   ce
+   ×
+   rcl 10
+   ÷
+   rcl 11
+   )
+   sto 13
+   inv stflg 0
+   inv sbr

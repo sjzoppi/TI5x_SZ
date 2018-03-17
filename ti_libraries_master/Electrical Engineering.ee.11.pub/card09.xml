@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">ROOTS OF A POLYNOMIAL</label>
+<label slot="titleright">EE-09</label>
+<label slot="a">n</label>
+<label slot="b"><epsilon/></label>
+<label slot="c"><ArrowR/> roots(CG)</label>
+<label slot="d"><ArrowR/>Rduc P<sub>n</sub>(x)</label>
+<label slot="e">Control</label>
+<label slot="cprime"><ArrowR/> roots(EG)</label>
+</carddef>

@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">ROOTS OF FUNCTIONS</label>
+<label slot="titleright">MU-15</label>
+<label slot="b">Limit</label>
+<label slot="c">X<sub>0</sub> <ArrowR/> Root</label>
+<label slot="bprime"><epsilon/></label>
+<label slot="cprime">(no limit)</label>
+</carddef>

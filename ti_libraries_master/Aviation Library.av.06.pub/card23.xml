@@ -1,0 +1,10 @@
+<carddef style="system">
+<label slot="titleleft">TIME ZONE CONVERSIONS</label>
+<label slot="titleright">AV-23</label>
+<label slot="a">zone</label>
+<label slot="b">date</label>
+<label slot="c">t</label>
+<label slot="d"><Delta/> t</label>
+<label slot="e"><ArrowR/> t'</label>
+<label slot="eprime"><ArrowR/> date'</label>
+</carddef>

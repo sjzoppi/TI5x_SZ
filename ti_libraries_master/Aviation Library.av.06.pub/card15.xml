@@ -1,0 +1,8 @@
+<carddef style="system">
+<label slot="titleleft">AREA NAV - LOAD MODULE</label>
+<label slot="titleright">AV-15</label>
+<label slot="a">Load FIX #</label>
+<label slot="b">from FIX #</label>
+<label slot="c">Rad</label>
+<label slot="d">Dist</label>
+</carddef>

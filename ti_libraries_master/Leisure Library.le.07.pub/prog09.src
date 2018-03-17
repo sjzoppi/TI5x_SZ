@@ -1,0 +1,63 @@
+;+
+; Partial recreation of the "Leisure Library" module
+; that came with the original TI-58C/59 calculators.
+;-
+; registers:
+; 01 .. 04  -  the four digits of the number to guess (no 0, no digit repeated)
+; 05        -  index to digits during generation
+
+lbl E
+    cms
+    sto 9
+
+lbl B
+    op 25                     ; #007 add 1 to r05
+    rcl 5                     ; #009
+    sto 6
+    ( pgm 15 sbr dms × 1 0 )
+    int
+    x⇌t
+    rc* 6                     ; #024
+    x=t 9                     ; if digit is 0 or already set, generate a new one
+    dsz 6 024                 ; check all digits already generated, no repeated digits
+    x⇌t                      ; X is new digit
+    st* 5                     ; store it
+    rcl 5
+    x⇌t
+    3
+    x≥t 7                     ; generate next digit
+    0
+    rtn
+
+lbl A
+    fix 9
+    prt
+    sto 7
+    4 sto 5
+    ( rcl 7 ÷ 1 0 )
+    sto 7
+    inv int
+    ( inv sum 7 × 1 0 )
+    x⇌t
+    4 sto 6
+    rc* 6
+    x=t 90
+    dsz 6 078
+    gto 102
+
+    rcl 6
+    x⇌t
+    rcl 5
+    x=t 99
+    . 1
+    sum 8
+    dsz 5 055
+    0 exc 8
+    fix 1
+    prt
+    adv
+    rtn
+
+lbl clr
+    cms
+    rtn

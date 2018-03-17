@@ -1,0 +1,135 @@
+Lbl B'
+INV Stflg 0
+P→R
+)
+x⇌t
++
+RCL 21
+)
+x⇌t
+INV P→R
+x⇌t
+STO 20
+x⇌t
+Lbl D'
+(
+CE
+-
+CP
+x≥t 030
+0
++
+360
+)
+INV x≥t D'
+INV SBR
+Lbl A
+Ifflg 0 050
+Prt
+Exc 18
+Exc 17
+INV SBR
+RCL 12
+x⇌t
+(
+(
+(
+RCL 13
+P→R
++
+x⇌t
+STO 21
+RCL 06
++/-
+x⇌t
+RCL 07
+B'
++
+RCL 16
+)
+D'
+STO 18
+x⇌t
+RCL 20
+STO 17
+Adv
+Prt
+INV SBR
+x⇌t
+Prt
+INV SBR
+Lbl B
+Ifflg 0 100
+Prt
+Exc 07
+Exc 06
+INV SBR
+(
+(
+RCL 12
+x⇌t
+RCL 13
+P→R
++
+x⇌t
+STO 21
+RCL 17
++/-
+x⇌t
+(
+RCL 18
+-
+RCL 16
+)
+B'
+STO 07
+x⇌t
+RCL 20
+STO 06
+Adv
+Prt
+INV SBR
+x⇌t
+Prt
+INV SBR
+Lbl C
+Ifflg 0 149
+Prt
+Exc 13
+Exc 12
+INV SBR
+RCL 17
+(
+(
+(
+x⇌t
+RCL 18
+-
+RCL 16
+)
+P→R
++
+x⇌t
+STO 21
+RCL 06
+x⇌t
+RCL 07
+B'
+STO 13
+x⇌t
+RCL 20
+STO 12
+Adv
+Prt
+INV SBR
+x⇌t
+Prt
+INV SBR
+Lbl E
+0
+Stflg 0
+INV SBR
+Lbl A'
+STO 16
+Prt
+INV SBR

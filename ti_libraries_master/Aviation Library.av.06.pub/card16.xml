@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">VOR AREA NAV</label>
+<label slot="titleright">AV-16</label>
+<label slot="a">t of read'g</label>
+<label slot="b"># <ArrowR/> Dist to</label>
+<label slot="c"><ArrowR/> ETA</label>
+<label slot="d"><ArrowR/> MC</label>
+<label slot="e">Add mi</label>
+<label slot="aprime">from FIX #</label>
+<label slot="bprime">Rad A</label>
+<label slot="cprime">Rad B</label>
+<label slot="dprime">GS <ArrowR/></label>
+<label slot="eprime"><ArrowR/> GS</label>
+</carddef>

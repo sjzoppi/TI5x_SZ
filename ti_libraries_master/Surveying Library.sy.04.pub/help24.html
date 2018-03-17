@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>SY-24 — Triangle Solution (2)</H1>
+
+<P>Knowing certain combinations of the attributes (sides or angles) of
+  a triangle, the unknown attributes and the area can be calculated.
+
+<P>
+<IMG ALT="Triangle Diagram" src="data:image/png;base64,
+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
+">
+
+<H3>Knowing ASA</H3>
+<UL>
+<LI>Enter side <I>a</I>: <I>a</I> <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+<LI>Enter angle <I>B</I>: <I>b</I> <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+<LI>Enter angle <I>C</I>: <I>c</I> <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+</UL>
+<P>Then, compute angle A: <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">A´</SPAN>
+<P>Now, you can compute the remaining angles, in either order:
+<UL>
+<LI>side b: <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+<LI>side c: <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+</UL>
+
+<H3>Knowing SAA</H3>
+<UL>
+<LI>Enter side <I>a</I>: <I>a</I> <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+<LI>Enter angle <I>A</I>: <I>b</I> <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+<LI>Enter angle <I>C</I>: <I>A</I> <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+</UL>
+<P>Then, compute angle B: <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;B'&nbsp;</SPAN>.
+<P>Now, you can obtain the remaining angles, in either order:
+<UL>
+<LI>side b: <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+<LI>side c: <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+</UL>
+
+<P>To calculate Area, <SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN> <SPAN CLASS="alttext">&nbsp;C'&nbsp;</SPAN>
+
+<H3>Formulas Used</H3>
+
+<P>A + B + C = 180° or 2π
+
+<P>c<SUP>2</SUP> = a<SUP>2</SUP> + b<SUP>2</SUP> - 2ab cos C
+
+<P>a ÷ sin A = b ÷ sin B = c ÷ sin C
+
+<P>Registers used: 01-06.

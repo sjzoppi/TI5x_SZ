@@ -1,0 +1,11 @@
+<carddef style="system">
+<label slot="titleleft">REACTANCE CHART</label>
+<label slot="titleright">EE-11</label>
+<label slot="a">f</label>
+<label slot="b">L</label>
+<label slot="c">C</label>
+<label slot="e"><ArrowR/> Execute</label>
+<label slot="aprime">f<sub>0</sub></label>
+<label slot="bprime">X<sub>L</sub></label>
+<label slot="cprime">X<sub>C</sub></label>
+</carddef>

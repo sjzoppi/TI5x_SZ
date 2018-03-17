@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">t-STATISTIC EVALUATION</label>
+<label slot="titleright">ST-13</label>
+<label slot="a"><ArrowR/> t</label>
+<label slot="b"><ArrowR/> <upsilon/></label>
+<label slot="c"><ArrowR/> <Delta/>&#x304;</label>
+<label slot="d"><ArrowR/>  s<sub>Δ</sub></label>
+<label slot="e"></label>
+<label slot="aprime"><Delta/> <ArrowR/> t</label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"></label>
+</carddef>

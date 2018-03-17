@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+TD
+{
+  padding:.5em .5em 0em 2em;
+  text-align: center;
+  font-family: monospace;
+}
+</STYLE>
+</HEAD>
+<BODY>
+<H1>EE-12 — Series/Parallel Impedance Conversions</H1>
+
+<P>This programs converts a two-element series impedance network to an
+equivalent two-element parallel impedance network, or vice versa. The
+conversion is illustrated by the following diagram where
+R<sub>s</sub>, X<sub>s</sub>, R<sub>p</sub>, and X<sub>p</sub> refer
+to the series resistance, series reactance, parallel resistance, and
+parallel reactance in ohms, respectively.
+</P>
+
+<P>
+<IMG ALT="Series Network" src="data:image/png;base64,
+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
+JPAAAAAElFTkSuQmCC
+">
+<i>Series Network</i></P>
+
+<P>
+<IMG ALT="Parallel Network" src="data:image/png;base64,
+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
+">
+<i>Parallel Network</i></P>
+
+<P>Any two-element impedance network can be represented equivalently
+as a series network or a parallel network.
+</P>
+
+<UL>
+  <LI>Initialize program :
+    <SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+    <SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+
+  <P>Convert series to parallel</P>
+
+  <LI>Enter the following in any order:
+    <UL>
+      <LI>Series resistance R<sub>s</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Series reactance X<sub>s</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute the following in any order:
+    <UL>
+      <LI>Parallel resistance R<sub>p</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Parallele reactance X<sub>p</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    </UL>
+
+  <P>Convert parallel to series</P>
+
+  <LI>Enter the following in any order:
+    <UL>
+      <LI>Parallel resistance R<sub>p</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;C&nbsp;</SPAN>
+      <LI>Parallel reactance X<sub>p</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;D&nbsp;</SPAN>
+    </UL>
+
+  <LI>Compute the following in any order:
+    <UL>
+      <LI>Series resistance R<sub>s</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;A&nbsp;</SPAN>
+      <LI>Series reactance X<sub>s</sub> in ohms, press
+        <SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>
+        <SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>
+    </UL>
+</UL>
+
+<P>Registers: 10-13
+
+</BODY>

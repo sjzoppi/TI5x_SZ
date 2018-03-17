@@ -1,0 +1,6 @@
+<carddef style="user">
+<label slot="titleleft">MASTER-MIND</label>
+<label slot="titleright">PO-23</label>
+<label slot="primecenter">N-guess <button>R/S</button></label>
+<label slot="e">INIT</label>
+</carddef>

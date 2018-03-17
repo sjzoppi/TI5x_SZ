@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<META name="description" content="TI5X PROGRAM ROM LISTING">
+<META name="author" content="Steven Zoppi">
+<META name="e-mail" content="about-ti5x@zoppi.org">
+<META name="version" content="12/25/2016 00:00:01 AM">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  }
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  }
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  }
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  }
+.deflist DD
+  {
+    margin-left : 4em;
+  }
+
+.display
+  {
+     color : red;
+     font-weight : bold;
+     text-align : right;
+     margin-right : 2em;
+  }
+</STYLE>
+</HEAD>
+<BODY>
+<H1>NG<SMALL>-</SMALL>19<SMALL>,</SMALL> 20<SMALL>,</SMALL> 21, <BIG>22</BIG> — Sight Reduction<BR></H1>
+<P>The following programs (NG-19 through NG-22) are designed to be used alone or in conjunction with the SEXTANT CORRECTION and FIX BY TWO OBSERVATIONS programs. A common workform is suggested to help the navigator organize his work and provide a record of the data necessary to check his results.<BR></P>
+<P>"Reducing a sight" is the mathematical process by which an accurately timed celestial observation is converted into information the navigator can use to construct a line of position on a plotting sheet or chart.<BR></P><BR>
+<P>Each program requires the time of the observation and the dead reckoning position at that time to be entered. The remaining data must be extracted from the daily pages of the Nautical Almanac as explained in the following.</P>
+<H2>Daily Page Information for the Sun<BR></H2>
+<P>The sun's Greenwich Hour Angle or GRA (table 1) is tabulated in degrees, minutes, and tenths for each GMT whole hour of each day. The program requires you to take out the sun's GHA which corresponds to the GMT whole hours and date of observation.</P>
+<P>The sun's declination (Dec) like GHA is tabulated for each whole hour of each day. The declina¬tion is found just to the right of the GHA, as indicated in table 1. Note that the declination is given in whole degrees, minutes, and tenths and contains a prefix "N" for North and "S" for South. Note also that the whole degrees and the prefix are listed intermittently down the column. Be sure that every declination you extract contains whole degrees and a prefix notation.</P>
+<P>The d correction for the sun is listed once for the 3-day period covered by each page. It is found at the bottom of the sun column just to the right of the semi-diameter (SD).</P>
+<P><SPAN style="FONT-WEIGHT: bold">REMARKS</SPAN>:</P>
+<P>For northern declinations:</P>
+<P style="MARGIN-LEFT: 40px">The <SPAN style="FONT-STYLE: italic">d</SPAN> correction takes on a positive value if the declination increases as the day progresses and is negative if the declination decreases.</P>
+<P>For southern declinations:</P>
+<P style="MARGIN-LEFT: 40px">When the declination decreases through the day, the <SPAN style="FONT-STYLE: italic">d</SPAN> correction is considered to be positive and is taken as negative if the declination is increasing.<BR></P>
+<H2>Daily Page Information for the Moon<BR></H2>
+<P>The GHA of the moon (table 1) is taken from the <SPAN style="FONT-STYLE: italic">Almanac</SPAN> for the GMT whole hours and date of observation, using the same procedure outlined for the sun.</P>
+<P>The γ correction for each hour of GMT is found in the daily pages of the moon column just to the right of the GHA. The γ correction is always a positive value.</P>
+<P>The declination of the moon is found to the right of the γ correction, for each GMT whole hour and date. It is extracted for the whole hours according to the same instructions given for the sun.</P>
+<P>The <SPAN style="FONT-STYLE: italic">d</SPAN> corrections for the moon are also listed for each GMT whole hour and date and are assigned positive or negative values according to the procedure established for the sun.<BR></P>
+<H2>Daily Page Information for the Planets<BR></H2>
+<P>On the left hand side of each daily page you will find Almanac data for the four navigational planets: Venus, Mars, Jupiter, and Saturn. Table 2, extracted from the 1975 <SPAN style="FONT-STYLE: italic">Almanac</SPAN>, shows how this information is presented.</P>
+<P>The GHA of a planet is given for each whole hour of GMT for each day. It is taken from the Almanac in the same manner described for the sun and moon.</P>
+<P>At the bottom of the GHA column for each planet, you will find the γ correction for planets which is always positive unless otherwise listed.</P>
+<P>The declination for each planet is found just to the right of the GHA column. The declination, as for other bodies, is given for each whole hour of GMT for each day.</P>
+<P>The <SPAN style="FONT-STYLE: italic">d</SPAN> correction for each planet is found at the bottom of the page underneath the declination column. This correction is given once on each page for each planet and covers the 3-day period of the page. Again, the sign of the declination follows the same pattern established for the sun.</P>
+<H2>Daily Page Information for the Stars</H2>
+<P>The information you need for stars is given in the first and the last columns of the left hand daily pages as shown in table 2. The first column is labeled "Aries" and the last column, appropriately, is labeled "Stars".</P>
+<P>For each star sight you will need to take out the GHA of Aries for the GMT whole hour and date of observation. In the calculator program, the GHA of Aries (really an imaginary fixed point in the sky) will be combined with the value of the star's sideral hour angle (SHA).</P>
+<P>The SHA of each of the 57 selected navigational stars listed in the daily pages is given once for each 3-day period.</P>
+<P>Right next to the SHA column of each star is the declination. Like SHA the declination for each listed star is given once and is good for the 3-day period covered by each page. Stars have no γ or <SPAN style="FONT-STYLE: italic">d</SPAN> corrections.</P>
+<P><BR></P>
+<P>These programs calculate the computed altitude (Hc), the intercept or altitude difference (a), and the true azimuth (Zn) according to the following equations:</P>
+<DIV style="MARGIN-LEFT: 40px">
+<P>Hc = sin<SUP>-1</SUP>[ sin(dec') × sin( L<SUB>DR</SUB> ) ] + ( cos( Dec' ) × cos( L<SUB>DR</SUB> ) × cos( LHA ) )</P>
+<P>a = Ho - Hc</P><BR>
+<P>cos(Z) = [ sin( Dec' ) - ( sin( L<SUB>DR</SUB> ) × sin( Hc ) ) ] / [ cos( Hc ) × cos( L<SUB>DR</SUB> ) ]</P>
+<P>Zn = <BR></P>
+<DIV style="MARGIN-LEFT: 40px">Z&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; {if sin( LHA ) &lt; 0}<BR></DIV>
+<P style="MARGIN-LEFT: 40px">360 - Z&nbsp;&nbsp;&nbsp; {if sin( LHA ) ≥ 0}</P>
+<P>The local hour angle (LHA) and corrected declination (Dec') are found according to individual program requirements.<BR></P></DIV>
+<P><SPAN style="FONT-WEIGHT: bold">REMARKS</SPAN>:</P>
+<OL>
+<LI>When stacking sights they must be reduced in the same order used in NG-18 (or in manual storage). 
+<LI>The print cradle may be used with any of the SIGHT REDUCTION programs. </LI></OL>
+</BODY>

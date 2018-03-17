@@ -1,0 +1,13 @@
+<carddef style="system">
+<label slot="titleleft">CLOSURE</label>
+<label slot="titleright">SY-06</label>
+<label slot="a">N<sub>calc</sub>, E<sub>calc</sub></label>
+<label slot="b">N<sub>corr</sub>, E<sub>corr</sub></label>
+<label slot="c"><ArrowR/> C Dist</label>
+<label slot="d"><ArrowR/> Err Brg</label>
+<label slot="e"><ArrowR/> Q</label>
+<label slot="aprime"><ArrowR/> Area</label>
+<label slot="bprime"><ArrowR/> Prec</label>
+<label slot="cprime"><Sigma/> Dist</label>
+<label slot="dprime">Area<sub>part</sub></label>
+</carddef>

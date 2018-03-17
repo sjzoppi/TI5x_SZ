@@ -1,0 +1,12 @@
+<carddef style="system">
+<label slot="titleleft">INTERSECTION (BRG IF PERP.)</label>
+<label slot="titleright">SY-19</label>
+<label slot="a">N<sub>B</sub>, E<sub>B</sub></label>
+<label slot="b">N<sub>O</sub>, E<sub>O</sub></label>
+<label slot="c">Brg, Q</label>
+<label slot="d"><ArrowR/> N<sub>I</sub></label>
+<label slot="e"><ArrowR/> E<sub>I</sub></label>
+<label slot="aprime"><ArrowR/> Dist<sub>OI</sub></label>
+<label slot="bprime"><ArrowR/> Dist<sub>BI</sub></label>
+<label slot="eprime">[Init] <ArrowR/></label>
+</carddef>

@@ -1,0 +1,133 @@
+
+lbl E
+   stflg 0
+   inv sbr
+
+lbl clr
+   inv stflg 0
+   inv stflg 1
+   inv stflg 2
+   fix 9
+   0
+   inv sbr
+
+lbl A
+   ifflg 0 040
+   inv stflg 1
+   (
+   sto 14
+   ×
+   2
+   ×
+   π
+   )
+   exc 14
+   inv sbr
+   ifflg 2 060
+   (
+   rcl 12
+   ×
+   rcl 10
+   ×
+   2
+   ×
+   π
+   )
+   1/x
+   gto 070
+   (
+   rcl 13
+   ÷
+   2
+   ÷
+   π
+   ÷
+   rcl 11
+   )
+   inv stflg 0
+   inv sbr
+
+lbl A'
+   ifflg 0 085
+   stflg 1
+   gto 029
+   (
+   2
+   ×
+   π
+   ×
+   (
+   rcl 11
+   ×
+   rcl 10
+   )
+   √x
+   )
+   1/x
+   gto 070
+
+lbl B
+   ifflg 0 114
+   stflg 2
+   sto 11
+   inv sbr
+   ifflg 1 128
+   (
+   rcl 13
+   ÷
+   rcl 14
+   )
+   gto 070
+   (
+   rcl 14
+   x²
+   ×
+   rcl 10
+   )
+   1/x
+   gto 070
+
+lbl B'
+   ifflg 0 149
+   sto 13
+   inv sbr
+   (
+   rcl 14
+   ×
+   rcl 11
+   )
+   gto 070
+
+lbl C
+   ifflg 0 171
+   inv stflg 2
+   sto 10
+   inv sbr
+   ifflg 1 186
+   (
+   rcl 12
+   ×
+   rcl 14
+   )
+   1/x
+   gto 070
+   (
+   rcl 14
+   x²
+   ×
+   rcl 11
+   )
+   1/x
+   gto 070
+
+lbl C'
+   ifflg 0 207
+   sto 12
+   inv sbr
+   (
+   rcl 14
+   ×
+   rcl 10
+   )
+   1/x
+   gto 070

@@ -1,0 +1,96 @@
+Lbl A'
+(
+CE
+÷
+RCL 14
+)
+INV SBR
+Lbl E
+RCL 04
+A'
+x⇌t
+RCL 03
+P→R
+STO 20
+RCL 02
++/-
+A'
+x⇌t
+STO 21
+RCL 01
+P→R
+SUM 20
+RCL 17
+x⇌t
+SUM 21
+RCL 18
+P→R
+SUM 20
+(
+RCL 21
++
+x⇌t
+)
+x⇌t
+RCL 20
+INV P→R
+x⇌t
+STO 22
+x⇌t
+CP
+x≥t 068
+(
+CE
++
+360
+)
+x⇌t
+RCL 22
+Adv
+Prt
+INV SBR
+x⇌t
+Prt
+INV SBR
+Lbl A
+Prt
+Exc 18
+Exc 17
+INV SBR
+Lbl B
+Prt
+Exc 01
+Exc 02
+INV SBR
+Lbl C
+Prt
+Exc 03
+Exc 04
+INV SBR
+Lbl D
+Prt
+D.MS
+STO 14
+INV SBR
+Lbl C'
+RCL 18
+SUM 03
+RCL 03
+Lbl E'
+(
+CE
+-
+CP
+x≥t 127
+0
++
+360
+)
+INV x≥t E'
+Prt
+INV SBR
+Lbl B'
+RCL 18
+SUM 01
+RCL 01
+GTO E'

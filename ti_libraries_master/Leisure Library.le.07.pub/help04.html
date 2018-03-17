@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
+<TITLE>ti5x help</TITLE>
+<STYLE TYPE="text/css">
+.yellowbutton
+  {
+    background : #ce8c3b;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+  } /*.yellowbutton*/
+
+.brownbutton
+  {
+    background : #4e3836;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*.brownbutton*/
+
+.whitebutton
+  {
+    background : #ac9e80;
+    padding : 1pt;
+    border : 1pt solid black;
+    font-weight : bold;
+    color : #222424;
+  } /*.whitebutton*/
+
+.alttext
+  {
+    background : #222424;
+    padding : 1.5pt;
+    font-weight : bold;
+    color : #ac9e80;
+  } /*alttext*/
+
+.deflist DT
+  {
+    display : compact;
+    font-weight : bold;
+  } /*.deflist DT*/
+.deflist DD
+  {
+    margin-left : 4em;
+  } /*.deflist DD*/
+</STYLE>
+</HEAD>
+<BODY>
+<H1>LE-04 FOOTBALL PREDICTOR</H1>
+
+<P>This program predicts the score of a football game based on four factors:
+	<OL>
+		<LI>
+			Average of points scored by the home team's offense, H<sub>O</sub>
+		</LI>
+		<LI>
+			Average of points scored against the home team's defense, H<sub>D</sub>
+		</LI>
+		<LI>
+			Average of points scored by the opposing team's offense, O<sub>O</sub>
+		</LI>
+		<LI>
+			Average of points scored by the opposing team's defense, O<sub>D</sub>
+		</LI>
+	</OL>
+</P>
+
+<P>
+	The predicted score is determined in the following manner:
+	<BR />
+	<BR />
+	<b>Home Team's Score = (H<sub>O</sub>+O<sub>D</sub>) / 2</b>
+	<BR />
+	<BR />
+	<b>Opposing Team's Score = (H<sub>D</sub>+O<sub>O</sub>) / 2</b>
+	<BR />
+	<BR />
+	Because the predictions are based on averages, 
+	the scores predicted tend to fall within a limited 
+	range and extreme scores never appear.
+</P>
+
+<P>
+	INSTRUCTIONS (<b>Display Only</b>)
+</P>
+
+<OL>
+
+	<LI>
+		Press
+		<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+		<SPAN CLASS="alttext">&nbsp;Pgm&nbsp;</SPAN>04
+		<SPAN CLASS="brownbutton">&nbsp;SBR&nbsp;</SPAN>
+		<SPAN CLASS="yellowbutton">&nbsp;CLR&nbsp;</SPAN>
+		to initialize; 0. is displayed.
+	</LI>
+
+	<BR />
+  
+	<LI>
+		For each game the home team has played:
+
+		<OL type="a">
+			<BR />
+
+			<LI>
+				Enter points scored by the home team and press
+				<SPAN CLASS="brownbutton">&nbsp;B&nbsp;</SPAN>.
+			</LI>
+
+			<BR />
+
+			<LI>
+				Enter points scored against the home team and press
+				<SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>.
+			</LI>
+
+			<BR />
+
+		</OL>
+		<BR />
+	
+	</LI>
+
+	<LI>For each game the opposing team has played:
+
+		<OL type="a">
+			<BR />
+
+			<LI>
+				Enter points scored by the opposing team and press
+				<SPAN CLASS="yellowbutton">&nbsp;2nd&nbsp;</SPAN>
+				<SPAN CLASS="alttext">&nbsp;D'&nbsp;</SPAN>.
+			</LI>
+			
+			<BR />
+
+			<LI>
+				Enter points scored against the opposing team and press
+				<SPAN CLASS="brownbutton">&nbsp;R/S&nbsp;</SPAN>.
+			</LI>
+			
+			<BR />
+
+		</OL>
+
+		<BR />
+
+		<LI>
+			Make Prediction by pressing   
+			<SPAN CLASS="brownbutton">&nbsp;E&nbsp;</SPAN>.
+			Predicted score is displayed in the following format:
+			<BR />
+			<BR />
+			<span>Home Team Score . Opposing Team Score</span>
+			<BR />
+		</LI>
+
+	</LI>
+
+</OL>
+
+</BODY>

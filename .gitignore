@@ -38,4 +38,5 @@ Thumbs.db
 
 /captures
 .externalNativeBuild
-/_gsdata_
+/*/_gsdata_/
+_gsdata_

@@ -8,6 +8,7 @@
 
 import sys
 import array
+import os
 import ctypes as ct
 
 #+
@@ -16,7 +17,19 @@ import ctypes as ct
 
 def load_png() :
     global png
-    png = ct.cdll.LoadLibrary("libpng.so")
+    if os.name == "nt" :
+        #   The version that we embed with this distribution
+        #   requires a 32-bit architecture
+        if hex(sys.maxsize) != '0x7fffffff' :
+            raise RuntimeError \
+              (
+                      "LIBPNG16.DLL requires a 32-bit Python Engine"
+              )
+        #end if            
+        png = ct.cdll.LoadLibrary(r"libpng16.dll")
+    else :
+        png = ct.cdll.LoadLibrary("libpng.so")
+    #end if
     png.png_create_write_struct.restype = ct.c_void_p
     png.png_create_info_struct.restype = ct.c_void_p
 #end load_png
@@ -74,7 +87,7 @@ def write_bilevel_png(pixels, width, height, stride, backcolor, forecolor, tofil
       # need to keep a reference to this to stop it being garbage-collected
 
 #begin write_bilevel_png
-    write_struct = png.png_create_write_struct(b"1.2.31", None, None, None)
+    write_struct = png.png_create_write_struct(b"1.6.35", None, None, None)
     infop = png.png_create_info_struct(write_struct)
     png.png_set_write_fn \
       (
@@ -890,7 +903,6 @@ types = \
 #+
 # Mainline
 #-
-
 if len(sys.argv) != 2 :
     raise RuntimeError("expecting 1 arg, the type of output to generate")
 #end if

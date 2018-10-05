@@ -47,10 +47,14 @@
 #         A zeta character is drawn.
 #     <integral/>
 #         An integral character is drawn.
+#     <infinity/>
+#         A lemniscate (∞) character is drawn.
 #     <lambda/>
 #         A lambda character is drawn.
 #     <mul/>
 #         A multiply symbol is drawn.
+#     <lemniscate/>
+#         A lemniscate (∞) character is drawn.
 #     <noverr/>
 #         A letter n and letter r are drawn vertically aligned.
 #     <uarrow/>
@@ -368,14 +372,16 @@ symbols = \
         "Gamma" : defsymbol("Gamma", "(\\107)"),
         "gamma" : defsymbol("gamma", "(\\147)"),
         "integral" : defsymbol("integral", "(\\362)"),
+        "infinity" : defsymbol("infinity", "(\\236)"),
         "lambda" : defsymbol("lambda", "(\\154)"),
+        "lemniscate" : defsymbol("lemniscate", "(\\236)"),
         "mul": defsymbol("mul", "(\\264)"),
         "uarrow" : defsymbol("uarrow", "(\\255)"),
         "darrow" : defsymbol("darrow", "(\\257)"),
         "sigma" : defsymbol("sigma", "(\\163)"),
         "theta" : defsymbol("theta", "(\\161)"),
         "Omega" : defsymbol("Omega", "(\\127)"),
-        "omaga" : defsymbol("omega", "(\\167)"),
+        "omega" : defsymbol("omega", "(\\167)"),
         "Pi" : defsymbol("Pi", "(\\120)"),
         "pi" : defsymbol("pi", "(\\160)"),
         "Phi" : defsymbol("Phi", "(\\106)"),
@@ -391,21 +397,22 @@ symbols = \
         "upsilon" : defsymbol("upsilon", "(\\165)"),
         "empty" : defsymbol("empty", "(\\306)"),     # circle with a bar
         "intersect" : defsymbol("intersect", "(\\307)"), # half-circle down
+        "tau" : defsymbol("tau", "(\\124)"),
     }
 
 fontname = "Helvetica"
 symbolfontname = "Symbol"
-basefontsize = 7.0
+basefontsize = 10.0
 arrowsize = basefontsize / 4
-subsupscale = 0.8 # relative scaling for superscript/subscript text
+subsupscale = 0.75 # relative scaling for superscript/subscript text
 subsupscaleb = 0.75 # relative scaling for superscript/subscript before text
 suboffset = -0.2 # vertical offset for subscript, relative to basefontsize
-superoffset = 0.5 # vertical offset for superscript, relative to basefontsize
-superoffsetb = 0.6 # vertical offset for superscript before, relative to basefontsize
+superoffset = 0.3 # vertical offset for superscript, relative to basefontsize
+superoffsetb = 0.4 # vertical offset for superscript before, relative to basefontsize
 xheightscale = 0.65
 orange = tuple(i / 170 for i in (0x95, 0x50, 0x1c))
 dorange = tuple(i / 255 for i in (0x95, 0x50, 0x1c))
-black = (0.0, 0.0, 0.0)
+black = (0.02, 0.02, 0.02)
 colors = \
     {
         "user" : {"fg" : black, "bg" : dorange},
@@ -638,7 +645,8 @@ def parse_template(input) :
 
 debug_ps = False
 template = parse_template(sys.stdin.detach())
-
+# Debug Line
+# template = parse_template( open(r"F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub\card10 - Copy.xml", "rb").detach() )
 if debug_ps :
     args = ("cat",)
 else :
@@ -653,6 +661,8 @@ else :
 				  # -dBATCH needed to turn off prompt (doc says -dNOPAUSE does this, but it
 				  # lies).
 				"-sPAPERSIZE=a4", "-sDEVICE=pngalpha", "-sOutputFile=-",
+                # Debug Line
+				# "-sPAPERSIZE=a4", "-sDEVICE=pngalpha", "-sOutputFile=F:\\Engineering\\Projects.Android\\TI5x\\ti_libraries_master\\Business Decisions.bd.09.pub\\card10 - Copy.png",
 				"-r%(pixel_density)ux%(pixel_density)u" % {"pixel_density" : 144},
 				"-",
 				  # Side effect of -dBATCH is that gs no longer automatically reads from
@@ -692,10 +702,10 @@ else :
 #end if
 gs = io.TextIOWrapper(proc_gs.stdin)
 
-card_width = mm(72)
-card_height = mm(16)
-thumb_margin = mm(2)
-label_margin = mm(2)
+card_width = mm(112)	# old 72	new 112
+card_height = mm(18)	# old 16	new  18
+thumb_margin = mm(0)	# old  2	new   0
+label_margin = mm(4)    # old  2	new   4
 gs.write \
   (
         "<</PageSize [%(width)u %(height)u] /ImagingBBox null>> setpagedevice\n"

@@ -62,6 +62,8 @@ if len(sys.argv) < 2 :
     raise RuntimeError("need at least one arg, the name of the output file to create")
 #end if
 outfile = sys.argv[1]
+mtime = 0
+
 components = {}
 for arg in sys.argv[2:] :
     type, index, infile = re.search(r"^([a-z]+)(\d*)\=(.+)$", arg).groups()
@@ -76,76 +78,83 @@ for arg in sys.argv[2:] :
     #end if
     assert type in ("card", "cardsrc", "help", "prog", "progsrc"), "invalid type"
     assert type not in components[index], "duplicate type for component %02d" % index
+    if os.path.isfile(infile):
+        mtime = max(mtime, os.path.getmtime(infile))
+
     components[index][type] = infile
 #end for
-for index in components :
-    if (
-            (index != 0 or len(components) == 1)
-        and
-            "prog" not in components[index]
-        and
-            "progsrc" not in components[index]
-    ) :
-        raise RuntimeError("no prog or progsrc for component %02d" % index)
-    #end if
-#end for
-out = zipfile.ZipFile(outfile, mode = "w", compression = zipfile.ZIP_DEFLATED)
-mimetype = zipfile.ZipInfo()
-mimetype.filename = "mimetype"
-mimetype.compress_type = zipfile.ZIP_STORED
-mimetype.external_attr = 0o644 << 16
-mimetype.date_time = (2011, 4, 14, 13, 8, 44) # about when I first got mlmake working
-out.writestr(mimetype, b"application/vnd.nz.gen.geek_central.ti5x")
-for index in range(0, 100) :
-    if index in components :
-        component = components[index]
-        if "progsrc" in component :
-            prog = subprocess.check_output \
-              (
-                args = (os.path.join(utildir, "assemble"),),
-                stdin = open(component["progsrc"], "r"),
-                close_fds = True
-              )
-        elif "prog" in component :
-            prog = open(component["prog"], "rb").read()
-        else :
-            prog = None
-        #end if
-        if prog != None :
-            out.writestr \
-              (
-                "prog%02d" % index,
-                    b"<state>\n    <calc>\n        <prog>\n"
-                +
-                    b"".join(b" " * 12 + line + b"\n" for line in prog.rstrip(b"\n").split(b"\n"))
-                +
-                    b"        </prog>\n    </calc>\n</state>\n"
-              )
-        #end if
-        if "cardsrc" in component :
-            carddata = subprocess.check_output \
-              (
-            	args = (os.path.join(utildir, "rendercard"),),
-            	stdin = open(component["cardsrc"], "r"),
-            	close_fds = True
-              )
-        elif "card" in component :
-            carddata = open(component["card"], "rb").read()
-        else :
-            carddata = None
-        #end if
-        if carddata != None :
-            out.writestr("card%02d" % index, carddata)
-        #end if
-        for type in ("help",) :
-            if type in component :
-                out.writestr \
-                  (
-                    ("help", "%s%02d" % (type, index))[type != "help" or index != 0 or len(components) == 1],
-                    open(component[type], "rb").read()
-                  )
-            #end if
-        #end for
-    #end if
-#end for
-out.close()
+
+if not os.path.isfile(outfile) or os.path.getmtime(outfile) < mtime:
+	for index in components :
+		if (
+				(index != 0 or len(components) == 1)
+			and
+				"prog" not in components[index]
+			and
+				"progsrc" not in components[index]
+		) :
+			raise RuntimeError("no prog or progsrc for component %02d" % index)
+		#end if
+	#end for
+	out = zipfile.ZipFile(outfile, mode = "w", compression = zipfile.ZIP_DEFLATED)
+	mimetype = zipfile.ZipInfo()
+	mimetype.filename = "mimetype"
+	mimetype.compress_type = zipfile.ZIP_STORED
+	mimetype.external_attr = 0o644 << 16
+	mimetype.date_time = (2011, 4, 14, 13, 8, 44) # about when I first got mlmake working
+	out.writestr(mimetype, b"application/vnd.nz.gen.geek_central.ti5x")
+	for index in range(0, 100) :
+		if index in components :
+			component = components[index]
+			if "progsrc" in component :
+				prog = subprocess.check_output \
+				  (
+					args = (os.path.join(utildir, "assemble"),),
+					stdin = open(component["progsrc"], "r"),
+					close_fds = True
+				  )
+			elif "prog" in component :
+				prog = open(component["prog"], "rb").read()
+			else :
+				prog = None
+			#end if
+			if prog != None :
+				out.writestr \
+				  (
+					"prog%02d" % index,
+						b"<state>\n    <calc>\n        <prog>\n"
+					+
+						b"".join(b" " * 12 + line + b"\n" for line in prog.rstrip(b"\n").split(b"\n"))
+					+
+						b"        </prog>\n    </calc>\n</state>\n"
+				  )
+			#end if
+			if "cardsrc" in component :
+				carddata = subprocess.check_output \
+				  (
+					args = (os.path.join(utildir, "rendercard"),),
+					stdin = open(component["cardsrc"], "r"),
+					close_fds = True
+				  )
+			elif "card" in component :
+				carddata = open(component["card"], "rb").read()
+			else :
+				carddata = None
+			#end if
+			if carddata != None :
+				out.writestr("card%02d" % index, carddata)
+			#end if
+			for type in ("help",) :
+				if type in component :
+					out.writestr \
+					  (
+						("help", "%s%02d" % (type, index))[type != "help" or index != 0 or len(components) == 1],
+						open(component[type], "rb").read()
+					  )
+				#end if
+			#end for
+		#end if
+	#end for
+	out.close()
+else:
+    sys.stderr.write("%s is up to date\n" % outfile)

@@ -32,11 +32,22 @@ def mtime_if(filename) :
 #end mtime_if
 
 utildir = os.path.dirname(sys.argv[0])
+
+if len(sys.argv) < 3 :
+    sys.stderr.write("Four arguments required (including scriptname). Found(%s)\n" % len(sys.argv))
+    sys.stderr.write("The arguments are: %s \n" % str(sys.argv))
+    sys.stderr.write("0) Script Name\n")
+    sys.stderr.write("1) Source Directory\n")
+    sys.stderr.write("2) Target Directory\n")
+    sys.stderr.write("3) Filename\n")
+    sys.exit( -1)
+#end if
+
 srcdir = sys.argv[1]
 dstdir = sys.argv[2]
 name = sys.argv[3]
-dstfile = os.path.join(os.path.dirname(utildir), os.path.join(dstdir, name + ".ti5l"))
-sys.stderr.write("%s => %s\n" % (srcdir, dstfile)) # debug
+dstfile = os.path.join(dstdir, name + ".ti5l")
+# sys.stderr.write("%s => %s\n" % (srcdir, dstfile)) # debug
 libhelpname = "help.html"
 
 sources = []

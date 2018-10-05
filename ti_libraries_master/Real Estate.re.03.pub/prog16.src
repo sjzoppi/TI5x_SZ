@@ -1,4 +1,227 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl CLR
+002: Pgm 03
+004: E'
+005: Fix 2
+007: INV SBR
+008: Lbl A'
+010: (
+011: CE
+012: ×
+013: 12
+015: )
+016: Pgm 02
+018: A
+019: INV SBR
+020: Lbl B'
+022: (
+023: CE
+024: ÷
+025: 12
+027: )
+028: Pgm 02
+030: B
+031: INV SBR
+032: Lbl C'
+034: Pgm 02
+036: D
+037: INV SBR
+038: Lbl D'
+040: Pgm 02
+042: C
+043: INV SBR
+044: Lbl E'
+046: STO 15
+048: Prt
+049: INV SBR
+050: Lbl A
+052: STO 16
+054: Prt
+055: INV SBR
+056: Lbl B
+058: (
+059: Prt
+060: ÷
+061: x⇌t
+062: 1200
+066: )
+067: STO 17
+069: x⇌t
+070: INV SBR
+071: Lbl C
+073: (
+074: Prt
+075: ÷
+076: x⇌t
+077: 12
+079: )
+080: STO 18
+082: x⇌t
+083: INV SBR
+084: Lbl D
+086: (
+087: Prt
+088: ÷
+089: x⇌t
+090: 100
+093: +
+094: 1
+095: )
+096: STO 19
+098: x⇌t
+099: INV SBR
+100: Lbl E
+102: Prt
+103: STO 23
+105: Adv
+106: STO 25
+108: (
+109: RCL 03
+111: +
+112: RCL 18
+114: )
+115: Prt
+116: Adv
+117: INV SBR
+118: Lbl Adv
+120: Adv
+121: (
+122: (
+123: 1
+124: -
+125: RCL 09
+127: y**x
+128: (
+129: RCL 25
+131: -
+132: RCL 01
+134: )
+135: )
+136: ÷
+137: RCL 08
+139: ×
+140: RCL 03
+142: )
+143: STO 24
+145: (
+146: RCL 23
+148: ×
+149: RCL 17
+151: ×
+152: RCL 16
+154: +
+155: SUM 16
+157: RCL 15
+159: +
+160: RCL 04
+162: -
+163: RCL 24
+165: )
+166: STO 15
+168: Prt
+169: INV SBR
+170: Lbl R/S
+172: (
+173: RCL 23
+175: ×
+176: RCL 03
+178: -
+179: RCL 04
+181: +
+182: RCL 24
+184: +
+185: RCL 23
+187: ×
+188: RCL 18
+190: )
+191: x⇌t
+192: 12
+194: STO 23
+196: SUM 25
+198: RCL 24
+200: STO 04
+202: RCL 19
+204: Prd 18
+206: x⇌t
+207: Prt
+208: INV SBR
+209: GTO Adv
+211: Nop
+212: Nop
+213: Nop
+214: Nop
+215: Nop
+216: Nop
+217: Nop
+218: Nop
+219: Nop
+220: Nop
+221: Nop
+222: Nop
+223: Nop
+224: Nop
+225: Nop
+226: Nop
+227: Nop
+228: Nop
+229: Nop
+230: Nop
+231: Nop
+232: Nop
+233: Nop
+234: Nop
+235: Nop
+236: Nop
+237: Nop
+238: Nop
+239: Nop
+240: Nop
+241: Nop
+242: Nop
+243: Nop
+244: Nop
+245: Nop
+246: Nop
+247: Nop
+248: Nop
+249: Nop
+250: Nop
+251: Nop
+252: Nop
+253: Nop
+254: Nop
+255: Nop
+256: Nop
+257: Nop
+258: Nop
+259: Nop
+260: Nop
+261: Nop
+262: Nop
+263: Nop
+264: Nop
+265: Nop
+266: Nop
+267: Nop
+268: Nop
+269: Nop
+270: Nop
+271: Nop
+272: Nop
+273: Nop
+274: Nop
+275: Nop
+276: Nop
+277: Nop
+278: Nop
+279: Nop
+280: Nop
+281: Nop
+282: Nop
+283: Nop
+284: Nop
+285: Nop
+286: Nop
+287: Nop
+288: Nop
+289: Nop
+290: Nop

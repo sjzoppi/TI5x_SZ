@@ -1,0 +1,53 @@
+
+ti5x is an emulator, running on Android, for the venerable
+TI-58/58C/59 family of programmable scientific calculators
+which were manufactured by Texas Instruments from the late
+1970s.
+
+ti5x does aim for 100% authenticity even if not possible
+in all cases. Yet, it supports many undocumented features
+from the original calculator like the HIR registers and
+the /DSZ nn 51/ (decrement no-jump) instructions.
+
+With the current version it is possible to play the famous
+Treasure-Island and 3D-Tic-Tac-Toe games.
+
+Contents:
+    src/ -- Java sources for the Android app
+    res/ -- resources for the Android app
+    assets/ -- additional data (help file) for the Android app
+    AndroidManifest.xml, build.xml, *.properties -- for driving
+        Google's Android build tools (note that you will have to
+        provide a couple more of these--see INSTALL for details)
+    util/ -- Python scripts for assembling/disassembling
+        calculator programs, building the Master Library and
+        other useful tasks.
+    modules/
+        av/   -- the source of the Aviation Library.
+        ct/   -- the source of the Contribution Library.
+        ee/   -- the source of the Electrical Engineering Library.
+        le/   -- the source of the Leisure Library.
+        ml/   -- the source of the Master Library.
+        mu/   -- the source of the Math Utilities Library.
+        ng/   -- the source of the Marine Navigation Library.
+        sy/   -- the source of the Surveying Library.
+    programs/
+        ee19_input_code/         -- builtin companion program for EE-19
+        ee19_construct_nam_code/ -- builtin companion program for EE-19
+    art/      -- artwork for diagrams, higher-res scan for icon
+    tests/    -- some unit tests
+    examples/ -- some simple examples for building user's programs
+    README    -- this file
+    INSTALL   -- build/installation instructions
+    COPYING   -- licence (GPLv3)
+
+Note all text files are in UTF-8 encoding, and literal Unicode
+characters abound.
+
+Current Maintainer:
+
+   Pascal Obry <pascal@obry.net>
+
+Original Author:
+
+   Lawrence D'Oliveiro <ldo@geek-central.gen.nz>

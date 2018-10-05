@@ -1,4 +1,82 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl A
+002: Pgm 02
+004: A
+005: INV SBR
+006: Lbl B
+008: Pgm 02
+010: B
+011: INV SBR
+012: Lbl C
+014: Pgm 02
+016: C
+017: INV SBR
+018: Lbl D
+020: Pgm 02
+022: D
+023: INV SBR
+024: Lbl E
+026: Fix 9
+028: STO 15
+030: Prt
+031: INV SBR
+032: Lbl A'
+034: RCL 15
+036: Stflg 0
+038: Pgm 02
+040: A
+041: 0
+042: Pgm 02
+044: E
+045: INV Stflg 0
+048: Prt
+049: INV SBR
+050: Lbl B'
+052: Fix 9
+054: STO 16
+056: Prt
+057: INV SBR
+058: Lbl C'
+060: (
+061: RCL 16
+063: -
+064: 1
+065: )
+066: STO 01
+068: +/-
+069: STO 11
+071: Stflg 0
+073: 0
+074: Pgm 02
+076: E
+077: STO 17
+079: RCL 15
+081: Pgm 02
+083: A
+084: 0
+085: STO 05
+087: CP
+088: Pgm 02
+090: E
+091: (
+092: CE
+093: -
+094: RCL 17
+096: +
+097: (
+098: RCL 15
+100: +
+101: 1
+102: -
+103: RCL 16
+105: )
+106: ×
+107: RCL 03
+109: )
+110: INV Stflg 0
+113: Prt
+114: INV SBR
+115: Lbl E'
+117: Pgm 02
+119: E'
+120: Stflg 3
+122: INV SBR

@@ -1,4 +1,104 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl A
+002: GTO 050
+005: Lbl B
+007: GTO 076
+010: Lbl D
+012: GTO 095
+015: Lbl E
+017: GTO 139
+020: Lbl A'
+022: INV Stflg 1
+025: INV Stflg 2
+028: INV Stflg 3
+031: INV SBR
+032: Lbl B'
+034: A'
+035: Stflg 1
+037: INV SBR
+038: Lbl C'
+040: A'
+041: Stflg 2
+043: INV SBR
+044: Lbl D'
+046: A'
+047: Stflg 3
+049: INV SBR
+050: Ifflg 3 070
+054: Ifflg 2 066
+058: Ifflg 1 066
+062: Pgm 04
+064: A
+065: INV SBR
+066: lnx
+067: GTO 062
+070: Pgm 00
+072: A'
+073: GTO 062
+076: Ifflg 3 089
+080: Ifflg 2 085
+084: lnx
+085: Pgm 04
+087: B
+088: INV SBR
+089: Pgm 00
+091: B'
+092: GTO 085
+095: Ifflg 3 138
+099: Ifflg 2 135
+103: Ifflg 1 123
+107: (
+108: CE
+109: ×
+110: Op 12
+112: x⇌t
+113: )
+114: (
+115: INV lnx
+117: ×
+118: x⇌t
+119: INV lnx
+121: )
+122: INV SBR
+123: (
+124: CE
+125: y**x
+126: Op 12
+128: x⇌t
+129: ×
+130: x⇌t
+131: INV lnx
+133: )
+134: INV SBR
+135: lnx
+136: Op 14
+138: INV SBR
+139: Ifflg 3 168
+143: Ifflg 2 169
+147: (
+148: lnx
+149: -
+150: Op 12
+152: Nop
+153: )
+154: (
+155: CE
+156: ÷
+157: Op 12
+159: x⇌t
+160: )
+161: INV Ifflg 1 168
+166: INV lnx
+168: INV SBR
+169: Op 15
+171: INV lnx
+173: INV SBR
+174: Lbl E'
+176: Pgm 04
+178: E'
+179: INV SBR
+180: Lbl C
+182: Op 12
+184: Ifflg 2 194
+188: Ifflg 3 194
+192: INV lnx
+194: INV SBR

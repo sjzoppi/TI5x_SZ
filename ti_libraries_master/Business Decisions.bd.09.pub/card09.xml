@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">REORDER TIMING</label>
+<label slot="titleright">BD-09</label>
+<label slot="a">CTRL;Cb,Pr</label>
+<label slot="b">t</label>
+<label slot="c">C<sub>h</sub>;C<sub>r</sub>;C<sub>p</sub></label>
+<label slot="d">T</label>
+<label slot="e">Compute(P)</label>
+<label slot="aprime">D</label>
+<label slot="bprime"><mu/></label>
+<label slot="cprime"><sigma/></label>
+<label slot="dprime">P</label>
+<label slot="eprime">Compute(D)</label>
+</carddef>

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">LONG TERM FINANCING REQUIREMENTS</label>
+<label slot="titleright">BD-02</label>
+<label slot="a">REV</label>
+<label slot="b">% GPS</label>
+<label slot="c">CAS</label>
+<label slot="d">% MD</label>
+<label slot="e">TA</label>
+<label slot="aprime">% PD</label>
+<label slot="bprime">% DR</label>
+<label slot="cprime">% CB</label>
+<label slot="dprime">% CS</label>
+<label slot="eprime">E Summary</label>
+</carddef>

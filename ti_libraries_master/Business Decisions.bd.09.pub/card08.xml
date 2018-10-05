@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">ECONOMIC REORDERING &amp; PROD. RUNS</label>
+<label slot="titleright">BD-08</label>
+<label slot="a">CTL;Qy,St,Pr</label>
+<label slot="b">N</label>
+<label slot="c">Q<sub>i</sub>;CPU<sub>i</sub></label>
+<label slot="d">UHC</label>
+<label slot="e">CPO</label>
+<label slot="aprime">DPY</label>
+<label slot="bprime">EDDLT</label>
+<label slot="cprime"><sigma/></label>
+<label slot="dprime">P</label>
+<label slot="eprime">Compute</label>
+</carddef>

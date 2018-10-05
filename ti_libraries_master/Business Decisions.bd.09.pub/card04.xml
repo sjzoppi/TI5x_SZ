@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">INVESTMENT EVALUATION</label>
+<label slot="titleright">BD-04</label>
+<label slot="a">INV(INC)</label>
+<label slot="b">CF(DIV)</label>
+<label slot="c">CF(DIV), N</label>
+<label slot="d"><ArrowR/> i</label>
+<label slot="e">i <ArrowR/> PV</label>
+<label slot="aprime">CF#(Div#)</label>
+<label slot="bprime">New CF(DIV)</label>
+<label slot="cprime">Growth</label>
+<label slot="dprime">Div <infinity/><ArrowR/>i</label>
+<label slot="eprime">i <ArrowR/> FV</label>
+</carddef>

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">DEMAND FORECASTING</label>
+<label slot="titleright">BD-10</label>
+<label slot="a"><alpha/><sub>F</sub>;<alpha/><sub>T</sub>;<alpha/><sub>S</sub></label>
+<label slot="b">M; S<sub>i</sub></label>
+<label slot="c">t; D<sub>i</sub></label>
+<label slot="d">Limit</label>
+<label slot="e">Compute(P)</label>
+<label slot="aprime">F<sub>t</sub>;T<sub>t</sub></label>
+<label slot="bprime">Card In</label>
+<label slot="cprime"><tau/>;D<sub>t</sub></label>
+<label slot="dprime">CTRL</label>
+<label slot="eprime">Compute(D)</label>
+</carddef>

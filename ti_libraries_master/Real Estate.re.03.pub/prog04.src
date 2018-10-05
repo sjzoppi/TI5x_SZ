@@ -1,4 +1,126 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl A'
+002: SBR Prt
+004: Prt
+005: INV SBR
+006: Lbl C'
+008: SBR sin
+010: Prt
+011: INV SBR
+012: Ifflg 5 017
+016: Prt
+017: INV SBR
+018: Lbl Prt
+020: (
+021: (
+022: RCL 09
+024: y**x
+025: RCL 01
+027: -
+028: STO 12
+030: 1
+031: )
+032: ÷
+033: RCL 08
+035: )
+036: INV SBR
+037: Lbl B'
+039: (
+040: SBR Prt
+042: ×
+043: RCL 09
+045: )
+046: GTO 012
+049: Lbl sin
+051: (
+052: SBR Prt
+054: ÷
+055: RCL 12
+057: )
+058: INV SBR
+059: Lbl D'
+061: SBR sin
+063: (
+064: CE
+065: GTO 042
+068: Lbl E'
+070: Adv
+071: CP
+072: Fix 2
+074: INV Stflg 5
+077: INV SBR
+078: (
+079: RCL 04
+081: ÷
+082: RCL 03
+084: )
+085: INV SBR
+086: (
+087: SBR 078
+090: lnx
+091: ÷
+092: RCL 09
+094: lnx
+095: )
+096: STO 01
+098: Prt
+099: INV SBR
+100: Lbl A
+102: x=t 086
+105: STO 01
+107: Prt
+108: INV SBR
+109: (
+110: 100
+113: -
+114: CE
+115: ×
+116: SBR 078
+119: INV y**x
+121: RCL 01
+123: )
+124: +/-
+125: x=t E
+127: Lbl B
+129: x=t 109
+132: Lbl E
+134: (
+135: STO 02
+137: ÷
+138: 100
+141: +
+142: STO 08
+144: 1
+145: )
+146: STO 09
+148: RCL 02
+150: GTO 012
+153: (
+154: RCL 04
+156: ÷
+157: RCL 09
+159: y**x
+160: RCL 01
+162: )
+163: STO 03
+165: Prt
+166: INV SBR
+167: Lbl C
+169: x=t 153
+172: STO 03
+174: Prt
+175: INV SBR
+176: (
+177: RCL 03
+179: ×
+180: RCL 09
+182: y**x
+183: RCL 01
+185: )
+186: STO 04
+188: Prt
+189: INV SBR
+190: Lbl D
+192: x=t 176
+195: STO 04
+197: Prt
+198: INV SBR

@@ -1,4 +1,54 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl Fix
+002: CP
+003: 1
+004: SUM 00
+006: SUM 20
+008: (
+009: RCL 19
+011: -
+012: RCL 00
+014: )
+015: x≥t 021
+018: 1
+019: STO 00
+021: RC* 20
+023: SUM 21
+025: INV SBR
+026: Lbl Int
+028: (
+029: RCL 02
+031: ×
+032: RCL 00
+034: +
+035: RCL 01
+037: )
+038: INV SBR
+039: Lbl A
+041: mean(x)
+042: x⇌t
+043: Prt
+044: INV SBR
+045: Lbl A'
+047: INV mean(x)
+049: CE
+050: x⇌t
+051: Prt
+052: Adv
+053: INV SBR
+054: Lbl B
+056: SBR Fix
+058: Prt
+059: INV SBR
+060: Lbl C
+062: SBR Int
+064: Prt
+065: Adv
+066: INV SBR
+067: Lbl E'
+069: 5
+070: STO 20
+072: 0
+073: STO 00
+075: STO 21
+077: Adv
+078: INV SBR

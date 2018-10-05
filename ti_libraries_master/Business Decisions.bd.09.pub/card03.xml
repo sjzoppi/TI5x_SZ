@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">DEBT FINANCING</label>
+<label slot="titleright">BD-03</label>
+<label slot="a">N</label>
+<label slot="b">MP</label>
+<label slot="c">FACE</label>
+<label slot="d">Coupon</label>
+<label slot="e">TAX</label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime"><ArrowR/>PMT <sub>factor</sub></label>
+</carddef>

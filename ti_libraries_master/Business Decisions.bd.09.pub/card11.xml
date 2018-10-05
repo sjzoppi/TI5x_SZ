@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">ASSEMBLY LINE BALANCING</label>
+<label slot="titleright">BD-11</label>
+<label slot="a">No. Tasks</label>
+<label slot="b">Task Time</label>
+<label slot="c">Followers</label>
+<label slot="d">Entry Comp.</label>
+<label slot="e">Cycle T<ArrowR/>(P)</label>
+<label slot="aprime"></label>
+<label slot="bprime"></label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime">Cycle T<ArrowR/>(D)</label>
+</carddef>

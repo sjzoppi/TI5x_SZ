@@ -1,4 +1,199 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl A
+002: Fix 2
+004: Prt
+005: Lbl π
+007: Pgm 05
+009: SBR π
+011: INV SBR
+012: Lbl B
+014: Fix 2
+016: Prt
+017: Lbl Rad
+019: Pgm 05
+021: SBR Rad
+023: INV SBR
+024: Lbl C
+026: Fix 9
+028: Prt
+029: Lbl Grad
+031: Pgm 05
+033: SBR Grad
+035: INV SBR
+036: Lbl E
+038: SBR x≥t
+040: Prt
+041: INV SBR
+042: Lbl D'
+044: RCL 03
+046: GTO D
+048: Lbl C'
+050: SBR Nop
+052: Prt
+053: INV SBR
+054: Lbl Nop
+056: SBR INV
+058: (
+059: +/-
+060: +
+061: RCL 01
+063: -
+064: RCL 02
+066: )
+067: INV SBR
+068: Lbl A'
+070: SBR INV
+072: Prt
+073: INV SBR
+074: Lbl B'
+076: SBR INV
+078: (
+079: CE
+080: +
+081: RCL 02
+083: )
+084: Prt
+085: INV SBR
+086: Lbl E'
+088: Op 24
+090: RCL 04
+092: Lbl D
+094: SBR Deg
+096: Adv
+097: Prt
+098: INV SBR
+099: Lbl Deg
+101: STO 04
+103: x⇌t
+104: Fix 9
+106: RCL 03
+108: x≥t cos
+110: 0
+111: 1/x
+112: INV SBR
+113: Lbl cos
+115: RCL 04
+117: INV Int
+119: CP
+120: x=t sin
+122: RCL 03
+124: Int
+125: x⇌t
+126: RCL 04
+128: Int
+129: INV x=t sin
+132: (
+133: (
+134: RCL 04
+136: STO 05
+138: INV Int
+140: ÷
+141: RCL 03
+143: INV Int
+145: )
+146: +
+147: RCL 03
+149: Int
+150: )
+151: STO 04
+153: RCL 05
+155: INV SBR
+156: Lbl sin
+158: RCL 04
+160: INV SBR
+161: Lbl x≥t
+163: 1
+164: STO 07
+166: RCL 04
+168: INV Int
+170: CP
+171: x=t tan
+173: STO 07
+175: Lbl tan
+177: SBR INV
+179: +/-
+180: STO 06
+182: RCL 04
+184: x⇌t
+185: RCL 07
+187: INV SUM 04
+190: SBR INV
+192: SUM 06
+194: x⇌t
+195: STO 04
+197: RCL 06
+199: INV SBR
+200: Lbl INV
+202: (
+203: (
+204: (
+205: RCL 03
+207: Int
+208: -
+209: RCL 04
+211: Int
+212: +
+213: 1
+214: )
+215: STO 05
+217: ×
+218: (
+219: RCL 03
+221: Int
+222: -
+223: RCL 04
+225: Int
+226: +
+227: 2
+228: ×
+229: RCL 03
+231: INV Int
+233: )
+234: -
+235: 2
+236: ×
+237: RCL 04
+239: INV Int
+241: ×
+242: (
+243: RCL 05
+245: +
+246: RCL 03
+248: INV Int
+250: -
+251: 1
+252: )
+253: )
+254: ÷
+255: 2
+256: ÷
+257: SBR 272
+260: ×
+261: (
+262: RCL 01
+264: -
+265: RCL 02
+267: )
+268: )
+269: Fix 2
+271: INV SBR
+272: (
+273: (
+274: RCL 03
+276: Int
+277: +
+278: 1
+279: )
+280: ×
+281: (
+282: RCL 03
+284: Int
+285: +
+286: 2
+287: ×
+288: RCL 03
+290: INV Int
+292: )
+293: ÷
+294: 2
+295: )
+296: INV SBR

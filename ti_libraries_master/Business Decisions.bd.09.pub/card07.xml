@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">FACILITY CAPACITY</label>
+<label slot="titleright">BD-07</label>
+<label slot="a"><lambda/></label>
+<label slot="b"><mu/></label>
+<label slot="c">C or K</label>
+<label slot="d">CW</label>
+<label slot="e">Compute(P)</label>
+<label slot="aprime">OPT</label>
+<label slot="bprime">CI</label>
+<label slot="cprime"></label>
+<label slot="dprime"></label>
+<label slot="eprime">Compute(D)</label>
+</carddef>

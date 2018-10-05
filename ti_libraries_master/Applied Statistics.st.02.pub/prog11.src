@@ -1,4 +1,26 @@
-; a simple counter
-+ 1 =
-pause
-rst
+000: Lbl A
+002: Ifflg 2 016
+006: Ifflg 1 011
+010: INV lnx
+012: Pgm 03
+014: A
+015: INV SBR
+016: Pgm 00
+018: A'
+019: GTO 012
+022: Lbl A'
+024: INV Stflg 1
+027: INV Stflg 2
+030: INV SBR
+031: Lbl B'
+033: A'
+034: Stflg 1
+036: INV SBR
+037: Lbl C'
+039: A'
+040: Stflg 2
+042: INV SBR
+043: Lbl E'
+045: Pgm 03
+047: E
+048: INV SBR

@@ -1,0 +1,14 @@
+<carddef style="system">
+<label slot="titleleft">PROJECT PLANNING &amp; BUDGETING</label>
+<label slot="titleright">BD-05</label>
+<label slot="a">Row<sub>A</sub>,Row<sub>B</sub></label>
+<label slot="b">Row<sub>C</sub>,RCL</label>
+<label slot="c">Data,Growth</label>
+<label slot="d">Sh L, Data</label>
+<label slot="e"><Sigma/>Row, <bar>x</bar>Row</label>
+<label slot="aprime">Cnst, Row<sub>B</sub></label>
+<label slot="bprime">MaxNo.Rows</label>
+<label slot="cprime">Row, Col</label>
+<label slot="dprime">Sh R, Data</label>
+<label slot="eprime"><Sigma/>Col, <bar>x</bar>Col</label>
+</carddef>

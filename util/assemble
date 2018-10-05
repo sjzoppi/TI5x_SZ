@@ -6,6 +6,7 @@
 # an error if the current location does not equal the specified value.
 #
 # Copyright 2011 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+# Update    2018 Steve Zoppi <sjzoppi@gmail.com>.
 #
 # This program is free software: you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -19,9 +20,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 # Usage: cat prog | assemble [options]
+#        or
+#        assemble [options] < prog > outfile
 #
-#        options: --dumploc     : output progloc.src with location numbers
-#                 --checklabels : checks that all labels are defined
+#        options: --dumploc       : output progloc.src with location numbers
+#                 --checklabels   : checks that all labels are defined
+#                 --nochecklabels : default (don't check label definitions)
 #
 
 import sys
@@ -74,13 +78,17 @@ def fix() :
 #end fix
 
 def sbr() :
-    global expect, pending_out, loc
-    if pending_out == 22 :
+    global expect, pending_out, loc, prevopcode
+    if prevopcode != "inv" :
+        flushout()
+        expect = "loc"
+    elif pending_out == 22 : # "Inverse Key?"
         pending_out = None
         loc -= 1
         out(92)
         expect = None
     else :
+        flushout()
         expect = "loc"
     #end if
 #end sbr
@@ -184,51 +192,64 @@ for s in symbols.values() :
         s["altindop"] = s["indop"]
     #end if
 #end for
+
 del s
 # synonyms
 for ch in ("a", "b", "c", "d", "e") :
     symbols[ch + "´"] = symbols[ch + "'"]
 #end for
-symbols["x⇌t"] = symbols["x<>t"]
-symbols["x-t"] = symbols["x<>t"]
-symbols["x/t"] = symbols["x<>t"]
-symbols["x%t"] = symbols["x<>t"]
-symbols["p→r"] = symbols["p->r"]
-symbols["p/r"] = symbols["p->r"]
-symbols["sqr"] = symbols["x2"]
-symbols["x²"] = symbols["x2"]
-symbols["√x"] = symbols["sqrt"]
-symbols["**"] = symbols["y**x"]
-symbols["yx"] = symbols["y**x"]
-symbols["pow"] = symbols["y**x"]
-symbols["yˣ"] = symbols["y**x"]
-symbols["abs"] = symbols["|x|"]
-symbols["ixi"] = symbols["|x|"]
-symbols["/"] = symbols["÷"]
-symbols["mean(x)"] = symbols["mean"]
+
 symbols["*"] = symbols["×"]
+symbols["**"] = symbols["y**x"]
+symbols["/"] = symbols["÷"]
+symbols["abs"] = symbols["|x|"]
+symbols["dms"] = symbols["d.ms"]
 symbols["eq"] = symbols["x=t"]
 symbols["ge"] = symbols["x≥t"]
-symbols["x>=t"] = symbols["x≥t"]
-symbols["∑+"] = symbols["sigma"]
-symbols["s+"] = symbols["sigma"]
-symbols["sta"] = symbols["sigma"]
-symbols["iff"] = symbols["ifflg"]
-symbols["stf"] = symbols["stflg"]
-symbols["π"] = symbols["pi"]
 symbols["grd"] = symbols["grad"]
-symbols["dms"] = symbols["d.ms"]
-symbols["wrt"] = symbols["write"]
+symbols["iff"] = symbols["ifflg"]
+symbols["ixi"] = symbols["|x|"]
 symbols["lst"] = symbols["list"]
+symbols["mean(x)"] = symbols["mean"]
+symbols["p/r"] = symbols["p->r"]
+symbols["pow"] = symbols["y**x"]
+symbols["pr*"] = symbols["pd*"]
+symbols["p→r"] = symbols["p->r"]
+symbols["s+"] = symbols["sigma"]
+symbols["sqr"] = symbols["x2"]
+symbols["sta"] = symbols["sigma"]
+symbols["stf"] = symbols["stflg"]
+symbols["wrt"] = symbols["write"]
+symbols["x%t"] = symbols["x<>t"]
+symbols["x-t"] = symbols["x<>t"]
+symbols["x/t"] = symbols["x<>t"]
+symbols["x>=t"] = symbols["x≥t"]
+symbols["x²"] = symbols["x2"]
+symbols["x⇌t"] = symbols["x<>t"]
+symbols["yx"] = symbols["y**x"]
+symbols["yˣ"] = symbols["y**x"]
+symbols["π"] = symbols["pi"]
+symbols["∑+"] = symbols["sigma"]
+symbols["√x"] = symbols["sqrt"]
 
 check_labels = False
 dump_prog = False
 
+
+#TEST LINES BELOW
+#inputfile = r"F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub\prog05.src"
+#outputfile = r"F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub\BIN05.TXT"
+#sys.argv = ["assemble.py", "--dumploc"]
+#infile = open(inputfile, "r",  encoding="utf-8")
+#outfile = open(outputfile, "w")
+outfile = sys.stdout
+infile = sys.stdin
+
 if len(sys.argv) == 2 and sys.argv[1] == "--checklabels" :
     check_labels = True
-elif len(sys.argv) == 2 and sys.argv[1] == "--nochecklabels" :
+elif len(sys.argv)  == 2 and sys.argv[1] == "--nochecklabels" :
     check_labels = False
-elif len(sys.argv) == 2 and sys.argv[1] == "--dumploc" :
+elif len(sys.argv)  == 2 and sys.argv[1] == "--dumploc" :
     dump_prog = True
 elif len(sys.argv) > 1 :
     raise RuntimeError("unexpected args")
@@ -263,23 +284,23 @@ def outprog():
     count=0
     for s in prog:
         if s.isdigit():
-            sys.stdout.write(s)
+            outfile.write(s)
             count+=1
         elif s in labels:
             v = labels[s]
             if v < 100:
-                sys.stdout.write("00 %02d" % v)
+                outfile.write("00 %02d" % v)
             else:
-                sys.stdout.write("%02d %02d" % ((v // 100), (v % 100)))
+                outfile.write("%02d %02d" % ((v // 100), (v % 100)))
             count+=2
         else:
             report_error("unrecognized symbol \"%s\"" % s)
 
         if count == 25 :
-            sys.stdout.write("\n")
+            outfile.write("\n")
             count = 0
         else:
-            sys.stdout.write(" ")
+            outfile.write(" ")
 
 def realout(b) :
     """really outputs a single instruction byte."""
@@ -351,6 +372,8 @@ def recordlabel(lab) :
 curline = ""
 EOF = False
 cursym = None
+curopcode = None
+prevopcode = None
 in_comment = False
 line_nr = 0
 was_newline = True
@@ -361,7 +384,7 @@ labels_referenced = set()
 # fixme: checking for defined/referenced labels doesn't take synonyms into account
 while True :
     if len(curline) == 0 and not EOF :
-        curline += sys.stdin.readline()
+        curline += infile.readline()
         if len(curline) > 0:
             if curline == "\n":
                 lprog = lprog + [ "\n" ]
@@ -392,6 +415,7 @@ while True :
     if in_comment :
         if EOF :
             break
+        #end if
         if ch == "\n" :
             in_comment = False
         #end if
@@ -411,21 +435,27 @@ while True :
             if ch > " " :
                 cursym += ch
             else : # got a complete symbol
+                #   if we have a location ...
                 if re.search(r"^\d+\:$", cursym) != None :
                     expectloc = int(cursym[:-1])
                     if expectloc != loc :
                         report_error("location mismatch, expecting %03d, actually %3d" % (expectloc, loc))
                     #end if
+                #   otherwise we do a symbol table lookup ...
                 else :
                     lookup = cursym.lower()
                     symbol = symbols.get(lookup)
                     numeric = re.search(r"^[\+\-]?(?:\d+(?:\.\d*)?|\.\d+?)(?:[eE][\+\-]?\d+)?$", cursym) != None
                     integral = re.search(r"^\d+$", cursym) != None
                     if symbol != None:
+                        prevopcode = curopcode
+                        curopcode = lookup
                         if "op" in symbol.keys() and symbol["op"] == 97:
                             is_dsz_op = True
                         else:
                             is_dsz_op = False
+                        #end if
+                    #end if
                     if expect != None :
                         if expect != "label" and symbol != None and symbol.get("isind", False) :
                             if expect == "noindreg" :
@@ -619,7 +649,13 @@ if check_labels :
 #end if
 outprog()
 if dump_prog:
-    with open('progloc.src', 'w') as f:
+    with open('progloc.src', 'w', encoding="utf-8") as f:
         for l in lprog:
             f.write(l)
+        #end for
+        f.close()
+    #end with
+#end if
+infile.close()
+outfile.close()
 sys.exit(exitstatus)

@@ -1,0 +1,440 @@
+Feature highlights:
+
+v7.1, 2018 August 6th:
+   Fix "2 * )" which is error.
+
+v7.0, 2018 August 6th:
+   Move to Android Studio.
+   Update interface.
+   Allow saving printer paper to png.
+   Louder click feedback.
+   Large code clean-up.
+
+v6.11, 2018 March 13th:
+   Fix handling of error state.
+   Fix Internet web links in help and about.
+
+v6.10, 2018 March 10th:
+   Fix PC location when missing label in program.
+   Fix rounding when using fixed notation.
+
+v6.9, 2017 November 12th:
+   Adjust exponent rendering on card.
+   Fix small number detection.
+
+v6.8, 2017 November 1st:
+   Adjust font size for new cards.
+   Minor tweak on the rendering.
+
+v6.7, 2017 October 31st:
+   Attempt to fix reported instability.
+   Adjust layout of card on 16:9 screen.
+
+v6.6, 2017 September 5th:
+   Fix some minor behavior to match real TI-59.
+   Fix bug in handling sbr call past to 6th level.
+   Add Hanoï tower game.
+
+v6.5, 2017 February 14th:
+   Fix crash when saving operator stack (persistence)
+
+v6.4, 2017 February 4th:
+   Fix issue with Fix/Eng interaction
+
+v6.3, 2017 January 17th:
+   Fix bug in built-in programs selection.
+
+v6.2, 2017 January 14th:
+   Fix possible infinite recursion in sqrt.
+   Add support for built-in programs.
+   Full implementation of the EE library.
+
+v6.1, 2017 January 7th:
+   Fix P->R routine in some cases.
+
+v6.0, 2016 December 30th:
+   First version of Marine Navigation Library.
+   First version of Aviation Library.
+   Fix some issues found while implementing the new libraries.
+   Add graphics in some help messages.
+
+v5.9, 2016 December 17th:
+   Fix printer output in obscure context
+   Fix some state when entering numbers
+
+v5.8, 2016 November 23rd:
+   Add support for virtual card (2nd write)
+   Fix Inv P->R (result in proper quadrant)
+
+v5.7, 2016 October 22nd:
+   Fix handling of restoring state.
+
+v5.6, 2016 October 21st:
+   Better handling of switch between user's prog & built-in libraries.
+
+v5.5, 2016 October 18th:
+   Add LE-04 - football predictor
+   Add LE-05 - bowling scorekeeper
+   Add LE-06 - chess rater
+   Add LE-07 - golf handicapper
+   Add LE-08 - bridge scorer
+
+v5.4, 2016 October 17th:
+   Fix help navigation
+
+v5.3, 2016 September 5th:
+   New icons.
+   Add example for % extension.
+
+v5.2, 2016 April 9th:
+   Better sound (sampled from real TI-59)
+   Add % extension operator
+
+v5.1, 2016 April 4th:
+   Fix copy full-precision crash
+   Better TRACE (Op-98) printer support
+
+v5.0, 2016 March 23th:
+   Add more programs into the contribution library:
+     - limits dans infinite series
+     - matches stick game
+     - landing game
+     - master mind game
+     - 3D Tic Tac Toe game
+     - Treasure Island
+
+v4.9, 2016 March 23th:
+   Add first version of the contrib library.
+
+v4.8, 2015 May 13th:
+   Fix printer output (back to 700 lines).
+
+v4.7, 2015 May 12th:
+   Use 2nd key in all help page for consistency
+   Printer should now be lot faster.
+   Printer output has 800 history lines instead of 100.
+   After 2nd Prt and 2nd List a number is finalized.
+
+v4.6, 2015 May 6th:
+   Fix engineering mode (must be sticky)
+   Fix display of smalle negative numbers (above -1) with exponents
+
+v4.5, 2015 May 5th:
+   Rework error state handling (orthogonal to other status)
+   Fix display of number < 0 with exponents
+
+v4.4, 2015 May 4th:
+   Fix D.MS for negative numbers.
+   Fix ML-23 to give the output as described in manual.
+
+v4.3, 2015 May 2nd:
+   Again some more work on EE and Eng mode handling.
+
+v4.2, 2015 May 2nd:
+   Fix ML-01 indirect program call (pg* instead of pgm ind)
+   Display card/help for printout support of ML-01
+   Makes the card a bit more readable (lighter color)
+   Fix acos() asin() for values not in range of [-1 ; 1]
+   CLR must reset to fixed format.
+
+v4.1, 2015 April 27th:
+   Add menu button for devices without a real button
+   Fix handling for out-of-limit numbers (>"9.9999999 99")
+   Some fix in EE handling.
+
+v4.0, 2015 April 24th:
+   use BCD numbers for better precision
+   add some internal tests used by Pgm 01 SBR =
+   add LE-19
+   many small improvements
+
+v3.4, 2015 April 14th:
+   rework the card design (cleaner arrows, exponents...)
+
+v3.3, 2015 April 8th:
+   fix tan(), log(), ln() in limit conditions.
+   fix 1/0 error display (flashing 9.999999 99).
+
+v3.2, 2015 April 7th:
+   add graphic for bearing/quadrant/azimuth on SY-02
+
+v3.1, 2015 April 2nd:
+   fix for SY module (all examples pass)
+   fix sin/cos when result is close to 0
+
+v3.0, 2015 March 31:
+   fix ML module's cards and programs.
+
+v2.16, 2015 March 30:
+   fix some minor issues
+   add SY and EE built-in libraries
+
+v2.15, 2015 March 25:
+   fix some minor issues
+
+v2.14, 2015 March 22:
+   add MU built-in library
+   fix numerous semantic issues
+   add LE-21
+
+v2.13, 2015 March 22:
+    add MU built-in library
+    fix numerous semantic issues
+
+v2.12, 2015 March 17:
+    add support for multiple built-in libraries
+    add partial implementation of the leisure library
+    some more semantic fixes
+
+v2.11, 2015 March 14:
+    fix branch transfer and numbers (match real TI-59)
+    add ML-10 - Simpson's Approximation (Discrete)
+
+v2.10, 2015 March 12:
+    fix crash when stopping program in last instruction
+
+v2.9, 2015 March 11:
+    improve help layout, add undocumented features
+    improve color to match the original TI-59 ones
+
+v2.8, 2015 March 10:
+    more visible arrow in card
+    add Write label under the R/S key
+    add SBR-Write in ML-01 (Master Library check)
+    add ML-02 and ML-03 (matrix oriented libraries)
+    add a printer button in the title-bar for fast access
+
+v2.7, 2015 March 9:
+    again better support for large screen
+    fix interactive rtn handling
+
+v2.6, 2015 March 8:
+    more fixes on the handling of ee and inv ee
+
+v2.5, 2015 March 8:
+    better support for large screen
+
+v2.3, 2015 March 6:
+    better handling of ee and inv ee (fix state issues)
+
+v2.2, 2015 March 5:
+    add support for hidden /DSZ nn 51/ decrement Rnn NO jump
+    fix use of EE after RCL or conditional test
+    consider decimals when printing
+    RTN with empty stock stop the program instead of error
+
+v2.1, 2015 March 2:
+    better display for y**x and mean(x) keys
+
+v2.0, 2015 March 1:
+    support for HIR code added
+    the pause command is longer to match the original TI-59
+    add the ML-21 Hi-Lo game
+    fix OP 6 output (4 characters only)
+
+16216.1, 2014 May 26:
+    allow multitouch in pressing buttons as alternative to moving touch
+
+15611.5, 2012 September 29:
+    reduce layout size on larger screens to be more consistent with smaller
+    screens
+
+15597.9, 2012 September 15:
+    increase size of tappable button area to see if that reduces complaints
+    about unresponsive buttons
+
+15587.1, 2012 September 4:
+    notification status now appears while program is running in background,
+    not just when it stops
+
+15586.1, 2012 September 3:
+    reduce maximum screen size limit for scaling
+    stop multiple-launching of Help activity
+    make printer paper width consistent across different pixel densities
+
+15553.4, 2012 August 1:
+    allow use of volume-control buttons to change button-feedback
+    setting
+
+15472.3, 2012 May 13:
+    make decimal point slightly bigger
+    CE in error state now clears error state without clearing display
+
+15457.0, 2012 April 27:
+    scale layout on phone-sized screens while centring on
+    tablet-sized screens
+
+15454.1, 2012 April 24:
+    add help icon to title bar.
+    add description of menu items to help page.
+
+15453.4, 2012 April 23:
+    help page now shows on Android 4.0.
+
+15300.1, 2011 November 22
+    make (nearly) all I/O async to avoid blocking UI thread
+
+15220.5, 2011 September 4
+    allow orientation change on tablet-sized screens
+
+15212.2, 2011 August 26
+    keep red overlap during slide animation
+
+15169.3, 2011 July 14
+    typo! “∑x” corrected to “∑+” throughout
+
+15164.6, 2011 July 10
+    implement inverse-divide to compute remainder on division
+    implement op 52/53, get/set register offset
+
+15159.9, 2011 July 5
+    implement program and register listing functions
+
+15158.4, 2011 July 3
+    implement Op 08
+
+15156.5, 2011 July 2
+    allow restriction of data file selection to “likely” ones
+    (ending in .dat or .txt) for import and export-append
+
+15152.3, 2011 June 27
+    remember scroll position on last-viewed help page
+
+15147.3, 2011 June 22
+    add options for vibrate and no button feedback
+
+15139.3, 2011 June 14
+    ensure label card bitmaps are properly disposed
+
+15135.1, 2011 June 10
+    add option to copy full-precision number to clipboard
+    add notification when program finishes in background
+
+15133.3, 2011 June 8
+    add option to export only numbers in standard format
+    ignore most keystrokes in error state
+
+15131.4, 2011 June 6
+    Correct |x|
+    Improve single-stepping a bit
+
+15124.5, 2011 May 30
+    Add alternative main layout for tablet-sized screens
+    Allow Dsz on registers > 9
+    Make keyboard initially visible in save-as
+    Fix loading of external libraries
+
+15123.3, 2011 May 29
+    Correctly display error state on resume and LRN
+    Force picker to portrait-only to avoid losing buttons off bottom
+
+15121.4, 2011 May 28
+    Switching of screens is now a lot faster
+
+15108.0-15108.1, 2011 May 14
+    INV Prt now sets flag 7 directly rather than error condition on EOF
+
+15107.5, 2011 May 13
+    Add copy/paste support
+
+15106.2-15106.5, 2011 May 12
+    Link to where to find original manuals
+    Printer view now autoscrolls to bottom
+    Move autoclosing of importer and exporter from RST to INV RST
+
+15105.2-15105.4, 2011 May 11
+    Display package version number
+    Terminology change: "help card" -> "label card"
+
+2011 May 10
+    Couldn't use 2nd keys for labels--fixed
+
+2011 May 9
+    Add about page
+
+2011 May 7
+    Correct behaviour of EE in result state to match manual
+
+2011 May 6
+    Add data-export function
+
+2011 May 4
+    Add data-import function
+
+2011 May 1
+    Add inv-pi extension
+
+2011 April 29
+    Implement Op 18/19 properly
+
+2011 April 28
+    Further fix to correctly handling rounding on INV Int
+
+2011 April 27
+    Implementation calculation tracing on flag 9
+    Add delete-file function to picker
+
+2011 April 26
+    Correct implementation of EE/INV EE
+    Allow manually reloading Master Library
+    Include merged keycodes in overlay display
+
+2011 April 24
+    Op 50 and 51 extensions
+    Cross-bank transfers finally work properly
+
+2011 April 22
+    INV GTO extension
+
+2011 April 21
+    Debounce button presses
+    Add key codes table to help page
+
+2011 April 20
+    Add build instructions
+    More docs
+    Master Library card images now complete
+    Support user versus system card styles
+
+2011 April 19
+    LRN can now show display library programs (read-only)
+    Assembler/disassembler can now check/show current location
+    Add card-sliding animation
+    First stab at virtual printing
+    Implement stop-on-error use of flag 8
+
+2011 April 18
+    Add program/library loading
+    New program/library builder utility
+    Various card-rendering improvements
+
+2011 April 17
+    Add library help and initial library programs
+    Add ability to save user programs
+
+2011 April 16
+    Add label-card area
+    Add program-bank support
+
+2011 April 14
+    Add card image rendering utility
+    Add master library build utility
+
+2011 April 13
+    Add assembler and disassembler utilities
+
+2011 April 12
+    Option to display key code overlay
+    Save persistent state
+    Online help
+
+2011 April 11
+    Implement program entry and execution
+
+2011 April 8
+    Complete rework to handle programmability, memories etc
+    Add audio button feedback
+
+2011 April 7
+    Start of development
+    Most simple functions implemented

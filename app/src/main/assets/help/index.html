@@ -83,8 +83,9 @@ TABLE.keycodes > TBODY > TR > TD.unused
 <LI><A HREF="#ProgramExecution">Program Execution</A>
 <LI><A HREF="#LibraryPrograms">Library Programs</A>
 <LI><A HREF="#Import">Importing Data</A>
-<LI><A HREF="#Printer">Printer Emulation</A>
 <LI><A HREF="#Export">Exporting Data</A>
+<LI><A HREF="#Printer">Printer Emulation</A>
+<LI><A HREF="#Card">Card Emulation</A>
 <LI><A HREF="#Undocumented">Undocumented Features</A>
 <LI><A HREF="#OptionsMenu">Options Menu</A>
 <LI><A HREF="#Additional">Additional Information</A>
@@ -699,14 +700,16 @@ to resume full-speed execution.
 
 <H2><A NAME="LibraryPrograms"></A>Library Programs</H2>
 <P>It is possible to load external library modules into the
-  calculator. Six modules come preloaded with the calculator.
+  calculator. Eight modules come preloaded with the calculator.
 
   <UL>
     <LI>The Master Library
     <LI>Leisure Library
     <LI>Math Utilities Library
     <LI>Surveying Library
-    <LI>Electrical Engineering Library (partial)
+    <LI>Electrical Engineering Library
+    <LI>Aviation Library
+    <LI>Marine Navigation Library
     <LI>Contribution Library
   </UL>
 
@@ -741,6 +744,32 @@ number into the display using <SPAN CLASS="brownbutton">INV</SPAN>
 the keyboard or in a program). An attempt to read past the last number will set flag 7
 and leave the display unchanged. If a number was successfully read, flag 7 will be cleared.
 <P>The import file can also be immediately closed by <SPAN CLASS="brownbutton">INV</SPAN>
+<SPAN CLASS="brownbutton">RST</SPAN>.
+
+<P><A HREF="#Topics">Back to Topics</A>
+
+<H2><A NAME="Export"></A>Exporting Data</H2>
+<P>Calculation results can also be exported, in either of two ways:
+<OL>
+<LI>The printer emulation can write text representations of every printed line
+to an output file. Every line sent to the printer, whether via
+<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prt</SPAN> or any of the
+printer-related <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <I>nn</I>
+functions, will be written to the file. Note that characters with no obvious Unicode
+equivalent are ignored. The <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Adv</SPAN> function will write a blank line.
+<P>Note this file typically cannot be re-imported by ti5x, since exponents are
+separated from mantissas by a space or nothing before a minus sign (instead of the more
+conventional <B>e</B> character). Other programs are also likely to have trouble reading
+such numbers.
+<LI>Only numbers are exported, in standard exponential format; the current calculation
+result is written out every time the <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Prt</SPAN> key is pressed (or that function is invoked from a program).
+This file format can be re-imported by ti5x, and should also be readable by other programs.
+</OL>
+<P>To close the current export file, press (or execute in a program)
+<SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
+<SPAN CLASS="alttext">Adv</SPAN>. It is also closed by <SPAN CLASS="brownbutton">INV</SPAN>
 <SPAN CLASS="brownbutton">RST</SPAN>.
 
 <P><A HREF="#Topics">Back to Topics</A>
@@ -829,30 +858,45 @@ register with the number showing in the display.
 
 <P><A HREF="#Topics">Back to Topics</A>
 
-<H2><A NAME="Export"></A>Exporting Data</H2>
-<P>Calculation results can also be exported, in either of two ways:
-<OL>
-<LI>The printer emulation can write text representations of every printed line
-to an output file. Every line sent to the printer, whether via
-<SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Prt</SPAN> or any of the
-printer-related <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">Op</SPAN> <I>nn</I>
-functions, will be written to the file. Note that characters with no obvious Unicode
-equivalent are ignored. The <SPAN CLASS="yellowbutton">2nd</SPAN>
-<SPAN CLASS="alttext">Adv</SPAN> function will write a blank line.
-<P>Note this file typically cannot be re-imported by ti5x, since exponents are
-separated from mantissas by a space or nothing before a minus sign (instead of the more
-conventional <B>e</B> character). Other programs are also likely to have trouble reading
-such numbers.
-<LI>Only numbers are exported, in standard exponential format; the current calculation
-result is written out every time the <SPAN CLASS="yellowbutton">2nd</SPAN>
-<SPAN CLASS="alttext">Prt</SPAN> key is pressed (or that function is invoked from a program).
-This file format can be re-imported by ti5x, and should also be readable by other programs.
-</OL>
-<P>To close the current export file, press (or execute in a program)
-<SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN>
-<SPAN CLASS="alttext">Adv</SPAN>. It is also closed by <SPAN CLASS="brownbutton">INV</SPAN>
-<SPAN CLASS="brownbutton">RST</SPAN>.
+<H2><A NAME="Card"></A>Card Emulation</H2>
 
+<P>The emulator implements the <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">write</SPAN> instruction using a single
+  emulated card.
+
+<P>The cards has 4 banks for storing the program and the memories. It
+  has the following layout:
+
+<TABLE class="card">
+  <TR><TD>Program</TD><TD style="visibility:collapse"/><TD>Memory</TD></TR>
+  <TR class="cardsep"><TD colspan=3/></TR>
+  <TR><TD>000</TD><TD rowspan=3><B>Bank 1</B></TD><TD>120</TD>
+  <TR><TD>:</TD><TD>:</TD>
+  <TR><TD>239</TD><TD>90</TD>
+  <TR class="cardsep"><TD colspan=3/></TR>
+  <TR><TD>240</TD><TD rowspan=3><B>Bank 2</B></TD><TD>89</TD>
+  <TR><TD>:</TD><TD>:</TD>
+  <TR><TD>479</TD><TD>60</TD>
+  <TR class="cardsep"><TD colspan=3/></TR>
+  <TR><TD>480</TD><TD rowspan=3><B>Bank 3</B></TD><TD>59</TD>
+  <TR><TD>:</TD><TD>:</TD>
+  <TR><TD>719</TD><TD>30</TD>
+  <TR class="cardsep"><TD colspan=3/></TR>
+  <TR><TD>720</TD><TD rowspan=3><B>Bank 4</B></TD><TD>29</TD>
+  <TR><TD>:</TD><TD>:</TD>
+  <TR><TD>959</TD><TD>00</TD>
+</TABLE>
+
+<UL>
+<LI><B>n</B> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">write</SPAN> - write the bank number <B>n</B> into the card.
+
+<LI><B>n</B> <SPAN CLASS="brownbutton">INV</SPAN> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">write</SPAN> - read the bank number <B>n</B> and set the corresponding data.
+</UL>
+
+<P>So for example, to store on the card the memories from 00 to 019
+  you need to store bank 4 which cover memories 00 through 29:
+  <UL>
+    <LI>4</B> <SPAN CLASS="yellowbutton">2nd</SPAN> <SPAN CLASS="alttext">write</SPAN>
+  </UL>
 <P><A HREF="#Topics">Back to Topics</A>
 
 <H2><A NAME="Undocumented"></A>Undocumented Features</H2>
@@ -887,7 +931,7 @@ Only available in programs.
   <UL class="spaced">
     <LI>Key in <SPAN CLASS="brownbutton">STO</SPAN> 82 to put <i>42 82</i>
       into program memory.
-    <LI>Key in <SPAN CLASS="brownbutton">STO</SPAN> 12 to pu <i>42 82 42 12</i>
+    <LI>Key in <SPAN CLASS="brownbutton">STO</SPAN> 12 to put <i>42 82 42 12</i>
       into program memory.
     <LI>Go back and delete both <i>42</i> keycode, we have <i>82 12</i>
   </UL>

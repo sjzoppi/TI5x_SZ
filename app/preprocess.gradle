@@ -1,0 +1,82 @@
+import groovy.io.FileType
+
+def resRaw = 'src/main/res/raw'
+
+configurations {
+}
+
+dependencies {
+}
+
+android {
+}
+
+task preprocess {
+    doLast {
+        def processModule = {
+            println "generate resources for ${it.name}"
+
+            def moddata = "${it.canonicalPath}"
+            def module = "${it.name}"
+            //noinspection GroovyUnusedAssignment
+            def (modcode, modname) = "$module".tokenize('-')
+
+            exec {
+                executable '../util/mlmake'
+                args "$moddata", "$resRaw", "$modcode"
+            }
+        }
+
+        def processProgram = {
+            println "generate resources for ${it.name}"
+
+            def progdata = "${it.canonicalPath}"
+            def module = "${it.name}"
+
+            exec {
+                executable '../util/makeprog'
+                args "${resRaw}/${module}.ti5p",
+                        "help00=$progdata/help",
+                        "cardsrc00=$progdata/card",
+                        "progsrc00=$progdata/prog"
+            }
+        }
+
+        // handle modules
+
+        def moduleDir = "modules"
+        def mDir = new File(moduleDir)
+
+        mDir.eachFileRecurse(FileType.DIRECTORIES) {
+            file -> processModule file
+        }
+
+        // handle programs
+
+        def programDir = "programs"
+        def pDir = new File(programDir)
+
+        pDir.eachFileRecurse(FileType.DIRECTORIES) {
+            file -> processProgram file
+        }
+    }
+}
+
+task customClean(type: Delete) {
+    doLast {
+        def mDir = new File("app/$resRaw")
+
+        def deleteModule = {
+            if (it.name.endsWith('.ti5l') || it.name.endsWith('.ti5p')) {
+                delete "${it.canonicalPath}"
+            }
+        }
+
+        mDir.eachFileRecurse(FileType.FILES) {
+            file -> deleteModule file
+        }
+    }
+}
+
+clean.dependsOn customClean
+preBuild.dependsOn preprocess

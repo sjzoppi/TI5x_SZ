@@ -1,9 +1,8 @@
 /*
     ti5x calculator emulator -- mainline
 
-    Copyright 2011, 2012 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
-    Copyright 2015       Pascal Obry <pascal@obry.net>.
-    Copyright 2016       Steven Zoppi <about-ti5x@zoppi.org>.
+    Copyright 2011-2012 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+    Copyright 2015-2018 Pascal Obry <pascal@obry.net>.
 
     This program is free software: you can redistribute it and/or modify it under
     the terms of the GNU General Public License as published by the Free Software
@@ -20,62 +19,59 @@
 package net.obry.ti5x;
 
 import android.Manifest;
-import android.content.Context;
+import android.app.Notification;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import static net.obry.ti5x.ButtonGrid.FEEDBACK_BOTH;
-import static net.obry.ti5x.ButtonGrid.FEEDBACK_CLICK;
-import static net.obry.ti5x.ButtonGrid.FEEDBACK_NONE;
-import static net.obry.ti5x.ButtonGrid.FEEDBACK_VIBRATE;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Main extends android.app.Activity
   {
-    android.text.ClipboardManager Clipboard;
-    android.app.NotificationManager Notiman;
-    java.util.Map<android.view.MenuItem, Runnable> OptionsMenu;
-    java.util.Map<android.view.MenuItem, Runnable> ContextMenu;
+    android.text.ClipboardManager                    Clipboard;
+    android.app.NotificationManager                  Notiman;
+    java.util.Map< android.view.MenuItem, Runnable > OptionsMenu;
+    java.util.Map< android.view.MenuItem, Runnable > ContextMenu;
 
-    interface RequestResponseAction /* response to an activity result */
+    interface RequestResponseAction
       {
-        public void Run
-            (
-                int ResultCode,
-                Intent Data
-            );
-      } /*RequestResponseAction*/
+        /* response to an activity result */
+        void Run
+        (
+            int ResultCode,
+            Intent Data
+        );
+      }
 
-    java.util.Map<Integer, RequestResponseAction> ActivityResultActions;
+    android.util.SparseArray< RequestResponseAction > ActivityResultActions;
 
     /* request codes, all arbitrarily assigned */
     static final int LoadProgramRequest = 1;
-    static final int ImportDataRequest = 2;
+    static final int ImportDataRequest  = 2;
     static final int SaveProgramRequest = 3;
-    static final int ExportDataRequest = 4;
+    static final int ExportDataRequest  = 4;
 
-    static final int SwitchSaveAs = android.app.Activity.RESULT_FIRST_USER + 0;
+    static final int SwitchSaveAs = android.app.Activity.RESULT_FIRST_USER;
     static final int SwitchAppend = android.app.Activity.RESULT_FIRST_USER + 1;
-    boolean ExportAppend, ExportNumbersOnly;
 
     // Response Results for Permissions Interactions
-    private final static int READ_EXTERNAL_RESULT = 100;
-    private final static int WRITE_EXTERNAL_RESULT = 101;
-    private final static int CHOOSE_FILE_RESULT = 102;
 
+    private final static int READ_WRITE_EXTERNAL_RESULT = 100;
+    private final static int CHOOSE_FILE_RESULT         = 102;
+
+    boolean ExportAppend, ExportNumbersOnly;
 
     ViewGroup PickerExtra, SaveAsExtra;
-
     View mLayout;
 
     boolean ShuttingDown = false;
-    boolean StateLoaded = false; /* will be reset to false every time activity is killed and restarted */
+    boolean StateLoaded  = false; /* will be reset to false every time activity is killed and restarted */
 
     static final int NotifyProgramDone = 1; /* arbitrary notification ID */
 
@@ -85,95 +81,90 @@ public class Main extends android.app.Activity
 
     public static final BuiltinLibrary[] BuiltinLibraries =
         {
-            new BuiltinLibrary(R.string.master_library, R.raw.ml),
-            new BuiltinLibrary(R.string.appstats_library, R.raw.st),
-            new BuiltinLibrary(R.string.realestate_library, R.raw.re),
-            new BuiltinLibrary(R.string.surveying_library, R.raw.sy),
-            new BuiltinLibrary(R.string.aviation_library, R.raw.av),
-            new BuiltinLibrary(R.string.marine_navigation_library, R.raw.ng),
-            new BuiltinLibrary(R.string.leisure_library, R.raw.le),
-            new BuiltinLibrary(R.string.securities_library, R.raw.sa),
-            new BuiltinLibrary(R.string.mathutil_library, R.raw.mu),
-            new BuiltinLibrary(R.string.electrical_library, R.raw.ee),
-            new BuiltinLibrary(R.string.contribution_library, R.raw.ct)
+            new BuiltinLibrary( R.string.master_library, R.raw.ml ),
+            new BuiltinLibrary( R.string.appstats_library, R.raw.st ),
+            new BuiltinLibrary( R.string.realestate_library, R.raw.re ),
+            new BuiltinLibrary( R.string.surveying_library, R.raw.sy ),
+            new BuiltinLibrary( R.string.aviation_library, R.raw.av ),
+            new BuiltinLibrary( R.string.marine_navigation_library, R.raw.ng ),
+            new BuiltinLibrary( R.string.leisure_library, R.raw.le ),
+            new BuiltinLibrary( R.string.securities_library, R.raw.sa ),
+            new BuiltinLibrary( R.string.businessdecisions_library, R.raw.bd ),
+            new BuiltinLibrary( R.string.mathutil_library, R.raw.mu ),
+            new BuiltinLibrary( R.string.electrical_library, R.raw.ee ),
+            new BuiltinLibrary( R.string.contribution_library, R.raw.ct )
         };
 
-    private static final String[] getBuiltinLibraries(android.content.Context ctx)
+    private static String[] getBuiltinLibraries( android.content.Context ctx )
       {
-        String[] result = new String[BuiltinLibraries.length];
+        String[] result = new String[ BuiltinLibraries.length ];
 
-        for ( int i = 0; i < BuiltinLibraries.length; i++ )
-          result[i] = BuiltinLibraries[i].getName(ctx);
+        for ( int i = 0 ; i < BuiltinLibraries.length ; i++ )
+          result[ i ] = BuiltinLibraries[ i ].getName( ctx );
         return result;
       }
-
-    ;
 
     public static final BuiltinLibrary[] BuiltinPrograms =
-        { /** FIXME: get the Program Build Code Working !!!
-        new BuiltinLibrary(R.string.input_code, R.raw.ee19_input_code),
-        new BuiltinLibrary(R.string.construct_nam_code, R.raw.ee19_construct_nam_code)
-        */
+        {
+              new BuiltinLibrary(R.string.input_code, R.raw.ee19_input_code),
+              new BuiltinLibrary(R.string.construct_nam_code, R.raw.ee19_construct_nam_code)
         };
 
-    private static final String[] getBuiltinPrograms(android.content.Context ctx)
+    private static String[] getBuiltinPrograms( android.content.Context ctx )
       {
-        String[] result = new String[BuiltinPrograms.length];
+        String[] result = new String[ BuiltinPrograms.length ];
 
-        for ( int i = 0; i < BuiltinPrograms.length; i++ )
-          result[i] = BuiltinPrograms[i].getName(ctx);
+        for ( int i = 0 ; i < BuiltinPrograms.length ; i++ )
+          result[ i ] = BuiltinPrograms[ i ].getName( ctx );
         return result;
       }
-
-    ;
 
     public void ShowHelp
         (
             String Path,
             String[] FormatArgs
         )
-      /* launches the Help activity, displaying the page in my resources with
-        the specified Path. */
-    {
-      final Intent LaunchHelp = new Intent(Intent.ACTION_VIEW)
-          .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-      /**
-       *    must always load the page contents, can no longer pass a file:///android_asset/
-       *    URL with Android 4.0.
-       */
-      byte[] HelpRaw;
       {
-        java.io.InputStream ReadHelp;
-
-        try
-          {
-            ReadHelp = getAssets().open(Path);
-            HelpRaw = Persistent.ReadAll(ReadHelp);
-          } catch ( java.io.IOException Failed )
-          {
-            throw new RuntimeException("can't read help page: " + Failed);
-          } /*try*/
-
-        try
-          {
-            ReadHelp.close();
-          } catch ( java.io.IOException WhoCares )
-          {
-                  /* I mean, really? */
-          } /*try*/
+    /* launches the Help activity, displaying the page in my resources with
+       the specified Path. */
+        final Intent LaunchHelp = new Intent( Intent.ACTION_VIEW )
+            .addFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP );
+    /* must always load the page contents, can no longer pass a file:///android_asset/
+       URL with Android 4.0. */
+        byte[] HelpRaw;
+        {
+          java.io.InputStream ReadHelp;
+          try
+            {
+              ReadHelp = getAssets().open( Path );
+              HelpRaw = Persistent.ReadAll( ReadHelp );
+            }
+          catch ( java.io.IOException Failed )
+            {
+              throw new RuntimeException( "can't read help page: " + Failed );
+            }
+          try
+            {
+              ReadHelp.close();
+            }
+          catch ( java.io.IOException WhoCares )
+            {
+              /* I mean, really? */
+            }
+        }
+        LaunchHelp.putExtra
+            (
+                Help.ContentID,
+                FormatArgs != null
+                ?
+                String.format( Global.StdLocale, new String( HelpRaw ), ( Object[] ) FormatArgs )
+                    .getBytes()
+                :
+                HelpRaw
+            );
+        LaunchHelp.setClass( this, Help.class );
+        startActivity( LaunchHelp );
       }
-      LaunchHelp.putExtra
-          (
-              Help.ContentID,
-              FormatArgs != null ?
-                  String.format(Global.StdLocale, new String(HelpRaw), (Object[]) FormatArgs)
-                      .getBytes()
-                  :
-                  HelpRaw
-          );
-      LaunchHelp.setClass(this, Help.class);
-      startActivity(LaunchHelp);
-    } /*ShowHelp*/
 
     class ReplaceConfirm
         extends android.app.AlertDialog
@@ -181,29 +172,29 @@ public class Main extends android.app.Activity
       {
         final Runnable LaunchWhat;
 
-        public ReplaceConfirm
+        ReplaceConfirm
             (
                 android.content.Context ctx,
                 int MsgID,
                 Runnable LaunchWhat
             )
           {
-            super(ctx);
+            super( ctx );
             this.LaunchWhat = LaunchWhat;
-            setMessage(ctx.getString(MsgID));
+            setMessage( ctx.getString( MsgID ) );
             setButton
                 (
                     DialogInterface.BUTTON_POSITIVE,
-                    ctx.getString(R.string.replace),
+                    ctx.getString( R.string.replace ),
                     this
                 );
             setButton
                 (
                     DialogInterface.BUTTON_NEGATIVE,
-                    ctx.getString(R.string.cancel),
+                    ctx.getString( R.string.cancel ),
                     this
                 );
-          } /*ReplaceConfirm*/
+          }
 
         @Override
         public void onClick
@@ -215,11 +206,10 @@ public class Main extends android.app.Activity
             if ( WhichButton == DialogInterface.BUTTON_POSITIVE )
               {
                 LaunchWhat.run();
-              } /*if*/
+              }
             dismiss();
-          } /*onClick*/
-
-      } /*ReplaceConfirm*/
+          }
+      }
 
     class FeedbackDialog
         extends android.app.Dialog
@@ -228,14 +218,14 @@ public class Main extends android.app.Activity
         final android.content.Context ctx;
         android.widget.RadioGroup TheButtons;
 
-        public FeedbackDialog
+        FeedbackDialog
             (
                 android.content.Context ctx
             )
           {
-            super(ctx);
+            super( ctx );
             this.ctx = ctx;
-          } /*FeedbackDialog*/
+          }
 
         @Override
         public void onCreate
@@ -243,12 +233,11 @@ public class Main extends android.app.Activity
                 android.os.Bundle savedInstanceState
             )
           {
-            setTitle(R.string.button_feedback);
-            final android.widget.LinearLayout MainLayout = new android.widget.LinearLayout(ctx);
-            MainLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
-            setContentView(MainLayout);
-            TheButtons = new android.widget.RadioGroup(ctx);
-
+            setTitle( R.string.button_feedback );
+            final android.widget.LinearLayout MainLayout = new android.widget.LinearLayout( ctx );
+            MainLayout.setOrientation( android.widget.LinearLayout.VERTICAL );
+            setContentView( MainLayout );
+            TheButtons = new android.widget.RadioGroup( ctx );
             final ViewGroup.LayoutParams ButtonLayout =
                 new ViewGroup.LayoutParams
                     (
@@ -256,33 +245,31 @@ public class Main extends android.app.Activity
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     );
             {
-              final RadioButton FeedbackClick = new RadioButton(ctx);
-              FeedbackClick.setText(R.string.feedback_click);
-              FeedbackClick.setId(FEEDBACK_CLICK);
+              final RadioButton FeedbackClick = new RadioButton( ctx );
+              FeedbackClick.setText( R.string.feedback_click );
+              FeedbackClick.setId( ButtonGrid.FEEDBACK_CLICK );
 
-              final RadioButton FeedbackVibrate = new RadioButton(ctx);
-              FeedbackVibrate.setText(R.string.feedback_vibrate);
-              FeedbackVibrate.setId(FEEDBACK_VIBRATE);
+              final RadioButton FeedbackVibrate = new RadioButton( ctx );
+              FeedbackVibrate.setText( R.string.feedback_vibrate );
+              FeedbackVibrate.setId( ButtonGrid.FEEDBACK_VIBRATE );
 
-              final RadioButton FeedbackBoth = new RadioButton(ctx);
-              FeedbackBoth.setText(R.string.feedback_click_and_vibrate);
-              FeedbackBoth.setId(FEEDBACK_BOTH);
+              final RadioButton FeedbackBoth = new RadioButton( ctx );
+              FeedbackBoth.setText( R.string.feedback_click_and_vibrate );
+              FeedbackBoth.setId( ButtonGrid.FEEDBACK_BOTH );
 
-              final RadioButton FeedbackNone = new RadioButton(ctx);
-              FeedbackNone.setText(R.string.feedback_none);
-              FeedbackNone.setId(FEEDBACK_NONE);
+              final RadioButton FeedbackNone = new RadioButton( ctx );
+              FeedbackNone.setText( R.string.feedback_none );
+              FeedbackNone.setId( ButtonGrid.FEEDBACK_NONE );
 
-              TheButtons.addView(FeedbackClick, 0, ButtonLayout);
-              TheButtons.addView(FeedbackVibrate, 1, ButtonLayout);
-              TheButtons.addView(FeedbackBoth, 2, ButtonLayout);
-              TheButtons.addView(FeedbackNone, 3, ButtonLayout);
-
+              TheButtons.addView( FeedbackClick, 0, ButtonLayout );
+              TheButtons.addView( FeedbackVibrate, 1, ButtonLayout );
+              TheButtons.addView( FeedbackBoth, 2, ButtonLayout );
+              TheButtons.addView( FeedbackNone, 3, ButtonLayout );
             }
-            MainLayout.addView(TheButtons, ButtonLayout);
-            TheButtons.check(Global.Buttons.FeedbackType);
-            setOnDismissListener(this);
-
-          } /*onCreate*/
+            MainLayout.addView( TheButtons, ButtonLayout );
+            TheButtons.check( Global.Buttons.FeedbackType );
+            setOnDismissListener( this );
+          }
 
         @Override
         public void onDismiss
@@ -290,64 +277,9 @@ public class Main extends android.app.Activity
                 DialogInterface TheDialog
             )
           {
-            Global.Buttons.SetFeedbackType(TheButtons.getCheckedRadioButtonId());
-          } /*onDismiss*/
-
-      } /*FeedbackDialog*/
-
-
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults)
-      {
-/**
- if ( requestCode == WRITE_EXTERNAL_RESULT )
- {
- // BEGIN_INCLUDE(permission_result)
- // Received permission result for WRITE External Storage permission.
-
- // Check if the only required permission has been granted
- if ( grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED )
- {
- // Storage permission has been granted, preview can be displayed
- Snackbar.make(mLayout, R.string.permission_available_storage,
- Snackbar.LENGTH_SHORT).show();
- } else
- {
- Snackbar.make(mLayout, R.string.permissions_not_granted,
- Snackbar.LENGTH_SHORT).show();
-
- }
- // END_INCLUDE(permission_result)
-
- } else if ( requestCode == READ_EXTERNAL_RESULT )
- {
-
- // We have requested multiple permissions , so all of them need to be
- // checked.
- if ( PermissionUtil.verifyPermissions(grantResults) )
- {
- // All required permissions have been granted, display contacts fragment.
- Snackbar.make(mLayout, R.string.permission_available_storage,
- Snackbar.LENGTH_SHORT)
- .show();
- } else
- {
- Snackbar.make(mLayout, R.string.permissions_not_granted,
- Snackbar.LENGTH_SHORT)
- .show();
- }
-
- } else
- {
- super.onRequestPermissionsResult(requestCode, permissions, grantResults);
- }
- **/
+            Global.Buttons.SetFeedbackType( TheButtons.getCheckedRadioButtonId() );
+          }
       }
-
 
     void LaunchImportPicker()
       {
@@ -355,47 +287,47 @@ public class Main extends android.app.Activity
             {
                 new Picker.PickerAltList
                     (
-                /*RadioButtonID =*/ R.id.select_likely_files,
-                /*Prompt =*/ getString(R.string.import_prompt),
-                /*NoneFound =*/ getString(R.string.no_data_files),
-                /*FileExts =*/ Persistent.LikelyDataExts,
-                /*SpecialItem =*/ null
+                        R.id.select_likely_files,
+                        getString( R.string.import_prompt ),
+                        getString( R.string.no_data_files ),
+                        Persistent.LikelyDataExts,
+                        null
                     ),
                 new Picker.PickerAltList
                     (
-                /*RadioButtonID =*/ R.id.select_all_files,
-                /*Prompt =*/ getString(R.string.import_prompt),
-                /*NoneFound =*/ getString(R.string.no_data_files),
-                /*FileExts =*/ null,
-                /*SpecialItem =*/ null
+                        R.id.select_all_files,
+                        getString( R.string.import_prompt ),
+                        getString( R.string.no_data_files ),
+                        null,
+                        null
                     ),
             };
-        PickerExtra = (ViewGroup) getLayoutInflater().inflate(R.layout.import_type, null);
+        PickerExtra = ( ViewGroup ) getLayoutInflater().inflate( R.layout.import_type, null );
         Picker.Launch
             (
-            /*Acting =*/ Main.this,
-            /*SelectLabel =*/ getString(R.string.import_),
-            /*RequestCode =*/ ImportDataRequest,
-            /*Extra =*/ PickerExtra,
-            /*LookIn =*/ Persistent.ExternalDataDirectories,
-            /*AltLists =*/ AltLists
+                Main.this,
+                getString( R.string.import_ ),
+                ImportDataRequest,
+                PickerExtra,
+                Persistent.ExternalDataDirectories,
+                AltLists
             );
-      } /*LaunchImportPicker*/
+      }
 
     void LaunchExportPicker()
       {
-        final android.view.LayoutInflater Inflater = getLayoutInflater();
-        final ViewGroup[] ExportExtra = new ViewGroup[2];
+        final android.view.LayoutInflater Inflater    = getLayoutInflater();
+        final ViewGroup[]                 ExportExtra = new ViewGroup[ 2 ];
         /* need two copies */
-        for ( int i = 0; i < 2; ++i )
+        for ( int i = 0 ; i < 2 ; ++i )
           {
-            ExportExtra[i] = (ViewGroup) Inflater.inflate(R.layout.export_type, null);
+            ExportExtra[ i ] = ( ViewGroup ) Inflater.inflate( R.layout.export_type, null );
             final RadioButton NumbersOnly =
-                (RadioButton) ExportExtra[i].findViewById(R.id.select_numbers_only);
+                ( RadioButton ) ExportExtra[ i ].findViewById( R.id.select_numbers_only );
             final RadioButton AllPrintout =
-                (RadioButton) ExportExtra[i].findViewById(R.id.select_all_printout);
-            NumbersOnly.setChecked(ExportNumbersOnly);
-            AllPrintout.setChecked(!ExportNumbersOnly);
+                ( RadioButton ) ExportExtra[ i ].findViewById( R.id.select_all_printout );
+            NumbersOnly.setChecked( ExportNumbersOnly );
+            AllPrintout.setChecked( !ExportNumbersOnly );
             NumbersOnly.setOnClickListener
                 (
                     new View.OnClickListener()
@@ -407,7 +339,7 @@ public class Main extends android.app.Activity
                           {
                             ExportNumbersOnly = true;
                           } /*onClick*/
-                      } /*OnClickListener*/
+                      }
                 );
             AllPrintout.setOnClickListener
                 (
@@ -420,20 +352,20 @@ public class Main extends android.app.Activity
                           {
                             ExportNumbersOnly = false;
                           } /*onClick*/
-                      } /*OnClickListener*/
+                      }
                 );
-          }  /*for*/
-        SaveAsExtra = (ViewGroup) Inflater.inflate(R.layout.save_append, null);
+          }
+        SaveAsExtra = ( ViewGroup ) Inflater.inflate( R.layout.save_append, null );
         SaveAsExtra.addView
             (
-                ExportExtra[0],
+                ExportExtra[ 0 ],
                 new ViewGroup.LayoutParams
                     (
                         ViewGroup.LayoutParams.FILL_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
             );
-        SaveAsExtra.findViewById(R.id.switch_append).setOnClickListener
+        SaveAsExtra.findViewById( R.id.switch_append ).setOnClickListener
             (
                 new View.OnClickListener()
                   {
@@ -442,22 +374,22 @@ public class Main extends android.app.Activity
                             View TheView
                         )
                       {
-                        SaveAs.Current.setResult(SwitchAppend);
+                        SaveAs.Current.setResult( SwitchAppend );
                         SaveAs.Current.finish();
                       } /*onClick*/
-                  } /*OnClickListener*/
+                  }
             );
-        PickerExtra = (ViewGroup) Inflater.inflate(R.layout.save_new, null);
+        PickerExtra = ( ViewGroup ) Inflater.inflate( R.layout.save_new, null );
         PickerExtra.addView
             (
-                ExportExtra[1],
+                ExportExtra[ 1 ],
                 new ViewGroup.LayoutParams
                     (
                         ViewGroup.LayoutParams.FILL_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
             );
-        PickerExtra.findViewById(R.id.switch_new).setOnClickListener
+        PickerExtra.findViewById( R.id.switch_new ).setOnClickListener
             (
                 new View.OnClickListener()
                   {
@@ -466,16 +398,16 @@ public class Main extends android.app.Activity
                             View TheView
                         )
                       {
-                        Picker.Current.setResult(SwitchSaveAs);
+                        Picker.Current.setResult( SwitchSaveAs );
                         Picker.Current.finish();
                       } /*onClick*/
-                  } /*OnClickListener*/
+                  }
             );
         if ( ExportAppend )
           {
-            ExportExtra[1].addView
+            ExportExtra[ 1 ].addView
                 (
-                    getLayoutInflater().inflate(R.layout.import_type, null),
+                    getLayoutInflater().inflate( R.layout.import_type, null ),
                     new ViewGroup.LayoutParams
                         (
                             ViewGroup.LayoutParams.FILL_PARENT,
@@ -486,44 +418,44 @@ public class Main extends android.app.Activity
                 {
                     new Picker.PickerAltList
                         (
-                    /*RadioButtonID =*/ R.id.select_likely_files,
-                    /*Prompt =*/ getString(R.string.export_prompt),
-                    /*NoneFound =*/ getString(R.string.no_data_files),
-                    /*FileExts =*/ Persistent.LikelyDataExts,
-                    /*SpecialItem =*/ null
+                            R.id.select_likely_files,
+                            getString( R.string.export_prompt ),
+                            getString( R.string.no_data_files ),
+                            Persistent.LikelyDataExts,
+                            null
                         ),
                     new Picker.PickerAltList
                         (
-                    /*RadioButtonID =*/ R.id.select_all_files,
-                    /*Prompt =*/ getString(R.string.export_prompt),
-                    /*NoneFound =*/ getString(R.string.no_data_files),
-                    /*FileExts =*/ null,
-                    /*SpecialItem =*/ null
+                            R.id.select_all_files,
+                            getString( R.string.export_prompt ),
+                            getString( R.string.no_data_files ),
+                            null,
+                            null
                         ),
                 };
             Picker.Launch
                 (
-                /*Acting =*/ Main.this,
-                /*SelectLabel =*/ getString(R.string.append),
-                /*RequestCode =*/ ExportDataRequest,
-                /*Extra =*/ PickerExtra,
-                /*LookIn =*/ Persistent.ExternalDataDirectories,
-                /*AltLists =*/ AltLists
+                    Main.this,
+                    getString( R.string.append ),
+                    ExportDataRequest,
+                    PickerExtra,
+                    Persistent.ExternalDataDirectories,
+                    AltLists
                 );
           }
         else
           {
             SaveAs.Launch
                 (
-                /*Acting =*/ Main.this,
-                /*RequestCode =*/ ExportDataRequest,
-                /*SaveWhat =*/ getString(R.string.exported_data),
-                /*SaveWhere =*/ Persistent.DataDir,
-                /*Extra =*/ SaveAsExtra,
-                /*FileExt =*/ ""
+                    Main.this,
+                    ExportDataRequest,
+                    getString( R.string.exported_data ),
+                    Persistent.DataDir,
+                    SaveAsExtra,
+                    ""
                 );
-          } /*if*/
-      } /*LaunchExportPicker*/
+          }
+      }
 
     @Override
     public boolean onCreateOptionsMenu
@@ -531,9 +463,20 @@ public class Main extends android.app.Activity
             android.view.Menu TheMenu
         )
       {
-        OptionsMenu = new java.util.HashMap<android.view.MenuItem, Runnable>();
+        OptionsMenu = new java.util.HashMap< android.view.MenuItem, Runnable >();
         android.view.MenuItem ThisItem;
-        ThisItem = TheMenu.add(R.string.show_overlay);
+        OptionsMenu.put
+            (
+                TheMenu.add( R.string.show_calc_help ),
+                new Runnable()
+                  {
+                    public void run()
+                      {
+                        ShowHelp( "help/index.html", null );
+                      } /*run*/
+                  }
+            );
+        ThisItem = TheMenu.add( R.string.show_overlay );
         OptionsMenu.put
             (
                 ThisItem,
@@ -543,105 +486,152 @@ public class Main extends android.app.Activity
                       {
                         Global.Buttons.OverlayVisible = !Global.Buttons.OverlayVisible;
                         Global.Buttons.invalidate();
-                    /* ToggleOverlayItem.setChecked(Global.Buttons.OverlayVisible); */ /* apparently can't do this in initial part of options menu */
+                        /* ToggleOverlayItem.setChecked(Global.Buttons.OverlayVisible); */
+                        /* apparently can't do this in initial part of options menu */
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
-
+        /* ThisItem.setCheckable(true); */
+        /* apparently can't do this in initial part of options menu */
         OptionsMenu.put
             (
-                TheMenu.add("Settings"),
+                TheMenu.add( R.string.show_module_help ),
+                new Runnable()
+                  {
+                    public void run()
+                      {
+                        if ( Global.Calc != null && Global.Calc.ModuleHelp != null )
+                          {
+                            final Intent ShowHelp = new Intent( Intent.ACTION_VIEW );
+                            ShowHelp.putExtra( Help.ContentID, Global.Calc.ModuleHelp );
+                            ShowHelp.setClass( Main.this, Help.class );
+                            startActivity( ShowHelp );
+                          }
+                        else
+                          {
+                            Toast.makeText
+                                (
+                                    Main.this,
+                                    getString( R.string.no_module_help ),
+                                    Toast.LENGTH_SHORT
+                                ).show();
+                          }
+                      } /*run*/
+                  }
+            );
+        OptionsMenu.put
+            (
+                TheMenu.add( R.string.show_printer ),
                 new Runnable()
                   {
                     public void run()
                       {
                         startActivity
                             (
-                                new Intent(Intent.ACTION_VIEW)
-                                    .setClass(Main.this, SettingsActivity.class)
+                                new Intent( Intent.ACTION_VIEW )
+                                    .setClass( Main.this, PrinterView.class )
                             );
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.load_prog),
+                TheMenu.add( R.string.load_prog ),
                 new Runnable()
                   {
                     public void run()
                       {
                         final Picker.PickerAltList[] AltLists =
                             {
-                                /**
-                                 * note the code that responds to the result'
-                                 * Intent assumes that
-                                 *   element 0 is saved programs and
-                                 *   element 1 is libraries
-                                 **/
+                                /* note the code that responds to the result Intent assumes
+                                   that element 0 is saved programs and element 1 is libraries */
                                 new Picker.PickerAltList
                                     (
-                        /*RadioButtonID =*/ R.id.select_saved,
-                        /*Prompt =*/ getString(R.string.prog_prompt),
-                        /*NoneFound =*/ getString(R.string.no_programs),
-                        /*FileExts =*/ new String[]{Persistent.ProgExt},
-                        /*SpecialItem =*/ getBuiltinPrograms(Main.this)
+                                        R.id.select_saved,
+                                        getString( R.string.prog_prompt ),
+                                        getString( R.string.no_programs ),
+                                        new String[] { Persistent.ProgExt },
+                                        getBuiltinPrograms( Main.this )
                                     ),
                                 new Picker.PickerAltList
                                     (
-                        /*RadioButtonID =*/ R.id.select_libraries,
-                        /*Prompt =*/ getString(R.string.module_prompt),
-                        /*NoneFound =*/ getString(R.string.no_modules),
-                        /*FileExts =*/ new String[]{Persistent.LibExt},
-                        /*SpecialItem =*/ getBuiltinLibraries(Main.this)
-                        /* item representing selection of built-in libraries */
+                                        R.id.select_libraries,
+                                        getString( R.string.module_prompt ),
+                                        getString( R.string.no_modules ),
+                                        new String[] { Persistent.LibExt },
+                                        getBuiltinLibraries( Main.this )
+                                        /* item representing selection of built-in libraries */
                                     ),
                             };
-                        PickerExtra = (ViewGroup) getLayoutInflater().inflate(R.layout.prog_type, null);
+                        PickerExtra = ( ViewGroup ) getLayoutInflater().inflate(
+                            R.layout.prog_type, null );
+
+                        // check if directories exists to avoid messages about unreadable location
+
+                        ArrayList< String > CalcDirs = new ArrayList< String >();
+
+                        final String ProgramsDir =
+                            android.os.Environment.getExternalStorageDirectory()
+                                .getAbsolutePath() + "/" + Persistent.ProgramsDir;
+
+                        final String DataDir =
+                            android.os.Environment.getExternalStorageDirectory()
+                                .getAbsolutePath() + "/" + Persistent.DataDir;
+
+                        if ( new java.io.File( ProgramsDir ).exists() )
+                          {
+                            CalcDirs.add( Persistent.ProgramsDir );
+                          }
+                        if ( new java.io.File( DataDir ).exists() )
+                          {
+                            CalcDirs.add( Persistent.DataDir );
+                          }
+
                         Picker.Launch
                             (
-                    /*Acting =*/ Main.this,
-                    /*SelectLabel =*/ getString(R.string.load),
-                    /*RequestCode =*/ LoadProgramRequest,
-                    /*Extra =*/ PickerExtra,
-                    /*LookIn =*/ Persistent.ExternalCalcDirectories,
-                    /*AltLists =*/ AltLists
+                                Main.this,
+                                getString( R.string.load ),
+                                LoadProgramRequest,
+                                PickerExtra,
+                                CalcDirs.toArray( new String[ 0 ] ),
+                                AltLists
                             );
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.opt_feedback),
+                TheMenu.add( R.string.opt_feedback ),
                 new Runnable()
                   {
                     public void run()
                       {
-                        new FeedbackDialog(Main.this).show();
+                        new FeedbackDialog( Main.this ).show();
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.save_program_as),
+                TheMenu.add( R.string.save_program_as ),
                 new Runnable()
                   {
                     public void run()
                       {
                         SaveAs.Launch
                             (
-                        /*Acting =*/ Main.this,
-                        /*RequestCode =*/ SaveProgramRequest,
-                        /*SaveWhat =*/ getString(R.string.program),
-                        /*SaveWhere =*/ Persistent.ProgramsDir,
-                        /*Extra =*/ null,
-                        /*FileExt =*/ Persistent.ProgExt
+                                Main.this,
+                                SaveProgramRequest,
+                                getString( R.string.program ),
+                                Persistent.ProgramsDir,
+                                null,
+                                Persistent.ProgExt
                             );
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.import_data),
+                TheMenu.add( R.string.import_data ),
                 new Runnable()
                   {
                     public void run()
@@ -661,16 +651,16 @@ public class Main extends android.app.Activity
                                         public void run()
                                           {
                                             LaunchImportPicker();
-                                          } /*run*/
+                                          }
                                       }
                                 ).show();
-                          } /*if*/
+                          }
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.export_data),
+                TheMenu.add( R.string.export_data ),
                 new Runnable()
                   {
                     public void run()
@@ -697,13 +687,13 @@ public class Main extends android.app.Activity
                                     R.string.query_replace_export,
                                     DoIt
                                 ).show();
-                          } /*if*/
+                          }
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.about_me),
+                TheMenu.add( R.string.about_me ),
                 new Runnable()
                   {
                     public void run()
@@ -712,31 +702,39 @@ public class Main extends android.app.Activity
                         try
                           {
                             VersionName =
-                                getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-                          } catch ( android.content.pm.PackageManager.NameNotFoundException CantFindMe )
+                                getPackageManager().getPackageInfo(
+                                    getPackageName(), 0 ).versionName;
+                          }
+                        catch ( android.content.pm.PackageManager.NameNotFoundException CantFindMe )
                           {
-                            VersionName = "CANTFINDME"; /*!*/
-                          } /*catch*/
-                        ShowHelp("help/about.html", new String[]{VersionName});
+                            VersionName = "Xperimental";
+                          }
+                        Date     today = new Date();
+                        Calendar cal   = Calendar.getInstance();
+                        cal.setTime( today );
+                        String YearStr = String.valueOf( cal.get( Calendar.YEAR ) );
+                        ShowHelp(
+                            "help/about.html",
+                            new String[] { VersionName, YearStr, YearStr }
+                        );
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
         OptionsMenu.put
             (
-                TheMenu.add(R.string.turn_off),
+                TheMenu.add( R.string.turn_off ),
                 new Runnable()
                   {
                     public void run()
                       {
                         ShuttingDown = true; /* don't save any state */
-                        Persistent.ResetState(Main.this);
+                        Persistent.ResetState( Main.this );
                         finish(); /* start afresh next time */
                       } /*run*/
-                  } /*Runnable*/
+                  }
             );
-        return
-            true;
-      } /*onCreateOptionsMenu*/
+        return true;
+      }
 
     @Override
     public void onCreateContextMenu
@@ -748,10 +746,10 @@ public class Main extends android.app.Activity
       {
         if ( !Global.BGTaskInProgress() && !Global.Calc.ProgMode && !Global.Calc.TaskRunning )
           {
-            ContextMenu = new java.util.HashMap<android.view.MenuItem, Runnable>();
+            ContextMenu = new java.util.HashMap< android.view.MenuItem, Runnable >();
             ContextMenu.put
                 (
-                    TheMenu.add(R.string.copy_number),
+                    TheMenu.add( R.string.copy_number ),
                     new Runnable()
                       {
                         public void run()
@@ -761,35 +759,35 @@ public class Main extends android.app.Activity
                                 String NumString = Global.Calc.CurDisplay;
                                 if ( NumString.length() > 3 )
                                   {
-                                /* put in explicit "e" like most other software expects */
-                                    if ( NumString.charAt(NumString.length() - 3) == ' ' )
+                                    /* put in explicit "e" like most other software expects */
+                                    if ( NumString.charAt( NumString.length() - 3 ) == ' ' )
                                       {
                                         NumString =
-                                            NumString.substring(0, NumString.length() - 3)
+                                            NumString.substring( 0, NumString.length() - 3 )
                                                 +
                                                 "e+"
                                                 +
-                                                NumString.substring(NumString.length() - 2);
-                                    /* leave off the space */
+                                                NumString.substring( NumString.length() - 2 );
+                                        /* leave off the space */
                                       }
-                                    else if ( NumString.charAt(NumString.length() - 3) == '-' )
+                                    else if ( NumString.charAt( NumString.length() - 3 ) == '-' )
                                       {
                                         NumString =
-                                            NumString.substring(0, NumString.length() - 3)
+                                            NumString.substring( 0, NumString.length() - 3 )
                                                 +
                                                 "e"
                                                 +
-                                                NumString.substring(NumString.length() - 3);
-                                      } /*if*/
-                                  } /*if*/
-                                Clipboard.setText(NumString);
-                              } /*if*/
+                                                NumString.substring( NumString.length() - 3 );
+                                      }
+                                  }
+                                Clipboard.setText( NumString );
+                              }
                           } /*run*/
-                      } /*Runnable*/
+                      }
                 );
             ContextMenu.put
                 (
-                    TheMenu.add(R.string.copy_full_number),
+                    TheMenu.add( R.string.copy_full_number ),
                     new Runnable()
                       {
                         public void run()
@@ -798,15 +796,16 @@ public class Main extends android.app.Activity
                               {
                                 Clipboard.setText
                                     (
-                                        Global.Calc.X.formatString(Global.StdLocale, Global.NrSigFigures)
+                                        Global.Calc.X.formatString(
+                                            Global.StdLocale, Global.NrSigFigures )
                                     );
-                              } /*if*/
+                              }
                           } /*run*/
-                      } /*Runnable*/
+                      }
                 );
             ContextMenu.put
                 (
-                    TheMenu.add(R.string.paste_number),
+                    TheMenu.add( R.string.paste_number ),
                     new Runnable()
                       {
                         public void run()
@@ -822,14 +821,15 @@ public class Main extends android.app.Activity
                                     break;
                                   NumString = NumChars.toString();
                                 }
-                                for ( boolean TriedMassage = false; ; )
+                                for ( boolean TriedMassage = false ; ; )
                                   {
                                     try
                                       {
-                                        X = new Number(NumString);
+                                        X = new Number( NumString );
                                         OK = true;
                                         break;
-                                      } catch ( NumberFormatException BadNum )
+                                      }
+                                    catch ( NumberFormatException BadNum )
                                       {
                                         if ( !TriedMassage )
                                           {
@@ -838,18 +838,22 @@ public class Main extends android.app.Activity
                                                 NumString.length() > 3
                                                     &&
                                                     (
-                                                        NumString.charAt(NumString.length() - 3) == '-'
+                                                        NumString.charAt(
+                                                            NumString.length() - 3 ) == '-'
                                                             ||
-                                                            NumString.charAt(NumString.length() - 3) == ' '
+                                                            NumString.charAt(
+                                                                NumString.length() - 3 ) == ' '
                                                     )
                                                     &&
-                                                    NumString.charAt(NumString.length() - 4) != 'e'
+                                                    NumString.charAt(
+                                                        NumString.length() - 4 ) != 'e'
                                                     &&
-                                                    NumString.charAt(NumString.length() - 4) != 'E'
+                                                    NumString.charAt(
+                                                        NumString.length() - 4 ) != 'E'
                                                 )
                                               {
                                                 NumString =
-                                                    NumString.substring(0, NumString.length() - 3)
+                                                    NumString.substring( 0, NumString.length() - 3 )
                                                         +
                                                         "e"
                                                         +
@@ -858,49 +862,50 @@ public class Main extends android.app.Activity
                                                                 NumString.length()
                                                                     -
                                                                     (
-                                                                        NumString.charAt(NumString.length() - 3)
+                                                                        NumString.charAt(
+                                                                            NumString.length() - 3 )
                                                                             ==
                                                                             ' '
-                                                                            ?
-                                                                            2 /* leave off the space */
-                                                                            :
-                                                                            3 /* include the minus sign */
+                                                                        ?
+                                                                        2 /* leave off the space */
+                                                                        :
+                                                                        3 /* include the minus sign */
                                                                     )
                                                             );
-                                              } /*if*/
-                                          } /*if*/
-                                      } /*try/catch*/
+                                              }
+                                          }
+                                      }
                                     if ( TriedMassage )
                                       break;
                                     TriedMassage = true;
-                                  } /*for*/
+                                  }
                                 if ( !OK )
                                   break;
-                                Global.Calc.SetX(X, false);
+                                Global.Calc.SetX( X, false );
                               }
                             while ( false );
                             if ( !OK )
                               {
                                 Toast.makeText
                                     (
-                              /*context =*/ Main.this,
-                              /*text =*/ getString(R.string.paste_nan),
-                              /*duration =*/ Toast.LENGTH_SHORT
+                                        Main.this,
+                                        getString( R.string.paste_nan ),
+                                        Toast.LENGTH_SHORT
                                     ).show();
-                              } /*if*/
+                              }
                           } /*run*/
-                      } /*Runnable*/
+                      }
                 );
           }
         else
           {
             ContextMenu = null;
-          } /*if*/
-      } /*onCreateContextMenu*/
+          }
+      }
 
     void BuildActivityResultActions()
       {
-        ActivityResultActions = new java.util.HashMap<Integer, RequestResponseAction>();
+        ActivityResultActions = new android.util.SparseArray< RequestResponseAction >();
         ActivityResultActions.put
             (
                 LoadProgramRequest,
@@ -912,24 +917,26 @@ public class Main extends android.app.Activity
                             Intent Data
                         )
                       {
-                        final String ProgName = Data.getData().getPath();
-                        final int SelId = Data.getIntExtra(Picker.SpeIndexID, 0);
-                        final int FirstBuiltinId = Data.getIntExtra(Picker.BuiltinIndexID, 0);
-                        final boolean IsLib = Data.getIntExtra(Picker.AltIndexID, 0) != 0;
-                    /* assumes AltLists array passed to Picker has element 0 for
-                        saved programs and element 1 for libraries */
-                        final boolean LoadingBuiltinLibrary = IsLib && ProgName.intern() == "/";
-                    /* It appears onActivityResult is liable to be called before
-                    onResume. Therefore I do additional restoring/saving state
-                    here to ensure the saved state includes the newly-loaded
-                    program/library. */
+                        final String  ProgName       = Data.getData().getPath();
+                        final int     SelId          = Data.getIntExtra( Picker.SpeIndexID, 0 );
+                        final int     FirstBuiltinId = Data.getIntExtra( Picker.BuiltinIndexID, 0 );
+                        final boolean IsLib          = Data.getIntExtra(
+                            Picker.AltIndexID, 0 ) != 0;
+              /* assumes AltLists array passed to Picker has element 0 for
+                 saved programs and element 1 for libraries */
+                        final boolean LoadingBuiltinLibrary = IsLib && ProgName.intern().equals(
+                            "/" );
+              /* It appears onActivityResult is liable to be called before
+                 onResume. Therefore I do additional restoring/saving state
+                 here to ensure the saved state includes the newly-loaded
+                 program/library. */
                         class LoadProgram extends Global.Task
                           {
-                            private static final int LOAD_STATE = 0;
+                            private static final int LOAD_STATE           = 0;
                             private static final int LOAD_BUILTIN_LIBRARY = 1;
-                            private static final int LOAD_PROG = 2;
-                            private static final int LOAD_DONE = 3;
-                            private int Step;
+                            private static final int LOAD_PROG            = 2;
+                            private static final int LOAD_DONE            = 3;
+                            private int         Step;
                             private Global.Task Subtask;
 
                             private LoadProgram
@@ -939,18 +946,21 @@ public class Main extends android.app.Activity
                               {
                                 this.Step = Step;
                                 Subtask = null;
-                              } /*LoadProgram*/
+                              }
 
-                            public LoadProgram()
+                            private LoadProgram()
                               {
                                 this
                                     (
-                                        StateLoaded ?
-                                            LoadingBuiltinLibrary ? LOAD_BUILTIN_LIBRARY : LOAD_PROG
-                                            :
-                                            LOAD_STATE
+                                        StateLoaded
+                                        ?
+                                        LoadingBuiltinLibrary
+                                        ? LOAD_BUILTIN_LIBRARY
+                                        : LOAD_PROG
+                                        :
+                                        LOAD_STATE
                                     );
-                              } /*LoadProgram*/
+                              }
 
                             @Override
                             public boolean PreRun()
@@ -958,35 +968,36 @@ public class Main extends android.app.Activity
                                 switch ( Step )
                                   {
                                     case LOAD_STATE:
-                                      Subtask = new Persistent.RestoreState(Main.this);
-                                  /* if not already done */
+                                      Subtask = new Persistent.RestoreState( Main.this );
+                                      /* if not already done */
                                       break;
                                     case LOAD_BUILTIN_LIBRARY:
-                                      Subtask = new Persistent.LoadBuiltin(Main.this, true, SelId);
+                                      Subtask = new Persistent.LoadBuiltin(
+                                          Main.this, true, SelId );
                                       break;
                                     case LOAD_PROG:
                                       if ( SelId >= FirstBuiltinId )
                                         {
                                           // a built-in programs
-                                          Subtask = new Persistent.LoadBuiltin(Main.this, false, SelId - FirstBuiltinId);
+                                          Subtask = new Persistent.LoadBuiltin(
+                                              Main.this, false, SelId - FirstBuiltinId );
                                         }
                                       else
                                         {
                                           Subtask = new Persistent.Load
                                               (
-                                      /*FromFile =*/ ProgName,
-                                      /*Libs =*/ IsLib,
-                                      /*CalcState =*/ false,
-                                      /*Disp =*/ Global.Disp,
-                                      /*Buttons =*/ Global.Buttons,
-                                      /*Calc =*/ Global.Calc
+                                                  ProgName,
+                                                  IsLib,
+                                                  false,
+                                                  Global.Disp,
+                                                  Global.Buttons,
+                                                  Global.Calc
                                               );
                                         }
                                       break;
-                                  } /*switch*/
-                                return
-                                    Subtask != null && Subtask.PreRun();
-                              } /*PreRun*/
+                                  }
+                                return Subtask != null && Subtask.PreRun();
+                              }
 
                             @Override
                             public void BGRun()
@@ -1004,15 +1015,16 @@ public class Main extends android.app.Activity
                                             Subtask.BGRun();
                                             if ( Subtask.TaskFailure != null )
                                               {
-                                                SetStatus(-1, Subtask.TaskFailure);
-                                              } /*if*/
-                                          } catch ( Persistent.DataFormatException Failed )
+                                                SetStatus( -1, Subtask.TaskFailure );
+                                              }
+                                          }
+                                        catch ( Persistent.DataFormatException Failed )
                                           {
-                                            SetStatus(-1, Failed);
-                                          } /*try*/
-                                      } /*if*/
-                                  } /*if*/
-                              } /*BGRun*/
+                                            SetStatus( -1, Failed );
+                                          }
+                                      }
+                                  }
+                              }
 
                             @Override
                             public void PostRun()
@@ -1026,15 +1038,15 @@ public class Main extends android.app.Activity
                                           StateLoaded = true;
                                           Global.StartBGTask
                                               (
-                                          /*RunWhat =*/
-                                          new LoadProgram
-                                              (
-                                                  LoadingBuiltinLibrary ?
-                                                      LOAD_BUILTIN_LIBRARY
-                                                      :
-                                                      LOAD_PROG
-                                              ),
-                                          /*ProgressMessage =*/ null
+                                                  new LoadProgram
+                                                      (
+                                                          LoadingBuiltinLibrary
+                                                          ?
+                                                          LOAD_BUILTIN_LIBRARY
+                                                          :
+                                                          LOAD_PROG
+                                                      ),
+                                                  null
                                               );
                                           break;
                                         case LOAD_BUILTIN_LIBRARY:
@@ -1043,74 +1055,73 @@ public class Main extends android.app.Activity
                                             {
                                               Toast.makeText
                                                   (
-                                              /*context =*/ Main.this,
-                                              /*text =*/
-                                              String.format
-                                                  (
-                                                      Global.StdLocale,
-                                                      getString
+                                                      Main.this,
+                                                      String.format
                                                           (
-                                                              IsLib ?
-                                                                  R.string.library_loaded
-                                                                  :
-                                                                  R.string.program_loaded
+                                                              Global.StdLocale,
+                                                              getString
+                                                                  (
+                                                                      IsLib
+                                                                      ?
+                                                                      R.string.library_loaded
+                                                                      :
+                                                                      R.string.program_loaded
+                                                                  ),
+                                                              LoadingBuiltinLibrary
+                                                              ?
+                                                              BuiltinLibraries[ SelId ].getName(
+                                                                  Main.this )
+                                                              :
+                                                              new java.io.File( ProgName ).getName()
                                                           ),
-                                                      LoadingBuiltinLibrary ?
-                                                          BuiltinLibraries[SelId].getName(Main.this)
-                                                          :
-                                                          new java.io.File(ProgName).getName()
-                                                  ),
-                                              /*duration =*/
-                                              Toast.LENGTH_SHORT
+                                                      Toast.LENGTH_SHORT
                                                   ).show();
                                               Global.StartBGTask
                                                   (
-                                              /*RunWhat =*/
-                                              new Global.Task()
-                                                {
-                                                  @Override
-                                                  public void BGRun()
-                                                    {
-                                                      Persistent.SaveState(Main.this, IsLib);
-                                                    } /*BGRun*/
-                                                } /*Task*/,
-                                              /*ProgressMessage =*/ getString(R.string.saving)
+                                                      new Global.Task()
+                                                        {
+                                                          @Override
+                                                          public void BGRun()
+                                                            {
+                                                              Persistent.SaveState(
+                                                                  Main.this, IsLib );
+                                                            } /*BGRun*/
+                                                        } /*Task*/,
+                                                      getString( R.string.saving )
                                                   );
                                             }
                                           else
                                             {
                                               Toast.makeText
                                                   (
-                                              /*context =*/ Main.this,
-                                              /*text =*/
-                                              String.format
-                                                  (
-                                                      Global.StdLocale,
-                                                      getString(R.string.file_load_error),
-                                                      TaskFailure.toString()
-                                                  ),
-                                              /*duration =*/ Toast.LENGTH_LONG
+                                                      Main.this,
+                                                      String.format
+                                                          (
+                                                              Global.StdLocale,
+                                                              getString( R.string.file_load_error ),
+                                                              TaskFailure.toString()
+                                                          ),
+                                                      Toast.LENGTH_LONG
                                                   ).show();
-                                            } /*if*/
+                                            }
                                           if ( Step == LOAD_PROG )
                                             {
                                               // we have loaded a new user's program, select it
-                                              Global.Calc.SelectProgram(0, false);
+                                              Global.Calc.SelectProgram( 0, false );
                                             }
                                           break;
-                                      } /*switch*/
-                                  } /*if*/
-                              } /*PostRun*/
+                                      }
+                                  }
+                              }
+                          }
 
-                          } /*LoadProgram*/
-                        ;
                         Global.StartBGTask
                             (
-                        /*RunWhat =*/ new LoadProgram(),
-                        /*ProgressMessage =*/ getString(R.string.loading)
+                                new LoadProgram(),
+                                getString( R.string.loading )
                             );
                       } /*Run*/
-                  } /*RequestResponseAction*/
+                  }
             );
         ActivityResultActions.put
             (
@@ -1124,80 +1135,75 @@ public class Main extends android.app.Activity
                         )
                       {
                         final String TheName =
-                            Data.getData().getPath().substring(1) /* ignoring leading slash */
-                                +
-                                Persistent.ProgExt;
+                            Data.getData().getPath().substring( 1 ) /* ignoring leading slash */
+                                + Persistent.ProgExt;
                         final String SaveDir =
                             android.os.Environment.getExternalStorageDirectory()
-                                .getAbsolutePath()
-                                +
-                                "/"
-                                +
-                                Persistent.ProgramsDir;
+                                .getAbsolutePath() + "/" + Persistent.ProgramsDir;
                         Global.StartBGTask
                             (
-                        /*RunWhat =*/
-                        new Global.Task()
-                          {
-                            @Override
-                            public void BGRun()
-                              {
-                                try
-                                  {
-                                    new java.io.File(SaveDir).mkdirs();
-                                    Persistent.Save
-                                        (
-                                        /*Buttons =*/ Global.Buttons,
-                                        /*Calc =*/ Global.Calc,
-                                        /*Libs =*/ false,
-                                        /*CalcState =*/ false,
-                                        /*ToFile =*/ SaveDir + "/" + TheName
-                                        );
-                                  } catch ( RuntimeException Failed )
-                                  {
-                                    SetStatus(-1, Failed);
-                                  } /*try*/
-                              } /*BGRun*/
 
-                            @Override
-                            public void PostRun()
-                              {
-                                if ( TaskStatus == 0 )
+                                new Global.Task()
                                   {
-                                    Toast.makeText
-                                        (
-                                        /*context =*/ Main.this,
-                                        /*text =*/
-                                        String.format
-                                            (
-                                                Global.StdLocale,
-                                                getString(R.string.program_saved),
-                                                TheName
-                                            ),
-                                        /*duration =*/ Toast.LENGTH_SHORT
-                                        ).show();
-                                  }
-                                else
-                                  {
-                                    Toast.makeText
-                                        (
-                                        /*context =*/ Main.this,
-                                        /*text =*/
-                                        String.format
-                                            (
-                                                Global.StdLocale,
-                                                getString(R.string.program_save_error),
-                                                TaskFailure.toString()
-                                            ),
-                                        /*duration =*/ Toast.LENGTH_LONG
-                                        ).show();
-                                  } /*if*/
-                              } /*PostRun*/
-                          } /*Global.Task()*/,
-                        /*ProgressMessage =*/ getString(R.string.saving)
+                                    @Override
+                                    public void BGRun()
+                                      {
+                                        try
+                                          {
+                                            new java.io.File( SaveDir ).mkdirs();
+                                            Persistent.Save
+                                                (
+                                                    Global.Buttons,
+                                                    Global.Calc,
+                                                    false,
+                                                    false,
+                                                    SaveDir + "/" + TheName
+                                                );
+                                          }
+                                        catch ( RuntimeException Failed )
+                                          {
+                                            SetStatus( -1, Failed );
+                                          }
+                                      }
+
+                                    @Override
+                                    public void PostRun()
+                                      {
+                                        if ( TaskStatus == 0 )
+                                          {
+                                            Toast.makeText
+                                                (
+                                                    Main.this,
+                                                    String.format
+                                                        (
+                                                            Global.StdLocale,
+                                                            getString( R.string.program_saved ),
+                                                            TheName
+                                                        ),
+                                                    Toast.LENGTH_SHORT
+                                                ).show();
+                                          }
+                                        else
+                                          {
+                                            Toast.makeText
+                                                (
+                                                    Main.this,
+                                                    String.format
+                                                        (
+                                                            Global.StdLocale,
+                                                            getString(
+                                                                R.string.program_save_error ),
+                                                            TaskFailure.toString()
+                                                        ),
+                                                    Toast.LENGTH_LONG
+                                                ).show();
+                                          }
+                                      }
+                                  },
+                                getString( R.string.saving )
                             );
                       } /*Run*/
-                  } /*RequestResponseAction*/
+                  }
             );
         ActivityResultActions.put
             (
@@ -1214,36 +1220,36 @@ public class Main extends android.app.Activity
                         try
                           {
                             Global.Calc.ClearImport();
-                            Global.Import.ImportData(FileName);
+                            Global.Import.ImportData( FileName );
                             Toast.makeText
                                 (
-                            /*context =*/ Main.this,
-                            /*text =*/
-                            String.format
-                                (
-                                    Global.StdLocale,
-                                    getString(R.string.import_started),
-                                    FileName
-                                ),
-                            /*duration =*/ Toast.LENGTH_SHORT
+                                    Main.this,
+                                    String.format
+                                        (
+                                            Global.StdLocale,
+                                            getString( R.string.import_started ),
+                                            FileName
+                                        ),
+                                    Toast.LENGTH_SHORT
                                 ).show();
-                          } catch ( Persistent.DataFormatException Failed )
+
+                          }
+                        catch ( Persistent.DataFormatException Failed )
                           {
                             Toast.makeText
                                 (
-                            /*context =*/ Main.this,
-                            /*text =*/
-                            String.format
-                                (
-                                    Global.StdLocale,
-                                    getString(R.string.file_load_error),
-                                    Failed.toString()
-                                ),
-                            /*duration =*/ Toast.LENGTH_LONG
+                                    Main.this,
+                                    String.format
+                                        (
+                                            Global.StdLocale,
+                                            getString( R.string.file_load_error ),
+                                            Failed.toString()
+                                        ),
+                                    Toast.LENGTH_LONG
                                 ).show();
-                          } /*try*/
+                          }
                       } /*Run*/
-                  } /*RequestResponseAction*/
+                  }
             );
         ActivityResultActions.put
             (
@@ -1272,49 +1278,48 @@ public class Main extends android.app.Activity
                                               "/"
                                               +
                                               Persistent.DataDir;
-                                      new java.io.File(SaveDir).mkdirs();
+                                      new java.io.File( SaveDir ).mkdirs();
                                       FileName = SaveDir + FileName;
-                                  /* note FileName will have leading slash */
-                                    } /*if*/
-                                  Global.Export.Open(FileName, ExportAppend, ExportNumbersOnly);
+                                      /* note FileName will have leading slash */
+                                    }
+                                  Global.Export.Open( FileName, ExportAppend, ExportNumbersOnly );
                                   Toast.makeText
                                       (
-                                  /*context =*/ Main.this,
-                                  /*text =*/
-                                  String.format
-                                      (
-                                          Global.StdLocale,
-                                          getString(R.string.export_started),
-                                          FileName
-                                      ),
-                                  /*duration =*/ Toast.LENGTH_SHORT
+                                          Main.this,
+                                          String.format
+                                              (
+                                                  Global.StdLocale,
+                                                  getString( R.string.export_started ),
+                                                  FileName
+                                              ),
+                                          Toast.LENGTH_SHORT
                                       ).show();
-                                } /*try*/ catch ( RuntimeException Failed )
+                                }
+                              catch ( RuntimeException Failed )
                                 {
                                   Toast.makeText
                                       (
-                                  /*context =*/ Main.this,
-                                  /*text =*/
-                                  String.format
-                                      (
-                                          Global.StdLocale,
-                                          getString(R.string.application_error),
-                                          Failed.toString()
-                                      ),
-                                  /*duration =*/ Toast.LENGTH_LONG
+                                          Main.this,
+                                          String.format
+                                              (
+                                                  Global.StdLocale,
+                                                  getString( R.string.export_error ),
+                                                  Failed.toString()
+                                              ),
+                                          Toast.LENGTH_LONG
                                       ).show();
-                                } /*catch*/
+                                }
                               break;
                             case SwitchAppend:
                             case SwitchSaveAs:
                               ExportAppend = ResultCode == SwitchAppend;
                               LaunchExportPicker();
                               break;
-                          } /*switch*/
+                          }
                       } /*Run*/
-                  } /*RequestResponseAction*/
+                  }
             );
-      } /*BuildActivityResultActions*/
+      }
 
     @Override
     public boolean onOptionsItemSelected
@@ -1322,16 +1327,15 @@ public class Main extends android.app.Activity
             android.view.MenuItem TheItem
         )
       {
-        boolean Handled = false;
-        final Runnable Action = OptionsMenu.get(TheItem);
+        boolean        Handled = false;
+        final Runnable Action  = OptionsMenu.get( TheItem );
         if ( Action != null )
           {
             Action.run();
             Handled = true;
-          } /*if*/
-        return
-            Handled;
-      } /*onOptionsItemSelected*/
+          }
+        return Handled;
+      }
 
     @Override
     public boolean onContextItemSelected
@@ -1339,16 +1343,15 @@ public class Main extends android.app.Activity
             android.view.MenuItem TheItem
         )
       {
-        boolean Handled = false;
-        final Runnable Action = ContextMenu.get(TheItem);
+        boolean        Handled = false;
+        final Runnable Action  = ContextMenu.get( TheItem );
         if ( Action != null )
           {
             Action.run();
             Handled = true;
-          } /*if*/
-        return
-            Handled;
-      } /*onContextItemSelected*/
+          }
+        return Handled;
+      }
 
     @Override
     public void onActivityResult
@@ -1364,38 +1367,28 @@ public class Main extends android.app.Activity
         SaveAsExtra = null;
         if ( ResultCode != android.app.Activity.RESULT_CANCELED )
           {
-            final RequestResponseAction Action = ActivityResultActions.get(RequestCode);
+            final RequestResponseAction Action = ActivityResultActions.get( RequestCode );
             if ( Action != null )
               {
-                Action.Run(ResultCode, Data);
-              } /*if*/
-              /*  This code works for a "picker"
-            else
-              {
-                if( ( RequestCode==CHOOSE_FILE_RESULT )
-                    && ResultCode==RESULT_OK)
-                  {
-                    Uri selectedfile = Data.getData(); //The uri with the location of the file
-                    Toast.makeText(getApplicationContext(), selectedfile.toString(), Toast.LENGTH_SHORT).show();
-                  }
-              } */
-          } /*if*/
-      } /*onActivityResult*/
+                Action.Run( ResultCode, Data );
+              }
+          }
+      }
 
     void CheckDisplayOrientation()
-      /* ensures that landscape orientation is only allowed on screens that
-        are tall enough. */
-    {
-      final android.view.Display MainDisplay = getWindowManager().getDefaultDisplay();
-      final android.util.DisplayMetrics MainMetrics = new android.util.DisplayMetrics();
-      MainDisplay.getMetrics(MainMetrics);
-      if ( MainMetrics.heightPixels / MainMetrics.densityDpi * 160.0f <= 640.0f )
-        {
-          /* Lock to portrait orientation on phone-sized screens. Note once I do this,
-            I stop getting further notifications of orientation change. */
-          setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } /*if*/
-    } /*CheckDisplayOrientation*/
+      {
+    /* ensures that landscape orientation is only allowed on screens that
+       are tall enough. */
+        final android.view.Display        MainDisplay = getWindowManager().getDefaultDisplay();
+        final android.util.DisplayMetrics MainMetrics = new android.util.DisplayMetrics();
+        MainDisplay.getMetrics( MainMetrics );
+        if ( MainMetrics.heightPixels / MainMetrics.densityDpi * 160.0f <= 640.0f )
+          {
+      /* Lock to portrait orientation on phone-sized screens. Note once I do this,
+         I stop getting further notifications of orientation change. */
+            setRequestedOrientation( android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT );
+          }
+      }
 
     void PostNotification
         (
@@ -1405,35 +1398,35 @@ public class Main extends android.app.Activity
       {
         final android.app.Notification NotifyDone = new android.app.Notification
             (
-            /*icon =*/ R.drawable.icon,
-            /*tickerText =*/ getString(R.string.app_name),
-            /*when =*/ System.currentTimeMillis()
+                R.drawable.icon,
+                getString( R.string.app_name ),
+                System.currentTimeMillis()
             );
         NotifyDone.contentView = new android.widget.RemoteViews
             (
                 "net.obry.ti5x",
                 R.layout.prog_status
             );
-        NotifyDone.contentView.setTextViewText(R.id.notify_prog_status, getString(MsgID));
+        NotifyDone.contentView.setTextViewText( R.id.notify_prog_status, getString( MsgID ) );
         NotifyDone.contentIntent = android.app.PendingIntent.getActivity
             (
-            /*context =*/ Main.this,
-            /*requestCode =*/ 0,
-            /*intent =*/ new Intent()
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                .setClass(Main.this, Main.class),
-            /*flags =*/ 0
+                Main.this,
+                0,
+                new Intent()
+                    .addFlags( Intent.FLAG_ACTIVITY_CLEAR_TOP )
+                    .setClass( Main.this, Main.class ),
+                0
             );
         if ( Ongoing )
           {
-            NotifyDone.flags = NotifyDone.FLAG_ONGOING_EVENT;
+            NotifyDone.flags = Notification.FLAG_ONGOING_EVENT;
           }
         else
           {
-            NotifyDone.flags = NotifyDone.FLAG_AUTO_CANCEL;
-          } /*if*/
-        Notiman.notify(NotifyProgramDone, NotifyDone);
-      } /*PostNotification*/
+            NotifyDone.flags = Notification.FLAG_AUTO_CANCEL;
+          }
+        Notiman.notify( NotifyProgramDone, NotifyDone );
+      }
 
     @Override
     public void onCreate
@@ -1441,45 +1434,43 @@ public class Main extends android.app.Activity
             android.os.Bundle savedInstanceState
         )
       {
-        super.onCreate(savedInstanceState);
-        getWindow().requestFeature(android.view.Window.FEATURE_CUSTOM_TITLE);
-        setContentView(R.layout.main);
-
-        Global.Disp = (Display) findViewById(R.id.display);
-        Global.Label = (LabelCard) findViewById(R.id.help_card);
-        Global.Buttons = (ButtonGrid) findViewById(R.id.buttons);
-        Global.ProgressWidgets = findViewById(R.id.progress);
+        super.onCreate( savedInstanceState );
+        getWindow().requestFeature( android.view.Window.FEATURE_CUSTOM_TITLE );
+        setContentView( R.layout.main );
+        Global.Disp = ( Display ) findViewById( R.id.display );
+        Global.Label = ( LabelCard ) findViewById( R.id.help_card );
+        Global.Buttons = ( ButtonGrid ) findViewById( R.id.buttons );
+        Global.ProgressWidgets = findViewById( R.id.progress );
         Global.ProgressMessage =
-            (android.widget.TextView) Global.ProgressWidgets.findViewById(R.id.progress_message);
+            ( android.widget.TextView ) Global.ProgressWidgets.findViewById(
+                R.id.progress_message );
         Global.UIRun = new android.os.Handler();
-        Global.Print = new Printer(this);
-        Global.Calc = new State(this);
+        Global.Print = new Printer( this );
+        Global.Calc = new State( this );
         Global.Import = new Importer();
-        Global.Export = new Exporter(this);
+        Global.Export = new Exporter( this );
         Global.Test = new Tester();
-
         BuildActivityResultActions();
-        Clipboard = (android.text.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-        registerForContextMenu(Global.Disp);
-        Notiman = (android.app.NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        /**
+        Clipboard = ( android.text.ClipboardManager ) getSystemService( CLIPBOARD_SERVICE );
+        registerForContextMenu( Global.Disp );
+        Notiman = ( android.app.NotificationManager ) getSystemService( NOTIFICATION_SERVICE );
+
+        /*
          * check to see if we should ask for permissions before we do anything else
          */
-        mLayout = findViewById(R.id.keyboard_main_layout);
+        mLayout = findViewById( R.id.keyboard_main_layout );
 
-        if ( !PermissionUtil.hasCorrectPermission(this) )
+        if ( !PermissionUtil.hasCorrectPermission( this ) )
           {
             // Storage READ permission has not been granted yet. Request it directly.
             ActivityCompat.requestPermissions(
                 this,
-                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                READ_EXTERNAL_RESULT);
-
-            // Storage WRITE permission has not been granted yet. Request it directly.
-            ActivityCompat.requestPermissions(
-                this,
-                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                WRITE_EXTERNAL_RESULT);
+                new String[] {
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                },
+                READ_WRITE_EXTERNAL_RESULT
+            );
           }
 
         Global.Calc.OnStop = new Runnable()
@@ -1488,18 +1479,12 @@ public class Main extends android.app.Activity
               {
                 if ( !hasWindowFocus() )
                   {
-                    PostNotification(R.string.prog_done, false);
-                  } /*if*/
-              } /*run*/
-          } /*Runnable*/;
+                    PostNotification( R.string.prog_done, false );
+                  }
+              }
+          };
         CheckDisplayOrientation();
-
-        /**
-         * File Storage Location (This code works as a "Picker")
-         **/
-       // openFileUsingFM("*/*");
-
-      } /*onCreate*/
+      }
 
     @Override
     public void onPostCreate
@@ -1507,13 +1492,13 @@ public class Main extends android.app.Activity
             android.os.Bundle SavedInstanceState
         )
       {
-        super.onPostCreate(SavedInstanceState);
+        super.onPostCreate( SavedInstanceState );
         getWindow().setFeatureInt
             (
                 android.view.Window.FEATURE_CUSTOM_TITLE,
                 R.layout.title_bar
             );
-        ((android.widget.Button) findViewById(R.id.action_help)).setOnClickListener
+        findViewById( R.id.action_help ).setOnClickListener
             (
                 new View.OnClickListener()
                   {
@@ -1522,15 +1507,11 @@ public class Main extends android.app.Activity
                             View ButtonView
                         )
                       {
-                        ShowHelp("help/index.html", null);
+                        ShowHelp( "help/index.html", null );
                       } /*onClick*/
-                  } /*OnClickListener*/
+                  }
             );
-        /*
-         *  20170107/SJZ
-         *  Adding Module Help on the Main Status Selector bar module_helpmod
-         */
-        ((android.widget.Button) findViewById(R.id.action_helpmod)).setOnClickListener
+        findViewById( R.id.action_helpmod ).setOnClickListener
             (
                 new View.OnClickListener()
                   {
@@ -1541,24 +1522,24 @@ public class Main extends android.app.Activity
                       {
                         if ( Global.Calc != null && Global.Calc.ModuleHelp != null )
                           {
-                            final Intent ShowHelp = new Intent(Intent.ACTION_VIEW);
-                            ShowHelp.putExtra(Help.ContentID, Global.Calc.ModuleHelp);
-                            ShowHelp.setClass(Main.this, Help.class);
-                            startActivity(ShowHelp);
+                            final Intent ShowHelp = new Intent( Intent.ACTION_VIEW );
+                            ShowHelp.putExtra( Help.ContentID, Global.Calc.ModuleHelp );
+                            ShowHelp.setClass( Main.this, Help.class );
+                            startActivity( ShowHelp );
                           }
                         else
                           {
                             Toast.makeText
                                 (
-                      /*context =*/ Main.this,
-                      /*text =*/ getString(R.string.no_module_help),
-                      /*duration =*/ Toast.LENGTH_SHORT
+                                    Main.this,
+                                    getString( R.string.no_module_help ),
+                                    Toast.LENGTH_SHORT
                                 ).show();
-                          } /*if*/
-                      } /*OnClick*/
-                  } /*OnClickListener*/
+                          }
+                      } /*onClick*/
+                  }
             );
-        ((android.widget.Button) findViewById(R.id.action_print)).setOnClickListener
+        findViewById( R.id.action_print ).setOnClickListener
             (
                 new View.OnClickListener()
                   {
@@ -1569,13 +1550,13 @@ public class Main extends android.app.Activity
                       {
                         startActivity
                             (
-                                new Intent(Intent.ACTION_VIEW)
-                                    .setClass(Main.this, PrinterView.class)
+                                new Intent( Intent.ACTION_VIEW )
+                                    .setClass( Main.this, PrinterView.class )
                             );
                       } /*onClick*/
-                  } /*OnClickListener*/
+                  }
             );
-        ((android.widget.Button) findViewById(R.id.action_menu)).setOnClickListener
+        findViewById( R.id.action_menu ).setOnClickListener
             (
                 new View.OnClickListener()
                   {
@@ -1586,9 +1567,9 @@ public class Main extends android.app.Activity
                       {
                         openOptionsMenu();
                       } /*onClick*/
-                  } /*OnClickListener*/
+                  }
             );
-      } /*onPostCreate*/
+      }
 
     @Override
     public void onDestroy()
@@ -1597,11 +1578,11 @@ public class Main extends android.app.Activity
         if ( Global.Calc != null )
           {
             Global.Calc.ResetLibs();
-            /* because new Global.Calc will be created in onCreate, so hopefully
-              this will avoid "bitmap allocation exceeds budget" crashes */
-          } /*if*/
+      /* because new Global.Calc will be created in onCreate, so hopefully
+         this will avoid "bitmap allocation exceeds budget" crashes */
+          }
         super.onDestroy();
-      } /*onDestroy*/
+      }
 
     @Override
     public void onPause()
@@ -1609,38 +1590,37 @@ public class Main extends android.app.Activity
         super.onPause();
         if ( !ShuttingDown )
           {
-            Persistent.SaveState(this, false);
+            Persistent.SaveState( this, false );
             /* don't bother making async, because I'm going to background anyway */
             if ( Global.Calc.TaskRunning )
               {
-                PostNotification(R.string.prog_running, true);
-              } /*if*/
-          } /*if*/
-      } /*onPause*/
+                PostNotification( R.string.prog_running, true );
+              }
+          }
+      }
 
     @Override
     public void onResume()
       {
         super.onResume();
-        Notiman.cancel(NotifyProgramDone);
+        Notiman.cancel( NotifyProgramDone );
         if ( !StateLoaded )
           {
             Global.StartBGTask
                 (
-                /*RunWhat =*/
-                new Persistent.RestoreState(Main.this)
-                  {
-                    @Override
-                    public void PostRun()
+                    new Persistent.RestoreState( Main.this )
                       {
-                        super.PostRun();
-                        StateLoaded = true;
-                      } /*PostRun*/
-                  } /*Persistent.RestoreState*/,
-                /*ProgressMessage =*/ getString(R.string.loading)
+                        @Override
+                        public void PostRun()
+                          {
+                            super.PostRun();
+                            StateLoaded = true;
+                          }
+                      },
+                    getString( R.string.loading )
                 );
-          } /*if*/
-      } /*onResume*/
+          }
+      }
 
     @Override
     public void onConfigurationChanged
@@ -1648,9 +1628,9 @@ public class Main extends android.app.Activity
             android.content.res.Configuration NewConfig
         )
       {
-        super.onConfigurationChanged(NewConfig);
+        super.onConfigurationChanged( NewConfig );
         CheckDisplayOrientation();
-      } /*onConfigurationChanged*/
+      }
 
     @Override
     public boolean dispatchKeyEvent
@@ -1670,41 +1650,50 @@ public class Main extends android.app.Activity
           {
             /* ignore attempt to bring up menu while save/load in progress */
             Handled = true;
-          } /*if*/
+          }
         if ( !Handled )
           {
-            Handled = super.dispatchKeyEvent(TheEvent);
-          } /*if*/
-        return
-            Handled;
-      } /*dispatchKeyEvent*/
-
-    public void openFileUsingFM(String mimeType) {
-
-      Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-      intent.setType(mimeType);
-      intent.addCategory(Intent.CATEGORY_OPENABLE);
-
-      // special intent for Samsung file manager
-      Intent sIntent = new Intent("com.sec.android.app.myfiles.PICK_DATA");
-      // if you want any file type, you can skip next line
-      sIntent.putExtra("CONTENT_TYPE", mimeType);
-      sIntent.addCategory(Intent.CATEGORY_DEFAULT);
-
-      Intent chooserIntent;
-      if (getPackageManager().resolveActivity(sIntent, 0) != null){
-        // it is device with samsung file manager
-        chooserIntent = Intent.createChooser(sIntent, "Open file");
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] { intent});
-      }
-      else {
-        chooserIntent = Intent.createChooser(intent, "Open file");
+            Handled = super.dispatchKeyEvent( TheEvent );
+          }
+        return Handled;
       }
 
-      try {
-        startActivityForResult(chooserIntent, CHOOSE_FILE_RESULT);
-      } catch (android.content.ActivityNotFoundException ex) {
-        Toast.makeText(getApplicationContext(), "No suitable File Manager was found.", Toast.LENGTH_SHORT).show();
+    public void openFileUsingFM( String mimeType )
+      {
+        Intent intent = new Intent( Intent.ACTION_GET_CONTENT );
+        intent.setType( mimeType );
+        intent.addCategory( Intent.CATEGORY_OPENABLE );
+
+        // special intent for Samsung file manager
+        Intent sIntent = new Intent( "com.sec.android.app.myfiles.PICK_DATA" );
+        // if you want any file type, you can skip next line
+        sIntent.putExtra( "CONTENT_TYPE", mimeType );
+        sIntent.addCategory( Intent.CATEGORY_DEFAULT );
+
+        Intent chooserIntent;
+        if ( getPackageManager().resolveActivity( sIntent, 0 ) != null )
+          {
+            // it is device with samsung file manager
+            chooserIntent = Intent.createChooser( sIntent, "Open file" );
+            chooserIntent.putExtra( Intent.EXTRA_INITIAL_INTENTS, new Intent[] { intent } );
+          }
+        else
+          {
+            chooserIntent = Intent.createChooser( intent, "Open file" );
+          }
+
+        try
+          {
+            startActivityForResult( chooserIntent, CHOOSE_FILE_RESULT );
+          }
+        catch ( android.content.ActivityNotFoundException ex )
+          {
+            Toast.makeText
+                (
+                    getApplicationContext(),
+                    "No suitable File Manager was found.",
+                    Toast.LENGTH_SHORT
+                ).show();
+          }
       }
-    }
-  } /*Main*/
+  }

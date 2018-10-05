@@ -1,24 +1,58 @@
 apply plugin: 'com.android.application'
+import org.apache.tools.ant.taskdefs.condition.Os
+task checkWin() << {
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        println "*** WINDOWS "
+    } else {
+        apply from: 'preprocess.gradle'
+    }
+}
+
 
 android {
-    compileSdkVersion 23
+    def propFile = file(project.rootProject.file('keystore.properties'))
+    if (propFile.canRead()) {
+        Properties properties = new Properties()
+        properties.load(new FileInputStream(propFile))
+        /*
+        signingConfigs {
+            release {
+                keyAlias properties['keystore.alias']
+                keyPassword properties['keystore.key_password']
+                storeFile file(properties['keystore.path'])
+                storePassword properties['keystore.password']
+            }
+        }
+        */
+    }
+    compileSdkVersion 26
     defaultConfig {
         applicationId "net.obry.ti5x"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 11
+        targetSdkVersion 26
+        versionCode 107
+        versionName "7.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        // signingConfig signingConfigs.release
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.release
         }
     }
     productFlavors {
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+        targetCompatibility JavaVersion.VERSION_1_6
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildToolsVersion '28.0.2'
 }
 
 dependencies {
@@ -26,9 +60,7 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.android.support:appcompat-v7:23.1.1'
-    implementation 'com.android.support:support-v4:23.1.1'
-    // compile 'com.android.support:support-vector-drawable:23.0.1'
-    implementation 'com.android.support:design:23.1.1'
-    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:support-v4:23.4.0'
+    implementation 'com.android.support:design:23.4.0'
 }

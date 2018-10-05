@@ -1,4 +1,3 @@
-package net.obry.ti5x;
 /*
     Saving/loading of programs, program libraries and calculator state
 
@@ -16,24 +15,22 @@ package net.obry.ti5x;
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-class BuiltinLibrary
-{
-    int name;
-    int lib;
+package net.obry.ti5x;
 
-    public BuiltinLibrary (int name, int lib)
-    {
+public class BuiltinLibrary {
+  private final int name;
+  private final int lib;
+
+  BuiltinLibrary(int name, int lib) {
       this.name = name;
       this.lib = lib;
     }
 
-    public String getName(android.content.Context ctx)
-    {
+  String getName(android.content.Context ctx) {
       return ctx.getString(name);
     }
 
-    public java.io.InputStream getInputStream(android.content.Context ctx)
-    {
+  java.io.InputStream getInputStream(android.content.Context ctx) {
       return ctx.getResources().openRawResource(lib);
     }
 }

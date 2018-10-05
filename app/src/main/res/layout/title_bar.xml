@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/button_yellow">
+    android:background="@color/title_bar">
 
     <TextView
         android:id="@+id/textView2"
@@ -17,7 +17,7 @@
         android:textAllCaps="true"
         android:textColor="#000000"
         android:clickable="false"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginRight="8dp"/>
 
     <!-- Do this later ...
     <Button
@@ -58,12 +58,13 @@
     -->
     <Button
         android:id="@+id/action_help"
-        android:background="@drawable/ic_prog_help_black_24dp"
-        android:layout_width="36dp"
+        android:background="@drawable/ic_help_black_24dp"
+        android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_toRightOf="@+id/textView2"
         android:layout_toEndOf="@+id/textView2"
         android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
         />
 
     <Button

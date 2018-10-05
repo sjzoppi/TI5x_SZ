@@ -1,10 +1,8 @@
-package net.obry.ti5x;
 /*
     The calculation state, number entry and programs.
 
     Copyright 2011 - 2012 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
     Copyright 2014 - 2015 Pascal Obry <pascal@obry.net>.
-	Copyright 2016        Steven Zoppi <about-ti5x@zoppi.org>.
 
     This program is free software: you can redistribute it and/or modify it under
     the terms of the GNU General Public License as published by the Free Software
@@ -18,232 +16,226 @@ package net.obry.ti5x;
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-public class State
-  /* the calculator state, number entry and programs */
+package net.obry.ti5x;
+
+import android.util.SparseIntArray;
+
+class State
   {
-    android.content.Context ctx;
+    /* the calculator state, number entry and programs */
+
+    private final android.content.Context ctx;
     /* number-entry state */
-    public final static int EntryState = 0;
-    public final static int DecimalEntryState = 1;
-    public final static int ExponentEntryState = 2;
-    public final static int ResultState = 10;
-    public int CurState = EntryState;
-    public boolean ExponentEntered = false; /* whether the dispay as 00 exp at the end */
-    public int ParenCount = 0;
-    public boolean InvState = false; /* INV has been pressed/executed */
-    public boolean FromResult = false;
+    final static int EntryState         = 0;
+    final static int DecimalEntryState  = 1;
+    final static int ExponentEntryState = 2;
+    final static int ResultState        = 10;
+    int     CurState        = EntryState;
+    boolean ExponentEntered = false; /* whether the dispay as 00 exp at the end */
+    boolean InvState        = false; /* INV has been pressed/executed */
+    private int     ParenCount = 0;
+    private boolean FromResult = false;
     // whether the current value is from a result RCL, or a typed number
 
-    public static boolean inError = false;
-    /*
-     *  SJZ/20161212
-     *  Modified to be public which will enable the user to toggle
-     *  tracing on and off from within the PrinterView Activity
-     */
-    public boolean TracePrintActivated = false;
+    static boolean inError = false;
+    boolean TracePrintActivated = false;
 
     String CurDisplay; /* current number display */
-    android.os.Handler BGTask;
-    Runnable DelayTask = null;
-    Runnable ExecuteTask;
-    Runnable RunProg = null;
-    public Runnable OnStop = null;
+    private android.os.Handler BGTask;
+    private Runnable DelayTask = null;
+    private Runnable ExecuteTask;
+    private Runnable RunProg = null;
+    Runnable OnStop = null;
 
-    public static class ImportEOFException extends RuntimeException
-      /* indicates no more data to import. */
+    static class ImportEOFException extends RuntimeException
       {
+        /* indicates no more data to import. */
 
-        public ImportEOFException
-          (
-            String Message
-          )
+        ImportEOFException
+            (
+                String Message
+            )
           {
-            super(Message);
-          } /*ImportEOFException*/
+            super( Message );
+          }
+      }
 
-      } /*ImportEOFException*/
-
-    public static abstract class ImportFeeder
+    static abstract class ImportFeeder
       {
         abstract Number Next()
-          throws
-            ImportEOFException,
-            Persistent.DataFormatException;
-          /* returns the next input value or raises ImportEOFException if none. */
+        throws
+        ImportEOFException,
+        Persistent.DataFormatException;
+        /* returns the next input value or raises ImportEOFException if none. */
 
-        public void End()
+        void End()
+          {
           /* stops further invocations of the task. Subclass may add
             further cleanup, but must also invoke this superclass method. */
-          {
-            if (Global.Calc != null)
+            if ( Global.Calc != null )
               {
                 Global.Calc.Import = null;
-              } /*if*/
-          } /*End*/
-      } /*ImportFeeder*/
+              }
+          }
+      }
+
     ImportFeeder Import = null;
 
-    java.security.SecureRandom Random = new java.security.SecureRandom();
+    private java.security.SecureRandom Random = new java.security.SecureRandom();
 
     /* number-display format */
-    public static final int FORMAT_FIXED = 0;
-    public static final int FORMAT_FLOAT = 1;
-    public static final int FORMAT_ENG = 2;
-    public int CurFormat;
-    public int CurNrDecimals;
+    static final int FORMAT_FIXED = 0;
+    static final int FORMAT_FLOAT = 1;
+    static final int FORMAT_ENG   = 2;
+    int CurFormat;
+    int CurNrDecimals = -1;
 
     /* Max and Min number that can be represented using a fixed format */
-    public final static Number minFixed = new Number(5.0 * Math.pow(10.0, -9.0));
-    public final static Number maxFixed = new Number(Math.pow(10.0, 10.0));
+    private final static Number minFixed = new Number( 5.0 * Math.pow( 10.0, -9.0 ) );
+    private final static Number maxFixed = new Number( Math.pow( 10.0, 10.0 ) );
 
     /* angle units */
-    public static final int ANG_RAD = 1;
-    public static final int ANG_DEG = 2;
-    public static final int ANG_GRAD = 3;
-    public int CurAng;
+    static final int ANG_RAD  = 1;
+    static final int ANG_DEG  = 2;
+    static final int ANG_GRAD = 3;
+    int CurAng;
 
     /* pending-operation stack */
-    public final static int STACKOP_ADD = 1;
-    public final static int STACKOP_SUB = 2;
-    public final static int STACKOP_MUL = 3;
-    public final static int STACKOP_DIV = 4;
-    public final static int STACKOP_MOD = 5;
-    public final static int STACKOP_EXP = 6;
-    public final static int STACKOP_ROOT = 7;
+    final static int STACKOP_ADD  = 1;
+    final static int STACKOP_SUB  = 2;
+    final static int STACKOP_MUL  = 3;
+    final static int STACKOP_DIV  = 4;
+    final static int STACKOP_MOD  = 5;
+    final static int STACKOP_EXP  = 6;
+    final static int STACKOP_ROOT = 7;
 
-    static final int [] STACKOP_CODE = { 85, 75, 65, 55, 55, 45, 34 };
+    private static final int[] STACKOP_CODE = { 85, 75, 65, 55, 55, 45, 34 };
 
-    public static class OpStackEntry
+    static class OpStackEntry
       {
         Number Operand;
-        int Operator;
-        int ParenFollows;
+        int    Operator;
+        int    ParenFollows;
 
-        public OpStackEntry
-          (
-            Number Operand,
-            int Operator,
-            int ParenFollows
-          )
+        OpStackEntry
+            (
+                Number Operand,
+                int Operator,
+                int ParenFollows
+            )
           {
             this.Operand = Operand;
             this.Operator = Operator;
             this.ParenFollows = ParenFollows;
-          } /*OpStackEntry*/
+          }
+      }
 
-      } /*OpStackEntry*/
+    final                int MaxOpStack = 8;
+    private final static int MaxParen   = 9;
+    Number X, T;
+    OpStackEntry[] OpStack;
+    int            OpStackNext;
+    int PreviousOp = -1;
+    // wether the last entry was an operator requiring 2 operands:
+    // 1 + = (should set calculator in error)
 
-    public final int MaxOpStack = 8;
-    public final int MaxParen = 9;
-    public Number X, T;
-    public OpStackEntry[] OpStack;
-    public int OpStackNext;
-    public int PreviousOp = -1;
-
-    /**
-     *  whether the last entry was an operator requiring 2 operands:
-     *  1 + = (should set calculator in error)
-     */
-
-    public final boolean IsOperator (int Op)
+    private boolean IsOperator( int Op )
       {
         return Op == 45 || Op == 55 || Op == 65 || Op == 75 || Op == 85;
       }
 
-    public static class ProgBank
+    static class ProgBank
       {
-        byte[] Program;
-        java.util.Map<Integer, Integer> Labels;
-          /* mapping from symbolic codes to program locations */
+        byte[]                  Program;
+        SparseIntArray          Labels;
+        /* mapping from symbolic codes to program locations */
         android.graphics.Bitmap Card; /* card image to display when bank is selected, can be null */
-        byte[] Help; /* HTML help to display, can be null */
+        byte[]                  Help; /* HTML help to display, can be null */
 
-        public ProgBank
-          (
-            byte[] Program,
-            android.graphics.Bitmap Card,
-            byte[] Help
-          )
+        ProgBank
+            (
+                byte[] Program,
+                android.graphics.Bitmap Card,
+                byte[] Help
+            )
           {
             this.Program = Program;
             this.Card = Card;
             this.Help = Help;
             this.Labels = null;
-          } /*ProgBank*/
+          }
+      }
 
-      } /*ProgBank*/
-
-    public boolean ProgMode; /* true for program-entry mode, false for calculation mode */
-    public final int MaxMemories = 100; /* maximum addressable */
-    public final int MaxProgram = 960; /* absolute max on original model */
-    public final int MaxBanks = 100;
-
+    boolean ProgMode; /* true for program-entry mode, false for calculation mode */
+    final int MaxMemories = 100; /* maximum addressable */
+    final int MaxProgram  = 960; /* absolute max on original model */
+    final int MaxBanks    = 100;
     /* 00 is user-entered program, others are loaded from library modules */
-    public final int MaxFlags = 10;
-    public final Number[] Memory;
-    public final Number[] CardMemory;
-    public final byte[] Program;
-    public final byte[] CardProgram;
-    public final ProgBank[] Bank; /* Bank[0].Program always points to Program */
-    public byte[] ModuleHelp; /* overall help for loaded library module */
-    public final boolean[] Flag;
+    final int MaxFlags    = 10;
+    final         Number[]   Memory;
+    private final Number[]   CardMemory;
+    final         byte[]     Program;
+    private final byte[]     CardProgram;
+    final         ProgBank[] Bank; /* Bank[0].Program always points to Program */
+    byte[] ModuleHelp; /* overall help for loaded library module */
+    final boolean[] Flag;
 
     /* special flag numbers: */
-    public final static int FLAG_ERROR_COND = 7;
-      /* can be set by Op 18/19 to indicate error/no-error, and
+    private final static int FLAG_ERROR_COND    = 7;
+    /* can be set by Op 18/19 to indicate error/no-error, and
         by Op 40 to indicate printer present */
-    public final static int FLAG_STOP_ON_ERROR = 8; /* if set, program stops on error */
+    private final static int FLAG_STOP_ON_ERROR = 8; /* if set, program stops on error */
 
-    public int PC, RunPC, CurBank, RunBank, NextBank;
-    public int RegOffset;
-    public boolean TaskRunning; /* program currently executing */
-    boolean ProgRunningSlowly; /* executing program pauses to show intermediate result */
-    boolean AllowRunningSlowly;
-    boolean SaveRunningSlowly; /* for one-off pauses */
+    int PC, CurBank;
+    private int RunPC, RunBank, NextBank;
+    int     RegOffset;
+    boolean TaskRunning; /* program currently executing */
+    private boolean ProgRunningSlowly; /* executing program pauses to show intermediate result */
+    private boolean AllowRunningSlowly;
+    private boolean SaveRunningSlowly; /* for one-off pauses */
 
     /* use of memories for stats operations */
-    public static final int STATSREG_SIGMAY = 1;
-    public static final int STATSREG_SIGMAY2 = 2;
-    public static final int STATSREG_N = 3;
-    public static final int STATSREG_SIGMAX = 4;
-    public static final int STATSREG_SIGMAX2 = 5;
-    public static final int STATSREG_SIGMAXY = 6;
-    public static final int STATSREG_FIRST = 1; /* lowest-numbered memory used for stats */
-    public static final int STATSREG_LAST = 6; /* highest-numbered memory used for stats */
+    private static final int STATSREG_SIGMAY  = 1;
+    private static final int STATSREG_SIGMAY2 = 2;
+    private static final int STATSREG_N       = 3;
+    private static final int STATSREG_SIGMAX  = 4;
+    private static final int STATSREG_SIGMAX2 = 5;
+    private static final int STATSREG_SIGMAXY = 6;
+    private static final int STATSREG_FIRST   = 1; /* lowest-numbered memory used for stats */
+    private static final int STATSREG_LAST    = 6; /* highest-numbered memory used for stats */
 
-    public static class ReturnStackEntry
+    static class ReturnStackEntry
       {
-        public int BankNr, Addr;
-        public boolean FromInteractive;
+        int BankNr, Addr;
+        boolean FromInteractive;
 
-        public ReturnStackEntry
-          (
-            int BankNr,
-            int Addr,
-            boolean FromInteractive
-          )
+        ReturnStackEntry
+            (
+                int BankNr,
+                int Addr,
+                boolean FromInteractive
+            )
           {
             this.BankNr = BankNr;
             this.Addr = Addr;
             this.FromInteractive = FromInteractive;
-          } /*ReturnStackEntry*/
+          }
+      }
 
-      } /*ReturnStackEntry*/
+    final int MaxReturnStack = 6;
+    ReturnStackEntry[] ReturnStack; /* for subroutine calls */
+    int                ReturnLast; /* top of ReturnStack */
 
-    public final int MaxReturnStack = 6;
-    public ReturnStackEntry[] ReturnStack; /* for subroutine calls */
-    public int ReturnLast; /* top of ReturnStack */
+    private String LastShowing = null;
 
-    String LastShowing = null;
+    final byte[] PrintRegister;
 
-    public final byte[] PrintRegister;
-
-    public void Reset
-      (
-        boolean ClearLibs /* wipe out loaded library module as well */
-      )
-      /* resets to power-up/blank state. */
+    void Reset
+        (
+            boolean ClearLibs /* wipe out loaded library module as well */
+        )
       {
+        /* resets to power-up/blank state. */
         CurFormat = FORMAT_FIXED;
         CurNrDecimals = -1;
         CurAng = ANG_DEG;
@@ -263,907 +255,928 @@ public class State
         AllowRunningSlowly = false;
         ResetLabels();
         inError = false;
-        for (int i = 0; i < MaxFlags; ++i)
+        for ( int i = 0 ; i < MaxFlags ; ++i )
           {
-            Flag[i] = false;
-          } /*for*/
-        for (int i = 0; i < MaxMemories; ++i)
+            Flag[ i ] = false;
+          }
+        for ( int i = 0 ; i < MaxMemories ; ++i )
           {
-            Memory[i] = new Number();
-          } /*for*/
-        for (int i = 0; i < MaxProgram; ++i)
+            Memory[ i ] = new Number();
+          }
+        for ( int i = 0 ; i < MaxProgram ; ++i )
           {
-            Program[i] = (byte)0;
-          } /*for*/
-        if (ClearLibs)
+            Program[ i ] = ( byte ) 0;
+          }
+        if ( ClearLibs )
           {
             ResetLibs();
-          } /*if*/
+          }
         ProgMode = false;
-        for (int i = 0; i < PrintRegister.length; ++i)
+        for ( int i = 0 ; i < PrintRegister.length ; ++i )
           {
-            PrintRegister[i] = 0;
-          } /*for*/
+            PrintRegister[ i ] = 0;
+          }
         ResetEntry();
-      } /*Reset*/
+      }
 
-    public void ResetLibs()
-      /* wipes out loaded library modules */
+    void ResetLibs()
       {
-        for (int i = 1; i < MaxBanks; ++i)
+        /* wipes out loaded library modules */
+        for ( int i = 1 ; i < MaxBanks ; ++i )
           {
-            if (Bank[i] != null && Bank[i].Card != null)
+            if ( Bank[ i ] != null && Bank[ i ].Card != null )
               {
-              /* avoid "bitmap allocation exceeds budget" crashes */
-                if (CurBank == i)
+                /* avoid "bitmap allocation exceeds budget" crashes */
+                if ( CurBank == i )
                   {
-                    Global.Label.SetHelp(null, null);
-                  } /*if*/
+                    Global.Label.SetHelp( null, null );
+                  }
                 else
                   {
-                    Bank[i].Card.recycle();
-                    Bank[i].Card = null;
+                    Bank[ i ].Card.recycle();
+                    Bank[ i ].Card = null;
                   }
-              } /*if*/
-            Bank[i] = null;
-          } /*for*/
+              }
+            Bank[ i ] = null;
+          }
         ModuleHelp = null;
-      } /*ResetLibs*/
+      }
 
-    public State
-      (
-        android.content.Context ctx
-      )
+    State
+        (
+            android.content.Context ctx
+        )
       {
         this.ctx = ctx;
-        OpStack = new OpStackEntry[MaxOpStack];
-        Memory = new Number[MaxMemories];
-        Program = new byte[MaxProgram];
-        CardMemory = new Number[MaxMemories];
-        CardProgram = new byte[MaxProgram];
-        Bank = new ProgBank[MaxBanks];
-        Bank[0] = new ProgBank(Program, null, null);
-        Flag = new boolean[MaxFlags];
+        OpStack = new OpStackEntry[ MaxOpStack ];
+        Memory = new Number[ MaxMemories ];
+        Program = new byte[ MaxProgram ];
+        CardMemory = new Number[ MaxMemories ];
+        CardProgram = new byte[ MaxProgram ];
+        Bank = new ProgBank[ MaxBanks ];
+        Bank[ 0 ] = new ProgBank( Program, null, null );
+        Flag = new boolean[ MaxFlags ];
         BGTask = new android.os.Handler();
         ExecuteTask = new TaskRunner();
-        ReturnStack = new ReturnStackEntry[MaxReturnStack];
-        PrintRegister = new byte[Printer.CharColumns];
-        Reset(true);
-      } /*State*/
+        ReturnStack = new ReturnStackEntry[ MaxReturnStack ];
+        PrintRegister = new byte[ Printer.CharColumns ];
+        Reset( true );
+      }
 
     class DelayedStep implements Runnable
       {
         public void run()
           {
             ShowCurProg();
-          } /*run*/
-      } /*DelayedStep*/
+          }
+      }
 
-    void ClearDelayedStep()
+    private void ClearDelayedStep()
       {
-        if (DelayTask != null)
+        if ( DelayTask != null )
           {
-            BGTask.removeCallbacks(DelayTask);
-          } /*if*/
-      } /*ClearDelayedStep*/
+            BGTask.removeCallbacks( DelayTask );
+          }
+      }
 
-    void SetShowing
-      (
-        String ToDisplay
-      )
+    private void SetShowing
+        (
+            String ToDisplay
+        )
       {
         ClearDelayedStep();
         LastShowing = ToDisplay;
-        if (!TaskRunning || ProgRunningSlowly)
+        if ( !TaskRunning || ProgRunningSlowly )
           {
-            if (InErrorState())
+            if ( InErrorState() )
               {
-                Global.Disp.SetShowingError(ToDisplay);
+                Global.Disp.SetShowingError( ToDisplay );
               }
             else
               {
-                Global.Disp.SetShowing(ToDisplay);
-              } /*if*/
+                Global.Disp.SetShowing( ToDisplay );
+              }
           }
-      } /*SetShowing*/
+      }
 
-    public void ResetEntry()
+    void ResetEntry()
       {
         CurState = EntryState;
         CurDisplay = "0";
         ExponentEntered = false;
-        SetShowing(CurDisplay);
-      } /*ResetEntry*/
+        SetShowing( CurDisplay );
+      }
 
-    public void Enter(int op)
-      /* finishes the entry of the current number. */
+    void Enter( int op )
       {
-        if (CurState != ResultState)
+        /* finishes the entry of the current number. */
+        if ( CurState != ResultState )
           {
             int Exp;
-            if (ExponentEntered)
+            if ( ExponentEntered )
               {
-                Exp = Integer.parseInt(CurDisplay.substring(CurDisplay.length() - 2));
-                if (CurDisplay.charAt(CurDisplay.length() - 3) == '-')
+                Exp = Integer.parseInt( CurDisplay.substring( CurDisplay.length() - 2 ) );
+                if ( CurDisplay.charAt( CurDisplay.length() - 3 ) == '-' )
                   {
-                    Exp = - Exp;
-                  } /*if*/
+                    Exp = -Exp;
+                  }
               }
             else
               {
                 Exp = 0;
-              } /*if*/
+              }
             X = new Number
-              (
-                CurDisplay.substring
-                  (
-                    0,
-                    ExponentEntered ? CurDisplay.length() - 3 : CurDisplay.length()
-                  )
-              );
-            if (ExponentEntered)
+                (
+                    CurDisplay.substring
+                        (
+                            0,
+                            ExponentEntered
+                            ? CurDisplay.length() - 3
+                            : CurDisplay.length()
+                        )
+                );
+            if ( ExponentEntered )
               {
-                Number E = new Number(Math.pow(10, Exp));
-                X.mult(E);
-              } /*if*/
-            SetX(X, false);
+                Number E = new Number( Math.pow( 10, Exp ) );
+                X.mult( E );
+              }
+
+            SetX( X, false );
             FromResult = false;
-          } /*if*/
+          }
 
-        if (TracePrintActivated && Global.Print != null)
+        if ( TracePrintActivated && Global.Print != null )
           {
-            /*  */
             TraceDisplay
-              // no number when:
-              (   op != 53     // opening a parenthesis
-               && op != 25     // clr
-               && op != 24,    // ce
-               (InvState ? "I" : " ") + Printer.KeyCodeSym(op)
-              );
-          } /*if*/
-      } /*Enter*/
+                // no number when:
+                    (
+                        op != 53     // opening a parenthesis
+                            && op != 25     // clr
+                            && op != 24,    // ce
+                        ( InvState
+                          ? "I"
+                          : " " ) + Printer.KeyCodeSym( op )
+                    );
+          }
+      }
 
-    public void SetErrorState
-      (
-        boolean AlsoStopProgram
-      )
+    void SetErrorState
+        (
+            boolean AlsoStopProgram
+        )
       {
         ClearDelayedStep();
-        if (!TaskRunning || ProgRunningSlowly)
+        if ( !TaskRunning || ProgRunningSlowly )
           {
-            Global.Disp.SetShowingError(LastShowing);
-          } /*if*/
+            Global.Disp.SetShowingError( LastShowing );
+          }
         inError = true;
-        if (AlsoStopProgram || Flag[FLAG_STOP_ON_ERROR])
+        if ( AlsoStopProgram || Flag[ FLAG_STOP_ON_ERROR ] )
           {
             StopProgram();
-          } /*if*/
-      } /*SetErrorState*/
+          }
+      }
 
-    public boolean InErrorState()
+    boolean InErrorState()
       {
         return inError;
-      } /*InErrorState*/
+      }
 
-    public boolean ImportInProgress()
+    boolean ImportInProgress()
       {
-        return
-            Import != null;
-      } /*ImportInProgress*/
+        return Import != null;
+      }
 
-    public void ClearAll()
+    void ClearAll()
       {
-        Enter(25);
+        Enter( 25 );
         inError = false;
         OpStackNext = 0;
         ParenCount = 0;
         PreviousOp = -1;
-        if (CurFormat == FORMAT_FLOAT)
+        if ( CurFormat == FORMAT_FLOAT )
           CurFormat = FORMAT_FIXED;
         ResetEntry();
-      } /*ClearAll*/
+      }
 
-    public void ClearEntry()
+    void ClearEntry()
       {
-        if (inError)
+        if ( inError )
           {
             inError = false;
-            SetX(X, true);
+            SetX( X, true );
           }
-        else if (CurState != ResultState)
-            ResetEntry();
-      } /*ClearEntry*/
+        else if ( CurState != ResultState )
+          ResetEntry();
+      }
 
-    public void Digit
-      (
-        char TheDigit
-      )
+    void Digit
+        (
+            char TheDigit
+        )
       {
-        if (CurState == ResultState)
+        if ( CurState == ResultState )
           {
             ResetEntry();
-          } /*if*/
+          }
+
         String SaveExponent = "";
-        switch (CurState)
-          {
-        case EntryState:
-        case DecimalEntryState:
-          if (ExponentEntered)
-            {
-              SaveExponent = CurDisplay.substring(CurDisplay.length() - 3);
-              CurDisplay = CurDisplay.substring(0, CurDisplay.length() - 3);
-            } /*if*/
-        break;
-          } /*switch*/
-        switch (CurState)
+
+        switch ( CurState )
           {
             case EntryState:
-                if (CurDisplay.charAt(0) == '0')
-                  {
-                    CurDisplay = new String(new char[] {TheDigit}) + CurDisplay.substring(1);
-                  }
-                else if (CurDisplay.charAt(0) == '-' && CurDisplay.charAt(1) == '0')
-                  {
-                    CurDisplay = "-" + new String(new char[] {TheDigit}) + CurDisplay.substring(2);
-                  }
-                else
-                  {
-                    CurDisplay =
-                        CurDisplay.substring(0,CurDisplay.length())
-                      +
-                        new String(new char[] {TheDigit})
-                      +
-                        CurDisplay.substring(CurDisplay.length());
-                  } /*if*/
-            break;
             case DecimalEntryState:
-                CurDisplay = CurDisplay + new String(new char[] {TheDigit});
-            break;
+              if ( ExponentEntered )
+                {
+                  SaveExponent = CurDisplay.substring( CurDisplay.length() - 3 );
+                  CurDisplay = CurDisplay.substring( 0, CurDisplay.length() - 3 );
+                }
+              break;
+          }
+
+        switch ( CurState )
+          {
+            case EntryState:
+              if ( CurDisplay.charAt( 0 ) == '0' )
+                {
+                  CurDisplay = new String( new char[] { TheDigit } ) + CurDisplay.substring( 1 );
+                }
+              else if ( CurDisplay.charAt( 0 ) == '-' && CurDisplay.charAt( 1 ) == '0' )
+                {
+                  CurDisplay = "-" + new String( new char[] { TheDigit } ) + CurDisplay.substring(
+                      2 );
+                }
+              else
+                {
+                  CurDisplay =
+                      CurDisplay.substring( 0, CurDisplay.length() )
+                          +
+                          new String( new char[] { TheDigit } )
+                          +
+                          CurDisplay.substring( CurDisplay.length() );
+                }
+              break;
+            case DecimalEntryState:
+              CurDisplay = CurDisplay + new String( new char[] { TheDigit } );
+              break;
             case ExponentEntryState:
               /* old exponent units digit becomes tens digit, new digit
                 becomes units digit */
-                CurDisplay =
-                    CurDisplay.substring(0, CurDisplay.length() - 2)
-                  +
-                    CurDisplay.substring(CurDisplay.length() - 1)
-                  +
-                    new String(new char[] {TheDigit});
-            break;
-          } /*switch*/
+              CurDisplay =
+                  CurDisplay.substring( 0, CurDisplay.length() - 2 )
+                      +
+                      CurDisplay.substring( CurDisplay.length() - 1 )
+                      +
+                      new String( new char[] { TheDigit } );
+              break;
+          }
         CurDisplay += SaveExponent;
-        SetShowing(CurDisplay);
-      } /*Digit*/
+        SetShowing( CurDisplay );
+      }
 
-    public void DecimalPoint()
+    void DecimalPoint()
       {
-        if (CurState == ResultState)
+        if ( CurState == ResultState )
           {
             ResetEntry();
-          } /*if*/
-        switch (CurState)
+          }
+        switch ( CurState )
           {
             case EntryState:
             case ExponentEntryState:
               CurState = DecimalEntryState;
 
               // Add decimal point if needed
-              if (CurDisplay.indexOf(".") == -1)
+              if ( !CurDisplay.contains( "." ) )
                 {
                   final int len = CurDisplay.length();
-                  if (ExponentEntered)
+                  if ( ExponentEntered )
                     {
                       CurDisplay =
-                          CurDisplay.substring(0,len - 3)
-                        +
-                          new String(new char[] {'.'})
-                        +
-                          CurDisplay.substring(len - 3);
+                          CurDisplay.substring( 0, len - 3 )
+                              +
+                              new String( new char[] { '.' } )
+                              +
+                              CurDisplay.substring( len - 3 );
                     }
                   else
                     {
                       CurDisplay = CurDisplay + ".";
                     }
-                  SetShowing(CurDisplay);
+                  SetShowing( CurDisplay );
                 }
-            break;
-            /* otherwise ignore */
-          } /*CurState*/
-      } /*DecimalPoint*/
-
-    private boolean NullExponent ()
-      {
-         return CurDisplay.length() <= 3
-                || CurDisplay.substring(CurDisplay.length() - 3).equals(" 00");
+              break;
+          }
       }
 
-    private boolean HasExponent ()
+    private boolean NullExponent()
+      {
+        return CurDisplay.length() <= 3
+            || CurDisplay.substring( CurDisplay.length() - 3 ).equals( " 00" );
+      }
+
+    private boolean HasExponent()
       {
         return CurDisplay.length() > 3
-            && (CurDisplay.charAt(CurDisplay.length() - 3) == '-'
-                || CurDisplay.charAt(CurDisplay.length() - 3) == ' ');
+            && ( CurDisplay.charAt( CurDisplay.length() - 3 ) == '-'
+            || CurDisplay.charAt( CurDisplay.length() - 3 ) == ' ' );
       }
 
-    public void EnterExponent()
+    void EnterExponent()
       {
-        switch (CurState)
+        switch ( CurState )
           {
             case EntryState:
             case DecimalEntryState:
-              if (!ExponentEntered)
+              if ( !ExponentEntered )
                 {
                   CurDisplay = CurDisplay + " 00";
-                  if (CurFormat == FORMAT_FIXED)
-                      CurFormat = FORMAT_FLOAT;
-                } /*if*/
+                  if ( CurFormat == FORMAT_FIXED )
+                    CurFormat = FORMAT_FLOAT;
+                }
               CurState = ExponentEntryState;
-              SetShowing(CurDisplay);
+              SetShowing( CurDisplay );
               ExponentEntered = true;
-            break;
+              break;
             case ExponentEntryState:
-              if (InvState)
+              if ( InvState )
                 {
                   // reset the display only if we have no exponent that is:
                   //   1 ee inv-ee     must display :  1
                   //   1 ee 1 inv-ee 2 must display : 12 01
 
-                  if (ExponentEntered && NullExponent())
+                  if ( ExponentEntered && NullExponent() )
                     {
-                      CurDisplay = CurDisplay.substring(0, CurDisplay.length() - 3);
-                      SetShowing(CurDisplay);
+                      CurDisplay = CurDisplay.substring( 0, CurDisplay.length() - 3 );
+                      SetShowing( CurDisplay );
                       ExponentEntered = false;
                     }
 
-                  if (CurFormat == FORMAT_FLOAT)
-                      CurFormat = FORMAT_FIXED;
+                  if ( CurFormat == FORMAT_FLOAT )
+                    CurFormat = FORMAT_FIXED;
 
-                  if (FromResult)
-                      CurState = DecimalEntryState;
+                  if ( FromResult )
+                    CurState = DecimalEntryState;
                   else
-                      CurState = EntryState;
+                    CurState = EntryState;
                 }
-              else
-                  if (CurFormat == FORMAT_FIXED)
-                      CurFormat = FORMAT_FLOAT;
-            break;
+              else if ( CurFormat == FORMAT_FIXED )
+                CurFormat = FORMAT_FLOAT;
+              break;
             case ResultState:
-              if (InvState)
+              if ( InvState )
                 {
                   ExponentEntered = false;
-                  if (CurFormat != FORMAT_FIXED)
+                  if ( CurFormat != FORMAT_FIXED )
                     {
-                      if (CurFormat == FORMAT_FLOAT)
+                      if ( CurFormat == FORMAT_FLOAT )
                         CurFormat = FORMAT_FIXED;
                       CurNrDecimals = -1;
-                      SetX(X, false); /* will cause redisplay */
-                    } /*if*/
+                      SetX( X, false ); /* will cause redisplay */
+                    }
                 }
               else
                 {
                   FromResult = true;
                   CurFormat = FORMAT_FLOAT;
 
-                  if (!ExponentEntered)
+                  if ( !ExponentEntered )
                     {
-                      /** FixMe:
-                       *    the following test is because just above (InvState) we set ExponentEntered.
-                       *    but the exponent can still be displayed. This is wrong and should be fixed
-                       *    at some point.
-                       */
-                      if (!HasExponent())
+                      // ?? the following test is because just above (InvState) we set ExponentEntered.
+                      //    but the exponent can still be displayed. This is wrong and should be fixed
+                      //    at some point.
+                      if ( !HasExponent() )
                         {
                           CurDisplay = CurDisplay + " 00";
                           CurState = ExponentEntryState;
-                          SetShowing(CurDisplay);
+                          SetShowing( CurDisplay );
                           ExponentEntered = true;
                         }
                     }
-                  } /*if*/
-            break;
-          } /*switch*/
-      } /*EnterExponent*/
+                }
+              break;
+          }
+      }
 
-    private static String RemoveTrailingZeros(String str)
+    private static String RemoveTrailingZeros( String str )
       {
         String Result = str;
 
-        while (Result.length() != 0
-           &&
-           Result.charAt(Result.length() - 1) == '0')
+        while ( Result.length() != 0
+            &&
+            Result.charAt( Result.length() - 1 ) == '0' )
           {
-            Result = Result.substring(0, Result.length() - 1);
+            Result = Result.substring( 0, Result.length() - 1 );
           }
 
         return Result;
       }
 
-    private static String RemoveLeadingZero(String str, int maxSize)
+    private static String RemoveLeadingZero( String str, int maxSize )
       {
-        String Result = str;
-        final int len = Result.length();
+        String    Result = str;
+        final int len    = Result.length();
 
-        if (len == maxSize && Result.charAt(0) == '0')
-          Result = Result.substring(1, Result.length());
-        else if (len == (maxSize + 1) && Result.charAt(0) == '-' && Result.charAt(1) == '0')
-          Result = "-" + Result.substring(2, Result.length());
+        if ( len == maxSize && Result.charAt( 0 ) == '0' )
+          Result = Result.substring( 1, Result.length() );
+        else if ( len == ( maxSize + 1 ) && Result.charAt( 0 ) == '-' && Result.charAt( 1 ) == '0' )
+          Result = "-" + Result.substring( 2, Result.length() );
 
         return Result;
       }
 
-    static String FormatNumber
-      (
-        Number X,
-        int UseFormat,
-        int NrDecimals,
-        boolean ExponentPad /* leave spaces if exponent is omitted */
-      )
-      /* formats X for display according to the specified settings. */
+    private static String FormatNumber
+        (
+            Number X,
+            int UseFormat,
+            int NrDecimals,
+            boolean ExponentPad /* leave spaces if exponent is omitted */
+        )
       {
+        /* formats X for display according to the specified settings. */
         String Result = null;
 
-        Number aX = new Number(X);
+        Number aX = new Number( X );
         aX.abs();
 
         // check that FORMAT_FIXED can be used, if outside supported range use FORMAT_FLOAT
 
-        if (UseFormat == FORMAT_FIXED
-          && NrDecimals == -1
-          && X.getSignum() != 0
-          && (aX.compareTo(minFixed) < 0
-              || aX.compareTo(maxFixed) >= 0))
+        if ( UseFormat == FORMAT_FIXED
+            && NrDecimals == -1
+            && X.getSignum() != 0
+            && ( aX.compareTo( minFixed ) < 0
+            || aX.compareTo( maxFixed ) >= 0 ) )
           {
             UseFormat = FORMAT_FLOAT;
           }
 
-        final int Exp           = X.scaleExp(UseFormat);
-        final int BeforeDecimal = X.figuresBeforeDecimal(Exp);
+        final int Exp           = X.scaleExp( UseFormat );
+        final int BeforeDecimal = X.figuresBeforeDecimal( Exp );
 
-        switch (UseFormat)
+        switch ( UseFormat )
           {
             case FORMAT_FLOAT:
             case FORMAT_ENG:
-              final Number Factor = new Number(Math.pow(10.0, Exp));
-              Number N = new Number(X);
-              N.div(Factor);
+              final Number Factor = new Number( Math.pow( 10.0, Exp ) );
+              Number N = new Number( X );
+              N.div( Factor );
 
-                final int UseNrDecimalsF = NrDecimals == -1 ? Math.max(8 - BeforeDecimal, 0) : NrDecimals;
-              Result = N.formatString (Global.StdLocale, UseNrDecimalsF);
+              final int UseNrDecimalsF = NrDecimals == -1
+                                         ? Math.max( 8 - BeforeDecimal, 0 )
+                                         : NrDecimals;
+              Result = N.formatString( Global.StdLocale, UseNrDecimalsF );
 
-              if (UseNrDecimalsF > 0)
+              if ( UseNrDecimalsF > 0 )
                 {
-                  Result = RemoveTrailingZeros(Result);
+                  Result = RemoveTrailingZeros( Result );
 
                   // this can happen only when number <1, remove leading zero
                   // length is +2 because of 0 and decimal point
-                  if (UseNrDecimalsF == 8)
-                    Result = RemoveLeadingZero(Result, 10);
+                  if ( UseNrDecimalsF == 8 )
+                    Result = RemoveLeadingZero( Result, 10 );
                 }
 
               /* assume there will always be a decimal point? */
-              Result += (Exp < 0 ? "-" : " ") + String.format(Global.StdLocale, "%02d", Math.abs(Exp));
-            break;
+              Result += ( Exp < 0
+                          ? "-"
+                          : " " ) + String.format( Global.StdLocale, "%02d", Math.abs( Exp ) );
+              break;
 
             case FORMAT_FIXED:
-              if (NrDecimals >= 0)
+              if ( NrDecimals >= 0 )
                 {
-                    Result = X.formatString
-                      (Global.StdLocale, Math.max(Math.min(NrDecimals, 10 - BeforeDecimal), 0));
+                  Result = X.formatString
+                      (
+                          Global.StdLocale,
+                          Math.max( Math.min( NrDecimals, 10 - BeforeDecimal ), 0 )
+                      );
                 }
               else
                 {
-                  final int UseNrDecimals = Math.max(10 - BeforeDecimal, 0);
-                  Result = X.formatString (Global.StdLocale, UseNrDecimals);
+                  final int UseNrDecimals = Math.max( 10 - BeforeDecimal, 0 );
+                  Result = X.formatString( Global.StdLocale, UseNrDecimals );
 
-                  if (UseNrDecimals > 0)
+                  if ( UseNrDecimals > 0 )
                     {
-                      Result = RemoveTrailingZeros(Result);
+                      Result = RemoveTrailingZeros( Result );
 
                       // this can happen only when number <1, remove leading zero
                       // length is +2 because of 0 and decimal point
-                      if (UseNrDecimals == 10)
-                        Result = RemoveLeadingZero(Result, 12);
+                      if ( UseNrDecimals == 10 )
+                        Result = RemoveLeadingZero( Result, 12 );
                     }
                   else
                     {
                       Result += ".";
-                    } /*if*/
-                } /*if*/
+                    }
+                }
 
-              if (Result.length() == 0)
+              if ( Result.length() == 0 )
                 {
                   Result = "0.";
-                } /*if*/
-              if (ExponentPad)
+                }
+              if ( ExponentPad )
                 {
                   Result += "   ";
-                } /*if*/
-            break;
-          } /*switch*/
+                }
+              break;
+          }
 
         return Result;
-      } /*FormatNumber*/
+      }
 
-    public void SetX
-      (
-        Number NewX,
-        boolean Trace
-      )
-      /* sets the display to show the specified value. */
+    void SetX
+        (
+            Number NewX,
+            boolean Trace
+        )
       {
+        /* sets the display to show the specified value. */
         CurState = ResultState;
-        if (NewX.isInfinite())
+        if ( NewX.isInfinite() || NewX.isSmall() )
           {
-            SetErrorState(false);
+            SetErrorState( false );
           }
-        if (!NewX.isNaN())
+        if ( !NewX.isNaN() )
           {
-            X = new Number(NewX);
-            CurDisplay = FormatNumber(X, CurFormat, CurNrDecimals, false);
-            SetShowing(CurDisplay);
+            X = new Number( NewX );
+            CurDisplay = FormatNumber( X, CurFormat, CurNrDecimals, false );
+            SetShowing( CurDisplay );
           }
         else
           {
-            SetErrorState(false);
-          } /*if*/
-        if (Trace)
-            TraceDisplay(true, "");
-      } /*SetX*/
+            SetErrorState( false );
+          }
+        if ( Trace )
+          TraceDisplay( true, "" );
+      }
 
-    public void ChangeSign()
+    void ChangeSign()
       {
-        switch (CurState)
+        switch ( CurState )
           {
             case EntryState:
             case DecimalEntryState:
-              if (CurDisplay.charAt(0) == '-')
+              if ( CurDisplay.charAt( 0 ) == '-' )
                 {
-                  CurDisplay = CurDisplay.substring(1);
+                  CurDisplay = CurDisplay.substring( 1 );
                 }
               else
                 {
                   CurDisplay = "-" + CurDisplay;
-                } /*if*/
-              SetShowing(CurDisplay);
-            break;
+                }
+              SetShowing( CurDisplay );
+              break;
             case ExponentEntryState:
               CurDisplay =
-                  CurDisplay.substring(0, CurDisplay.length() - 3)
-                +
-                  (CurDisplay.charAt(CurDisplay.length() - 3) == '-' ? ' ' : '-')
-                +
-                  CurDisplay.substring(CurDisplay.length() - 2);
-              SetShowing(CurDisplay);
-            break;
+                  CurDisplay.substring( 0, CurDisplay.length() - 3 )
+                      +
+                      ( CurDisplay.charAt( CurDisplay.length() - 3 ) == '-'
+                        ? ' '
+                        : '-' )
+                      +
+                      CurDisplay.substring( CurDisplay.length() - 2 );
+              SetShowing( CurDisplay );
+              break;
             case ResultState:
               X.negate();
-              SetX(X, true);
-            break;
-          } /*switch*/
-      } /*ChangeSign*/
+              SetX( X, true );
+              break;
+          }
+      }
 
-    public void SetDisplayMode
-      (
-        int NewMode,
-        int NewNrDecimals
-      )
+    void SetDisplayMode
+        (
+            int NewMode,
+            int NewNrDecimals
+        )
       {
-        Enter(NewMode == FORMAT_FIXED ? 58 : 57);
+        Enter( NewMode == FORMAT_FIXED
+               ? 58
+               : 57 );
         CurFormat = NewMode;
-        CurNrDecimals = NewNrDecimals >= 0 && NewNrDecimals < 9 ? NewNrDecimals : -1;
-        SetX(X, true);
-      } /*SetDisplayMode*/
+        CurNrDecimals = NewNrDecimals >= 0 && NewNrDecimals < 9
+                        ? NewNrDecimals
+                        : -1;
+        SetX( X, true );
+      }
 
-    void DoStackTop()
+    private void DoStackTop()
       {
-        final OpStackEntry ThisOp = OpStack[--OpStackNext];
-        switch (ThisOp.Operator)
+        final OpStackEntry ThisOp = OpStack[ --OpStackNext ];
+        switch ( ThisOp.Operator )
           {
             case STACKOP_ADD:
-              X.add(ThisOp.Operand);
-            break;
+              X.add( ThisOp.Operand );
+              break;
             case STACKOP_SUB:
-              ThisOp.Operand.sub(X);
+              ThisOp.Operand.sub( X );
               X = ThisOp.Operand;
-            break;
+              break;
             case STACKOP_MUL:
-              X.mult(ThisOp.Operand);
-            break;
+              X.mult( ThisOp.Operand );
+              break;
             case STACKOP_DIV:
-              ThisOp.Operand.div(X);
+              ThisOp.Operand.div( X );
               X = ThisOp.Operand;
-              if (X.isError())
+              if ( X.isError() )
                 {
-                    SetX(X, false);
-                    SetErrorState(false);
+                  SetX( X, false );
+                  SetErrorState( false );
                 }
-            break;
+              break;
             case STACKOP_MOD:
-              ThisOp.Operand.rem(X);
+              ThisOp.Operand.rem( X );
               X = ThisOp.Operand;
-            break;
+              break;
             case STACKOP_EXP:
-              ThisOp.Operand.pow(X);
+              ThisOp.Operand.pow( X );
               X = ThisOp.Operand;
 
-              if (X.isError())
+              if ( X.isError() )
                 {
-                    SetX(X, false);
-                    SetErrorState(false);
+                  SetX( X, false );
+                  SetErrorState( false );
                 }
-            break;
+              break;
             case STACKOP_ROOT:
-                if (X.getSignum() == 0)
-                  {
-                    if (ThisOp.Operand.getSignum() == 0
-                        || ThisOp.Operand.compareTo(Number.ONE) == 0
-                        || ThisOp.Operand.compareTo(Number.mONE) == 0)
-                      {
-                          X.set(1);
-                      }
-                    else
-                      {
-                          X.set(Number.ERROR);
-                      }
-                    SetX(X, false);
-                    SetErrorState(false);
-                  }
-                else if (X.getSignum() < 0 && ThisOp.Operand.getSignum() <= 0)
-                  {
-                    if (ThisOp.Operand.getSignum() == 0)
-                      {
-                        X.set(Number.ERROR);
-                      }
-                    else if (ThisOp.Operand.getSignum() < 0)
-                      {
-                        ThisOp.Operand.abs();
-                        X.reciprocal();
-                        ThisOp.Operand.pow(X);
-                        X = ThisOp.Operand;
-                      }
-                    SetX(X, false);
-                    SetErrorState(false);
-                  }
-                else
-                  {
-                    X.reciprocal();
-                    ThisOp.Operand.pow(X);
-                    X = ThisOp.Operand;
-                  }
-            break;
-          } /*switch*/
-      /* leave it to caller to update display */
-      } /*DoStackTop*/
+              if ( X.getSignum() == 0 )
+                {
+                  if ( ThisOp.Operand.getSignum() == 0
+                      || ThisOp.Operand.compareTo( Number.ONE ) == 0
+                      || ThisOp.Operand.compareTo( Number.mONE ) == 0 )
+                    {
+                      X.set( 1 );
+                    }
+                  else
+                    {
+                      X.set( Number.ERROR );
+                    }
+                  SetX( X, false );
+                  SetErrorState( false );
+                }
+              else if ( X.getSignum() < 0 && ThisOp.Operand.getSignum() <= 0 )
+                {
+                  if ( ThisOp.Operand.getSignum() == 0 )
+                    {
+                      X.set( Number.ERROR );
+                    }
+                  else if ( ThisOp.Operand.getSignum() < 0 )
+                    {
+                      ThisOp.Operand.abs();
+                      X.reciprocal();
+                      ThisOp.Operand.pow( X );
+                      X = ThisOp.Operand;
+                    }
+                  SetX( X, false );
+                  SetErrorState( false );
+                }
+              else
+                {
+                  X.reciprocal();
+                  ThisOp.Operand.pow( X );
+                  X = ThisOp.Operand;
+                }
+              break;
+          }
+        /* leave it to caller to update display */
+      }
 
-    static int Precedence
-      (
-        int OpCode
-      )
+    private static int Precedence
+        (
+            int OpCode
+        )
       {
         int Result = -1;
-        switch (OpCode)
+        switch ( OpCode )
           {
             case STACKOP_ADD:
             case STACKOP_SUB:
-                Result = 1;
-            break;
+              Result = 1;
+              break;
             case STACKOP_MUL:
             case STACKOP_DIV:
             case STACKOP_MOD:
-                Result = 2;
-            break;
+              Result = 2;
+              break;
             case STACKOP_EXP:
             case STACKOP_ROOT:
-                Result = 3;
-            break;
-          } /*switch*/
-        return
-            Result;
-      } /*Precedence*/
+              Result = 3;
+              break;
+          }
+        return Result;
+      }
 
-    void StackPush
-      (
-        int OpCode
-      )
+    private void StackPush
+        (
+            int OpCode
+        )
       {
-        if (OpStackNext == MaxOpStack)
+        if ( OpStackNext == MaxOpStack )
           {
-          /* overflow! */
-            SetErrorState(false);
+            /* overflow! */
+            SetErrorState( false );
           }
         else
           {
-            OpStack[OpStackNext++] = new OpStackEntry(new Number(X), OpCode, 0);
-          } /*if*/
-      } /*StackPush*/
+            OpStack[ OpStackNext++ ] = new OpStackEntry( new Number( X ), OpCode, 0 );
+          }
+      }
 
-    public void Operator
-      (
-        int OpCode
-      )
+    void Operator
+        (
+            int OpCode
+        )
       {
-        Enter(STACKOP_CODE[OpCode-1]);
-        if (InvState)
+        Enter( STACKOP_CODE[ OpCode - 1 ] );
+        if ( InvState )
           {
-            switch (OpCode)
+            switch ( OpCode )
               {
                 case STACKOP_EXP:
-                    OpCode = STACKOP_ROOT;
-                break;
-              } /*switch*/
-          } /*if*/
+                  OpCode = STACKOP_ROOT;
+                  break;
+              }
+          }
         boolean PoppedSomething = false;
-        for (;;)
+        for ( ; ; )
           {
             if
-              (
-                    OpStackNext == 0
-                ||
-                    OpStack[OpStackNext - 1].ParenFollows != 0
-                ||
-                    Precedence(OpStack[OpStackNext - 1].Operator) < Precedence(OpCode)
-              )
-                break;
+                (
+                OpStackNext == 0
+                    ||
+                    OpStack[ OpStackNext - 1 ].ParenFollows != 0
+                    ||
+                    Precedence( OpStack[ OpStackNext - 1 ].Operator ) < Precedence( OpCode )
+                )
+              break;
             DoStackTop();
             PoppedSomething = true;
-          } /*for*/
-        if (PoppedSomething)
+          }
+        if ( PoppedSomething )
           {
-            SetX(X, false);
-          } /*if*/
-        StackPush(OpCode);
-      } /*Operator*/
+            SetX( X, false );
+          }
+        StackPush( OpCode );
+      }
 
-    public void LParen()
+    void LParen()
       {
-        Enter(53);
+        Enter( 53 );
 
-        if (ParenCount == MaxParen)
-          SetErrorState(false);
+        if ( ParenCount == MaxParen )
+          SetErrorState( false );
         else
           ParenCount++;
 
-        if (OpStackNext != 0)
+        if ( OpStackNext != 0 )
           {
-            ++OpStack[OpStackNext - 1].ParenFollows;
-          } /*if*/
-      /* else ignored */
-      } /*LParen*/
+            ++OpStack[ OpStackNext - 1 ].ParenFollows;
+          }
+      }
 
-    public void RParen()
+    void RParen()
       {
-        Enter(54);
-        ParenCount--;
-        boolean PoppedSomething = false;
-        for (;;)
-          {
-            if (OpStackNext == 0)
-                break;
-            if (OpStack[OpStackNext - 1].ParenFollows != 0)
-              {
-                --OpStack[OpStackNext - 1].ParenFollows;
-                break;
-              } /*if*/
-            DoStackTop();
-            PoppedSomething = true;
-          } /*for*/
-        if (PoppedSomething)
-          {
-            SetX(X, true);
-          } /*if*/
-      } /*RParen*/
-
-    public void Equals()
-      {
-        Enter(95);
-        if (IsOperator(PreviousOp))
-          SetErrorState(false);
+        Enter( 54 );
+        if ( IsOperator( PreviousOp ) )
+          SetErrorState( false );
         else
           {
-            while (OpStackNext != 0)
+            ParenCount--;
+            boolean PoppedSomething = false;
+            for ( ; ; )
+              {
+                if ( OpStackNext == 0 )
+                  break;
+                if ( OpStack[ OpStackNext - 1 ].ParenFollows != 0 )
+                  {
+                    --OpStack[ OpStackNext - 1 ].ParenFollows;
+                    break;
+                  }
+                DoStackTop();
+                PoppedSomething = true;
+              }
+            if ( PoppedSomething )
+              {
+                SetX( X, true );
+              }
+          }
+      }
+
+    void Equals()
+      {
+        Enter( 95 );
+        if ( IsOperator( PreviousOp ) )
+          SetErrorState( false );
+        else
+          {
+            while ( OpStackNext != 0 )
               {
                 DoStackTop();
               } /*while*/
-            SetX(X, true);
+            SetX( X, true );
           }
-      } /*Equals*/
+      }
 
-    public void SetAngMode
-      (
-        int NewMode
-      )
+    void SetAngMode
+        (
+            int NewMode
+        )
       {
         CurAng = NewMode;
-      } /*SetAngMode*/
+      }
 
-    public void Square()
+    void Square()
       {
-        Enter(33);
+        Enter( 33 );
         X.x2();
-        SetX(X, true);
-      } /*Square*/
+        SetX( X, true );
+      }
 
-    public void Sqrt()
+    void Sqrt()
       {
-        Enter(34);
+        Enter( 34 );
         X.sqrt();
-        if (X.isError())
-        {
-            SetErrorState(false);
-        }
-        SetX(X, true);
-      } /*Sqrt*/
-
-    public void Reciprocal()
-      {
-        Enter(35);
-        X.reciprocal();
-        if (X.isError())
-        {
-            SetErrorState(false);
-        }
-        SetX(X, true);
-      } /*Reciprocal*/
-
-    public void Sin()
-      {
-        Enter(38);
-        if (InvState)
+        if ( X.isError() )
           {
-              X.asin(CurAng);
-              if (X.isError())
-                {
-                    SetErrorState(false);
-                }
+            SetErrorState( false );
           }
-        else
-          {
-              X.sin(CurAng);
-          } /*if*/
-        SetX(X, true);
-      } /*Sin*/
+        SetX( X, true );
+      }
 
-    public void Cos()
+    void Reciprocal()
       {
-        Enter(39);
-        if (InvState)
+        Enter( 35 );
+        X.reciprocal();
+        if ( X.isError() )
           {
-            X.acos(CurAng);
-            if (X.isError())
+            SetErrorState( false );
+          }
+        SetX( X, true );
+      }
+
+    void Sin()
+      {
+        Enter( 38 );
+        if ( InvState )
+          {
+            X.asin( CurAng );
+            if ( X.isError() )
               {
-                SetErrorState(false);
+                SetErrorState( false );
               }
           }
         else
           {
-            X.cos(CurAng);
-          } /*if*/
+            X.sin( CurAng );
+          }
 
-        SetX(X, true);
-      } /*Cos*/
+        SetX( X, true );
+      }
 
-    public void Tan()
+    void Cos()
       {
-        Enter(30);
-        if (InvState)
+        Enter( 39 );
+        if ( InvState )
           {
-            X.atan(CurAng);
+            X.acos( CurAng );
+            if ( X.isError() )
+              {
+                SetErrorState( false );
+              }
           }
         else
           {
-            X.tan(CurAng);
+            X.cos( CurAng );
           }
 
-        if (X.isError())
-          {
-            SetErrorState(false);
-          }
+        SetX( X, true );
+      }
 
-        SetX(X, true);
-      } /*Tan*/
-
-    public void Ln()
+    void Tan()
       {
-        Enter(23);
-        if (InvState)
+        Enter( 30 );
+        if ( InvState )
+          {
+            X.atan( CurAng );
+          }
+        else
+          {
+            X.tan( CurAng );
+          }
+
+        if ( X.isError() )
+          {
+            SetErrorState( false );
+          }
+
+        SetX( X, true );
+      }
+
+    void Ln()
+      {
+        Enter( 23 );
+        if ( InvState )
           {
             X.exp();
           }
@@ -1172,21 +1185,21 @@ public class State
             X.ln();
           }
 
-        if (X.isError())
+        if ( X.isError() )
           {
-            SetErrorState(false);
+            SetErrorState( false );
           }
 
-        SetX(X, true);
-      } /*Ln*/
+        SetX( X, true );
+      }
 
-    public void Log()
+    void Log()
       {
-        Enter(28);
-        if (InvState)
+        Enter( 28 );
+        if ( InvState )
           {
-            Number NewX = new Number(10.0);
-            NewX.pow(X);
+            Number NewX = new Number( 10.0 );
+            NewX.pow( X );
             X = NewX;
           }
         else
@@ -1194,80 +1207,80 @@ public class State
             X.log();
           }
 
-        if (X.isError())
+        if ( X.isError() )
           {
-            SetErrorState(false);
+            SetErrorState( false );
           }
 
-        SetX(X, true);
-      } /*Log*/
+        SetX( X, true );
+      }
 
-    public void Percent()
+    void Percent()
       {
-        Enter(20);
+        Enter( 20 );
 
-        X.div(100);
+        X.div( 100 );
 
-        if (OpStackNext > 0)
+        if ( OpStackNext > 0 )
           {
-            X.mult(OpStack[OpStackNext-1].Operand);
+            X.mult( OpStack[ OpStackNext - 1 ].Operand );
           }
 
-        if (X.isError())
+        if ( X.isError() )
           {
-            SetErrorState(false);
+            SetErrorState( false );
           }
 
-        SetX(X, true);
-      } /*Percent*/
+        SetX( X, true );
+      }
 
-    public void Pi()
+    void Pi()
       {
-        if (InvState) /* extension! */
+        if ( InvState ) /* extension! */
           {
-            X.trigScale(CurAng); // ?? check that it is on same order or reciprocal
+            X.trigScale( CurAng ); // ?? check that it is on same order or reciprocal
           }
         else
           {
             X.Pi();
-          } /*if*/
-        SetX(X, true);
-      } /*Pi*/
+          }
+        SetX( X, true );
+      }
 
-    public void Int()
+    void Int()
       {
-        Enter(59);
-        if (InvState)
+        Enter( 59 );
+        if ( InvState )
           {
             X.fracPart();
           }
         else
           {
             X.intPart();
-          } /*if*/
+          }
 
-        SetX(X, true);
-      } /*Int*/
+        SetX( X, true );
+      }
 
-    public void Abs()
+    void Abs()
       {
-        Enter(50);
+        Enter( 50 );
 
         X.abs();
-        SetX(X, true);
-      } /*Abs*/
+        SetX( X, true );
+      }
 
-    public void SwapT()
+    void SwapT()
       {
-        Enter(32);
+        Enter( 32 );
         final Number SwapTemp = X;
-        SetX(T, true);
+        SetX( T, true );
         T = SwapTemp;
-      } /*SwapT*/
+      }
 
-    public void Polar()
+    void Polar()
       {
-        Enter(37);
+        Enter( 37 );
 
         Number NewX, NewY;
         Number OldX, OldT;
@@ -1283,50 +1296,42 @@ public class State
          *    Radian system  =  2π
          *    Degree system  = 360
          */
-        switch (CurAng)
+        switch ( CurAng )
           {
             case ANG_GRAD:
-              New180 = new Number(200);
+              New180 = new Number( 200 );
               break;
             case ANG_RAD:
-              New180 = new Number(Number.PI);
+              New180 = new Number( Number.PI );
               break;
             case ANG_DEG:
             default: // Degrees
-              New180 = new Number(180);
+              New180 = new Number( 180 );
               break;
-          };
+          }
 
-        New360 = new Number(New180);
-        New360.add(New180);   // We simply double whatever the 180 number was
-        OldX = new Number(X);
-        OldT = new Number(T);
+        New360 = new Number( New180 );
+        New360.add( New180 );   // We simply double whatever the 180 number was
+        OldX = new Number( X );
+        OldT = new Number( T );
 
-        if (InvState)
+        if ( InvState )
           {
 
             /* Rectangular -> Polar  */
-            Number X2 = new Number(X);
+            Number X2 = new Number( X );
             X2.x2();
-            Number Y2 = new Number(T);
+            Number Y2 = new Number( T );
             Y2.x2();
 
-            NewX = new Number(X2);
-            NewX.add(Y2);
+            NewX = new Number( X2 );
+            NewX.add( Y2 );
             NewX.sqrt();
 
             NewY = X;
-            NewY.div(T);
-            NewY.atan(CurAng);
+            NewY.div( T );
+            NewY.atan( CurAng );
             /*
-             *  20161012: SZoppi
-             *
-             *  To convert from Cartesian Coordinates (x,y) to Polar Coordinates (r,θ):
-             *
-             *    r = √ ( x2 + y2 )
-             *    θ = tan-1 ( y / x )
-             *
-             *  Calculators may give the wrong value of tan-1 () when x or y are negative
              *  The function must NOW determine the quadrant in which the
              *  result is delivered...
              *
@@ -1372,51 +1377,56 @@ public class State
              *  OldX is "Y"
              *  OltT is "X"
              */
-              if(OldX.compareTo(Number.ZERO) < 0)
+            if ( OldX.compareTo( Number.ZERO ) < 0 )
               {
-                if(OldT.compareTo(Number.ZERO) < 0)
-                {
-                  /*
-                   * Quadrant III
-                   * -X,-Y
-                   */
-                  NewY.add(New180);
-                }
-                  else
-                {
-                  /*
-                   * Quadrant IV
-                   * +X,-Y
-                   */
-                  NewY.abs();
-                  NewY.negate();
-                }
+                if ( OldT.compareTo( Number.ZERO ) < 0 )
+                  {
+                    /*
+                     * Quadrant III
+                     * -X,-Y
+                     */
+                    NewY.add( New180 );
+                  }
+                else
+                  {
+                    /*
+                     * Quadrant IV
+                     * +X,-Y
+                     */
+                    NewY.abs();
+                    NewY.negate();
+                  }
 
               }
-                else
+            else
               {
-                if(OldT.compareTo(Number.ZERO) < 0)
-                {
-                  /*
-                   * Quadrant II
-                   * -X,+Y
-                   */
-                  NewY.add(New180);
-                }
-                  else
-                {
-                  /*
-                   * Quadrant I
-                   * +X,+Y
-                   */
-                  // We don't bother adding because the signs are correct
-                }
+                if ( OldT.compareTo( Number.ZERO ) < 0 )
+                  {
+                    /*
+                     * Quadrant II
+                     * -X,+Y
+                     */
+                    NewY.add( New180 );
+                  }
+                else
+                  {
+                    /*
+                     * Quadrant I
+                     * +X,+Y
+                     */
+                    // We don't bother adding because the signs are correct
+                  }
               }
           }
-            else
+        else
           {
             /*
-             *  20170106 SZoppi: Fixed Function
+             *  to convert from Cartesian Coordinates (x,y) to Polar Coordinates (r,θ):
+             *
+             *    r = √ ( x2 + y2 )
+             *    θ = tan-1 ( y / x )
+             *
+             *  Calculators may give the wrong value of tan-1 () when x or y are negative
              *
              *  The function must NOW determine the quadrant in which the
              *  result is delivered...
@@ -1461,384 +1471,398 @@ public class State
 
             /* Polar -> Rectangular */
 
-            Number Xtheta = new Number(X);
-            Number Xmod360 = new Number(X);
+            Number Xtheta  = new Number( X );
+            Number Xmod360 = new Number( X );
 
-            Xtheta.rem(New180);
-            Xmod360.rem(New360);
+            Xtheta.rem( New180 );
+            Xmod360.rem( New360 );
             Xmod360.abs();
 
 
-            Number Xcos = new Number (Xtheta);
-            Number Xsin = new Number (Xtheta);
+            Number Xcos = new Number( Xtheta );
+            Number Xsin = new Number( Xtheta );
 
-            Xcos.cos(CurAng);
-            Xsin.sin(CurAng);
+            Xcos.cos( CurAng );
+            Xsin.sin( CurAng );
 
-            NewX = new Number(T);
-            NewX.mult(Xcos);
+            NewX = new Number( T );
+            NewX.mult( Xcos );
 
-            NewY = new Number(T);
-            NewY.mult(Xsin);
+            NewY = new Number( T );
+            NewY.mult( Xsin );
 
-            if(Xmod360.compareTo(New180) >= 0)
-            {
-              NewY.negate();
-              NewX.negate();
-            }
+            if ( Xmod360.compareTo( New180 ) >= 0 )
+              {
+                NewY.negate();
+                NewX.negate();
+              }
           }
 
         T = NewX;
-        SetX(NewY, true);
-      } /*Polar*/
+        SetX( NewY, true );
+      }
 
-    public void D_MS()
+    void D_MS()
       {
-        Enter(88);
+        Enter( 88 );
 
         // Must be done on the displayed value and not X. That is if Fix-01 is set, the number must
         // be with a single digit.
 
-        X.nDigits(CurNrDecimals);
+        X.nDigits( CurNrDecimals );
 
-        Number Sign = new Number(X);
+        Number Sign = new Number( X );
         Sign.signum();
 
         X.abs();
 
-        Number Degrees = new Number(X);
+        Number Degrees = new Number( X );
         Degrees.intPart();
 
-        Number Fraction = new Number(X);
+        Number Fraction = new Number( X );
         Fraction.fracPart();
 
-        Number Minutes = new Number(Fraction);
+        Number Minutes = new Number( Fraction );
         Number Seconds;
 
-        if (InvState)
+        if ( InvState )
           {
-            Minutes.mult(60);
-            Seconds = new Number(Minutes);
+            Minutes.mult( 60 );
+            Seconds = new Number( Minutes );
 
             Minutes.intPart();
             Seconds.fracPart();
 
-            Minutes.div(100);
-            Seconds.mult(6);
-            Seconds.div(1000);
+            Minutes.div( 100 );
+            Seconds.mult( 6 );
+            Seconds.div( 1000 );
           }
         else
           {
-            Minutes.mult(100);
-            Seconds = new Number(Minutes);
+            Minutes.mult( 100 );
+            Seconds = new Number( Minutes );
 
             Minutes.intPart();
             Seconds.fracPart();
 
-            Minutes.div(60);
-            Seconds.div(36);
+            Minutes.div( 60 );
+            Seconds.div( 36 );
           }
 
-        X.set(Degrees);
-        X.add(Minutes);
-        X.add(Seconds);
-        X.mult(Sign);
+        X.set( Degrees );
+        X.add( Minutes );
+        X.add( Seconds );
+        X.mult( Sign );
 
-        SetX(X, true);
-      } /*D_MS*/
-
-    void ShowCurProg()
-      {
-        SetShowing
-          (
-            CurBank != 0 ?
-              String.format
-                (
-                  Global.StdLocale,
-                  "%02d %03d %02d",
-                  CurBank,
-                  PC,
-                  (int)Bank[CurBank].Program[PC]
-                )
-            :
-              String.format(Global.StdLocale, "%03d %02d", PC, (int)Program[PC])
-          );
-      } /*ShowCurProg*/
-
-    public void TraceDisplay
-      (
-       boolean Data,
-       String Label
-      )
-      {
-          String L4 = (Label.length() == 1 ? "  " + Label + " "
-            : (Label.length() == 4 ? Label :
-               String.format(Global.StdLocale,"%4s",Label)));
-          if (TracePrintActivated && Global.Print != null)
-              PrintDisplay(Data, false, L4);
+        SetX( X, true );
       }
 
-    public void PrintDisplay
-      (
-        boolean Data,
-        boolean Labelled,
-        String Label
-      )
+    private void ShowCurProg()
       {
-        if (Global.Print != null && CurDisplay != null)
-          {
-            final byte[] Translated = new byte[Printer.CharColumns];
-            String Disp = (Data ? CurDisplay : "");
-            Global.Print.Translate
-              (
+        SetShowing
+            (
+                CurBank != 0
+                ?
                 String.format
-                  (
-                      Global.StdLocale,
-                      String.format
-                      (Global.StdLocale, "%%%ds", Math.max(1, 14 - Disp.length())),
-                      " "
-                  ).substring(1) /* because I can't have a 0-length format width */
-                  + Disp
-                  + (InErrorState() ? "?" : " ")
-                  + (Label.length() == 4 ? Label : ""),
-                  Translated
-              );
+                    (
+                        Global.StdLocale,
+                        "%02d %03d %02d",
+                        CurBank,
+                        PC,
+                        ( int ) Bank[ CurBank ].Program[ PC ]
+                    )
+                :
+                String.format( Global.StdLocale, "%03d %02d", PC, ( int ) Program[ PC ] )
+            );
+      }
 
-            if (Labelled)
+    private void TraceDisplay
+        (
+            boolean Data,
+            String Label
+        )
+      {
+        String L4 = ( Label.length() == 1
+                      ? "  " + Label + " "
+                      : ( Label.length() == 4
+                          ? Label
+                          :
+                          String.format( Global.StdLocale, "%4s", Label ) ) );
+        if ( TracePrintActivated && Global.Print != null )
+          PrintDisplay( Data, false, L4 );
+      }
+
+    void PrintDisplay
+        (
+            boolean Data,
+            boolean Labelled,
+            String Label
+        )
+      {
+        if ( Global.Print != null && CurDisplay != null )
+          {
+            final byte[] Translated = new byte[ Printer.CharColumns ];
+            String       Disp       = ( Data
+                                        ? CurDisplay
+                                        : "" );
+            Global.Print.Translate
+                (
+                    String.format
+                        (
+                            Global.StdLocale,
+                            String.format
+                                ( Global.StdLocale, "%%%ds", Math.max( 1, 14 - Disp.length() ) ),
+                            " "
+                        ).substring( 1 ) /* because I can't have a 0-length format width */
+                        + Disp
+                        + ( InErrorState()
+                            ? "?"
+                            : " " )
+                        + ( Label.length() == 4
+                            ? Label
+                            : "" ),
+                    Translated
+                );
+
+            if ( Labelled )
               {
                 /* clear left-most characters of the last column */
-                Translated[Printer.CharColumns - 5] = 0;
-                for (int i = Printer.CharColumns - 4; i < Printer.CharColumns; ++i)
-                  {
-                    Translated[i] = PrintRegister[i];
-                  } /*for*/
-              } /*if*/
-            Global.Print.Render(Translated);
-          } /*if*/
-      } /*PrintDisplay*/
+                Translated[ Printer.CharColumns - 5 ] = 0;
+                System.arraycopy
+                    (
+                        PrintRegister, Printer.CharColumns - 4,
+                        Translated, Printer.CharColumns - 4,
+                        4
+                    );
+              }
+            Global.Print.Render( Translated );
+          }
+      }
 
-    public void SetProgMode
-      (
-        boolean NewProgMode
-      )
+    void SetProgMode
+        (
+            boolean NewProgMode
+        )
       {
+        // entering the program mode always clear the error state
+        inError = false;
         ProgMode = NewProgMode;
-        if (ProgMode)
+        if ( ProgMode )
           {
             ShowCurProg();
           }
         else
           {
-            SetShowing(CurDisplay);
-          } /*if*/
-      } /*SetProgMode*/
+            SetShowing( CurDisplay );
+          }
+      }
 
-    public void ClearMemories()
+    void ClearMemories()
       {
-        Enter(24); /*?*/
-        for (int i = 0; i < MaxMemories; ++i)
+        Enter( 24 ); /*?*/
+        for ( int i = 0 ; i < MaxMemories ; ++i )
           {
-            Memory[i].set(0);
-          } /*for*/
-      } /*ClearMemories*/
+            Memory[ i ].set( 0 );
+          }
+      }
 
-    public void ClearProgram()
+    void ClearProgram()
       {
-        Enter(29); /*?*/
-        for (int i = 0; i < MaxProgram; ++i)
+        Enter( 29 ); /*?*/
+        for ( int i = 0 ; i < MaxProgram ; ++i )
           {
-            Program[i] = (byte)0;
-          } /*if*/
+            Program[ i ] = ( byte ) 0;
+          }
         PC = 0;
         ReturnLast = -1;
-        T.set(0);
-        for (int i = 0; i < MaxFlags; ++i)
+        T.set( 0 );
+        for ( int i = 0 ; i < MaxFlags ; ++i )
           {
-            Flag[i] = false;
-          } /*for*/
-      /* wipe any loaded help as well */
-        if (CurBank == 0)
+            Flag[ i ] = false;
+          }
+        /* wipe any loaded help as well */
+        if ( CurBank == 0 )
           {
-            Global.Label.SetHelp(null, null);
-          } /*if*/
-        Bank[0].Card = null;
-        Bank[0].Help = null;
-      } /*ClearProgram*/
+            Global.Label.SetHelp( null, null );
+          }
+        Bank[ 0 ].Card = null;
+        Bank[ 0 ].Help = null;
+      }
 
-    public void SelectProgram
-      (
-        int ProgNr,
-        boolean Indirect
-      )
+    void SelectProgram
+        (
+            int ProgNr,
+            boolean Indirect
+        )
       {
-        if (ProgNr >= 0)
+        if ( ProgNr >= 0 )
           {
             boolean OK = false;
             do /*once*/
               {
-                if (Indirect)
+                if ( Indirect )
                   {
-                    ProgNr = (ProgNr + RegOffset) % 100;
-                    if (ProgNr >= MaxMemories)
-                        break;
-                    ProgNr = (int)Memory[ProgNr].getInt();
-                    if (ProgNr < 0)
-                        break;
-                  } /*if*/
-                if (ProgNr >= MaxBanks || Bank[ProgNr] == null)
-                    break;
-                FillInLabels(ProgNr); /* if not done already */
-                if (TaskRunning)
+                    ProgNr = ( ProgNr + RegOffset ) % 100;
+                    if ( ProgNr >= MaxMemories )
+                      break;
+                    ProgNr = ( int ) Memory[ ProgNr ].getInt();
+                    if ( ProgNr < 0 )
+                      break;
+                  }
+                if ( ProgNr >= MaxBanks || Bank[ ProgNr ] == null )
+                  break;
+                FillInLabels( ProgNr ); /* if not done already */
+                if ( TaskRunning )
                   {
                     NextBank = ProgNr;
                   }
                 else
                   {
                     CurBank = ProgNr;
-                    if (Global.Label != null)
+                    if ( Global.Label != null )
                       {
-                        Global.Label.SetHelp(Bank[ProgNr].Card, Bank[ProgNr].Help);
-                      } /*if*/
-                  } /*if*/
-              /* all done */
+                        Global.Label.SetHelp( Bank[ ProgNr ].Card, Bank[ ProgNr ].Help );
+                      }
+                  }
+                /* all done */
                 OK = true;
               }
-            while (false);
-            if (!OK)
+            while ( false );
+            if ( !OK )
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-      } /*SelectProgram*/
+                SetErrorState( true );
+              }
+          }
+      }
 
-    public static final int MEMOP_STO = 1;
-    public static final int MEMOP_RCL = 2;
-    public static final int MEMOP_ADD = 3;
-    public static final int MEMOP_SUB = 4;
-    public static final int MEMOP_MUL = 5;
-    public static final int MEMOP_DIV = 6;
-    public static final int MEMOP_EXC = 7;
+    static final int MEMOP_STO = 1;
+    static final int MEMOP_RCL = 2;
+    static final int MEMOP_ADD = 3;
+    static final int MEMOP_SUB = 4;
+    static final int MEMOP_MUL = 5;
+    static final int MEMOP_DIV = 6;
+    static final int MEMOP_EXC = 7;
 
-    static final int [] MEMOP_CODE = { 42, 43, 44, 44, 49, 49, 48 };
+    private static final int[] MEMOP_CODE = { 42, 43, 44, 44, 49, 49, 48 };
 
-    public void MemoryOp
-      (
-        int Op,
-        int RegNr,
-        boolean Indirect
-      )
+    void MemoryOp
+        (
+            int Op,
+            int RegNr,
+            boolean Indirect
+        )
       {
-        if (RegNr >= 0)
+        if ( RegNr >= 0 )
           {
-            Enter(MEMOP_CODE[Op-1]);
-            if (InvState)
+            Enter( MEMOP_CODE[ Op - 1 ] );
+            if ( InvState )
               {
-                switch (Op)
+                switch ( Op )
                   {
                     case MEMOP_ADD:
                       Op = MEMOP_SUB;
-                    break;
+                      break;
                     case MEMOP_MUL:
                       Op = MEMOP_DIV;
-                    break;
-                  } /*switch*/
-              } /*if*/
+                      break;
+                  }
+              }
             boolean OK = false; /* to begin with */
             do /*once*/
               {
-                RegNr = (RegNr + RegOffset) % 100;
-                if (RegNr >= MaxMemories)
+                RegNr = ( RegNr + RegOffset ) % 100;
+                if ( RegNr >= MaxMemories )
                   break;
-                if (Indirect)
+                if ( Indirect )
                   {
-                    RegNr = ((int)Memory[RegNr].getInt() + RegOffset) % 100;
-                    if (RegNr < 0 || RegNr >= MaxMemories)
+                    RegNr = ( ( int ) Memory[ RegNr ].getInt() + RegOffset ) % 100;
+                    if ( RegNr < 0 || RegNr >= MaxMemories )
                       break;
-                  } /*if*/
-                switch (Op)
+                  }
+                switch ( Op )
                   {
                     case MEMOP_STO:
-                      Memory[RegNr] = new Number(X);
-                    break;
+                      Memory[ RegNr ] = new Number( X );
+                      break;
                     case MEMOP_RCL:
-                      SetX(Memory[RegNr], true);
+                      SetX( Memory[ RegNr ], true );
                       ExponentEntered = false;
-                    break;
+                      break;
                     case MEMOP_ADD:
-                      Memory[RegNr].add(X);
-                    break;
+                      Memory[ RegNr ].add( X );
+                      break;
                     case MEMOP_SUB:
-                      Memory[RegNr].sub(X);
-                    break;
+                      Memory[ RegNr ].sub( X );
+                      break;
                     case MEMOP_MUL:
-                      Memory[RegNr].mult(X);
-                    break;
+                      Memory[ RegNr ].mult( X );
+                      break;
                     case MEMOP_DIV:
-                      Memory[RegNr].div(X);
-                      if (Memory[RegNr].isError())
-                        SetErrorState(false);
-                    break;
+                      Memory[ RegNr ].div( X );
+                      if ( Memory[ RegNr ].isError() )
+                        SetErrorState( false );
+                      break;
                     case MEMOP_EXC:
-                      final Number Temp = Memory[RegNr];
-                      Memory[RegNr] = X;
-                      SetX(Temp, true);
-                    break;
-                  } /*switch*/
-              /* all done */
+                      final Number Temp = Memory[ RegNr ];
+                      Memory[ RegNr ] = X;
+                      SetX( Temp, true );
+                      break;
+                  }
+                /* all done */
                 OK = true;
               }
-            while (false);
-            if (!OK)
+            while ( false );
+            if ( !OK )
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-      } /*MemoryOp*/
+                SetErrorState( true );
+              }
+          }
+      }
 
-    public static final int HIROP_STO = 0;
-    public static final int HIROP_RCL = 1;
-    public static final int HIROP_ADD = 3;
-    public static final int HIROP_MUL = 4;
-    public static final int HIROP_SUB = 5;
-    public static final int HIROP_DIV = 6;
+    private static final int HIROP_STO = 0;
+    private static final int HIROP_RCL = 1;
+    private static final int HIROP_ADD = 3;
+    private static final int HIROP_MUL = 4;
+    private static final int HIROP_SUB = 5;
+    private static final int HIROP_DIV = 6;
 
-    private void SetPrintRegister (int ColStart, long Contents)
+    private void SetPrintRegister( int ColStart, long Contents )
       {
-        for (int i = 5;;)
+        for ( int i = 5 ; ; )
           {
-            if (i == 0)
+            if ( i == 0 )
               break;
             --i;
 
-            byte val  = (byte)(Contents % 100);
-            byte col  = (byte)(val % 10);
-            byte line = (byte)(val / 10);
+            byte val  = ( byte ) ( Contents % 100 );
+            byte col  = ( byte ) ( val % 10 );
+            byte line = ( byte ) ( val / 10 );
 
-            if (col > 7)
-            {
-              col -= 8;
-              line += 1;
-            }
+            if ( col > 7 )
+              {
+                col -= 8;
+                line += 1;
+              }
 
-            val = (byte)(line * 10 + col);
+            val = ( byte ) ( line * 10 + col );
 
-            PrintRegister[i + ColStart] = val;
+            PrintRegister[ i + ColStart ] = val;
             Contents /= 100;
           }
       }
 
-    public void HirOp
-      (
-        int Code
-      )
+    private void HirOp
+        (
+            int Code
+        )
       {
-        if (Code >= 0)
+        if ( Code >= 0 )
           {
-            Enter(Code);
-            boolean OK = false; /* to begin with */
-            int Op = 0;
-            int RegNr = Code;
-            while (RegNr > 10)
+            Enter( Code );
+            boolean OK    = false; /* to begin with */
+            int     Op    = 0;
+            int     RegNr = Code;
+            while ( RegNr > 10 )
               {
                 RegNr = RegNr - 10;
                 Op++;
@@ -1846,475 +1870,482 @@ public class State
             // Note that RegNr = 0 must reference X
             do /*once*/
               {
-                if (RegNr > MaxOpStack)
-                    break;
+                if ( RegNr > MaxOpStack )
+                  break;
 
                 // ensure that we are not referencing a non initilized stack entry
-                if  (RegNr != 0 && OpStack[RegNr - 1] == null)
-                    OpStack[RegNr - 1] = new OpStackEntry(new Number(), Code, 0);
+                if ( RegNr != 0 && OpStack[ RegNr - 1 ] == null )
+                  OpStack[ RegNr - 1 ] = new OpStackEntry( new Number(), Code, 0 );
 
-                switch (Op)
+                switch ( Op )
                   {
                     case HIROP_STO:
-                      if (RegNr != 0)
-                          OpStack[RegNr - 1].Operand = new Number(X);
-                    break;
+                      if ( RegNr != 0 )
+                        OpStack[ RegNr - 1 ].Operand = new Number( X );
+                      break;
                     case HIROP_RCL:
-                      if (RegNr != 0)
-                          SetX(OpStack[RegNr - 1].Operand, true);
-                    break;
+                      if ( RegNr != 0 )
+                        SetX( OpStack[ RegNr - 1 ].Operand, true );
+                      break;
                     case HIROP_ADD:
-                      if (RegNr == 0)
-                          X.add(X);
+                      if ( RegNr == 0 )
+                        X.add( X );
                       else
-                          OpStack[RegNr - 1].Operand.add(X);
-                    break;
+                        OpStack[ RegNr - 1 ].Operand.add( X );
+                      break;
                     case HIROP_SUB:
-                      if (RegNr == 0)
-                          X.set(0);
+                      if ( RegNr == 0 )
+                        X.set( 0 );
                       else
-                          OpStack[RegNr - 1].Operand.sub(X);
-                    break;
+                        OpStack[ RegNr - 1 ].Operand.sub( X );
+                      break;
                     case HIROP_MUL:
-                      if (RegNr == 0)
-                          X.x2();
+                      if ( RegNr == 0 )
+                        X.x2();
                       else
-                          OpStack[RegNr - 1].Operand.mult(X);
-                    break;
+                        OpStack[ RegNr - 1 ].Operand.mult( X );
+                      break;
                     case HIROP_DIV:
-                      if (RegNr == 0)
-                          X.set(1);
+                      if ( RegNr == 0 )
+                        X.set( 1 );
                       else
-                          OpStack[RegNr - 1].Operand.div(X);
+                        OpStack[ RegNr - 1 ].Operand.div( X );
 
-                      if (X.isError())
-                          SetErrorState(false);
-                    break;
-                  } /*switch*/
+                      if ( X.isError() )
+                        SetErrorState( false );
+                      break;
+                  }
                 /* all done */
                 OK = true;
               }
-            while (false);
+            while ( false );
 
             /* emulate the printer registers HIR 05 is the OP 01 register and so on */
 
-            if (RegNr >= 5 && RegNr <= 8)
+            if ( RegNr >= 5 && RegNr <= 8 )
               {
-                final Number Factor = new Number(1e10);
-                Number OpVal = new Number(OpStack[RegNr - 1].Operand);
+                final Number Factor = new Number( 1e10 );
+                Number       OpVal  = new Number( OpStack[ RegNr - 1 ].Operand );
 
-                if (OpVal.compareTo(10) < 0)
-                    OpVal.mult(100);
-                else if (OpVal.compareTo(100) < 0)
-                    OpVal.mult(10);
-                else if (OpVal.compareTo(1000) >= 0)  // ??PO was 100 again in previous code (and mult(1))
-                    OpVal.div(10);
+                if ( OpVal.compareTo( 10 ) < 0 )
+                  OpVal.mult( 100 );
+                else if ( OpVal.compareTo( 100 ) < 0 )
+                  OpVal.mult( 10 );
+                else if ( OpVal.compareTo(
+                    1000 ) >= 0 )  // ??PO was 100 again in previous code (and mult(1))
+                  OpVal.div( 10 );
 
                 OpVal.fracPart();
-                OpVal.mult(Factor);
+                OpVal.mult( Factor );
                 OpVal.abs();
                 OpVal.intPart();
 
-                final int ColStart = (RegNr - 5) * 5;
+                final int ColStart = ( RegNr - 5 ) * 5;
 
-                SetPrintRegister(ColStart, OpVal.getInt());
+                SetPrintRegister( ColStart, OpVal.getInt() );
               }
 
-            if (!OK)
+            if ( !OK )
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-      } /*HirOp*/
+                SetErrorState( true );
+              }
+          }
+      }
 
-    boolean StatsRegsAvailable()
+    private boolean StatsRegsAvailable()
+      {
       /* ensures the statistics registers are accessible with the current
         partition/offset setting. */
-      {
         return
-          /* sufficient to check that first & last reg are within accessible range */
-                (RegOffset + STATSREG_FIRST) % 100 < MaxMemories
-            &&
-                (RegOffset + STATSREG_LAST) % 100 < MaxMemories;
-      } /*StatsRegsAvailable*/
+            /* sufficient to check that first & last reg are within accessible range */
+            ( RegOffset + STATSREG_FIRST ) % 100 < MaxMemories
+                &&
+                ( RegOffset + STATSREG_LAST ) % 100 < MaxMemories;
+      }
 
     private Number StatsSlope()
-      /* estimated slope from linear regression, used in a lot of other results. */
       {
+        /* estimated slope from linear regression, used in a lot of other results. */
         Number Result;
 
-        Number C1 = new Number (Memory[(RegOffset + STATSREG_SIGMAX) % 100]);
-        C1.mult(Memory[(RegOffset + STATSREG_SIGMAY) % 100]);
-        C1.div(Memory[(RegOffset + STATSREG_N) % 100]);
+        Number C1 = new Number( Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ] );
+        C1.mult( Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ] );
+        C1.div( Memory[ ( RegOffset + STATSREG_N ) % 100 ] );
         C1.negate();
-        C1.add(Memory[(RegOffset + STATSREG_SIGMAXY) % 100]);
+        C1.add( Memory[ ( RegOffset + STATSREG_SIGMAXY ) % 100 ] );
 
-        Number C2 = new Number (Memory[(RegOffset + STATSREG_SIGMAX) % 100]);
+        Number C2 = new Number( Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ] );
         C2.x2();
-        C2.div(Memory[(RegOffset + STATSREG_N) % 100]);
+        C2.div( Memory[ ( RegOffset + STATSREG_N ) % 100 ] );
         C2.negate();
-        C2.add(Memory[(RegOffset + STATSREG_SIGMAX2) % 100]);
+        C2.add( Memory[ ( RegOffset + STATSREG_SIGMAX2 ) % 100 ] );
 
         Result = C1;
-        Result.div(C2);
+        Result.div( C2 );
 
         return Result;
       }
 
-    public void SpecialOp
-      (
-        int OpNr,
-        boolean Indirect
-      )
+    void SpecialOp
+        (
+            int OpNr,
+            boolean Indirect
+        )
       {
-        if (OpNr >= 0)
+        if ( OpNr >= 0 )
           {
-            Enter(OpNr);
+            Enter( OpNr );
             boolean OK = false;
             do /*once*/
               {
-                if (Indirect)
+                if ( Indirect )
                   {
-                    OpNr = (OpNr + RegOffset) % 100;
-                    if (OpNr >= MaxMemories)
-                        break;
+                    OpNr = ( OpNr + RegOffset ) % 100;
+                    if ( OpNr >= MaxMemories )
+                      break;
                     // if Memory[OpNr] is negative, do nothing, no error
-                    if (Memory[OpNr].getSignum() < 0)
+                    if ( Memory[ OpNr ].getSignum() < 0 )
                       {
                         OK = true;
                         break;
                       }
-                    OpNr = (int)Memory[OpNr].getInt();
-                  } /*if*/
-                if (OpNr >= 20 && OpNr < 30)
+                    OpNr = ( int ) Memory[ OpNr ].getInt();
+                  }
+                if ( OpNr >= 20 && OpNr < 30 )
                   {
-                    Memory[OpNr - 20].add(Number.ONE);
+                    Memory[ OpNr - 20 ].add( Number.ONE );
                     OK = true;
                     break;
-                  } /*if*/
-                if (OpNr >= 30 && OpNr < 40)
+                  }
+                if ( OpNr >= 30 && OpNr < 40 )
                   {
-                    Memory[OpNr - 30].sub(Number.ONE);
+                    Memory[ OpNr - 30 ].sub( Number.ONE );
                     OK = true;
                     break;
-                  } /*if*/
-                switch (OpNr)
+                  }
+                switch ( OpNr )
                   {
                     case 0:
-                        for (int i = 0; i < PrintRegister.length; ++i)
-                          {
-                            PrintRegister[i] = 0;
-                          } /*for*/
-                        OK = true;
-                    break;
+                      for ( int i = 0 ; i < PrintRegister.length ; ++i )
+                        {
+                          PrintRegister[ i ] = 0;
+                        }
+                      OK = true;
+                      break;
                     case 1:
                     case 2:
                     case 3:
                     case 4:
-                        {
-                          final int ColStart = (OpNr - 1) * 5;
-                          long Contents = (long)Math.abs(X.getInt());
+                    {
+                      final int ColStart = ( OpNr - 1 ) * 5;
+                      long      Contents = Math.abs( X.getInt() );
 
-                          // emulate the HIR register (OP 01 use HIR 05, 02 -> 06, 03 -> 07 and 04 -> 08) */
+                      // emulate the HIR register (OP 01 use HIR 05, 02 -> 06, 03 -> 07 and 04 -> 08) */
 
-                          if (OpStack[OpNr + 3] == null)
-                              OpStack[OpNr + 3] = new OpStackEntry(null, OpNr, 0);
+                      if ( OpStack[ OpNr + 3 ] == null )
+                        OpStack[ OpNr + 3 ] = new OpStackEntry( null, OpNr, 0 );
 
-                          final Number E12 = new Number(1e12);
-                          OpStack[OpNr + 3].Operand = new Number(X);
-                          OpStack[OpNr + 3].Operand.div(E12);
+                      final Number E12 = new Number( 1e12 );
+                      OpStack[ OpNr + 3 ].Operand = new Number( X );
+                      OpStack[ OpNr + 3 ].Operand.div( E12 );
 
                           /* manual says fractional part of display is discarded as a side-effect,
                              tested on a real TI-59 */
 
-                          X.intPart();
-                          X.abs();
-                          SetX(X, true);
+                      X.intPart();
+                      X.abs();
+                      SetX( X, true );
 
-                          // but the decimal are considered for printing (just spaces)
+                      // but the decimal are considered for printing (just spaces)
 
-                          if (CurNrDecimals != -1)
-                              Contents = Contents * (long)Math.pow (10, CurNrDecimals);
+                      if ( CurNrDecimals != -1 )
+                        Contents = Contents * ( long ) Math.pow( 10, CurNrDecimals );
 
-                          SetPrintRegister (ColStart, Contents);
-                        }
-                        OK = true;
+                      SetPrintRegister( ColStart, Contents );
+                    }
+                    OK = true;
                     break;
                     case 5:
-                      if (Global.Print != null)
+                      if ( Global.Print != null )
                         {
-                          Global.Print.Render(PrintRegister);
-                        } /*if*/
+                          Global.Print.Render( PrintRegister );
+                        }
                       OK = true;
-                    break;
+                      break;
                     case 6:
-                      PrintDisplay(true, true, "");
+                      PrintDisplay( true, true, "" );
                       OK = true;
-                    break;
+                      break;
                     case 7:
-                      if (Global.Print != null)
+                      if ( Global.Print != null )
                         {
-                          Enter(OpNr);
-                          final int PlotX = (int)X.getInt();
-                          if (PlotX >= 0 && PlotX < Printer.CharColumns)
+                          Enter( OpNr );
+                          final int PlotX = ( int ) X.getInt();
+                          if ( PlotX >= 0 && PlotX < Printer.CharColumns )
                             {
-                              final byte[] Plot = new byte[Printer.CharColumns];
-                              for (int i = 0; i < Printer.CharColumns; ++i)
+                              final byte[] Plot = new byte[ Printer.CharColumns ];
+                              for ( int i = 0 ; i < Printer.CharColumns ; ++i )
                                 {
-                                  Plot[i] = (byte)(i == PlotX ? 51 : 0);
-                                } /*for*/
-                              Global.Print.Render(Plot);
+                                  Plot[ i ] = ( byte ) ( i == PlotX
+                                                         ? 51
+                                                         : 0 );
+                                }
+                              Global.Print.Render( Plot );
                             }
                           else
                             {
-                              SetErrorState(false);
-                            } /*if*/
-                        } /*if*/
+                              SetErrorState( false );
+                            }
+                        }
                       OK = true;
-                    break;
+                      break;
                     case 8:
-                      if (!TaskRunning)
+                      if ( !TaskRunning )
                         {
                           StartLabelListing();
-                        } /*if*/
+                        }
                       OK = true;
-                    break;
+                      break;
                     case 9:
-                      if (!TaskRunning && CurBank > 0)
+                      if ( !TaskRunning && CurBank > 0 )
                         {
-                          final ProgBank Bank = this.Bank[CurBank];
+                          final ProgBank Bank = this.Bank[ CurBank ];
                           if
-                            (
-                                  Bank != null
-                              &&
+                              (
+                              Bank != null
+                                  &&
                                   Bank.Program != null
-                              &&
+                                  &&
                                   Bank.Program.length <= MaxProgram
-                            )
+                              )
                             {
-                              for (int i = 0; i < Bank.Program.length; ++i)
+                              System.arraycopy
+                                  (
+                                      Bank.Program, 0,
+                                      Program, 0,
+                                      Bank.Program.length
+                                  );
+                              for ( int i = Bank.Program.length ; i < MaxProgram ; ++i )
                                 {
-                                  Program[i] = Bank.Program[i];
-                                } /*for*/
-                              for (int i = Bank.Program.length; i < MaxProgram; ++i)
-                                {
-                                  Program[i] = 0;
-                                } /*for*/
+                                  Program[ i ] = 0;
+                                }
                               ResetLabels();
                             }
                           else
                             {
-                              SetErrorState(true);
-                            } /*if*/
-                        } /*if*/
+                              SetErrorState( true );
+                            }
+                        }
                       OK = true;
-                    break;
+                      break;
                     case 10:
                       X.signum();
-                      SetX(X, true);
+                      SetX( X, true );
                       OK = true;
-                    break;
+                      break;
                     case 11:
                       /* sample variance */
-                      if (StatsRegsAvailable())
+                      if ( StatsRegsAvailable() )
                         {
-                            final Number N_SIGMAX2 = Memory[(RegOffset + STATSREG_SIGMAX2) % 100];
-                            final Number N_SIGMAY2 = Memory[(RegOffset + STATSREG_SIGMAY2) % 100];
-                            final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                            final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                            final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
+                          final Number N_SIGMAX2 = Memory[ ( RegOffset + STATSREG_SIGMAX2 ) % 100 ];
+                          final Number N_SIGMAY2 = Memory[ ( RegOffset + STATSREG_SIGMAY2 ) % 100 ];
+                          final Number N_SIGMAX  = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                          final Number N_SIGMAY  = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                          final Number N_N       = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
 
-                            Number N_N_2 = new Number(N_N);
-                            N_N_2.x2();
+                          Number N_N_2 = new Number( N_N );
+                          N_N_2.x2();
 
-                            Number C1 = new Number(N_SIGMAX);
-                            C1.x2();
-                            C1.div(N_N_2);
+                          Number C1 = new Number( N_SIGMAX );
+                          C1.x2();
+                          C1.div( N_N_2 );
 
-                            Number C2 = new Number(N_SIGMAY);
-                            C2.x2();
-                            C2.div(N_N_2);
+                          Number C2 = new Number( N_SIGMAY );
+                          C2.x2();
+                          C2.div( N_N_2 );
 
-                            T = new Number(N_SIGMAX2);
-                            T.div(N_N);
-                            T.sub(C1);
+                          T = new Number( N_SIGMAX2 );
+                          T.div( N_N );
+                          T.sub( C1 );
 
-                            X = new Number(N_SIGMAY2);
-                            X.div(N_N);
-                            X.sub(C2);
+                          X = new Number( N_SIGMAY2 );
+                          X.div( N_N );
+                          X.sub( C2 );
 
-                            SetX(X, true);
-                            OK = true;
-                        } /*if*/
-                    break;
+                          SetX( X, true );
+                          OK = true;
+                        }
+                      break;
                     case 12:
                       /* slope and intercept */
-                      if (StatsRegsAvailable())
+                      if ( StatsRegsAvailable() )
                         {
-                            final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                            final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                            final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
-                            final Number m = StatsSlope();
+                          final Number N_SIGMAX = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                          final Number N_SIGMAY = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                          final Number N_N      = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
+                          final Number m        = StatsSlope();
 
-                            T = m;
+                          T = m;
 
-                            Number C1 = new Number(m);
-                            C1.mult(N_SIGMAX);
+                          Number C1 = new Number( m );
+                          C1.mult( N_SIGMAX );
 
-                            X = new Number(N_SIGMAY);
-                            X.sub(C1);
-                            X.div(N_N);
-                            SetX(X, true);
-                            OK = true;
-                        } /*if*/
-                    break;
+                          X = new Number( N_SIGMAY );
+                          X.sub( C1 );
+                          X.div( N_N );
+                          SetX( X, true );
+                          OK = true;
+                        }
+                      break;
                     case 13:
                       /* correlation coefficient */
-                      if (StatsRegsAvailable())
+                      if ( StatsRegsAvailable() )
                         {
-                            final Number N_SIGMAX2 = Memory[(RegOffset + STATSREG_SIGMAX2) % 100];
-                            final Number N_SIGMAY2 = Memory[(RegOffset + STATSREG_SIGMAY2) % 100];
-                            final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                            final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                            final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
-                            final Number m = StatsSlope();
+                          final Number N_SIGMAX2 = Memory[ ( RegOffset + STATSREG_SIGMAX2 ) % 100 ];
+                          final Number N_SIGMAY2 = Memory[ ( RegOffset + STATSREG_SIGMAY2 ) % 100 ];
+                          final Number N_SIGMAX  = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                          final Number N_SIGMAY  = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                          final Number N_N       = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
+                          final Number m         = StatsSlope();
 
-                            Number C1 = new Number (N_SIGMAX);
-                            C1.x2();
-                            C1.div(N_N);
-                            C1.negate();
-                            C1.add(N_SIGMAX2);
-                            C1.sqrt();
+                          Number C1 = new Number( N_SIGMAX );
+                          C1.x2();
+                          C1.div( N_N );
+                          C1.negate();
+                          C1.add( N_SIGMAX2 );
+                          C1.sqrt();
 
-                            Number C2 = new Number (N_SIGMAY);
-                            C2.x2();
-                            C2.div(N_N);
-                            C2.negate();
-                            C2.add(N_SIGMAY2);
-                            C2.sqrt();
+                          Number C2 = new Number( N_SIGMAY );
+                          C2.x2();
+                          C2.div( N_N );
+                          C2.negate();
+                          C2.add( N_SIGMAY2 );
+                          C2.sqrt();
 
-                            X = m;
-                            X.mult(C1);
-                            X.div(C2);
+                          X = m;
+                          X.mult( C1 );
+                          X.div( C2 );
 
-                            SetX(X, true);
-                            OK = true;
-                        } /*if*/
-                    break;
+                          SetX( X, true );
+                          OK = true;
+                        }
+                      break;
                     case 14:
                       /* estimated y from x */
-                      if (StatsRegsAvailable())
+                      if ( StatsRegsAvailable() )
                         {
-                            final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                            final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                            final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
-                            final Number m = StatsSlope();
+                          final Number N_SIGMAX = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                          final Number N_SIGMAY = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                          final Number N_N      = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
+                          final Number m        = StatsSlope();
 
-                            Number C1 = new Number(N_SIGMAX);
-                            C1.mult(m);
-                            C1.negate();
-                            C1.add(N_SIGMAY);
-                            C1.div(N_N);
+                          Number C1 = new Number( N_SIGMAX );
+                          C1.mult( m );
+                          C1.negate();
+                          C1.add( N_SIGMAY );
+                          C1.div( N_N );
 
-                            X.mult(m);
-                            X.add(C1);
-                            SetX(X, true);
-                            OK = true;
-                        } /*if*/
-                    break;
+                          X.mult( m );
+                          X.add( C1 );
+                          SetX( X, true );
+                          OK = true;
+                        }
+                      break;
                     case 15:
                       /* estimated x from y */
-                      if (StatsRegsAvailable())
+                      if ( StatsRegsAvailable() )
                         {
-                            final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                            final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                            final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
-                            final Number m = StatsSlope();
+                          final Number N_SIGMAX = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                          final Number N_SIGMAY = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                          final Number N_N      = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
+                          final Number m        = StatsSlope();
 
-                            Number C1 = new Number(N_SIGMAX);
-                            C1.mult(m);
-                            C1.negate();
-                            C1.add(N_SIGMAY);
-                            C1.div(N_N);
+                          Number C1 = new Number( N_SIGMAX );
+                          C1.mult( m );
+                          C1.negate();
+                          C1.add( N_SIGMAY );
+                          C1.div( N_N );
 
-                            X.sub(C1);
-                            X.div(m);
+                          X.sub( C1 );
+                          X.div( m );
 
-                            SetX(X, true);
-                            OK = true;
-                        } /*if*/
-                    break;
+                          SetX( X, true );
+                          OK = true;
+                        }
+                      break;
                     case 17:
                       /* not implemented, fall through */
                     case 16:
-                      Number N = new Number(MaxMemories);
-                      N.sub(1);
-                      N.div(100);
-                      N.add(MaxProgram);
-                      N.sub(1);
-                      SetX(N, true);
+                      Number N = new Number( MaxMemories );
+                      N.sub( 1 );
+                      N.div( 100 );
+                      N.add( MaxProgram );
+                      N.sub( 1 );
+                      SetX( N, true );
                       OK = true;
-                    break;
+                      break;
                     case 18:
                     case 19:
-                      if (OpNr == (InErrorState() ? 19 : 18))
+                      if ( OpNr == ( InErrorState()
+                                     ? 19
+                                     : 18 ) )
                         {
-                          Flag[FLAG_ERROR_COND] = !InvState;
-                        /* meaning of INV Op 18/19 taken from “52 Notes” volume 2 number 8 */
-                        } /*if*/
+                          Flag[ FLAG_ERROR_COND ] = !InvState;
+                          /* meaning of INV Op 18/19 taken from “52 Notes” volume 2 number 8 */
+                        }
                       OK = true;
-                    break;
+                      break;
                     /* 20-39 handled above */
                     case 40:
-                      if (Global.Print != null)
+                      if ( Global.Print != null )
                         {
-                          Flag[FLAG_ERROR_COND] = true;
-                        } /*if*/
+                          Flag[ FLAG_ERROR_COND ] = true;
+                        }
                       OK = true;
-                    break;
+                      break;
                     case 50: /* extension! TIME IN SECONDS */
-                      X.set(System.currentTimeMillis() / 1000.0);
-                      SetX(X, true);
+                      X.set( System.currentTimeMillis() / 1000.0 );
+                      SetX( X, true );
                       OK = true;
-                    break;
+                      break;
                     case 51: /* extension! RANDOM */
-                      {
-                        byte[] V = new byte[7];
-                        Random.nextBytes(V);
-                        X.set((double)(((long)V[0] & 255)
-                             |
-                             ((long)V[1] & 255) << 8
-                             |
-                             ((long)V[2] & 255) << 16
-                             |
-                             ((long)V[3] & 255) << 24
-                             |
-                             ((long)V[4] & 255) << 32
-                             |
-                             ((long)V[5] & 255) << 40
-                             |
-                             ((long)V[6] & 255) << 48
-                             )
-                              /
-                            (double)0x0100000000000000L);
-                        SetX(X, true);
-                      }
-                      OK = true;
+                    {
+                      byte[] V = new byte[ 7 ];
+                      Random.nextBytes( V );
+                      X.set( ( double ) ( ( ( long ) V[ 0 ] & 255 )
+                          |
+                          ( ( long ) V[ 1 ] & 255 ) << 8
+                          |
+                          ( ( long ) V[ 2 ] & 255 ) << 16
+                          |
+                          ( ( long ) V[ 3 ] & 255 ) << 24
+                          |
+                          ( ( long ) V[ 4 ] & 255 ) << 32
+                          |
+                          ( ( long ) V[ 5 ] & 255 ) << 40
+                          |
+                          ( ( long ) V[ 6 ] & 255 ) << 48
+                      )
+                                 /
+                                 ( double ) 0x0100000000000000L );
+                      SetX( X, true );
+                    }
+                    OK = true;
                     break;
                     case 52: /* extension! DISPLAY REG OFFSET */
-                      X.set(RegOffset);
-                      SetX(X, true);
+                      X.set( RegOffset );
+                      SetX( X, true );
                       OK = true;
-                    break;
+                      break;
                     case 53: /* extension! SET REG OFFSET */
-                      {
-                        final int NewRegOffset = (int)X.getInt();
-                        if (NewRegOffset >= 0 && NewRegOffset < 100)
-                          {
-                            RegOffset = NewRegOffset;
-                            OK = true;
-                          } /*if*/
-                      }
+                    {
+                      final int NewRegOffset = ( int ) X.getInt();
+                      if ( NewRegOffset >= 0 && NewRegOffset < 100 )
+                        {
+                          RegOffset = NewRegOffset;
+                          OK = true;
+                        }
+                    }
                     break;
                     case 98:
                       TracePrintActivated = !TracePrintActivated;
@@ -2323,323 +2354,316 @@ public class State
                     case 99: /* extension! Test */
                       int Result = Global.Test.Run();
 
-                      X.set(Result);
-                      SetX(X, true);
+                      X.set( Result );
+                      SetX( X, true );
 
-                      if (Result < 0)
-                          SetErrorState(false);
+                      if ( Result < 0 )
+                        SetErrorState( false );
 
                       OK = true;
-                    break;
-                  } /*switch*/
+                      break;
+                  }
               }
-            while (false);
-            if (!OK)
+            while ( false );
+            if ( !OK )
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-      } /*SpecialOp*/
+                SetErrorState( true );
+              }
+          }
+      }
 
-    public void StatsSum()
+    void StatsSum()
       {
-        Enter(78);
-        if (StatsRegsAvailable())
+        Enter( 78 );
+        if ( StatsRegsAvailable() )
           {
-            Number X2 = new Number(X);
+            Number X2 = new Number( X );
             X2.x2();
 
-            Number T2 = new Number(T);
+            Number T2 = new Number( T );
             T2.x2();
 
-            Number XT = new Number(X);
-            XT.mult(T);
+            Number XT = new Number( X );
+            XT.mult( T );
 
-            if (InvState)
+            if ( InvState )
               {
                 /* remove sample */
-                Memory[(RegOffset + STATSREG_SIGMAY) % 100].sub(X);
-                Memory[(RegOffset + STATSREG_SIGMAY2) % 100].sub(X2);
-                Memory[(RegOffset + STATSREG_N) % 100].sub(1);
-                Memory[(RegOffset + STATSREG_SIGMAX) % 100].sub(T);
-                Memory[(RegOffset + STATSREG_SIGMAX2) % 100].sub(T2);
-                Memory[(RegOffset + STATSREG_SIGMAXY) % 100].sub(XT);
+                Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ].sub( X );
+                Memory[ ( RegOffset + STATSREG_SIGMAY2 ) % 100 ].sub( X2 );
+                Memory[ ( RegOffset + STATSREG_N ) % 100 ].sub( 1 );
+                Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ].sub( T );
+                Memory[ ( RegOffset + STATSREG_SIGMAX2 ) % 100 ].sub( T2 );
+                Memory[ ( RegOffset + STATSREG_SIGMAXY ) % 100 ].sub( XT );
 
-                T.sub(1);
+                T.sub( 1 );
               }
             else
               {
                 /* accumulate sample */
-                Memory[(RegOffset + STATSREG_SIGMAY) % 100].add(X);
-                Memory[(RegOffset + STATSREG_SIGMAY2) % 100].add(X2);
-                Memory[(RegOffset + STATSREG_N) % 100].add(1);
-                Memory[(RegOffset + STATSREG_SIGMAX) % 100].add(T);
-                Memory[(RegOffset + STATSREG_SIGMAX2) % 100].add(T2);
-                Memory[(RegOffset + STATSREG_SIGMAXY) % 100].add(XT);
+                Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ].add( X );
+                Memory[ ( RegOffset + STATSREG_SIGMAY2 ) % 100 ].add( X2 );
+                Memory[ ( RegOffset + STATSREG_N ) % 100 ].add( 1 );
+                Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ].add( T );
+                Memory[ ( RegOffset + STATSREG_SIGMAX2 ) % 100 ].add( T2 );
+                Memory[ ( RegOffset + STATSREG_SIGMAXY ) % 100 ].add( XT );
 
-                T.add(1);
-              } /*if*/
+                T.add( 1 );
+              }
 
-            SetX(Memory[(RegOffset + STATSREG_N) % 100], true);
+            SetX( Memory[ ( RegOffset + STATSREG_N ) % 100 ], true );
           }
         else
           {
-            SetErrorState(true);
-          } /*if*/
-      } /*StatsSum*/
+            SetErrorState( true );
+          }
+      }
 
-    public void StatsResult()
+    void StatsResult()
       {
-        if (StatsRegsAvailable())
+        if ( StatsRegsAvailable() )
           {
-            if (InvState)
+            if ( InvState )
               {
-                final Number N_SIGMAX2 = Memory[(RegOffset + STATSREG_SIGMAX2) % 100];
-                final Number N_SIGMAY2 = Memory[(RegOffset + STATSREG_SIGMAY2) % 100];
-                final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
+                final Number N_SIGMAX2 = Memory[ ( RegOffset + STATSREG_SIGMAX2 ) % 100 ];
+                final Number N_SIGMAY2 = Memory[ ( RegOffset + STATSREG_SIGMAY2 ) % 100 ];
+                final Number N_SIGMAX  = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                final Number N_SIGMAY  = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                final Number N_N       = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
 
-                Number N_SIGMAX_2 = new Number(N_SIGMAX);
+                Number N_SIGMAX_2 = new Number( N_SIGMAX );
                 N_SIGMAX_2.x2();
-                N_SIGMAX_2.div(N_N);
+                N_SIGMAX_2.div( N_N );
 
-                Number N_SIGMAY_2 = new Number(N_SIGMAY);
+                Number N_SIGMAY_2 = new Number( N_SIGMAY );
                 N_SIGMAY_2.x2();
-                N_SIGMAY_2.div(N_N);
+                N_SIGMAY_2.div( N_N );
 
-                Number N_N1 = new Number(N_N);
-                N_N1.sub(1);
+                Number N_N1 = new Number( N_N );
+                N_N1.sub( 1 );
 
-                T = new Number(N_SIGMAX2);
-                T.sub(N_SIGMAX_2);
-                T.div(N_N1);
+                T = new Number( N_SIGMAX2 );
+                T.sub( N_SIGMAX_2 );
+                T.div( N_N1 );
                 T.sqrt();
 
-                X = new Number(N_SIGMAY2);
-                X.sub(N_SIGMAY_2);
-                X.div(N_N1);
+                X = new Number( N_SIGMAY2 );
+                X.sub( N_SIGMAY_2 );
+                X.div( N_N1 );
                 X.sqrt();
 
-                SetX(X, true);
+                SetX( X, true );
               }
             else
               {
-                final Number N_SIGMAX  = Memory[(RegOffset + STATSREG_SIGMAX) % 100];
-                final Number N_SIGMAY  = Memory[(RegOffset + STATSREG_SIGMAY) % 100];
-                final Number N_N       = Memory[(RegOffset + STATSREG_N) % 100];
+                final Number N_SIGMAX = Memory[ ( RegOffset + STATSREG_SIGMAX ) % 100 ];
+                final Number N_SIGMAY = Memory[ ( RegOffset + STATSREG_SIGMAY ) % 100 ];
+                final Number N_N      = Memory[ ( RegOffset + STATSREG_N ) % 100 ];
 
-                T = new Number(N_SIGMAX);
-                T.div(N_N);
+                T = new Number( N_SIGMAX );
+                T.div( N_N );
 
-                X = new Number(N_SIGMAY);
-                X.div(N_N);
+                X = new Number( N_SIGMAY );
+                X.div( N_N );
 
-                SetX(X, true);
+                SetX( X, true );
               }
           }
         else
           {
-            SetErrorState(true);
-          } /*if*/
-      } /*StatsResult*/
+            SetErrorState( true );
+          }
+      }
 
-    public void GetNextImport()
-      /* gets next value from current importer, if any. */
+    void GetNextImport()
       {
-        boolean OK = true;
+        /* gets next value from current importer, if any. */
+        boolean OK  = true;
         boolean EOF = true;
-        Number Value;
+        Number  Value;
         do /*once*/
           {
-            if (Import == null)
-                break;
+            if ( Import == null )
+              break;
             try
               {
                 Value = Import.Next();
                 EOF = false;
               }
-            catch (ImportEOFException Done)
+            catch ( ImportEOFException Done )
               {
                 Import.End();
                 break;
               }
-            catch (Persistent.DataFormatException Bad)
+            catch ( Persistent.DataFormatException Bad )
               {
                 android.widget.Toast.makeText
-                  (
-                    /*context =*/ ctx,
-                    /*text =*/
-                    String.format
-                      (
-                        Global.StdLocale,
-                        ctx.getString(R.string.import_error),
-                        Bad.toString()
-                      ),
-                    /*duration =*/ android.widget.Toast.LENGTH_LONG
-                  ).show();
+                    (
+                        ctx,
+                        String.format
+                            (
+                                Global.StdLocale,
+                                ctx.getString( R.string.import_error ),
+                                Bad.toString()
+                            ),
+                        android.widget.Toast.LENGTH_LONG
+                    ).show();
                 OK = false;
                 Import.End();
                 break;
-              } /*try*/
-            SetX(Value, false);
+              }
+            SetX( Value, false );
             OK = true;
           }
-        while (false);
-        Flag[FLAG_ERROR_COND] = EOF;
-        if (!OK)
+        while ( false );
+        Flag[ FLAG_ERROR_COND ] = EOF;
+        if ( !OK )
           {
-            SetErrorState(true);
-          } /*if*/
-      } /*GetNextImport*/
+            SetErrorState( true );
+          }
+      }
 
-    public void StepPC
-      (
-        boolean Forward
-      )
+    void StepPC
+        (
+            boolean Forward
+        )
       {
-        if (Forward)
+        if ( Forward )
           {
-            if (PC < Bank[CurBank].Program.length - 1)
+            if ( PC < Bank[ CurBank ].Program.length - 1 )
               {
                 ++PC;
                 ShowCurProg();
-              } /*if*/
+              }
           }
         else
           {
-            if (PC > 0)
+            if ( PC > 0 )
               {
                 --PC;
                 ShowCurProg();
-              } /*if*/
-          } /*if*/
-      } /*StepPC*/
+              }
+          }
+      }
 
-    public void ResetLabels()
-      /* invalidates labels because of a change to user-entered program contents. */
+    void ResetLabels()
       {
-        Bank[0].Labels = null;
-      } /*ResetLabels*/
+        /* invalidates labels because of a change to user-entered program contents. */
+        Bank[ 0 ].Labels = null;
+      }
 
-    public boolean ProgramWritable()
-      /* can the user enter code into the currently-selected bank. */
+    boolean ProgramWritable()
       {
+        /* can the user enter code into the currently-selected bank. */
         return CurBank == 0;
-      } /*ProgramWritable*/
+      }
 
-    public void StoreInstr
-      (
-        int Instr
-      )
+    void StoreInstr
+        (
+            int Instr
+        )
       {
         ResetLabels();
-        Program[PC] = (byte)Instr;
-        if (PC < MaxProgram - 1)
+        Program[ PC ] = ( byte ) Instr;
+        if ( PC < MaxProgram - 1 )
           {
             ClearDelayedStep();
-            if (DelayTask == null)
+            if ( DelayTask == null )
               {
                 DelayTask = new DelayedStep();
-              } /*if*/
+              }
             ShowCurProg(); /* show updated contents of current location */
             ++PC;
           /* give user a chance to see current contents before stepping to next location
             -- this is a nicety the original calculator did not have */
-            BGTask.postDelayed(DelayTask, 250);
+            BGTask.postDelayed( DelayTask, 250 );
           }
         else
           {
-            SetProgMode(false);
-          } /*if*/
-      } /*StoreInstr*/
+            SetProgMode( false );
+          }
+      }
 
-    public void StorePrevInstr
-      (
-        int Instr
-      )
+    void StorePrevInstr
+        (
+            int Instr
+        )
       {
-        if (PC > 0)
+        if ( PC > 0 )
           {
             --PC;
-            StoreInstr(Instr);
+            StoreInstr( Instr );
           }
         else
           {
-            SetErrorState(true);
-          } /*if*/
-      } /*StorePrevInstr*/
+            SetErrorState( true );
+          }
+      }
 
-    public void InsertAtCurInstr()
+    void InsertAtCurInstr()
       {
-        for (int i = MaxProgram; i > PC + 1; --i)
-          {
-            Program[i - 1] = Program[i - 2];
-          } /*for*/
-        Program[PC] = (byte)0;
+        System.arraycopy( Program, PC, Program, PC + 1, MaxProgram - 1 - PC );
+        Program[ PC ] = ( byte ) 0;
         ResetLabels();
         ShowCurProg();
-      } /*InsertAtCurInstr*/
+      }
 
-    public void DeleteCurInstr()
+    void DeleteCurInstr()
       {
-        for (int i = PC; i < MaxProgram - 1; ++i)
-          {
-            Program[i] = Program[i + 1];
-          } /*for*/
-        Program[MaxProgram - 1] = (byte)0;
+        System.arraycopy( Program, PC + 1, Program, PC, MaxProgram - 1 - PC );
+        Program[ MaxProgram - 1 ] = ( byte ) 0;
         ResetLabels();
         ShowCurProg();
-      } /*DeleteCurInstr*/
+      }
 
-    public void StepProgram()
+    void StepProgram()
       {
-        SetProgramStarted(false);
-        Interpret(true);
+        SetProgramStarted( false );
+        Interpret( true );
         PC = RunPC;
         SetProgramStopped();
       /* fixme: if I just executed a Pgm nn instruction, this setting
         of NextBank will not be properly passed to the next instruction */
       /* fixme: should single-stepping to a subroutine call cause execution
         of the complete subroutine, stopping when it returns? */
-      } /*StepProgram*/
+      }
 
     class TaskRunner implements Runnable
       {
         public void run()
           {
-            if (TaskRunning && RunProg != null)
+            if ( TaskRunning && RunProg != null )
               {
                 RunProg.run();
                 ContinueTaskRunner();
-              } /*if*/
-          } /*run*/
-      } /*TaskRunner*/
+              }
+          }
+      }
 
-    void ContinueTaskRunner()
+    private void ContinueTaskRunner()
       {
-        if (TaskRunning)
+        if ( TaskRunning )
           {
-            if (ProgRunningSlowly)
+            if ( ProgRunningSlowly )
               {
-                Global.Disp.SetShowing(LastShowing);
-                BGTask.postDelayed(ExecuteTask, 600);
+                Global.Disp.SetShowing( LastShowing );
+                BGTask.postDelayed( ExecuteTask, 600 );
               }
             else
               {
-              /* run as fast as possible */
-                BGTask.post(ExecuteTask);
-              } /*if*/
-          } /*if*/
-      } /*ContinueTaskRunner*/
+                /* run as fast as possible */
+                BGTask.post( ExecuteTask );
+              }
+          }
+      }
 
     class ProgRunner implements Runnable
       {
         public void run()
           {
-            Interpret(true);
-          } /*run*/
-      } /*ProgRunner*/
+            Interpret( true );
+          }
+      }
 
     class LabelLister implements Runnable
       {
@@ -2648,87 +2672,85 @@ public class State
             int Code;
             int Loc;
 
-            public LabelDef
-              (
-                int Code,
-                int Loc
-              )
+            LabelDef
+                (
+                    int Code,
+                    int Loc
+                )
               {
                 this.Code = Code;
                 this.Loc = Loc;
-              } /*LabelDef*/
-
-          } /*LabelDef*/
+              }
+          }
 
         final LabelDef[] SortedLabels;
         int Index;
 
-        public LabelLister()
+        LabelLister()
           {
             super();
-            final java.util.TreeSet<LabelDef> SortedLabelsTemp =
-                new java.util.TreeSet<LabelDef>
-                  (
-                    new java.util.Comparator<LabelDef>()
-                      {
-                        @Override
-                        public int compare
-                          (
-                            LabelDef Label1,
-                            LabelDef Label2
-                          )
+            final java.util.TreeSet< LabelDef > SortedLabelsTemp =
+                new java.util.TreeSet< LabelDef >
+                    (
+                        new java.util.Comparator< LabelDef >()
                           {
-                            return
-                                new Integer(Label1.Loc).compareTo(Label2.Loc);
-                          } /*compare*/
-                      } /*Comparator*/
-                  );
-            for (java.util.Map.Entry<Integer, Integer> ThisLabel : Bank[0].Labels.entrySet())
+                            @Override
+                            public int compare
+                                (
+                                    LabelDef Label1,
+                                    LabelDef Label2
+                                )
+                              {
+                                return Label1.Loc - Label2.Loc;
+                              } /*compare*/
+                          }
+                    );
+            for ( int i = 0 ; i < Bank[ 0 ].Labels.size() ; i++ )
               {
-                if (ThisLabel.getValue() >= PC + 2)
+                final int Value = Bank[ 0 ].Labels.valueAt( i );
+                if ( Value >= PC + 2 )
                   {
-                    SortedLabelsTemp.add(new LabelDef(ThisLabel.getKey(), ThisLabel.getValue()));
-                  } /*if*/
-              } /*for*/
-            SortedLabels = new LabelDef[SortedLabelsTemp.size()];
+                    SortedLabelsTemp.add( new LabelDef( Bank[ 0 ].Labels.keyAt( i ), Value ) );
+                  }
+              }
+            SortedLabels = new LabelDef[ SortedLabelsTemp.size() ];
             int i = 0;
-            for (LabelDef ThisLabel : SortedLabelsTemp)
+            for ( LabelDef ThisLabel : SortedLabelsTemp )
               {
-                SortedLabels[i++] = ThisLabel;
-              } /*for*/
+                SortedLabels[ i++ ] = ThisLabel;
+              }
             Index = 0;
-          } /*LabelLister*/
+          }
 
         public void run()
           {
-            if (Index < SortedLabels.length)
+            if ( Index < SortedLabels.length )
               {
-                final LabelDef ThisLabel = SortedLabels[Index];
-                final byte[] Translated = new byte[Printer.CharColumns];
+                final LabelDef ThisLabel  = SortedLabels[ Index ];
+                final byte[]   Translated = new byte[ Printer.CharColumns ];
                 Global.Print.Translate
-                  (
-                    String.format
-                      (
-                        Global.StdLocale,
-                        "      %03d  %02d %3s",
-                        ThisLabel.Loc - 1,
+                    (
+                        String.format
+                            (
+                                Global.StdLocale,
+                                "      %03d  %02d %3s",
+                                ThisLabel.Loc - 1,
                           /* seems to match original, pointing at label symbol
                             (location of "Lbl" + 1) */
-                        ThisLabel.Code,
-                        Printer.KeyCodeSym(ThisLabel.Code)
-                      ),
-                    Translated
-                  );
-                Global.Print.Render(Translated);
+                                ThisLabel.Code,
+                                Printer.KeyCodeSym( ThisLabel.Code )
+                            ),
+                        Translated
+                    );
+                Global.Print.Render( Translated );
                 ++Index;
-              } /*if*/
-            if (Index == SortedLabels.length)
+              }
+            if ( Index == SortedLabels.length )
               {
                 StopTask();
-              } /*if*/
-          } /*run*/
-
-      } /*LabelLister*/
+              }
+          }
+      }
 
     class RegisterLister implements Runnable
       {
@@ -2736,101 +2758,102 @@ public class State
         final int EndReg;
         boolean Wrapped;
 
-        public RegisterLister
-          (
-            int StartReg
-          )
+        RegisterLister
+            (
+                int StartReg
+            )
           {
-            CurReg = (StartReg + RegOffset) % 100;
-            EndReg = (RegOffset + MaxMemories) % 100;
+            CurReg = ( StartReg + RegOffset ) % 100;
+            EndReg = ( RegOffset + MaxMemories ) % 100;
             Wrapped = CurReg < EndReg;
-          } /*RegisterLister*/
+          }
 
         public void run()
           {
-            if (CurReg == MaxMemories && !Wrapped)
+            if ( CurReg == MaxMemories && !Wrapped )
               {
                 CurReg = 0;
                 Wrapped = true;
-              } /*if*/
-            if (CurReg < (Wrapped ? EndReg : MaxMemories))
+              }
+            if ( CurReg < ( Wrapped
+                            ? EndReg
+                            : MaxMemories ) )
               {
-                final byte[] Translated = new byte[Printer.CharColumns];
+                final byte[] Translated = new byte[ Printer.CharColumns ];
                 Global.Print.Translate
-                  (
-                    String.format
-                      (
-                        Global.StdLocale,
-                        "%16s  %02d",
-                        FormatNumber(Memory[CurReg], FORMAT_FIXED, -1, true),
-                        CurReg /* post-RegOffset number */
-                      ),
-                    Translated
-                  );
-                Global.Print.Render(Translated);
+                    (
+                        String.format
+                            (
+                                Global.StdLocale,
+                                "%16s  %02d",
+                                FormatNumber( Memory[ CurReg ], FORMAT_FIXED, -1, true ),
+                                CurReg /* post-RegOffset number */
+                            ),
+                        Translated
+                    );
+                Global.Print.Render( Translated );
                 ++CurReg;
-              } /*if*/
-            if (Wrapped && CurReg >= EndReg)
+              }
+            if ( Wrapped && CurReg >= EndReg )
               {
                 StopTask();
-              } /*if*/
-          } /*run*/
-
-      } /*RegisterLister*/
+              }
+          }
+      }
 
     class ProgramLister implements Runnable
       {
         int ListPC, EndPC;
-        int Expecting;
+        int     Expecting;
         boolean InvState;
-      /* following original, state machine is somewhat simpler than full interpreter/disassembler */
-        final int ExpectOpcode = 0;
-        final int ExpectTwoDigits = 1;
-        final int ExpectLoc = 2;
-        final int ExpectRegFlag = 3;
+        /* following original, state machine is somewhat simpler than full interpreter/disassembler */
+        final int ExpectOpcode           = 0;
+        final int ExpectTwoDigits        = 1;
+        final int ExpectLoc              = 2;
+        final int ExpectRegFlag          = 3;
         final int ExpectTwoDigitsPlusLoc = 4;
-        final int ExpectRegPlusLoc = 5;
-        final int ExpectSym = 6;
+        final int ExpectRegPlusLoc       = 5;
+        final int ExpectSym              = 6;
 
-        public ProgramLister()
+        ProgramLister()
           {
             ListPC = PC;
             EndPC = MaxProgram;
-            for (;;) /* omit trailing zero bytes */
+            for ( ; ; ) /* omit trailing zero bytes */
               {
-                if (EndPC == 0)
-                    break;
+                if ( EndPC == 0 )
+                  break;
                 --EndPC;
-                if (Program[EndPC] != 0)
-                    break;
-              } /*for*/
+                if ( Program[ EndPC ] != 0 )
+                  break;
+              }
             Expecting = ExpectOpcode;
             InvState = false;
-          } /*ProgramLister*/
+          }
 
         public void run()
           {
-            if (ListPC < MaxProgram)
+            if ( ListPC < MaxProgram )
               {
-                final int Val = Program[ListPC];
-                String Symbol = Printer.KeyCodeSym(Val);
-                int NextExpecting = ExpectOpcode;
-                boolean WasModifier = false;
-                switch (Expecting)
+                final int Val           = Program[ ListPC ];
+                String    Symbol        = Printer.KeyCodeSym( Val );
+                int       NextExpecting = ExpectOpcode;
+                boolean   WasModifier   = false;
+                switch ( Expecting )
                   {
                     case ExpectOpcode:
-                      if (Val < 10)
+                      if ( Val < 10 )
                         {
-                        /* digit entry */
-                          Symbol = String.format(Global.StdLocale, " %1d ", Val);
-                        } /*if*/
-                      switch (Val)
+                          /* digit entry */
+                          Symbol = String.format( Global.StdLocale, " %1d ", Val );
+                        }
+                      switch ( Val )
                         {
                           case 22: /*INV*/
-                        /* case 27: */ /*?*/
-                              InvState = !InvState;
-                              WasModifier = true;
-                          break;
+                            /* case 27: */ /*?*/
+                            InvState = !InvState;
+                            WasModifier = true;
+                            break;
                           case 36: /*Pgm*/
                           case 42: /*STO*/
                           case 43: /*RCL*/
@@ -2846,118 +2869,119 @@ public class State
                           case 74: /*SUM Ind*/
                           case 83: /*GTO Ind*/
                           case 84: /*Op Ind*/
-                              NextExpecting = ExpectTwoDigits;
-                          break;
+                            NextExpecting = ExpectTwoDigits;
+                            break;
                           case 57: /*Fix*/
-                              if (!InvState)
-                                {
-                                  NextExpecting = ExpectRegFlag;
-                                } /*if*/
-                          break;
+                            if ( !InvState )
+                              {
+                                NextExpecting = ExpectRegFlag;
+                              }
+                            break;
                           case 61: /*GTO*/
-                              NextExpecting = ExpectLoc;
-                          break;
+                            NextExpecting = ExpectLoc;
+                            break;
                           case 71: /*SBR*/
-                              if (!InvState)
-                                {
-                                  NextExpecting = ExpectLoc;
-                                } /*if*/
-                          break;
+                            if ( !InvState )
+                              {
+                                NextExpecting = ExpectLoc;
+                              }
+                            break;
                           case 67: /*x=t*/
                           case 77: /*x≥t*/
-                              NextExpecting = ExpectLoc;
-                          break;
+                            NextExpecting = ExpectLoc;
+                            break;
                           case 76: /*Lbl*/
-                              NextExpecting = ExpectSym;
-                          break;
+                            NextExpecting = ExpectSym;
+                            break;
                           case 86: /*St flg*/
-                              NextExpecting = ExpectRegFlag;
-                          break;
+                            NextExpecting = ExpectRegFlag;
+                            break;
                           case 87: /*If flg*/
                           case 97: /*Dsz*/
-                              NextExpecting = ExpectRegPlusLoc;
-                          break;
-                        } /*switch*/
-                    break;
+                            NextExpecting = ExpectRegPlusLoc;
+                            break;
+                        }
+                      break;
                     case ExpectTwoDigits:
-                        Symbol = String.format(Global.StdLocale, " %02d", Val);
-                    break;
+                      Symbol = String.format( Global.StdLocale, " %02d", Val );
+                      break;
                     case ExpectLoc:
-                      if (Val < 10 || Val == 40)
+                      if ( Val < 10 || Val == 40 )
                         {
                           NextExpecting = ExpectTwoDigits;
-                        } /*if*/
-                    break;
+                        }
+                      break;
                     case ExpectRegFlag:
-                      if (Val == 40)
+                      if ( Val == 40 )
                         {
                           NextExpecting = ExpectTwoDigits;
                         }
                       else
                         {
-                          Symbol = String.format(Global.StdLocale, " %02d", Val);
-                        } /*if*/
-                    break;
+                          Symbol = String.format( Global.StdLocale, " %02d", Val );
+                        }
+                      break;
                     case ExpectTwoDigitsPlusLoc:
-                        Symbol = String.format(Global.StdLocale, " %02d", Val);
-                        NextExpecting = ExpectLoc;
-                    break;
+                      Symbol = String.format( Global.StdLocale, " %02d", Val );
+                      NextExpecting = ExpectLoc;
+                      break;
                     case ExpectRegPlusLoc:
-                      if (Val == 40)
+                      if ( Val == 40 )
                         {
                           NextExpecting = ExpectTwoDigitsPlusLoc;
                         }
                       else
                         {
-                          Symbol = String.format(Global.StdLocale, " %02d", Val);
+                          Symbol = String.format( Global.StdLocale, " %02d", Val );
                           NextExpecting = ExpectLoc;
-                        } /*if*/
-                    break;
+                        }
+                      break;
                     case ExpectSym:
-                        Symbol = Printer.KeyCodeSym(Val);
-                    break;
-                  } /*switch*/
-                if (!WasModifier)
+                      Symbol = Printer.KeyCodeSym( Val );
+                      break;
+                  }
+                if ( !WasModifier )
                   {
                     InvState = false;
-                  } /*if*/
-                final byte[] Translated = new byte[Printer.CharColumns];
+                  }
+                final byte[] Translated = new byte[ Printer.CharColumns ];
                 Global.Print.Translate
-                  (
-                    String.format
-                      (
-                        Global.StdLocale,
-                        "       %03d  %02d %3s  ",
-                        ListPC,
-                        Val,
-                        Symbol
-                      ),
-                    Translated
-                  );
-                Global.Print.Render(Translated);
+                    (
+                        String.format
+                            (
+                                Global.StdLocale,
+                                "       %03d  %02d %3s  ",
+                                ListPC,
+                                Val,
+                                Symbol
+                            ),
+                        Translated
+                    );
+                Global.Print.Render( Translated );
                 Expecting = NextExpecting;
                 ++ListPC;
-              } /*if*/
-            if (ListPC == MaxProgram || ListPC > EndPC && Expecting == ExpectOpcode)
+              }
+            if ( ListPC == MaxProgram || ListPC > EndPC && Expecting == ExpectOpcode )
               {
                 StopTask();
-              } /*if*/
-          } /*run*/
+              }
+          }
+      }
 
-      } /*ProgramLister*/
-
-    void SetShowingRunning()
+    private void SetShowingRunning()
       {
-        Global.Disp.SetShowingRunning(Import != null || Global.Export.IsOpen() ? 'c' : 'C');
-      } /*SetShowingRunning*/
+        Global.Disp.SetShowingRunning( Import != null || Global.Export.IsOpen()
+                                       ? 'c'
+                                       : 'C' );
+      }
 
-    void SetProgramStarted
-      (
-        boolean AllowRunningSlowly
-      )
+    private void SetProgramStarted
+        (
+            boolean AllowRunningSlowly
+        )
       {
         ClearDelayedStep();
-        FillInLabels(CurBank);
+        FillInLabels( CurBank );
         ProgRunningSlowly = false; /* just in case */
         this.AllowRunningSlowly = AllowRunningSlowly;
         SaveRunningSlowly = false;
@@ -2966,244 +2990,247 @@ public class State
         RunPC = PC;
         RunBank = CurBank;
         NextBank = RunBank;
-      } /*SetProgramStarted*/
+      }
 
-    void SetProgramStopped()
+    private void SetProgramStopped()
       {
         TaskRunning = false;
         ClearDelayedStep();
         RunBank = CurBank;
-        if (InErrorState())
+        if ( InErrorState() )
           {
-            Global.Disp.SetShowingError(LastShowing);
+            Global.Disp.SetShowingError( LastShowing );
           }
         else
           {
-            Global.Disp.SetShowing(LastShowing);
-          } /*if*/
-      } /*SetProgramStopped*/
+            Global.Disp.SetShowing( LastShowing );
+          }
+      }
 
-    void StartTask
-      (
-        Runnable TheTask,
-        boolean AllowRunningSlowly
-      )
+    private void StartTask
+        (
+            Runnable TheTask,
+            boolean AllowRunningSlowly
+        )
       {
         RunProg = TheTask;
-        SetProgramStarted(AllowRunningSlowly);
+        SetProgramStarted( AllowRunningSlowly );
         ContinueTaskRunner();
-      } /*StartTask*/
+      }
 
-    void StopTask()
+    private void StopTask()
       {
         SetProgramStopped();
-        BGTask.removeCallbacks(ExecuteTask);
+        BGTask.removeCallbacks( ExecuteTask );
         RunProg = null;
-      } /*StopTask*/
+      }
 
-    public void StartProgram()
+    void StartProgram()
       {
-        StartTask(new ProgRunner(), true);
-      } /*StartProgram*/
+        StartTask( new ProgRunner(), true );
+      }
 
-    public void StopProgram()
+    void StopProgram()
       {
-        if (TaskRunning && OnStop != null)
+        if ( TaskRunning && OnStop != null )
           {
             OnStop.run();
-          } /*if*/
+          }
 
         // if the PC is past the last instruction, move it back to last one
-        if (TaskRunning && RunPC >= Bank[CurBank].Program.length)
-            RunPC = Bank[CurBank].Program.length - 1;
+        if ( TaskRunning && RunPC >= Bank[ CurBank ].Program.length )
+          RunPC = Bank[ CurBank ].Program.length - 1;
 
         PC = RunPC;
         StopTask();
-      } /*StopProgram*/
+      }
 
-    public void WriteBank()
+    void WriteBank()
       {
-        Enter(96);
-        int N = (int)Math.abs(X.getInt());
-        if (N < 1 || N > 4)
+        Enter( 96 );
+        int N = ( int ) Math.abs( X.getInt() );
+        if ( N < 1 || N > 4 )
           {
-              SetErrorState(true);
-          } /*if*/
-        else if (InvState)
+            SetErrorState( true );
+          }
+        else if ( InvState )
           {
-            for (int k=(4-N)*30; k < (4-N+1)*30; k++)
+            for ( int k = ( 4 - N ) * 30 ; k < ( 4 - N + 1 ) * 30 ; k++ )
               {
-                if (k<MaxMemories)
+                if ( k < MaxMemories )
                   {
-                    Memory[k] = new Number(CardMemory[k]);
+                    Memory[ k ] = new Number( CardMemory[ k ] );
                   }
               }
-            for (int k=(N-1)*240; k < N*240; k++)
-              {
-                Program[k] = CardProgram[k];
-              }
+            System.arraycopy
+                (
+                    CardProgram, ( N - 1 ) * 240,
+                    Program, ( N - 1 ) * 240,
+                    240
+                );
           }
         else
           {
-            for (int k=(4-N)*30; k < (4-N+1)*30; k++)
+            for ( int k = ( 4 - N ) * 30 ; k < ( 4 - N + 1 ) * 30 ; k++ )
               {
-                if (k<MaxMemories)
+                if ( k < MaxMemories )
                   {
-                    CardMemory[k] = new Number(Memory[k]);
+                    CardMemory[ k ] = new Number( Memory[ k ] );
                   }
               }
-            for (int k=(N-1)*240; k < N*240; k++)
-              {
-                CardProgram[k] = Program[k];
-              }
-          } /*if*/
-      } /*WriteBank*/
+            System.arraycopy
+                (
+                    Program, ( N - 1 ) * 240,
+                    CardProgram, ( N - 1 ) * 240,
+                    240
+                );
+          }
+      }
 
-    void StartLabelListing()
+    private void StartLabelListing()
       {
-        FillInLabels(0); /* because that's the one I list */
-        StartTask(new LabelLister(), false);
-      } /*StartLabelListing*/
+        FillInLabels( 0 ); /* because that's the one I list */
+        StartTask( new LabelLister(), false );
+      }
 
-    public void StartRegisterListing()
+    void StartRegisterListing()
       {
-        StartTask(new RegisterLister((int)X.getInt()), false);
-      } /*StartRegisterListing*/
+        StartTask( new RegisterLister( ( int ) X.getInt() ), false );
+      }
 
-    public void StartProgramListing()
+    void StartProgramListing()
       {
-        StartTask(new ProgramLister(), false);
-      } /*StartProgramListing*/
+        StartTask( new ProgramLister(), false );
+      }
 
-    public void SetSlowExecution
-      (
-        boolean Slow
-      )
+    void SetSlowExecution
+        (
+            boolean Slow
+        )
       {
-        if (AllowRunningSlowly && ProgRunningSlowly != Slow)
+        if ( AllowRunningSlowly && ProgRunningSlowly != Slow )
           {
             ProgRunningSlowly = Slow;
             SaveRunningSlowly = Slow;
-            if (!ProgRunningSlowly)
+            if ( !ProgRunningSlowly )
               {
                 SetShowingRunning();
-              } /*if*/
-          } /*if*/
-      } /*SetSlowExecution*/
+              }
+          }
+      }
 
-    public void SetImport
-      (
-        ImportFeeder NewImport
-      )
+    void SetImport
+        (
+            ImportFeeder NewImport
+        )
       {
-        if (Import != null)
+        if ( Import != null )
           {
-            throw new RuntimeException("attempt to queue multiple ImportFeeders");
-          } /*if*/
+            throw new RuntimeException( "attempt to queue multiple ImportFeeders" );
+          }
         Import = NewImport;
-      } /*SetImport*/
+      }
 
-    public void ClearImport()
+    void ClearImport()
       {
-        if (Import != null)
+        if ( Import != null )
           {
             Import.End();
             Import = null;
-          } /*if*/
-      } /*ClearImport*/
+          }
+      }
 
-    public void ResetReturns()
-      /* clears the subroutine return stack. */
+    void ResetReturns()
       {
+        /* clears the subroutine return stack. */
         ReturnLast = -1;
-      } /*ResetReturns*/
+      }
 
-    public void ResetProg()
+    void ResetProg()
       {
-        if (InvState) /* extension! */
+        if ( InvState ) /* extension! */
           {
             ClearImport();
-            if (Global.Export != null)
+            if ( Global.Export != null )
               {
                 Global.Export.Close();
-              } /*if*/
+              }
           }
         else
           {
-            for (int i = 0; i < MaxFlags; ++i)
+            for ( int i = 0 ; i < MaxFlags ; ++i )
               {
-                Flag[i] = false;
-              } /*for*/
-            if (TaskRunning)
+                Flag[ i ] = false;
+              }
+            if ( TaskRunning )
               {
                 RunPC = 0;
               }
             else
               {
                 PC = 0;
-              } /*if*/
+              }
             ResetReturns();
-          } /*if*/
-      } /*ResetProg*/
+          }
+      }
 
-    int GetProg
-      (
-        boolean Executing
-      )
-      /* returns the next program instruction byte, or -1 if run off the end. */
+    private int GetProg
+        (
+            boolean Executing
+        )
       {
+        /* returns the next program instruction byte, or -1 if run off the end. */
         byte Result;
-        if (RunPC < Bank[RunBank].Program.length)
+        if ( RunPC < Bank[ RunBank ].Program.length )
           {
-            Result = Bank[RunBank].Program[RunPC++];
+            Result = Bank[ RunBank ].Program[ RunPC++ ];
           }
         else
           {
             Result = -1;
-            if (Executing)
+            if ( Executing )
               {
                 RunPC = 0;
                 StopProgram();
-              } /*if*/
-          } /*if*/
-        return
-            (int)Result;
-      } /*GetProg*/
+              }
+          }
+        return ( int ) Result;
+      }
 
-    int GetLoc
-      (
-        boolean Executing,
-        int BankNr /* for interpreting symbolic label */
-      )
+    private int GetLoc
+        (
+            boolean Executing,
+            int BankNr /* for interpreting symbolic label */
+        )
+      {
       /* fetches a program location from the instruction stream, or -1 on failure.
         Assumes Labels has been filled in. */
-      {
-        int Result = -1;
-        final int NextByte = GetProg(Executing);
-        if (NextByte >= 0)
+        int       Result   = -1;
+        final int NextByte = GetProg( Executing );
+        if ( NextByte >= 0 )
           {
-            if (NextByte < 10)
+            if ( NextByte < 10 )
               {
-              /* 3-digit location */
-                final int NextByte2 = GetProg(Executing);
-                if (NextByte2 >= 0)
+                /* 3-digit location */
+                final int NextByte2 = GetProg( Executing );
+                if ( NextByte2 >= 0 )
                   {
                     Result = NextByte * 100 + NextByte2;
-                  } /*if*/
+                  }
               }
-            else if (NextByte == 40) /*Ind*/
+            else if ( NextByte == 40 ) /*Ind*/
               {
-                final int Reg = (GetProg(Executing) + RegOffset) % 100;
-                if (Reg >= 0 && Reg < MaxMemories)
+                final int Reg = ( GetProg( Executing ) + RegOffset ) % 100;
+                if ( Reg >= 0 && Reg < MaxMemories )
                   {
-                    Result = (int)Memory[Reg].getInt();
-                    if (Result < 0 || Result >= Bank[RunBank].Program.length)
+                    Result = ( int ) Memory[ Reg ].getInt();
+                    if ( Result < 0 || Result >= Bank[ RunBank ].Program.length )
                       {
                         Result = -1;
-                      } /*if*/
-                  } /*if*/
+                      }
+                  }
               }
-            else if (NextByte == 51)
+            else if ( NextByte == 51 )
               {
               /* 1-digit location. This is an hidden feature that cannot be enterred directly, to have it:
                     - Key in DSZ 00 A, to put the keycodes [97 00 11] into program memory.
@@ -3217,53 +3244,52 @@ public class State
 
                     So "DSZ 36 51" which means decrement register 36 only (no jump).
               */
-                  Result = 9900 + NextByte;
+                Result = 9900 + NextByte;
               }
             else /* symbolic label */
               {
-                if (Bank[BankNr].Labels.containsKey(NextByte))
+                if ( Bank[ BankNr ].Labels.indexOfKey( NextByte ) >= 0 )
                   {
-                    Result = Bank[BankNr].Labels.get(NextByte);
-                  } /*if*/
-              } /*if*/
-          } /*if*/
-        return
-            Result;
-      } /*GetLoc*/
+                    Result = Bank[ BankNr ].Labels.get( NextByte );
+                  }
+              }
+          }
+        return Result;
+      }
 
-    int GetUnitOp
-      (
-        boolean Executing,
-        boolean AllowLarge /* allow value > 9 */
-      )
+    private int GetUnitOp
+        (
+            boolean Executing,
+            boolean AllowLarge /* allow value > 9 */
+        )
+      {
       /* fetches one or two bytes from the instruction stream; if the
         first (only) byte is < 10, then that's the value; otherwise
         a value of 40 indicates indirection through the register
         number in the next byte. Any other value is invalid. */
-      {
-        int Result = -1;
-        final int NextByte = GetProg(Executing);
-        if (NextByte >= 0)
+        int       Result   = -1;
+        final int NextByte = GetProg( Executing );
+        if ( NextByte >= 0 )
           {
             boolean OK;
-            if (NextByte == 40)
+            if ( NextByte == 40 )
               {
-                final int Reg = (GetProg(Executing) + RegOffset) % 100;
-                if (Reg >= 0 && Reg < MaxMemories)
+                final int Reg = ( GetProg( Executing ) + RegOffset ) % 100;
+                if ( Reg >= 0 && Reg < MaxMemories )
                   {
-                    Result = (int)Memory[Reg].getInt();
+                    Result = ( int ) Memory[ Reg ].getInt();
                     OK = Result >= 0 && Result < MaxMemories;
-                    if (!OK)
+                    if ( !OK )
                       {
                         Result = -1;
-                      } /*if*/
+                      }
                   }
                 else
                   {
                     OK = false;
-                  } /*if*/
+                  }
               }
-            else if (AllowLarge || NextByte < 10)
+            else if ( AllowLarge || NextByte < 10 )
               {
                 Result = NextByte;
                 OK = true;
@@ -3271,142 +3297,145 @@ public class State
             else
               {
                 OK = false;
-              } /*if*/
-            if (Executing && !OK)
+              }
+            if ( Executing && !OK )
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-        return
-            Result;
-      } /*GetUnitOp*/
+                SetErrorState( true );
+              }
+          }
+        return Result;
+      }
 
-  /* transfer types */
-    public static final int TRANSFER_TYPE_GTO = 1; /* goto that address */
-    public static final int TRANSFER_TYPE_CALL = 2; /* call that address, return to current address */
-    public static final int TRANSFER_TYPE_INTERACTIVE_CALL = 3;
-      /* call that address, return to calculation mode */
-    public static final int TRANSFER_TYPE_LEA = 4; /* extension: load that address into X */
+    /* transfer types */
+    static final int TRANSFER_TYPE_GTO              = 1; /* goto that address */
+    static final int TRANSFER_TYPE_CALL             = 2; /* call that address, return to current address */
+    static final int TRANSFER_TYPE_INTERACTIVE_CALL = 3;
+    /* call that address, return to calculation mode */
+    static final int TRANSFER_TYPE_LEA              = 4; /* extension: load that address into X */
 
-  /* location types */
-    public static final int TRANSFER_LOC_DIRECT = 1; /* Loc is integer address */
-    public static final int TRANSFER_LOC_SYMBOLIC = 2; /* Loc is label keycode */
-    public static final int TRANSFER_LOC_INDIRECT = 3; /* Loc is number of register containing address */
+    /* location types */
+    static final int TRANSFER_LOC_DIRECT   = 1; /* Loc is integer address */
+    static final int TRANSFER_LOC_SYMBOLIC = 2; /* Loc is label keycode */
+    static final int TRANSFER_LOC_INDIRECT = 3; /* Loc is number of register containing address */
 
-    public void Transfer
-      (
-        int Type, /* one of the above TRANSFER_TYPE_xxx values */
-        int BankNr,
-        int Loc,
-        int LocType /* one of the above TRANSFER_LOC_xxx values */
-      )
-      /* implements GTO and SBR. Also called from other functions to implement branches. */
+    void Transfer
+        (
+            int Type, /* one of the above TRANSFER_TYPE_xxx values */
+            int BankNr,
+            int Loc,
+            int LocType /* one of the above TRANSFER_LOC_xxx values */
+        )
       {
-        if (Loc >= 0)
+        /* implements GTO and SBR. Also called from other functions to implement branches. */
+        if ( Loc >= 0 )
           {
             boolean OK = false;
             do /*once*/
               {
-                if (LocType == TRANSFER_LOC_INDIRECT)
+                if ( LocType == TRANSFER_LOC_INDIRECT )
                   {
-                    Loc = (Loc + RegOffset) % 100;
-                    if (Loc >= MaxMemories)
-                        break;
-                    Loc = (int)Memory[Loc].getInt();
+                    Loc = ( Loc + RegOffset ) % 100;
+                    if ( Loc >= MaxMemories )
+                      break;
+                    Loc = ( int ) Memory[ Loc ].getInt();
                   }
-                else if (LocType == TRANSFER_LOC_SYMBOLIC)
+                else if ( LocType == TRANSFER_LOC_SYMBOLIC )
                   {
-                    FillInLabels(BankNr); /* if not already done */
-                    if (!Bank[BankNr].Labels.containsKey(Loc))
-                        break;
-                    Loc = Bank[BankNr].Labels.get(Loc);
-                  } /*if*/
-                if (Loc < 0 || Loc >= Bank[BankNr].Program.length)
-                    break;
-                if (Type == TRANSFER_TYPE_LEA) /* extension! */
+                    FillInLabels( BankNr ); /* if not already done */
+                    if ( Bank[ BankNr ].Labels.indexOfKey( Loc ) < 0 )
+                      break;
+                    Loc = Bank[ BankNr ].Labels.get( Loc );
+                  }
+                if ( Loc < 0 || Loc >= Bank[ BankNr ].Program.length )
+                  break;
+                if ( Type == TRANSFER_TYPE_LEA ) /* extension! */
                   {
-                    X.set(Loc);
-                    SetX(X, false);
+                    X.set( Loc );
+                    SetX( X, false );
                   }
                 else
                   {
-                    if (Type == TRANSFER_TYPE_CALL || Type == TRANSFER_TYPE_INTERACTIVE_CALL)
+                    if ( Type == TRANSFER_TYPE_CALL || Type == TRANSFER_TYPE_INTERACTIVE_CALL )
                       {
-                        if (ReturnLast == MaxReturnStack - 1)
-                            break;
-                        ReturnStack[++ReturnLast] =
-                            new ReturnStackEntry(RunBank, RunPC, Type == TRANSFER_TYPE_INTERACTIVE_CALL);
-                      } /*if*/
-                    if (TaskRunning)
+                          /* documentation in Appendix D (D-2) of the personnal programming manual
+                             says that past the 6th call the return address is not recorded but the
+                             call is done and it is not an error. */
+                        if ( ReturnLast < MaxReturnStack - 1 )
+                          ReturnStack[ ++ReturnLast ] =
+                              new ReturnStackEntry(
+                                  RunBank, RunPC, Type == TRANSFER_TYPE_INTERACTIVE_CALL );
+                      }
+                    if ( TaskRunning )
                       {
                         RunBank = BankNr;
                         RunPC = Loc;
                       }
                     else
                       {
-                      /* interactive, assert BankNr = CurBank */
+                        /* interactive, assert BankNr = CurBank */
                         PC = Loc;
-                      } /*if*/
-                    if (Type == TRANSFER_TYPE_INTERACTIVE_CALL)
+                      }
+                    if ( Type == TRANSFER_TYPE_INTERACTIVE_CALL )
                       {
                         StartProgram();
-                      } /*if*/
-                  } /*if*/
-              /* all successfully done */
+                      }
+                  }
+                /* all successfully done */
                 OK = true;
               }
-            while (false);
-            if (!OK)
+            while ( false );
+            if ( !OK )
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
+                SetErrorState( true );
+              }
+          }
         else
           {
             // trying to transfer from an invalid loc
-            SetErrorState(true);
+            RunPC--;
+            SetErrorState( true );
           }
-      } /*Transfer*/
+      }
 
     void Return()
-      /* returns to the last-saved location on the return stack. */
       {
+        /* returns to the last-saved location on the return stack. */
         boolean OK = false;
         do /*once*/
           {
-            if (ReturnLast < 0)
-                {
-                    if (!InErrorState())
-                        {
-                            Enter(92);
-                      CurState = ResultState;
-                        }
-                    StopProgram();
-                    OK = true;
-                    break;
-                }
-            final ReturnStackEntry ReturnTo = ReturnStack[ReturnLast--];
-            if
-              (
-                    ReturnTo.Addr < 0
-                ||
-                    Bank[ReturnTo.BankNr] == null
-                ||
-                    ReturnTo.Addr >= Bank[ReturnTo.BankNr].Program.length
-              )
-                break;
-            if (ReturnTo.FromInteractive)
+            if ( ReturnLast < 0 )
               {
-                if (!InErrorState())
-                    {
-                        Enter(92);
-                  CurState = ResultState;
-                    }
+                if ( !InErrorState() )
+                  {
+                    Enter( 92 );
+                    CurState = ResultState;
+                  }
                 StopProgram();
                 OK = true;
                 break;
-              } /*if*/
-            if (TaskRunning)
+              }
+            final ReturnStackEntry ReturnTo = ReturnStack[ ReturnLast-- ];
+            if
+                (
+                ReturnTo.Addr < 0
+                    ||
+                    Bank[ ReturnTo.BankNr ] == null
+                    ||
+                    ReturnTo.Addr >= Bank[ ReturnTo.BankNr ].Program.length
+                )
+              break;
+            if ( ReturnTo.FromInteractive )
+              {
+                if ( !InErrorState() )
+                  {
+                    Enter( 92 );
+                    CurState = ResultState;
+                  }
+                StopProgram();
+                OK = true;
+                break;
+              }
+            if ( TaskRunning )
               {
                 RunBank = ReturnTo.BankNr;
                 RunPC = ReturnTo.Addr;
@@ -3415,219 +3444,235 @@ public class State
               {
                 CurBank = ReturnTo.BankNr;
                 PC = ReturnTo.Addr;
-              } /*if*/
-          /* all successfully done */
+              }
+            /* all successfully done */
             OK = true;
           }
-        while (false);
-        if (!OK)
+        while ( false );
+        if ( !OK )
           {
-            SetErrorState(true);
-          } /*if*/
-      } /*Return*/
+            SetErrorState( true );
+          }
+      }
 
-    public void SetFlag
-      (
-        int FlagNr,
-        boolean Ind,
-        boolean Set
-      )
+    void SetFlag
+        (
+            int FlagNr,
+            boolean Ind,
+            boolean Set
+        )
       {
-        Enter(86);
-        if (FlagNr >= 0)
+        Enter( 86 );
+        if ( FlagNr >= 0 )
           {
-            if (Ind)
+            if ( Ind )
               {
-                FlagNr = (FlagNr + RegOffset) % 100;
-                if (FlagNr < MaxMemories)
+                FlagNr = ( FlagNr + RegOffset ) % 100;
+                if ( FlagNr < MaxMemories )
                   {
-                    FlagNr = (int)Memory[FlagNr].getInt();
+                    FlagNr = ( int ) Memory[ FlagNr ].getInt();
                   }
                 else
                   {
                     FlagNr = -1;
-                  } /*if*/
-              } /*if*/
-            if (FlagNr >= 0 && FlagNr < MaxFlags)
+                  }
+              }
+            if ( FlagNr >= 0 && FlagNr < MaxFlags )
               {
-                Flag[FlagNr] = Set;
+                Flag[ FlagNr ] = Set;
               }
             else
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-      } /*SetFlag*/
+                SetErrorState( true );
+              }
+          }
+      }
 
-    public void BranchIfFlag
-      (
-        int FlagNr,
-        boolean FlagNrInd,
-        int BankNr,
-        int Target,
-        int TargetType /* one of the above TRANSFER_LOC_xxx values */
-      )
+    void BranchIfFlag
+        (
+            int FlagNr,
+            boolean FlagNrInd,
+            int BankNr,
+            int Target,
+            int TargetType /* one of the above TRANSFER_LOC_xxx values */
+        )
       {
-        if (FlagNr >= 0)
+        if ( FlagNr >= 0 )
           {
-            if (FlagNrInd)
+            if ( FlagNrInd )
               {
-                FlagNr = (FlagNr + RegOffset) % 100;
-                if (FlagNr < MaxMemories)
+                FlagNr = ( FlagNr + RegOffset ) % 100;
+                if ( FlagNr < MaxMemories )
                   {
-                    FlagNr = (int)Memory[FlagNr].getInt();
+                    FlagNr = ( int ) Memory[ FlagNr ].getInt();
                   }
                 else
                   {
                     FlagNr = -1;
-                  } /*if*/
-              } /*if*/
-            if (FlagNr >= 0 && FlagNr < MaxFlags)
+                  }
+              }
+            if ( FlagNr >= 0 && FlagNr < MaxFlags )
               {
-                if (InvState != Flag[FlagNr])
+                if ( InvState != Flag[ FlagNr ] )
                   {
                     Transfer
-                      (
-                        /*Type =*/ TRANSFER_TYPE_GTO,
-                        /*BankNr =*/ BankNr,
-                        /*Loc =*/ Target,
-                        /*LocType =*/ TargetType
-                      );
-                  } /*if*/
+                        (
+                            TRANSFER_TYPE_GTO,
+                            BankNr,
+                            Target,
+                            TargetType
+                        );
+                  }
               }
             else
               {
-                SetErrorState(true);
-              } /*if*/
+                SetErrorState( true );
+              }
 
             // if the location we land is a number it must replace the current X
 
             byte Result = -1;
-            if (RunPC < Bank[RunBank].Program.length)
+            if ( RunPC < Bank[ RunBank ].Program.length )
               {
-                Result = Bank[RunBank].Program[RunPC];
+                Result = Bank[ RunBank ].Program[ RunPC ];
               }
 
-            if (Result >= 0 && Result <= 9)
+            if ( Result >= 0 && Result <= 9 )
               ResetEntry();
+          }
+      }
 
-          } /*if*/
-      } /*BranchIfFlag*/
-
-    public void CompareBranch
-      (
-        boolean Greater,
-        int BankNr,
-        int NewPC,
-        boolean Ind
-      )
+    void CompareBranch
+        (
+            boolean Greater,
+            int BankNr,
+            int NewPC,
+            boolean Ind
+        )
       {
-        if (NewPC >= 0)
+        Enter( ( Greater
+                 ? ( Ind
+                     ? 72
+                     : 77 )
+                 : ( Ind
+                     ? 62
+                     : 67 ) ) );
+        if
+            (
+            InvState
+            ?
+            Greater
+            ?
+            X.compareTo( T ) < 0
+            :
+            X.compareTo( T ) != 0
+            :
+            Greater
+            ?
+            X.compareTo( T ) >= 0
+            :
+            X.compareTo( T ) == 0
+            )
           {
-            Enter((Greater ? (Ind  ? 72 : 77) : (Ind ? 62 : 67)));
-            if
-              (
-                InvState ?
-                    Greater ?
-                        X.compareTo(T) < 0
-                    :
-                        X.compareTo(T) != 0
-                :
-                    Greater ?
-                        X.compareTo(T) >= 0
-                    :
-                        X.compareTo(T) == 0
-              )
+            if ( NewPC > 0 )
               {
                 Transfer
-                  (
-                    /*Type =*/ TRANSFER_TYPE_GTO,
-                    /*BankNr =*/ BankNr,
-                    /*Loc =*/ NewPC,
-                    /*LocType =*/ Ind ? TRANSFER_LOC_INDIRECT : TRANSFER_LOC_DIRECT
-                  );
-              } /*if*/
-          } /*if*/
+                    (
+                        TRANSFER_TYPE_GTO,
+                        BankNr,
+                        NewPC,
+                        Ind
+                        ? TRANSFER_LOC_INDIRECT
+                        : TRANSFER_LOC_DIRECT
+                    );
+              }
+            else
+              {
+                //  jump to unknown location
+                SetErrorState( true );
+                return;
+              }
+          }
 
         // if the location we land is a number it must replace the current X
 
         byte Result = -1;
-        if (RunPC < Bank[RunBank].Program.length)
+        if ( RunPC < Bank[ RunBank ].Program.length )
           {
-            Result = Bank[RunBank].Program[RunPC];
+            Result = Bank[ RunBank ].Program[ RunPC ];
           }
 
-        if (Result >= 0 && Result <= 9)
-            ResetEntry();
-      } /*CompareBranch*/
+        if ( Result >= 0 && Result <= 9 )
+          ResetEntry();
+      }
 
-    public void DecrementSkip
-      (
-        int Reg,
-        boolean RegInd,
-        int Bank,
-        int Target,
-        int TargetType /* one of the above TRANSFER_LOC_xxx values */
-      )
+    void DecrementSkip
+        (
+            int Reg,
+            boolean RegInd,
+            int Bank,
+            int Target,
+            int TargetType /* one of the above TRANSFER_LOC_xxx values */
+        )
       {
-        if (Reg >= 0)
+        if ( Reg >= 0 )
           {
-            Reg = (Reg + RegOffset) % 100;
-            if (RegInd)
+            Reg = ( Reg + RegOffset ) % 100;
+            if ( RegInd )
               {
-                if (Reg < MaxMemories)
+                if ( Reg < MaxMemories )
                   {
-                    Reg = ((int)Memory[Reg].getInt() + RegOffset) % 100;
+                    Reg = ( ( int ) Memory[ Reg ].getInt() + RegOffset ) % 100;
                   }
                 else
                   {
                     Reg = -1;
-                  } /*if*/
-              } /*if*/
-            if (Reg >= 0 && Reg < MaxMemories)
+                  }
+              }
+            if ( Reg >= 0 && Reg < MaxMemories )
               {
-                Number N = new Number(Memory[Reg]);
-                int Sign = N.getSignum();
+                Number N    = new Number( Memory[ Reg ] );
+                int    Sign = N.getSignum();
                 N.abs();
-                N.sub(1);
-                N.max(0);
-                N.mult(Sign);
-                Memory[Reg] = N;
+                N.sub( 1 );
+                N.max( 0 );
+                N.mult( Sign );
+                Memory[ Reg ] = N;
                 // do not jump if Target is on-byte value 51 (encoded as 9951)
-                if (InvState == (Memory[Reg].getSignum() == 0) && Target != 9951)
+                if ( InvState == ( Memory[ Reg ].getSignum() == 0 ) && Target != 9951 )
                   {
                     Transfer
-                      (
-                        /*Type =*/ TRANSFER_TYPE_GTO,
-                        /*BankNr =*/ Bank,
-                        /*Loc =*/ Target,
-                        /*LocType =*/ TargetType
-                      );
-                  } /*if*/
+                        (
+                            TRANSFER_TYPE_GTO,
+                            Bank,
+                            Target,
+                            TargetType
+                        );
+                  }
               }
             else
               {
-                SetErrorState(true);
-              } /*if*/
-          } /*if*/
-      } /*DecrementSkip*/
+                SetErrorState( true );
+              }
+          }
+      }
 
-    void Interpret
-      (
-        boolean Execute /* false to just collect labels */
-      )
+    private void Interpret
+        (
+            boolean Execute /* false to just collect labels */
+        )
+      {
       /* main program interpreter loop: interprets one instruction and
         advances/jumps RunPC accordingly. */
-      {
-        final int Op = GetProg(Execute);
-        if (Op >= 0)
+        final int Op = GetProg( Execute );
+        if ( Op >= 0 )
           {
             boolean KeepModifier = false;
-            if (Execute)
+            if ( Execute )
               {
                 boolean BankSet = false;
                 ProgRunningSlowly = SaveRunningSlowly; /* undo previous Pause, if any */
-                switch (Op)
+                switch ( Op )
                   {
                     case 01:
                     case 02:
@@ -3639,8 +3684,8 @@ public class State
                     case 8:
                     case 9:
                     case 00:
-                        Digit((char)(Op + 48));
-                    break;
+                      Digit( ( char ) ( Op + 48 ) );
+                      break;
                     case 11:
                     case 12:
                     case 13:
@@ -3651,332 +3696,344 @@ public class State
                     case 18:
                     case 19:
                     case 10:
-                        Transfer(TRANSFER_TYPE_CALL, NextBank, Op, TRANSFER_LOC_SYMBOLIC);
-                    break;
-                  /* 21 invalid */
+                      Transfer( TRANSFER_TYPE_CALL, NextBank, Op, TRANSFER_LOC_SYMBOLIC );
+                      break;
+                    /* 21 invalid */
                     case 22:
                     case 27:
-                        InvState = !InvState;
-                        KeepModifier = true;
-                    break;
+                      InvState = !InvState;
+                      KeepModifier = true;
+                      break;
                     case 23:
-                        Ln();
-                    break;
+                      Ln();
+                      break;
                     case 24:
-                        ClearEntry();
-                    break;
+                      ClearEntry();
+                      break;
                     case 20:
-                        Percent();
-                    break;
+                      Percent();
+                      break;
                     case 25:
-                        ClearAll();
-                        Enter(25);
-                    break;
-                  /* 26 invalid */
-                  /* 27 same as 22 */
+                      ClearAll();
+                      Enter( 25 );
+                      break;
+                    /* 26 invalid */
+                    /* 27 same as 22 */
                     case 28:
-                        Log();
-                    break;
+                      Log();
+                      break;
                     case 29: /*CP*/
-                        Enter(29);
-                        T.set(Number.ZERO);
-                    break;
-                  /* 20 same as 25 */
-                  /* 31 invalid */
+                      Enter( 29 );
+                      T.set( Number.ZERO );
+                      break;
+                    /* 20 same as 25 */
+                    /* 31 invalid */
                     case 32:
-                        SwapT();
-                    break;
+                      SwapT();
+                      break;
                     case 33:
-                        Square();
-                    break;
+                      Square();
+                      break;
                     case 34:
-                        Sqrt();
-                    break;
+                      Sqrt();
+                      break;
                     case 35:
-                        Reciprocal();
-                    break;
+                      Reciprocal();
+                      break;
                     case 36: /*Pgm*/
-                        SelectProgram(GetProg(true), false);
-                        BankSet = true;
-                    break;
+                      SelectProgram( GetProg( true ), false );
+                      BankSet = true;
+                      break;
                     case 37:
-                        Polar();
-                    break;
+                      Polar();
+                      break;
                     case 38:
-                        Sin();
-                    break;
+                      Sin();
+                      break;
                     case 39:
-                        Cos();
-                    break;
+                      Cos();
+                      break;
                     case 30:
-                        Tan();
-                    break;
-                  /* 41 invalid */
+                      Tan();
+                      break;
+                    /* 41 invalid */
                     case 42:
-                        MemoryOp(MEMOP_STO, GetProg(true), false);
-                    break;
+                      MemoryOp( MEMOP_STO, GetProg( true ), false );
+                      break;
                     case 43:
-                        MemoryOp(MEMOP_RCL, GetProg(true), false);
-                    break;
+                      MemoryOp( MEMOP_RCL, GetProg( true ), false );
+                      break;
                     case 44:
-                        MemoryOp(MEMOP_ADD, GetProg(true), false);
-                    break;
+                      MemoryOp( MEMOP_ADD, GetProg( true ), false );
+                      break;
                     case 45:
-                        Operator(STACKOP_EXP);
-                    break;
-                  /* 46 invalid */
+                      Operator( STACKOP_EXP );
+                      break;
+                    /* 46 invalid */
                     case 47:
-                        ClearMemories();
-                    break;
+                      ClearMemories();
+                      break;
                     case 48:
-                        MemoryOp(MEMOP_EXC, GetProg(true), false);
-                    break;
+                      MemoryOp( MEMOP_EXC, GetProg( true ), false );
+                      break;
                     case 49:
-                        MemoryOp(MEMOP_MUL, GetProg(true), false);
-                    break;
-                  /* 51 invalid */
+                      MemoryOp( MEMOP_MUL, GetProg( true ), false );
+                      break;
+                    /* 51 invalid */
                     case 52:
-                        EnterExponent();
-                    break;
+                      EnterExponent();
+                      break;
                     case 53:
-                        LParen();
-                    break;
+                      LParen();
+                      break;
                     case 54:
-                        RParen();
-                    break;
+                      RParen();
+                      break;
                     case 55:
-                        if (InvState) /* extension! */
-                          {
-                            Operator(STACKOP_MOD);
-                          }
-                        else
-                          {
-                            Operator(STACKOP_DIV);
-                          } /*if*/
-                    break;
-                  /* 56 invalid */
+                      if ( InvState ) /* extension! */
+                        {
+                          Operator( STACKOP_MOD );
+                        }
+                      else
+                        {
+                          Operator( STACKOP_DIV );
+                        }
+                      break;
+                    /* 56 invalid */
                     case 57: /*Eng*/
-                        SetDisplayMode
+                      SetDisplayMode
                           (
-                            InvState ? FORMAT_FIXED : FORMAT_ENG,
-                        CurNrDecimals
+                              InvState
+                              ? FORMAT_FIXED
+                              : FORMAT_ENG,
+                              CurNrDecimals
                           );
-                    break;
+                      break;
                     case 58: /*Fix*/
-                        if (InvState)
-                          {
-                        SetDisplayMode(CurFormat, -1);
-                          }
-                        else
-                          {
-                        SetDisplayMode(CurFormat, GetProg(true));
-                          } /*if*/
-                    break;
+                      if ( InvState )
+                        {
+                          SetDisplayMode( CurFormat, -1 );
+                        }
+                      else
+                        {
+                          SetDisplayMode( CurFormat, GetProg( true ) );
+                        }
+                      break;
                     case 59:
-                        Int();
-                    break;
+                      Int();
+                      break;
                     case 50:
-                        Abs();
-                    break;
+                      Abs();
+                      break;
                     case 61: /*GTO*/
-                        Transfer
+                      Transfer
                           (
-                            /*Type =*/
-                                InvState ?
-                                    TRANSFER_TYPE_LEA /*extension!*/
-                                :
-                                    TRANSFER_TYPE_GTO,
-                            /*BankNr =*/ NextBank,
-                            /*Loc =*/ GetLoc(true, NextBank),
-                            /*LocType =*/ TRANSFER_LOC_DIRECT
+                              InvState
+                              ?
+                              TRANSFER_TYPE_LEA /*extension!*/
+                              :
+                              TRANSFER_TYPE_GTO,
+                              NextBank,
+                              GetLoc( true, NextBank ),
+                              TRANSFER_LOC_DIRECT
                           );
-                    break;
+                      break;
                     case 62: /*Pgm Ind*/
-                        SelectProgram(GetProg(true), true);
-                        BankSet = true;
-                    break;
+                      SelectProgram( GetProg( true ), true );
+                      BankSet = true;
+                      break;
                     case 63:
-                        MemoryOp(MEMOP_EXC, GetProg(true), true);
-                    break;
+                      MemoryOp( MEMOP_EXC, GetProg( true ), true );
+                      break;
                     case 64:
-                        MemoryOp(MEMOP_MUL, GetProg(true), true);
-                    break;
+                      MemoryOp( MEMOP_MUL, GetProg( true ), true );
+                      break;
                     case 65:
-                        Operator(STACKOP_MUL);
-                    break;
+                      Operator( STACKOP_MUL );
+                      break;
                     case 66: /*Pause*/
-                        ProgRunningSlowly = true; /* will revert to SaveRunningSlowly next time */
-                    break;
+                      ProgRunningSlowly = true; /* will revert to SaveRunningSlowly next time */
+                      break;
                     case 67: /*x=t*/
                     case 77: /*x≥t*/
-                        CompareBranch(Op == 77, RunBank, GetLoc(true, RunBank), false);
-                    break;
+                      final int BranchPC = RunPC;
+                      CompareBranch( Op == 77, RunBank, GetLoc( true, RunBank ), false );
+                      if ( InErrorState() )
+                        {
+                          // in case of error, go to the branch op
+                          RunPC = BranchPC;
+                          PC = BranchPC;
+                        }
+                      break;
                     case 68: /*Nop*/
-                      /* No effect */
-                        KeepModifier = true;
-                    break;
+                      KeepModifier = true;
+                      break;
                     case 69:
-                        SpecialOp(GetProg(true), false);
-                    break;
+                      SpecialOp( GetProg( true ), false );
+                      break;
                     case 60:
-                        SetAngMode(ANG_DEG);
-                    break;
+                      SetAngMode( ANG_DEG );
+                      break;
                     case 71: /*SBR*/
-                        if (InvState)
-                          {
-                            Return();
-                          }
-                        else
-                          {
-                            Transfer(TRANSFER_TYPE_CALL, NextBank, GetLoc(true, NextBank), TRANSFER_LOC_DIRECT);
-                          } /*if*/
-                    break;
-                    case 72:
-                        MemoryOp(MEMOP_STO, GetProg(true), true);
-                    break;
-                    case 73:
-                        MemoryOp(MEMOP_RCL, GetProg(true), true);
-                    break;
-                    case 74:
-                        MemoryOp(MEMOP_ADD, GetProg(true), true);
-                    break;
-                    case 75:
-                        Operator(STACKOP_SUB);
-                    break;
-                    case 76: /*Lbl*/
-                        GetProg(true); /* just skip label, assume Labels already filled in */
-                        KeepModifier = true;
-                    break;
-                  /* 77 handled above */
-                    case 78:
-                        StatsSum();
-                    break;
-                    case 79:
-                        StatsResult();
-                    break;
-                    case 70:
-                        SetAngMode(ANG_RAD);
-                    break;
-                    case 81:
-                        ResetProg();
-                    break;
-                    case 82: /* HIR non documented instructions */
-                        HirOp(GetProg(true));
-                    break;
-                    case 83: /*GTO Ind*/
-                        Transfer
-                          (
-                            /*Type =*/
-                                InvState ?
-                                    TRANSFER_TYPE_LEA /*extension!*/
-                                :
-                                    TRANSFER_TYPE_GTO,
-                            /*BankNr =*/ NextBank,
-                            /*Loc =*/ GetProg(true),
-                            /*LocType =*/ TRANSFER_LOC_INDIRECT
+                      if ( InvState )
+                        {
+                          Return();
+                        }
+                      else
+                        {
+                          Transfer(
+                              TRANSFER_TYPE_CALL, NextBank, GetLoc( true, NextBank ),
+                              TRANSFER_LOC_DIRECT
                           );
-                    break;
+                        }
+                      break;
+                    case 72:
+                      MemoryOp( MEMOP_STO, GetProg( true ), true );
+                      break;
+                    case 73:
+                      MemoryOp( MEMOP_RCL, GetProg( true ), true );
+                      break;
+                    case 74:
+                      MemoryOp( MEMOP_ADD, GetProg( true ), true );
+                      break;
+                    case 75:
+                      Operator( STACKOP_SUB );
+                      break;
+                    case 76: /*Lbl*/
+                      GetProg( true ); /* just skip label, assume Labels already filled in */
+                      KeepModifier = true;
+                      break;
+                    /* 77 handled above */
+                    case 78:
+                      StatsSum();
+                      break;
+                    case 79:
+                      StatsResult();
+                      break;
+                    case 70:
+                      SetAngMode( ANG_RAD );
+                      break;
+                    case 81:
+                      ResetProg();
+                      break;
+                    case 82: /* HIR non documented instructions */
+                      HirOp( GetProg( true ) );
+                      break;
+                    case 83: /*GTO Ind*/
+                      Transfer
+                          (
+                              InvState
+                              ?
+                              TRANSFER_TYPE_LEA /*extension!*/
+                              :
+                              TRANSFER_TYPE_GTO,
+                              NextBank,
+                              GetProg( true ),
+                              TRANSFER_LOC_INDIRECT
+                          );
+                      break;
                     case 84:
-                        SpecialOp(GetProg(true), true);
-                    break;
+                      SpecialOp( GetProg( true ), true );
+                      break;
                     case 85:
-                        Operator(STACKOP_ADD);
-                    break;
+                      Operator( STACKOP_ADD );
+                      break;
                     case 86: /*St flg*/
-                        SetFlag(GetUnitOp(true, false), false, !InvState);
-                    break;
+                      SetFlag( GetUnitOp( true, false ), false, !InvState );
+                      break;
                     case 87: /*If flg*/
-                          {
-                            final int FlagNr = GetUnitOp(true, false);
-                            final int Target = GetLoc(true, RunBank);
-                            BranchIfFlag(FlagNr, false, RunBank, Target, TRANSFER_LOC_DIRECT);
-                          }
+                    {
+                      final int FlagNr = GetUnitOp( true, false );
+                      final int Target = GetLoc( true, RunBank );
+                      BranchIfFlag( FlagNr, false, RunBank, Target, TRANSFER_LOC_DIRECT );
+                    }
                     break;
                     case 88:
-                        D_MS();
-                    break;
+                      D_MS();
+                      break;
                     case 89:
-                        Pi();
-                    break;
+                      Pi();
+                      break;
                     case 80:
-                        SetAngMode(ANG_GRAD);
-                    break;
+                      SetAngMode( ANG_GRAD );
+                      break;
                     case 91:
                     case 96:
-                        StopProgram();
-                    break;
+                      StopProgram();
+                      break;
                     case 92: /*INV SBR*/
-                        Return();
-                    break;
+                      Return();
+                      break;
                     case 93:
-                        DecimalPoint();
-                    break;
+                      DecimalPoint();
+                      break;
                     case 94:
-                        ChangeSign();
-                    break;
+                      ChangeSign();
+                      break;
                     case 95:
-                        Equals();
-                    break;
-                  /* 96 same as 91 */
+                      Equals();
+                      break;
+                    /* 96 same as 91 */
                     case 97: /*Dsz*/
-                          {
-                            final int Reg = GetUnitOp(true, true);
-                            final int Target = GetLoc(true, RunBank);
-                            DecrementSkip(Reg, false, RunBank, Target, TRANSFER_LOC_DIRECT);
-                          }
+                    {
+                      final int Reg    = GetUnitOp( true, true );
+                      final int Target = GetLoc( true, RunBank );
+                      DecrementSkip( Reg, false, RunBank, Target, TRANSFER_LOC_DIRECT );
+                    }
                     break;
                     case 98: /*Adv*/
-                        if (Global.Calc.InvState) /* extension! */
-                          {
-                            if (Global.Export != null)
-                              {
-                                Global.Export.Close();
-                              } /*if*/
-                          }
-                        else
-                          {
-                            if (Global.Print != null)
-                              {
-                                Global.Print.Advance();
-                              } /*if*/
-                          } /*if*/
-                    break;
+                      if ( Global.Calc.InvState ) /* extension! */
+                        {
+                          if ( Global.Export != null )
+                            {
+                              Global.Export.Close();
+                            }
+                        }
+                      else
+                        {
+                          if ( Global.Print != null )
+                            {
+                              Global.Print.Advance();
+                            }
+                        }
+                      break;
                     case 99: /*Prt*/
-                        if (InvState) /* extension! */
-                          {
-                            GetNextImport();
-                          }
-                        else
-                          {
-                            if (Global.Export != null && Global.Export.NumbersOnly)
-                              {
-                                Global.Export.WriteNum(X);
-                              } /*if*/
-                            PrintDisplay(true, false, "");
-                          } /*if*/
-                    break;
+                      Enter( 99 );
+                      if ( InvState ) /* extension! */
+                        {
+                          GetNextImport();
+                        }
+                      else
+                        {
+                          if ( Global.Export != null && Global.Export.NumbersOnly )
+                            {
+                              Global.Export.WriteNum( X );
+                            }
+                          PrintDisplay( true, false, "" );
+                        }
+                      break;
                     case 90: /*List*/
                       /* no-op in program? */
-                    break;
+                      break;
                     default:
-                        SetErrorState(true);
-                    break;
-                  } /*switch*/
-                if (!BankSet)
+                      SetErrorState( true );
+                      break;
+                  }
+                if ( !BankSet )
                   {
                     NextBank = RunBank;
-                  } /*if*/
+                  }
               }
             else
               {
-              /* just advance RunPC past instruction and update Labels as appropriate */
-                switch (Op)
+                /* just advance RunPC past instruction and update Labels as appropriate */
+                switch ( Op )
                   {
                     case 22:
                     case 27:
-                        InvState = !InvState; /* needed to correctly parse INV Fix and unmerged INV SBR */
-                        KeepModifier = true;
-                    break;
+                      InvState = !InvState; /* needed to correctly parse INV Fix and unmerged INV SBR */
+                      KeepModifier = true;
+                      break;
                     case 36: /*Pgm*/
                     case 42: /*STO*/
                     case 43: /*RCL*/
@@ -3993,87 +4050,86 @@ public class State
                     case 83: /*GTO Ind*/
                     case 84: /*Op Ind*/
                       /* one byte following */
-                        GetProg(false);
-                    break;
+                      GetProg( false );
+                      break;
                     case 57: /*Fix*/
-                        if (!InvState)
-                          {
-                            GetUnitOp(false, false);
-                          } /*if*/
-                    break;
+                      if ( !InvState )
+                        {
+                          GetUnitOp( false, false );
+                        }
+                      break;
                     case 61: /*GTO*/
-                        GetLoc(false, RunBank /* irrelevant */);
-                    break;
+                      GetLoc( false, RunBank /* irrelevant */ );
+                      break;
                     case 67: /*x=t*/
                     case 77: /*x≥t*/
-                        GetLoc(false, RunBank);
-                    break;
+                      GetLoc( false, RunBank );
+                      break;
                     case 71: /*SBR*/
-                        if (!InvState) /* in case it wasn't merged */
-                          {
-                            GetLoc(false, RunBank /* irrelevant */);
-                          } /*if*/
-                    break;
+                      if ( !InvState ) /* in case it wasn't merged */
+                        {
+                          GetLoc( false, RunBank /* irrelevant */ );
+                        }
+                      break;
                     case 76: /*Lbl*/
-                          {
-                            final int TheLabel = GetProg(false);
-                            if (TheLabel >= 0 && RunPC >= 0 && !Bank[RunBank].Labels.containsKey(TheLabel))
-                              {
-                                Bank[RunBank].Labels.put(TheLabel, RunPC);
-                              } /*if*/
-                          }
-                          KeepModifier = true;
+                    {
+                      final int TheLabel = GetProg( false );
+                      if ( TheLabel >= 0 && RunPC >= 0 && Bank[ RunBank ].Labels.indexOfKey(
+                          TheLabel ) < 0 )
+                        {
+                          Bank[ RunBank ].Labels.put( TheLabel, RunPC );
+                        }
+                    }
+                    KeepModifier = true;
                     break;
                     case 68: /*Nop*/
-                      /* No effect */
-                        KeepModifier = true;
-                    break;
+                      KeepModifier = true;
+                      break;
                     case 86: /*St flg*/
-                        GetUnitOp(false, false);
-                    break;
+                      GetUnitOp( false, false );
+                      break;
                     case 87: /*If flg*/
                     case 97: /*Dsz*/
-                        GetUnitOp(false, true); /*register/flag*/
-                        GetLoc(false, RunBank); /*branch target*/
-                    break;
-                  } /*switch*/
-              } /*if*/
-            if (!KeepModifier)
+                      GetUnitOp( false, true ); /*register/flag*/
+                      GetLoc( false, RunBank ); /*branch target*/
+                      break;
+                  }
+              }
+            if ( !KeepModifier )
               {
                 InvState = false;
-              } /*if*/
-          } /*if*/
+              }
+          }
         PreviousOp = Op;
-      } /*Interpret*/
+      }
 
     void FillInLabels
-      (
-        int BankNr
-      )
+        (
+            int BankNr
+        )
       {
-        if (Bank[BankNr].Labels == null)
+        if ( Bank[ BankNr ].Labels == null )
           {
-            Bank[BankNr].Labels = new java.util.HashMap<Integer, Integer>();
+            Bank[ BankNr ].Labels = new SparseIntArray();
             final boolean SaveInvState = InvState;
-            final int SaveRunPC = RunPC;
-            final int SaveRunBank = RunBank;
-            InvState = false; /*?*/
+            final int     SaveRunPC    = RunPC;
+            final int     SaveRunBank  = RunBank;
+            InvState = false;
             RunPC = 0;
             RunBank = BankNr;
             do
               {
-                Interpret(false);
+                Interpret( false );
               }
-            while (RunPC != -1 && RunPC < Bank[BankNr].Program.length);
+            while ( RunPC != -1 && RunPC < Bank[ BankNr ].Program.length );
             InvState = SaveInvState;
             RunPC = SaveRunPC;
             RunBank = SaveRunBank;
-          } /*if*/
-      } /*FillInLabels*/
+          }
+      }
 
-    public void FillInLabels()
+    void FillInLabels()
       {
-        FillInLabels(CurBank);
-      } /*FillInLabels*/
-
-  } /*State*/
+        FillInLabels( CurBank );
+      }
+  }

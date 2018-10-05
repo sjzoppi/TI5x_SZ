@@ -1,8 +1,7 @@
-package net.obry.ti5x;
 /*
     ti5x calculator emulator -- virtual printer display
 
-    Copyright 2011, 2012 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
+    Copyright 2011-2012 Lawrence D'Oliveiro <ldo@geek-central.gen.nz>.
 
     This program is free software: you can redistribute it and/or modify it under
     the terms of the GNU General Public License as published by the Free Software
@@ -16,54 +15,56 @@ package net.obry.ti5x;
     along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-public class PaperView extends android.view.View
+package net.obry.ti5x;
+
+class PaperView extends android.view.View
   {
-    final int TargetWidth;
+    private final int TargetWidth;
 
     public PaperView
-      (
-        android.content.Context TheContext,
-        android.util.AttributeSet TheAttributes
-      )
+        (
+            android.content.Context TheContext,
+            android.util.AttributeSet TheAttributes
+        )
       {
-        super(TheContext, TheAttributes);
-        TargetWidth = (int)TheContext.getResources().getDimension(R.dimen.paper_width);
-      } /*PaperView*/
+        super( TheContext, TheAttributes );
+        TargetWidth = ( int ) TheContext.getResources().getDimension( R.dimen.paper_width );
+      }
 
     public int GetViewHeight()
       {
         return
-            Global.Print != null ?
-                Global.Print.Paper.getHeight() * TargetWidth / Global.Print.Paper.getWidth()
+            Global.Print != null
+            ?
+            Global.Print.Paper.getHeight() * TargetWidth / Global.Print.Paper.getWidth()
             :
-                0;
-      } /*GetViewHeight*/
+            0;
+      }
 
     @Override
     public void onMeasure
-      (
-        int MeasureWidth,
-        int MeasureHeight
-      )
+        (
+            int MeasureWidth,
+            int MeasureHeight
+        )
       {
-        setMeasuredDimension(TargetWidth, GetViewHeight());
-      } /*onMeasure*/
+        setMeasuredDimension( TargetWidth, GetViewHeight() );
+      }
 
     @Override
     public void onDraw
-      (
-        android.graphics.Canvas Draw
-      )
+        (
+            android.graphics.Canvas Draw
+        )
       {
-        if (Global.Print != null)
+        if ( Global.Print != null )
           {
-            final android.graphics.Matrix FitWidth = new android.graphics.Matrix();
-            final float ScaleFactor = (float)getWidth() / (float)Global.Print.Paper.getWidth();
-            FitWidth.postScale(ScaleFactor, ScaleFactor, 0.0f, 0.0f);
+            final android.graphics.Matrix FitWidth    = new android.graphics.Matrix();
+            final float                   ScaleFactor = ( float ) getWidth() / ( float ) Global.Print.Paper.getWidth();
+            FitWidth.postScale( ScaleFactor, ScaleFactor, 0.0f, 0.0f );
             final android.graphics.Paint DrawBits = new android.graphics.Paint();
-            DrawBits.setFilterBitmap(true);
-            Draw.drawBitmap(Global.Print.Paper, FitWidth, DrawBits);
-          } /*if*/
-      } /*onDraw*/
-
-  } /*PaperView*/
+            DrawBits.setFilterBitmap( true );
+            Draw.drawBitmap( Global.Print.Paper, FitWidth, DrawBits );
+          }
+      }
+  }

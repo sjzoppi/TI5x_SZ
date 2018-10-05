@@ -1,0 +1,1610 @@
+10/4/2018 7:00:45 PM : 
+		Current Configuration
+		                     Parameter : Value
+		------------------------------ : ------------------------------
+		                    PythonHome : C:\Program Files (x86)\Python37-32\
+		                  PathToScript : F:\Engineering\Projects.Android\TI5x\util
+		                   TargetsHome : F:\Engineering\Projects.Android\TI5x\ti_libraries_target
+		               MasterLibraries : F:\Engineering\Projects.Android\TI5x\ti_libraries_master
+		                MasterPrograms : F:\Engineering\Projects.Android\TI5x\programs_master
+		              RawResourcesHome : F:\Engineering\Projects.Android\TI5x\app\src\main\res\raw
+		                       LogFile : F:\Engineering\Projects.Android\TI5x\util\NBuildAll.log
+		                     Recompile : False
+		              ProcessLibraries : True
+		               ProcessPrograms : True
+		                    DelBackups : true
+		                        Filter : 
+		
+10/4/2018 7:00:45 PM : Scanning for Eligibile Module Folders
+10/4/2018 7:00:45 PM : 00 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Applied Statistics.st.02.pub
+10/4/2018 7:00:45 PM : 01 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Aviation Library.av.06.pub
+10/4/2018 7:00:45 PM : 02 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub
+10/4/2018 7:00:45 PM : 03 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Electrical Engineering.ee.11.pub
+10/4/2018 7:00:45 PM : 04 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Leisure Library.le.07.pub
+10/4/2018 7:00:45 PM : 05 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Marine Navigation.ng.05.pub
+10/4/2018 7:00:45 PM : 06 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Master Library.ml.01.pub
+10/4/2018 7:00:45 PM : 07 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Math Utilities.mu.10.pub
+10/4/2018 7:00:45 PM : 08 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Real Estate.re.03.pub
+10/4/2018 7:00:45 PM : 09 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Securities Analysis.sa.08.pub
+10/4/2018 7:00:45 PM : 10 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Surveying Library.sy.04.pub
+10/4/2018 7:00:45 PM : 11 - F:\Engineering\Projects.Android\TI5x\ti_libraries_master\User Contributions A.ct.99.pub
+10/4/2018 7:00:45 PM : Scanning for Eligibile Program Folders
+10/4/2018 7:00:45 PM : 00 - F:\Engineering\Projects.Android\TI5x\programs_master\ee19_construct_nam_code.EE.pub
+10/4/2018 7:00:45 PM : 01 - F:\Engineering\Projects.Android\TI5x\programs_master\ee19_input_code.EE.pub
+
+
+======================================================================================
+10/4/2018 7:00:45 PM : Pass 1 - Assemble/Disassemble the Binaries and Render All Cards
+======================================================================================
+
+
+
+
+=======================================================================================================================================
+10/4/2018 7:00:45 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Applied Statistics.st.02.pub
+=======================================================================================================================================
+
+
+10/4/2018 7:00:47 PM : (Asm5x) prog01.src(1/10/2017 11:15:50 PM)	        Ignoring  (Equal Date) ST01-prog.bin.txt(1/10/2017 11:15:50 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog02.src(1/10/2017 7:13:07 PM)	        Ignoring  (Equal Date) ST02-prog.bin.txt(1/10/2017 7:13:07 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog03.src(1/10/2017 7:26:33 PM)	        Ignoring  (Equal Date) ST03-prog.bin.txt(1/10/2017 7:26:33 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog04.src(1/10/2017 7:40:14 PM)	        Ignoring  (Equal Date) ST04-prog.bin.txt(1/10/2017 7:40:14 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog05.src(1/12/2017 8:36:26 PM)	        Ignoring  (Equal Date) ST05-prog.bin.txt(1/12/2017 8:36:26 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog06.src(9/27/2018 9:35:46 PM)	        Ignoring  (Equal Date) ST06-prog.bin.txt(9/27/2018 9:35:46 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog07.src(1/10/2017 7:59:09 PM)	        Ignoring  (Equal Date) ST07-prog.bin.txt(1/10/2017 7:59:09 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog08.src(1/10/2017 8:02:33 PM)	        Ignoring  (Equal Date) ST08-prog.bin.txt(1/10/2017 8:02:33 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog09.src(1/10/2017 8:14:23 PM)	        Ignoring  (Equal Date) ST09-prog.bin.txt(1/10/2017 8:14:23 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog10.src(1/10/2017 8:18:31 PM)	        Ignoring  (Equal Date) ST10-prog.bin.txt(1/10/2017 8:18:31 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog11.src(1/10/2017 8:20:42 PM)	        Ignoring  (Equal Date) ST11-prog.bin.txt(1/10/2017 8:20:42 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog12.src(1/10/2017 8:25:53 PM)	        Ignoring  (Equal Date) ST12-prog.bin.txt(1/10/2017 8:25:53 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog13.src(1/10/2017 8:28:52 PM)	        Ignoring  (Equal Date) ST13-prog.bin.txt(1/10/2017 8:28:52 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog14.src(1/10/2017 8:38:30 PM)	        Ignoring  (Equal Date) ST14-prog.bin.txt(1/10/2017 8:38:30 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog15.src(1/10/2017 8:40:41 PM)	        Ignoring  (Equal Date) ST15-prog.bin.txt(1/10/2017 8:40:41 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog16.src(1/10/2017 8:44:16 PM)	        Ignoring  (Equal Date) ST16-prog.bin.txt(1/10/2017 8:44:16 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog17.src(1/10/2017 9:04:37 PM)	        Ignoring  (Equal Date) ST17-prog.bin.txt(1/10/2017 9:04:37 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog18.src(1/10/2017 9:16:28 PM)	        Ignoring  (Equal Date) ST18-prog.bin.txt(1/10/2017 9:16:28 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog19.src(1/10/2017 9:20:10 PM)	        Ignoring  (Equal Date) ST19-prog.bin.txt(1/10/2017 9:20:10 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog20.src(1/10/2017 9:23:42 PM)	        Ignoring  (Equal Date) ST20-prog.bin.txt(1/10/2017 9:23:42 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog21.src(1/10/2017 9:32:34 PM)	        Ignoring  (Equal Date) ST21-prog.bin.txt(1/10/2017 9:32:34 PM)
+10/4/2018 7:00:47 PM : (Asm5x) prog22.src(1/10/2017 9:39:40 PM)	        Ignoring  (Equal Date) ST22-prog.bin.txt(1/10/2017 9:39:40 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST01-module.txt(1/10/2017 11:15:50 PM)	Ignoring  (Equal Date) ST01-module.loc.txt(1/10/2017 11:15:50 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST02-module.txt(1/10/2017 7:13:07 PM)	Ignoring  (Equal Date) ST02-module.loc.txt(1/10/2017 7:13:07 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST03-module.txt(1/10/2017 7:26:33 PM)	Ignoring  (Equal Date) ST03-module.loc.txt(1/10/2017 7:26:33 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST04-module.txt(1/10/2017 7:40:14 PM)	Ignoring  (Equal Date) ST04-module.loc.txt(1/10/2017 7:40:14 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST05-module.txt(1/12/2017 8:36:26 PM)	Ignoring  (Equal Date) ST05-module.loc.txt(1/12/2017 8:36:26 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST06-module.txt(9/27/2018 9:30:11 PM)	Ignoring  (Equal Date) ST06-module.loc.txt(9/27/2018 9:30:11 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST07-module.txt(1/10/2017 7:59:09 PM)	Ignoring  (Equal Date) ST07-module.loc.txt(1/10/2017 7:59:09 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST08-module.txt(1/10/2017 8:02:33 PM)	Ignoring  (Equal Date) ST08-module.loc.txt(1/10/2017 8:02:33 PM)
+10/4/2018 7:00:47 PM : (Disasm5x) ST09-module.txt(1/10/2017 8:14:23 PM)	Ignoring  (Equal Date) ST09-module.loc.txt(1/10/2017 8:14:23 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST10-module.txt(1/10/2017 8:18:31 PM)	Ignoring  (Equal Date) ST10-module.loc.txt(1/10/2017 8:18:31 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST11-module.txt(1/10/2017 8:20:42 PM)	Ignoring  (Equal Date) ST11-module.loc.txt(1/10/2017 8:20:42 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST12-module.txt(1/10/2017 8:25:53 PM)	Ignoring  (Equal Date) ST12-module.loc.txt(1/10/2017 8:25:53 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST13-module.txt(1/10/2017 8:28:52 PM)	Ignoring  (Equal Date) ST13-module.loc.txt(1/10/2017 8:28:52 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST14-module.txt(1/10/2017 8:38:30 PM)	Ignoring  (Equal Date) ST14-module.loc.txt(1/10/2017 8:38:30 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST15-module.txt(1/10/2017 8:40:41 PM)	Ignoring  (Equal Date) ST15-module.loc.txt(1/10/2017 8:40:41 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST16-module.txt(1/10/2017 8:44:16 PM)	Ignoring  (Equal Date) ST16-module.loc.txt(1/10/2017 8:44:16 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST17-module.txt(1/10/2017 9:04:37 PM)	Ignoring  (Equal Date) ST17-module.loc.txt(1/10/2017 9:04:37 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST18-module.txt(1/10/2017 9:16:28 PM)	Ignoring  (Equal Date) ST18-module.loc.txt(1/10/2017 9:16:28 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST19-module.txt(1/10/2017 9:20:10 PM)	Ignoring  (Equal Date) ST19-module.loc.txt(1/10/2017 9:20:10 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST20-module.txt(1/10/2017 9:23:42 PM)	Ignoring  (Equal Date) ST20-module.loc.txt(1/10/2017 9:23:42 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST21-module.txt(1/10/2017 9:32:34 PM)	Ignoring  (Equal Date) ST21-module.loc.txt(1/10/2017 9:32:34 PM)
+10/4/2018 7:00:48 PM : (Disasm5x) ST22-module.txt(1/10/2017 9:39:40 PM)	Ignoring  (Equal Date) ST22-module.loc.txt(1/10/2017 9:39:40 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card01.xml(1/10/2017 9:46:19 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card02.xml(1/10/2017 10:57:21 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card03.xml(1/10/2017 10:58:26 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card04.xml(1/10/2017 9:55:46 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card05.xml(1/10/2017 9:56:43 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card06.xml(1/10/2017 9:59:11 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card07.xml(1/10/2017 10:00:36 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card08.xml(1/10/2017 11:00:43 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card09.xml(1/10/2017 10:06:21 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card10.xml(1/10/2017 10:09:17 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card11.xml(1/10/2017 10:10:42 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card12.xml(1/10/2017 10:12:40 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card13.xml(1/10/2017 10:51:25 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card14.xml(1/10/2017 10:19:21 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card15.xml(1/10/2017 10:20:51 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card16.xml(1/10/2017 10:24:01 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card17.xml(1/10/2017 10:26:03 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card18.xml(1/10/2017 10:28:05 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card19.xml(1/10/2017 10:33:20 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card20.xml(1/10/2017 10:36:13 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card21.xml(1/10/2017 11:05:11 PM)
+10/4/2018 7:00:48 PM : (makeInsertCard) No Rendering Required For   : card22.xml(1/10/2017 10:43:55 PM)
+
+
+=====================================================================================================================================
+10/4/2018 7:00:48 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Aviation Library.av.06.pub
+=====================================================================================================================================
+
+
+10/4/2018 7:00:50 PM : (Disasm5x) AV01-module.txt(12/21/2016 7:27:09 AM)	Ignoring  (Equal Date) AV01-module.loc.txt(12/21/2016 7:27:09 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV02-module.txt(12/2/2016 10:38:21 AM)	Ignoring  (Equal Date) AV02-module.loc.txt(12/2/2016 10:38:21 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV03-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV03-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV04-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV04-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV05-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV05-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV06-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV06-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV07-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV07-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV08-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV08-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV09-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV09-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV10-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV10-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV11-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV11-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV12-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV12-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV13-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV13-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV14-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV14-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV15-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV15-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV16-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV16-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV17-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV17-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV18-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV18-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV19-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV19-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV20-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV20-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV21-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV21-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV22-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV22-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:50 PM : (Disasm5x) AV23-module.txt(12/20/2016 7:30:27 AM)	Ignoring  (Equal Date) AV23-module.loc.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog01.src(12/27/2016 8:44:59 AM)	        Ignoring  (Equal Date) AV01-prog.bin.txt(12/27/2016 8:44:59 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog02.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV02-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog03.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV03-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog04.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV04-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog05.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV05-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog06.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV06-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog07.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV07-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog08.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV08-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog09.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV09-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog10.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV10-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog11.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV11-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog12.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV12-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog13.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV13-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog14.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV14-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog15.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV15-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog16.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV16-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog17.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV17-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog18.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV18-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog19.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV19-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog20.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV20-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog21.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV21-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog22.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV22-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (Asm5x) prog23.src(12/20/2016 7:30:27 AM)	        Ignoring  (Equal Date) AV23-prog.bin.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card01.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card02.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card03.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card04.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card05.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card06.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card07.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card08.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card09.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card10.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card11.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card12.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card13.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card14.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card15.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card16.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card17.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card18.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card19.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card20.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card21.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card22.xml(12/20/2016 7:30:27 AM)
+10/4/2018 7:00:51 PM : (makeInsertCard) No Rendering Required For   : card23.xml(12/20/2016 7:30:27 AM)
+
+
+=======================================================================================================================================
+10/4/2018 7:00:51 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub
+=======================================================================================================================================
+
+
+10/4/2018 7:00:52 PM : (Disasm5x) BD01-module.txt(9/9/2018 8:37:38 AM)	Ignoring  (Equal Date) BD01-module.loc.txt(9/9/2018 8:37:38 AM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD02-module.txt(5/13/2018 7:41:15 AM)	Ignoring  (Equal Date) BD02-module.loc.txt(5/13/2018 7:41:15 AM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD03-module.txt(5/13/2018 8:16:12 AM)	Ignoring  (Equal Date) BD03-module.loc.txt(5/13/2018 8:16:12 AM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD04-module.txt(5/13/2018 8:45:52 AM)	Ignoring  (Equal Date) BD04-module.loc.txt(5/13/2018 8:45:52 AM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD05-module.txt(5/13/2018 9:18:30 AM)	Ignoring  (Equal Date) BD05-module.loc.txt(5/13/2018 9:18:30 AM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD06-module.txt(9/23/2018 3:33:00 PM)	Ignoring  (Equal Date) BD06-module.loc.txt(9/23/2018 3:33:00 PM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD07-module.txt(5/13/2018 1:11:48 PM)	Ignoring  (Equal Date) BD07-module.loc.txt(5/13/2018 1:11:48 PM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD08-module.txt(5/13/2018 2:10:34 PM)	Ignoring  (Equal Date) BD08-module.loc.txt(5/13/2018 2:10:34 PM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD09-module.txt(5/13/2018 2:32:35 PM)	Ignoring  (Equal Date) BD09-module.loc.txt(5/13/2018 2:32:35 PM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD10-module.txt(9/9/2018 12:42:20 PM)	Ignoring  (Equal Date) BD10-module.loc.txt(9/9/2018 12:42:20 PM)
+10/4/2018 7:00:52 PM : (Disasm5x) BD11-module.txt(9/9/2018 1:02:24 PM)	Ignoring  (Equal Date) BD11-module.loc.txt(9/9/2018 1:02:24 PM)
+10/4/2018 7:00:52 PM : (Asm5x) prog01.src(9/9/2018 8:37:38 AM)	        Ignoring  (Equal Date) BD01-prog.bin.txt(9/9/2018 8:37:38 AM)
+10/4/2018 7:00:52 PM : (Asm5x) prog02.src(5/13/2018 7:41:15 AM)	        Ignoring  (Equal Date) BD02-prog.bin.txt(5/13/2018 7:41:15 AM)
+10/4/2018 7:00:52 PM : (Asm5x) prog03.src(5/13/2018 8:16:12 AM)	        Ignoring  (Equal Date) BD03-prog.bin.txt(5/13/2018 8:16:12 AM)
+10/4/2018 7:00:52 PM : (Asm5x) prog04.src(5/13/2018 8:45:52 AM)	        Ignoring  (Equal Date) BD04-prog.bin.txt(5/13/2018 8:45:52 AM)
+10/4/2018 7:00:52 PM : (Asm5x) prog05.src(5/13/2018 9:18:30 AM)	        Ignoring  (Equal Date) BD05-prog.bin.txt(5/13/2018 9:18:30 AM)
+10/4/2018 7:00:52 PM : (Asm5x) prog06.src(9/23/2018 3:33:00 PM)	        Ignoring  (Equal Date) BD06-prog.bin.txt(9/23/2018 3:33:00 PM)
+10/4/2018 7:00:52 PM : (Asm5x) prog07.src(5/13/2018 1:11:48 PM)	        Ignoring  (Equal Date) BD07-prog.bin.txt(5/13/2018 1:11:48 PM)
+10/4/2018 7:00:52 PM : (Asm5x) prog08.src(5/13/2018 2:10:34 PM)	        Ignoring  (Equal Date) BD08-prog.bin.txt(5/13/2018 2:10:34 PM)
+10/4/2018 7:00:52 PM : (Asm5x) prog09.src(5/13/2018 2:32:35 PM)	        Ignoring  (Equal Date) BD09-prog.bin.txt(5/13/2018 2:32:35 PM)
+10/4/2018 7:00:52 PM : (Asm5x) prog10.src(9/9/2018 12:42:20 PM)	        Ignoring  (Equal Date) BD10-prog.bin.txt(9/9/2018 12:42:20 PM)
+10/4/2018 7:00:52 PM : (Asm5x) prog11.src(9/9/2018 1:02:24 PM)	        Ignoring  (Equal Date) BD11-prog.bin.txt(9/9/2018 1:02:24 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card01.xml(5/16/2018 6:40:43 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card02.xml(8/12/2018 7:48:02 AM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card03.xml(8/12/2018 7:48:34 AM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card04.xml(8/12/2018 7:52:06 AM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card05.xml(5/16/2018 7:25:14 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card06.xml(5/16/2018 7:18:09 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card07.xml(5/16/2018 7:20:08 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card08.xml(5/16/2018 7:25:31 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card09.xml(5/16/2018 7:28:18 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card10.xml(9/16/2018 4:09:27 PM)
+10/4/2018 7:00:52 PM : (makeInsertCard) No Rendering Required For   : card11.xml(5/16/2018 7:36:45 PM)
+
+
+===========================================================================================================================================
+10/4/2018 7:00:52 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Electrical Engineering.ee.11.pub
+===========================================================================================================================================
+
+
+10/4/2018 7:00:54 PM : (Disasm5x) EE01-module.txt(10/29/2016 5:51:45 PM)	Ignoring  (Equal Date) EE01-module.loc.txt(10/29/2016 5:51:45 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE02-module.txt(10/29/2016 8:22:37 PM)	Ignoring  (Equal Date) EE02-module.loc.txt(10/29/2016 8:22:37 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE03-module.txt(10/29/2016 8:22:38 PM)	Ignoring  (Equal Date) EE03-module.loc.txt(10/29/2016 8:22:38 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE04-module.txt(10/29/2016 7:55:01 PM)	Ignoring  (Equal Date) EE04-module.loc.txt(10/29/2016 7:55:01 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE05-module.txt(1/14/2017 7:59:56 AM)	Ignoring  (Equal Date) EE05-module.loc.txt(1/14/2017 7:59:56 AM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE06-module.txt(10/29/2016 7:08:36 PM)	Ignoring  (Equal Date) EE06-module.loc.txt(10/29/2016 7:08:36 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE07-module.txt(10/29/2016 5:51:48 PM)	Ignoring  (Equal Date) EE07-module.loc.txt(10/29/2016 5:51:48 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE08-module.txt(10/29/2016 8:22:43 PM)	Ignoring  (Equal Date) EE08-module.loc.txt(10/29/2016 8:22:43 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE09-module.txt(1/3/2017 9:47:20 PM)	Ignoring  (Equal Date) EE09-module.loc.txt(1/3/2017 9:47:20 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE10-module.txt(1/5/2017 6:43:21 AM)	Ignoring  (Equal Date) EE10-module.loc.txt(1/5/2017 6:43:21 AM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE11-module.txt(1/3/2017 10:09:13 PM)	Ignoring  (Equal Date) EE11-module.loc.txt(1/3/2017 10:09:13 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE12-module.txt(1/3/2017 10:13:21 PM)	Ignoring  (Equal Date) EE12-module.loc.txt(1/3/2017 10:13:21 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE13-module.txt(1/5/2017 6:55:19 AM)	Ignoring  (Equal Date) EE13-module.loc.txt(1/5/2017 6:55:19 AM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE14-module.txt(1/3/2017 10:37:14 PM)	Ignoring  (Equal Date) EE14-module.loc.txt(1/3/2017 10:37:14 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE15-module.txt(1/5/2017 7:13:53 AM)	Ignoring  (Equal Date) EE15-module.loc.txt(1/5/2017 7:13:53 AM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE16-module.txt(1/5/2017 7:26:33 AM)	Ignoring  (Equal Date) EE16-module.loc.txt(1/5/2017 7:26:33 AM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE17-module.txt(1/3/2017 11:13:08 PM)	Ignoring  (Equal Date) EE17-module.loc.txt(1/3/2017 11:13:08 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE18-module.txt(1/3/2017 11:18:47 PM)	Ignoring  (Equal Date) EE18-module.loc.txt(1/3/2017 11:18:47 PM)
+10/4/2018 7:00:54 PM : (Disasm5x) EE19-module.txt(1/3/2017 11:28:11 PM)	Ignoring  (Equal Date) EE19-module.loc.txt(1/3/2017 11:28:11 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog01.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE01-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog02.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE02-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog03.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE03-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog04.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE04-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog05.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE05-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog06.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE06-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog07.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE07-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog08.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE08-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog09.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE09-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:54 PM : (Asm5x) prog10.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE10-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog11.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE11-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog12.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE12-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog13.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE13-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog14.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE14-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog15.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE15-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog16.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE16-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog17.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE17-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog18.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE18-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (Asm5x) prog19.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE19-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card01.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card02.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card03.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card04.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card05.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card06.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card07.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card08.xml(10/16/2016 9:40:07 AM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card09.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card10.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card11.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card12.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card13.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card14.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card15.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card16.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card17.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card18.xml(1/3/2017 5:43:27 PM)
+10/4/2018 7:00:55 PM : (makeInsertCard) No Rendering Required For   : card19.xml(1/3/2017 5:43:27 PM)
+
+
+====================================================================================================================================
+10/4/2018 7:00:55 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Leisure Library.le.07.pub
+====================================================================================================================================
+
+
+10/4/2018 7:00:57 PM : (Disasm5x) LE01-module.txt(10/29/2016 8:22:46 PM)	Ignoring  (Equal Date) LE01-module.loc.txt(10/29/2016 8:22:46 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE02-module.txt(10/29/2016 8:22:47 PM)	Ignoring  (Equal Date) LE02-module.loc.txt(10/29/2016 8:22:47 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE03-module.txt(10/29/2016 5:28:03 PM)	Ignoring  (Equal Date) LE03-module.loc.txt(10/29/2016 5:28:03 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE04-module.txt(10/29/2016 8:15:56 PM)	Ignoring  (Equal Date) LE04-module.loc.txt(10/29/2016 8:15:56 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE05-module.txt(12/18/2016 1:04:55 PM)	Ignoring  (Equal Date) LE05-module.loc.txt(12/18/2016 1:04:55 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE06-module.txt(10/29/2016 8:22:53 PM)	Ignoring  (Equal Date) LE06-module.loc.txt(10/29/2016 8:22:53 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE07-module.txt(10/29/2016 8:19:13 PM)	Ignoring  (Equal Date) LE07-module.loc.txt(10/29/2016 8:19:13 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE08-module.txt(12/18/2016 1:09:24 PM)	Ignoring  (Equal Date) LE08-module.loc.txt(12/18/2016 1:09:24 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE09-module.txt(10/29/2016 5:29:36 PM)	Ignoring  (Equal Date) LE09-module.loc.txt(10/29/2016 5:29:36 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE10-module.txt(10/29/2016 5:30:12 PM)	Ignoring  (Equal Date) LE10-module.loc.txt(10/29/2016 5:30:12 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE11-module.txt(10/29/2016 8:23:01 PM)	Ignoring  (Equal Date) LE11-module.loc.txt(10/29/2016 8:23:01 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE12-module.txt(10/29/2016 5:30:29 PM)	Ignoring  (Equal Date) LE12-module.loc.txt(10/29/2016 5:30:29 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE13-module.txt(10/29/2016 5:30:29 PM)	Ignoring  (Equal Date) LE13-module.loc.txt(10/29/2016 5:30:29 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE14-module.txt(10/29/2016 8:23:04 PM)	Ignoring  (Equal Date) LE14-module.loc.txt(10/29/2016 8:23:04 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE15-module.txt(10/29/2016 5:30:30 PM)	Ignoring  (Equal Date) LE15-module.loc.txt(10/29/2016 5:30:30 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE16-module.txt(10/29/2016 8:23:06 PM)	Ignoring  (Equal Date) LE16-module.loc.txt(10/29/2016 8:23:06 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE17-module.txt(10/29/2016 8:23:07 PM)	Ignoring  (Equal Date) LE17-module.loc.txt(10/29/2016 8:23:07 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE18-module.txt(10/29/2016 5:30:32 PM)	Ignoring  (Equal Date) LE18-module.loc.txt(10/29/2016 5:30:32 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE19-module.txt(10/29/2016 5:30:32 PM)	Ignoring  (Equal Date) LE19-module.loc.txt(10/29/2016 5:30:32 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE20-module.txt(10/29/2016 8:23:10 PM)	Ignoring  (Equal Date) LE20-module.loc.txt(10/29/2016 8:23:10 PM)
+10/4/2018 7:00:57 PM : (Disasm5x) LE21-module.txt(10/29/2016 8:23:11 PM)	Ignoring  (Equal Date) LE21-module.loc.txt(10/29/2016 8:23:11 PM)
+10/4/2018 7:00:57 PM : (Asm5x) prog01.src(10/16/2016 9:40:08 AM)	        Ignoring  (Equal Date) LE01-prog.bin.txt(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog02.src(10/16/2016 9:40:08 AM)	        Ignoring  (Equal Date) LE02-prog.bin.txt(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog03.src(10/16/2016 9:40:08 AM)	        Ignoring  (Equal Date) LE03-prog.bin.txt(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog04.src(10/16/2016 7:58:06 PM)	        Ignoring  (Equal Date) LE04-prog.bin.txt(10/16/2016 7:58:06 PM)
+10/4/2018 7:00:57 PM : (Asm5x) prog05.src(12/18/2016 1:01:18 PM)	        Ignoring  (Equal Date) LE05-prog.bin.txt(12/18/2016 1:01:18 PM)
+10/4/2018 7:00:57 PM : (Asm5x) prog06.src(10/16/2016 7:53:57 PM)	        Ignoring  (Equal Date) LE06-prog.bin.txt(10/16/2016 7:53:57 PM)
+10/4/2018 7:00:57 PM : (Asm5x) prog07.src(10/16/2016 7:48:39 PM)	        Ignoring  (Equal Date) LE07-prog.bin.txt(10/16/2016 7:48:39 PM)
+10/4/2018 7:00:57 PM : (Asm5x) prog08.src(12/18/2016 1:10:29 PM)	        Ignoring  (Equal Date) LE08-prog.bin.txt(12/18/2016 1:10:29 PM)
+10/4/2018 7:00:57 PM : (Asm5x) prog09.src(10/16/2016 9:40:08 AM)	        Ignoring  (Equal Date) LE09-prog.bin.txt(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog10.src(10/16/2016 9:40:08 AM)	        Ignoring  (Equal Date) LE10-prog.bin.txt(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog11.src(10/16/2016 9:40:08 AM)	        Ignoring  (Equal Date) LE11-prog.bin.txt(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog12.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE12-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog13.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE13-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog14.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE14-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog15.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE15-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog16.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE16-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog17.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE17-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog18.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE18-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog19.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE19-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog20.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE20-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (Asm5x) prog21.src(10/16/2016 9:40:09 AM)	        Ignoring  (Equal Date) LE21-prog.bin.txt(10/16/2016 9:40:09 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card01.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card02.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card03.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card04.xml(10/16/2016 8:01:29 PM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card05.xml(10/16/2016 8:03:47 PM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card06.xml(10/16/2016 8:05:29 PM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card07.xml(10/16/2016 8:07:25 PM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card08.xml(10/16/2016 8:09:12 PM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card09.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card10.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card11.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card12.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card13.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card14.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card15.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card16.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card17.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card18.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card19.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card20.xml(10/16/2016 9:40:08 AM)
+10/4/2018 7:00:57 PM : (makeInsertCard) No Rendering Required For   : card21.xml(10/16/2016 9:40:08 AM)
+
+
+======================================================================================================================================
+10/4/2018 7:00:57 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Marine Navigation.ng.05.pub
+======================================================================================================================================
+
+
+10/4/2018 7:01:00 PM : (Disasm5x) NG01-module.txt(11/26/2016 11:20:18 PM)	Ignoring  (Equal Date) NG01-module.loc.txt(11/26/2016 11:20:18 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG02-module.txt(10/29/2016 8:24:05 PM)	Ignoring  (Equal Date) NG02-module.loc.txt(10/29/2016 8:24:05 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG03-module.txt(11/5/2016 7:51:41 AM)	Ignoring  (Equal Date) NG03-module.loc.txt(11/5/2016 7:51:41 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG04-module.txt(10/30/2016 10:12:14 PM)	Ignoring  (Equal Date) NG04-module.loc.txt(10/30/2016 10:12:14 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG05-module.txt(10/30/2016 10:19:44 PM)	Ignoring  (Equal Date) NG05-module.loc.txt(10/30/2016 10:19:44 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG06-module.txt(11/5/2016 8:16:36 AM)	Ignoring  (Equal Date) NG06-module.loc.txt(11/5/2016 8:16:36 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG07-module.txt(10/30/2016 10:24:40 PM)	Ignoring  (Equal Date) NG07-module.loc.txt(10/30/2016 10:24:40 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG08-module.txt(10/30/2016 10:26:53 PM)	Ignoring  (Equal Date) NG08-module.loc.txt(10/30/2016 10:26:53 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG09-module.txt(11/5/2016 9:17:57 AM)	Ignoring  (Equal Date) NG09-module.loc.txt(11/5/2016 9:17:57 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG10-module.txt(11/5/2016 9:24:56 AM)	Ignoring  (Equal Date) NG10-module.loc.txt(11/5/2016 9:24:56 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG11-module.txt(11/5/2016 9:32:30 AM)	Ignoring  (Equal Date) NG11-module.loc.txt(11/5/2016 9:32:30 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG12-module.txt(10/30/2016 10:40:10 PM)	Ignoring  (Equal Date) NG12-module.loc.txt(10/30/2016 10:40:10 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG13-module.txt(11/5/2016 9:58:42 AM)	Ignoring  (Equal Date) NG13-module.loc.txt(11/5/2016 9:58:42 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG14-module.txt(11/5/2016 10:02:33 AM)	Ignoring  (Equal Date) NG14-module.loc.txt(11/5/2016 10:02:33 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG15-module.txt(11/5/2016 10:17:19 AM)	Ignoring  (Equal Date) NG15-module.loc.txt(11/5/2016 10:17:19 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG16-module.txt(10/30/2016 10:50:03 PM)	Ignoring  (Equal Date) NG16-module.loc.txt(10/30/2016 10:50:03 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG17-module.txt(10/30/2016 10:51:10 PM)	Ignoring  (Equal Date) NG17-module.loc.txt(10/30/2016 10:51:10 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG18-module.txt(10/30/2016 10:55:27 PM)	Ignoring  (Equal Date) NG18-module.loc.txt(10/30/2016 10:55:27 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG19-module.txt(10/30/2016 10:53:32 PM)	Ignoring  (Equal Date) NG19-module.loc.txt(10/30/2016 10:53:32 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG20-module.txt(11/5/2016 10:49:28 AM)	Ignoring  (Equal Date) NG20-module.loc.txt(11/5/2016 10:49:28 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG21-module.txt(10/30/2016 10:57:54 PM)	Ignoring  (Equal Date) NG21-module.loc.txt(10/30/2016 10:57:54 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG22-module.txt(10/30/2016 11:01:49 PM)	Ignoring  (Equal Date) NG22-module.loc.txt(10/30/2016 11:01:49 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG23-module.txt(10/30/2016 11:03:57 PM)	Ignoring  (Equal Date) NG23-module.loc.txt(10/30/2016 11:03:57 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG24-module.txt(10/30/2016 11:07:56 PM)	Ignoring  (Equal Date) NG24-module.loc.txt(10/30/2016 11:07:56 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG25-module.txt(10/30/2016 11:10:34 PM)	Ignoring  (Equal Date) NG25-module.loc.txt(10/30/2016 11:10:34 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG26-module.txt(11/5/2016 11:15:06 AM)	Ignoring  (Equal Date) NG26-module.loc.txt(11/5/2016 11:15:06 AM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG27-module.txt(11/5/2016 3:08:08 PM)	Ignoring  (Equal Date) NG27-module.loc.txt(11/5/2016 3:08:08 PM)
+10/4/2018 7:01:00 PM : (Disasm5x) NG28-module.txt(10/30/2016 11:14:56 PM)	Ignoring  (Equal Date) NG28-module.loc.txt(10/30/2016 11:14:56 PM)
+10/4/2018 7:01:01 PM : (Disasm5x) NG29-module.txt(10/30/2016 11:16:44 PM)	Ignoring  (Equal Date) NG29-module.loc.txt(10/30/2016 11:16:44 PM)
+10/4/2018 7:01:01 PM : (Disasm5x) NG30-module.txt(10/30/2016 11:18:32 PM)	Ignoring  (Equal Date) NG30-module.loc.txt(10/30/2016 11:18:32 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog01.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG01-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog02.src(10/30/2016 11:20:20 PM)	        Ignoring  (Equal Date) NG02-prog.bin.txt(10/30/2016 11:20:20 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog03.src(11/5/2016 12:08:36 PM)	        Ignoring  (Equal Date) NG03-prog.bin.txt(11/5/2016 12:08:36 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog04.src(10/30/2016 11:20:21 PM)	        Ignoring  (Equal Date) NG04-prog.bin.txt(10/30/2016 11:20:21 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog05.src(10/30/2016 11:20:21 PM)	        Ignoring  (Equal Date) NG05-prog.bin.txt(10/30/2016 11:20:21 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog06.src(11/5/2016 12:08:04 PM)	        Ignoring  (Equal Date) NG06-prog.bin.txt(11/5/2016 12:08:04 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog07.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG07-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog08.src(10/30/2016 11:20:23 PM)	        Ignoring  (Equal Date) NG08-prog.bin.txt(10/30/2016 11:20:23 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog09.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG09-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog10.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG10-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog11.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG11-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog12.src(10/30/2016 11:20:25 PM)	        Ignoring  (Equal Date) NG12-prog.bin.txt(10/30/2016 11:20:25 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog13.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG13-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog14.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG14-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog15.src(11/5/2016 12:02:30 PM)	        Ignoring  (Equal Date) NG15-prog.bin.txt(11/5/2016 12:02:30 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog16.src(10/30/2016 11:20:27 PM)	        Ignoring  (Equal Date) NG16-prog.bin.txt(10/30/2016 11:20:27 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog17.src(10/30/2016 11:20:28 PM)	        Ignoring  (Equal Date) NG17-prog.bin.txt(10/30/2016 11:20:28 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog18.src(10/30/2016 11:20:28 PM)	        Ignoring  (Equal Date) NG18-prog.bin.txt(10/30/2016 11:20:28 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog19.src(10/30/2016 11:20:29 PM)	        Ignoring  (Equal Date) NG19-prog.bin.txt(10/30/2016 11:20:29 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog20.src(11/5/2016 12:01:41 PM)	        Ignoring  (Equal Date) NG20-prog.bin.txt(11/5/2016 12:01:41 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog21.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG21-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog22.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG22-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog23.src(10/30/2016 11:20:31 PM)	        Ignoring  (Equal Date) NG23-prog.bin.txt(10/30/2016 11:20:31 PM)
+10/4/2018 7:01:01 PM : (Asm5x) prog24.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG24-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog25.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG25-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog26.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG26-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog27.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG27-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog28.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG28-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog29.src(1/8/2017 8:43:49 AM)	        Ignoring  (Equal Date) NG29-prog.bin.txt(1/8/2017 8:43:49 AM)
+10/4/2018 7:01:01 PM : (Asm5x) prog30.src(10/30/2016 11:20:34 PM)	        Ignoring  (Equal Date) NG30-prog.bin.txt(10/30/2016 11:20:34 PM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card01.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card02.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card03.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card04.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card05.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card06.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card07.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card08.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card09.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card10.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card11.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card12.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card13.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card14.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card15.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card16.xml(1/14/2017 9:53:05 PM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card17.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card18.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card19.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card20.xml(11/19/2016 3:16:17 PM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card21.xml(11/19/2016 3:16:17 PM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card22.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card23.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card24.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card25.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card26.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card27.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card28.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card29.xml(11/4/2016 5:52:14 AM)
+10/4/2018 7:01:01 PM : (makeInsertCard) No Rendering Required For   : card30.xml(11/4/2016 5:52:14 AM)
+
+
+===================================================================================================================================
+10/4/2018 7:01:01 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Master Library.ml.01.pub
+===================================================================================================================================
+
+
+10/4/2018 7:01:03 PM : (Disasm5x) ML01-module.txt(10/29/2016 5:51:56 PM)	Ignoring  (Equal Date) ML01-module.loc.txt(10/29/2016 5:51:56 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML02-module.txt(10/29/2016 8:23:13 PM)	Ignoring  (Equal Date) ML02-module.loc.txt(10/29/2016 8:23:13 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML03-module.txt(10/29/2016 8:23:14 PM)	Ignoring  (Equal Date) ML03-module.loc.txt(10/29/2016 8:23:14 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML04-module.txt(10/29/2016 7:01:30 PM)	Ignoring  (Equal Date) ML04-module.loc.txt(10/29/2016 7:01:30 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML05-module.txt(10/29/2016 8:23:16 PM)	Ignoring  (Equal Date) ML05-module.loc.txt(10/29/2016 8:23:16 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML06-module.txt(10/29/2016 8:23:17 PM)	Ignoring  (Equal Date) ML06-module.loc.txt(10/29/2016 8:23:17 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML07-module.txt(10/29/2016 5:51:59 PM)	Ignoring  (Equal Date) ML07-module.loc.txt(10/29/2016 5:51:59 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML08-module.txt(10/29/2016 8:23:19 PM)	Ignoring  (Equal Date) ML08-module.loc.txt(10/29/2016 8:23:19 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML09-module.txt(10/29/2016 7:21:47 PM)	Ignoring  (Equal Date) ML09-module.loc.txt(10/29/2016 7:21:47 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML10-module.txt(10/29/2016 8:23:22 PM)	Ignoring  (Equal Date) ML10-module.loc.txt(10/29/2016 8:23:22 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML11-module.txt(10/29/2016 8:23:23 PM)	Ignoring  (Equal Date) ML11-module.loc.txt(10/29/2016 8:23:23 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML12-module.txt(10/29/2016 8:23:24 PM)	Ignoring  (Equal Date) ML12-module.loc.txt(10/29/2016 8:23:24 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML13-module.txt(10/29/2016 5:52:02 PM)	Ignoring  (Equal Date) ML13-module.loc.txt(10/29/2016 5:52:02 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML14-module.txt(10/29/2016 5:52:03 PM)	Ignoring  (Equal Date) ML14-module.loc.txt(10/29/2016 5:52:03 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML15-module.txt(10/29/2016 5:52:03 PM)	Ignoring  (Equal Date) ML15-module.loc.txt(10/29/2016 5:52:03 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML16-module.txt(10/29/2016 5:52:04 PM)	Ignoring  (Equal Date) ML16-module.loc.txt(10/29/2016 5:52:04 PM)
+10/4/2018 7:01:03 PM : (Disasm5x) ML17-module.txt(10/29/2016 5:52:04 PM)	Ignoring  (Equal Date) ML17-module.loc.txt(10/29/2016 5:52:04 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML18-module.txt(10/29/2016 8:23:30 PM)	Ignoring  (Equal Date) ML18-module.loc.txt(10/29/2016 8:23:30 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML19-module.txt(10/29/2016 8:23:31 PM)	Ignoring  (Equal Date) ML19-module.loc.txt(10/29/2016 8:23:31 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML20-module.txt(10/29/2016 5:52:06 PM)	Ignoring  (Equal Date) ML20-module.loc.txt(10/29/2016 5:52:06 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML21-module.txt(10/29/2016 5:52:06 PM)	Ignoring  (Equal Date) ML21-module.loc.txt(10/29/2016 5:52:06 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML22-module.txt(10/29/2016 5:52:07 PM)	Ignoring  (Equal Date) ML22-module.loc.txt(10/29/2016 5:52:07 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML23-module.txt(10/29/2016 5:52:07 PM)	Ignoring  (Equal Date) ML23-module.loc.txt(10/29/2016 5:52:07 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML24-module.txt(10/29/2016 5:52:08 PM)	Ignoring  (Equal Date) ML24-module.loc.txt(10/29/2016 5:52:08 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML25-module.txt(10/29/2016 8:23:37 PM)	Ignoring  (Equal Date) ML25-module.loc.txt(10/29/2016 8:23:37 PM)
+10/4/2018 7:01:04 PM : (Disasm5x) ML26-module.txt(10/29/2016 5:52:09 PM)	Ignoring  (Equal Date) ML26-module.loc.txt(10/29/2016 5:52:09 PM)
+10/4/2018 7:01:04 PM : (Asm5x) prog01.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML01-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog02.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML02-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog03.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML03-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog04.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML04-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog05.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML05-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog06.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML06-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog07.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML07-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog08.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML08-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog09.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML09-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog10.src(10/16/2016 9:40:10 AM)	        Ignoring  (Equal Date) ML10-prog.bin.txt(10/16/2016 9:40:10 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog11.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML11-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog12.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML12-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog13.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML13-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog14.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML14-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog15.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML15-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog16.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML16-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog17.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML17-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog18.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML18-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog19.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML19-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog20.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML20-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog21.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML21-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog22.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML22-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog23.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML23-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog24.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML24-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog25.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML25-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (Asm5x) prog26.src(10/16/2016 9:40:11 AM)	        Ignoring  (Equal Date) ML26-prog.bin.txt(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card01.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card02.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card03.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card04.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card05.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card06.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card07.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card08.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card09.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card10.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card11.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card12.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card13.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card14.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card15.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card16.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card17.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card18.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card19.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card20.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card21.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card22.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card23.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card24.xml(10/16/2016 9:40:09 AM)
+10/4/2018 7:01:04 PM : (makeInsertCard) No Rendering Required For   : card25.xml(10/16/2016 9:40:09 AM)
+
+
+===================================================================================================================================
+10/4/2018 7:01:04 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Math Utilities.mu.10.pub
+===================================================================================================================================
+
+
+10/4/2018 7:01:06 PM : (Disasm5x) MU01-module.txt(10/29/2016 8:23:40 PM)	Ignoring  (Equal Date) MU01-module.loc.txt(10/29/2016 8:23:40 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU02-module.txt(10/29/2016 7:22:31 PM)	Ignoring  (Equal Date) MU02-module.loc.txt(10/29/2016 7:22:31 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU03-module.txt(10/29/2016 8:23:42 PM)	Ignoring  (Equal Date) MU03-module.loc.txt(10/29/2016 8:23:42 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU04-module.txt(10/29/2016 7:23:15 PM)	Ignoring  (Equal Date) MU04-module.loc.txt(10/29/2016 7:23:15 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU05-module.txt(10/29/2016 8:23:44 PM)	Ignoring  (Equal Date) MU05-module.loc.txt(10/29/2016 8:23:44 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU06-module.txt(10/29/2016 5:52:12 PM)	Ignoring  (Equal Date) MU06-module.loc.txt(10/29/2016 5:52:12 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU07-module.txt(10/29/2016 8:23:46 PM)	Ignoring  (Equal Date) MU07-module.loc.txt(10/29/2016 8:23:46 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU08-module.txt(10/29/2016 5:52:13 PM)	Ignoring  (Equal Date) MU08-module.loc.txt(10/29/2016 5:52:13 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU09-module.txt(10/29/2016 5:52:14 PM)	Ignoring  (Equal Date) MU09-module.loc.txt(10/29/2016 5:52:14 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU10-module.txt(10/29/2016 5:52:14 PM)	Ignoring  (Equal Date) MU10-module.loc.txt(10/29/2016 5:52:14 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU11-module.txt(10/29/2016 5:52:15 PM)	Ignoring  (Equal Date) MU11-module.loc.txt(10/29/2016 5:52:15 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU12-module.txt(10/29/2016 5:52:15 PM)	Ignoring  (Equal Date) MU12-module.loc.txt(10/29/2016 5:52:15 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU13-module.txt(10/29/2016 5:52:16 PM)	Ignoring  (Equal Date) MU13-module.loc.txt(10/29/2016 5:52:16 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU14-module.txt(10/29/2016 8:23:53 PM)	Ignoring  (Equal Date) MU14-module.loc.txt(10/29/2016 8:23:53 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU15-module.txt(10/29/2016 8:23:54 PM)	Ignoring  (Equal Date) MU15-module.loc.txt(10/29/2016 8:23:54 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU16-module.txt(10/29/2016 7:23:53 PM)	Ignoring  (Equal Date) MU16-module.loc.txt(10/29/2016 7:23:53 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU17-module.txt(10/29/2016 8:23:56 PM)	Ignoring  (Equal Date) MU17-module.loc.txt(10/29/2016 8:23:56 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU18-module.txt(10/29/2016 8:23:57 PM)	Ignoring  (Equal Date) MU18-module.loc.txt(10/29/2016 8:23:57 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU19-module.txt(10/29/2016 5:52:19 PM)	Ignoring  (Equal Date) MU19-module.loc.txt(10/29/2016 5:52:19 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU20-module.txt(10/29/2016 5:52:20 PM)	Ignoring  (Equal Date) MU20-module.loc.txt(10/29/2016 5:52:20 PM)
+10/4/2018 7:01:06 PM : (Disasm5x) MU21-module.txt(10/29/2016 7:57:09 PM)	Ignoring  (Equal Date) MU21-module.loc.txt(10/29/2016 7:57:09 PM)
+10/4/2018 7:01:06 PM : (Asm5x) prog01.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU01-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog02.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU02-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog03.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU03-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog04.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU04-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog05.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU05-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog06.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU06-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog07.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU07-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog08.src(10/16/2016 9:40:12 AM)	        Ignoring  (Equal Date) MU08-prog.bin.txt(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog09.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU09-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog10.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU10-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog11.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU11-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog12.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU12-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog13.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU13-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog14.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU14-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog15.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU15-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog16.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU16-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog17.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU17-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog18.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU18-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog19.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU19-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog20.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU20-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (Asm5x) prog21.src(10/16/2016 9:40:13 AM)	        Ignoring  (Equal Date) MU21-prog.bin.txt(10/16/2016 9:40:13 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card01.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card02.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card03.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card04.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card05.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card06.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card07.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card08.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card09.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card10.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card11.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card12.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card13.xml(10/16/2016 9:40:11 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card14.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card15.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card16.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card17.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card18.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card19.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card20.xml(10/16/2016 9:40:12 AM)
+10/4/2018 7:01:06 PM : (makeInsertCard) No Rendering Required For   : card21.xml(10/16/2016 9:40:12 AM)
+
+
+================================================================================================================================
+10/4/2018 7:01:07 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Real Estate.re.03.pub
+================================================================================================================================
+
+
+10/4/2018 7:01:08 PM : (Asm5x) prog01.src(1/9/2017 11:46:18 PM)	        Ignoring  (Equal Date) RE01-prog.bin.txt(1/9/2017 11:46:18 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog02.src(1/9/2017 9:03:38 PM)	        Ignoring  (Equal Date) RE02-prog.bin.txt(1/9/2017 9:03:38 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog03.src(1/9/2017 9:07:50 PM)	        Ignoring  (Equal Date) RE03-prog.bin.txt(1/9/2017 9:07:50 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog04.src(1/9/2017 9:15:23 PM)	        Ignoring  (Equal Date) RE04-prog.bin.txt(1/9/2017 9:15:23 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog05.src(1/9/2017 9:19:37 PM)	        Ignoring  (Equal Date) RE05-prog.bin.txt(1/9/2017 9:19:37 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog06.src(1/9/2017 9:27:33 PM)	        Ignoring  (Equal Date) RE06-prog.bin.txt(1/9/2017 9:27:33 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog07.src(1/9/2017 9:33:51 PM)	        Ignoring  (Equal Date) RE07-prog.bin.txt(1/9/2017 9:33:51 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog08.src(1/9/2017 9:42:13 PM)	        Ignoring  (Equal Date) RE08-prog.bin.txt(1/9/2017 9:42:13 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog09.src(1/9/2017 11:32:22 PM)	        Ignoring  (Equal Date) RE09-prog.bin.txt(1/9/2017 11:32:22 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog10.src(1/9/2017 10:00:08 PM)	        Ignoring  (Equal Date) RE10-prog.bin.txt(1/9/2017 10:00:08 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog11.src(1/9/2017 10:09:14 PM)	        Ignoring  (Equal Date) RE11-prog.bin.txt(1/9/2017 10:09:14 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog12.src(1/9/2017 10:15:40 PM)	        Ignoring  (Equal Date) RE12-prog.bin.txt(1/9/2017 10:15:40 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog13.src(1/10/2017 7:30:00 AM)	        Ignoring  (Equal Date) RE13-prog.bin.txt(1/10/2017 7:30:00 AM)
+10/4/2018 7:01:08 PM : (Asm5x) prog14.src(1/9/2017 10:21:01 PM)	        Ignoring  (Equal Date) RE14-prog.bin.txt(1/9/2017 10:21:01 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog15.src(1/9/2017 10:24:52 PM)	        Ignoring  (Equal Date) RE15-prog.bin.txt(1/9/2017 10:24:52 PM)
+10/4/2018 7:01:08 PM : (Asm5x) prog16.src(1/9/2017 10:34:22 PM)	        Ignoring  (Equal Date) RE16-prog.bin.txt(1/9/2017 10:34:22 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE01-module.txt(1/9/2017 11:46:18 PM)	Ignoring  (Equal Date) RE01-module.loc.txt(1/9/2017 11:46:18 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE02-module.txt(1/9/2017 9:03:38 PM)	Ignoring  (Equal Date) RE02-module.loc.txt(1/9/2017 9:03:38 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE03-module.txt(1/9/2017 9:07:50 PM)	Ignoring  (Equal Date) RE03-module.loc.txt(1/9/2017 9:07:50 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE04-module.txt(1/9/2017 9:15:23 PM)	Ignoring  (Equal Date) RE04-module.loc.txt(1/9/2017 9:15:23 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE05-module.txt(1/9/2017 9:19:37 PM)	Ignoring  (Equal Date) RE05-module.loc.txt(1/9/2017 9:19:37 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE06-module.txt(1/9/2017 9:27:33 PM)	Ignoring  (Equal Date) RE06-module.loc.txt(1/9/2017 9:27:33 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE07-module.txt(1/9/2017 9:33:51 PM)	Ignoring  (Equal Date) RE07-module.loc.txt(1/9/2017 9:33:51 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE08-module.txt(1/9/2017 9:42:13 PM)	Ignoring  (Equal Date) RE08-module.loc.txt(1/9/2017 9:42:13 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE09-module.txt(1/9/2017 11:32:22 PM)	Ignoring  (Equal Date) RE09-module.loc.txt(1/9/2017 11:32:22 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE10-module.txt(1/9/2017 10:00:08 PM)	Ignoring  (Equal Date) RE10-module.loc.txt(1/9/2017 10:00:08 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE11-module.txt(1/9/2017 10:09:14 PM)	Ignoring  (Equal Date) RE11-module.loc.txt(1/9/2017 10:09:14 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE12-module.txt(1/9/2017 10:15:40 PM)	Ignoring  (Equal Date) RE12-module.loc.txt(1/9/2017 10:15:40 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE13-module.txt(1/10/2017 7:30:00 AM)	Ignoring  (Equal Date) RE13-module.loc.txt(1/10/2017 7:30:00 AM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE14-module.txt(1/9/2017 10:21:01 PM)	Ignoring  (Equal Date) RE14-module.loc.txt(1/9/2017 10:21:01 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE15-module.txt(1/9/2017 10:24:52 PM)	Ignoring  (Equal Date) RE15-module.loc.txt(1/9/2017 10:24:52 PM)
+10/4/2018 7:01:08 PM : (Disasm5x) RE16-module.txt(1/9/2017 10:34:22 PM)	Ignoring  (Equal Date) RE16-module.loc.txt(1/9/2017 10:34:22 PM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card01.xml(1/9/2017 10:43:18 PM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card02.xml(1/9/2017 10:45:15 PM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card03.xml(1/10/2017 7:57:02 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card04.xml(1/9/2017 10:48:11 PM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card05.xml(1/10/2017 7:57:07 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card06.xml(1/10/2017 7:57:00 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card07.xml(1/10/2017 7:56:54 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card08.xml(1/10/2017 7:56:55 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card09.xml(1/10/2017 8:00:46 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card10.xml(1/10/2017 8:01:10 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card11.xml(1/10/2017 8:01:31 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card12.xml(1/10/2017 8:02:35 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card13.xml(1/10/2017 7:56:58 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card14.xml(1/10/2017 7:56:59 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card15.xml(1/10/2017 7:56:49 AM)
+10/4/2018 7:01:08 PM : (makeInsertCard) No Rendering Required For   : card16.xml(1/10/2017 8:24:06 AM)
+
+
+========================================================================================================================================
+10/4/2018 7:01:08 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Securities Analysis.sa.08.pub
+========================================================================================================================================
+
+
+10/4/2018 7:01:09 PM : (Asm5x) prog01.src(11/19/2016 1:38:10 PM)	        Ignoring  (Equal Date) SA01-prog.bin.txt(11/19/2016 1:38:10 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog02.src(11/27/2016 7:35:30 PM)	        Ignoring  (Equal Date) SA02-prog.bin.txt(11/27/2016 7:35:30 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog03.src(11/27/2016 7:44:05 PM)	        Ignoring  (Equal Date) SA03-prog.bin.txt(11/27/2016 7:44:05 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog04.src(1/9/2017 7:25:55 AM)	        Ignoring  (Equal Date) SA04-prog.bin.txt(1/9/2017 7:25:55 AM)
+10/4/2018 7:01:09 PM : (Asm5x) prog05.src(1/9/2017 7:08:35 PM)	        Ignoring  (Equal Date) SA05-prog.bin.txt(1/9/2017 7:08:35 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog06.src(1/9/2017 7:36:18 AM)	        Ignoring  (Equal Date) SA06-prog.bin.txt(1/9/2017 7:36:18 AM)
+10/4/2018 7:01:09 PM : (Asm5x) prog07.src(11/27/2016 8:50:28 PM)	        Ignoring  (Equal Date) SA07-prog.bin.txt(11/27/2016 8:50:28 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog08.src(11/27/2016 9:19:37 PM)	        Ignoring  (Equal Date) SA08-prog.bin.txt(11/27/2016 9:19:37 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog09.src(11/27/2016 9:25:41 PM)	        Ignoring  (Equal Date) SA09-prog.bin.txt(11/27/2016 9:25:41 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog10.src(11/27/2016 9:57:25 PM)	        Ignoring  (Equal Date) SA10-prog.bin.txt(11/27/2016 9:57:25 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog11.src(11/27/2016 10:15:08 PM)	        Ignoring  (Equal Date) SA11-prog.bin.txt(11/27/2016 10:15:08 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog12.src(11/27/2016 10:30:41 PM)	        Ignoring  (Equal Date) SA12-prog.bin.txt(11/27/2016 10:30:41 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog13.src(11/27/2016 10:51:04 PM)	        Ignoring  (Equal Date) SA13-prog.bin.txt(11/27/2016 10:51:04 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog14.src(1/8/2017 10:20:47 PM)	        Ignoring  (Equal Date) SA14-prog.bin.txt(1/8/2017 10:20:47 PM)
+10/4/2018 7:01:09 PM : (Asm5x) prog15.src(1/8/2017 10:25:20 PM)	        Ignoring  (Equal Date) SA15-prog.bin.txt(1/8/2017 10:25:20 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA01-module.txt(11/19/2016 1:38:10 PM)	Ignoring  (Equal Date) SA01-module.loc.txt(11/19/2016 1:38:10 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA02-module.txt(11/27/2016 7:35:30 PM)	Ignoring  (Equal Date) SA02-module.loc.txt(11/27/2016 7:35:30 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA03-module.txt(11/27/2016 7:44:05 PM)	Ignoring  (Equal Date) SA03-module.loc.txt(11/27/2016 7:44:05 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA04-module.txt(1/9/2017 7:25:55 AM)	Ignoring  (Equal Date) SA04-module.loc.txt(1/9/2017 7:25:55 AM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA05-module.txt(1/9/2017 7:08:35 PM)	Ignoring  (Equal Date) SA05-module.loc.txt(1/9/2017 7:08:35 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA06-module.txt(1/9/2017 7:36:18 AM)	Ignoring  (Equal Date) SA06-module.loc.txt(1/9/2017 7:36:18 AM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA07-module.txt(11/27/2016 8:50:28 PM)	Ignoring  (Equal Date) SA07-module.loc.txt(11/27/2016 8:50:28 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA08-module.txt(11/27/2016 9:19:37 PM)	Ignoring  (Equal Date) SA08-module.loc.txt(11/27/2016 9:19:37 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA09-module.txt(11/27/2016 9:25:41 PM)	Ignoring  (Equal Date) SA09-module.loc.txt(11/27/2016 9:25:41 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA10-module.txt(11/27/2016 9:57:25 PM)	Ignoring  (Equal Date) SA10-module.loc.txt(11/27/2016 9:57:25 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA11-module.txt(11/27/2016 10:15:08 PM)	Ignoring  (Equal Date) SA11-module.loc.txt(11/27/2016 10:15:08 PM)
+10/4/2018 7:01:09 PM : (Disasm5x) SA12-module.txt(11/27/2016 10:30:41 PM)	Ignoring  (Equal Date) SA12-module.loc.txt(11/27/2016 10:30:41 PM)
+10/4/2018 7:01:10 PM : (Disasm5x) SA13-module.txt(11/27/2016 10:51:04 PM)	Ignoring  (Equal Date) SA13-module.loc.txt(11/27/2016 10:51:04 PM)
+10/4/2018 7:01:10 PM : (Disasm5x) SA14-module.txt(1/8/2017 10:20:47 PM)	Ignoring  (Equal Date) SA14-module.loc.txt(1/8/2017 10:20:47 PM)
+10/4/2018 7:01:10 PM : (Disasm5x) SA15-module.txt(1/8/2017 10:25:20 PM)	Ignoring  (Equal Date) SA15-module.loc.txt(1/8/2017 10:25:20 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card01.xml(1/8/2017 10:31:31 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card02.xml(1/8/2017 10:44:00 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card03.xml(1/8/2017 10:48:20 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card04.xml(1/8/2017 10:49:46 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card05.xml(1/8/2017 10:52:36 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card06.xml(1/8/2017 10:53:47 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card07.xml(1/8/2017 10:55:36 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card08.xml(1/8/2017 10:56:57 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card09.xml(1/8/2017 10:58:23 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card10.xml(1/8/2017 11:00:04 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card11.xml(1/8/2017 11:00:50 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card12.xml(1/8/2017 11:11:38 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card13.xml(1/8/2017 11:12:45 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card14.xml(1/8/2017 11:13:55 PM)
+10/4/2018 7:01:10 PM : (makeInsertCard) No Rendering Required For   : card15.xml(1/8/2017 11:16:37 PM)
+
+
+======================================================================================================================================
+10/4/2018 7:01:10 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Surveying Library.sy.04.pub
+======================================================================================================================================
+
+
+10/4/2018 7:01:12 PM : (Asm5x) prog01.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY01-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog02.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY02-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog03.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY03-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog04.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY04-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog05.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY05-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog06.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY06-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog07.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY07-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog08.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY08-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog09.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY09-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog10.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY10-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog11.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY11-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog12.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY12-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog13.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY13-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog14.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY14-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog15.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY15-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog16.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY16-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog17.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY17-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog18.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY18-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog19.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY19-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog20.src(10/16/2016 9:40:16 AM)	        Ignoring  (Equal Date) SY20-prog.bin.txt(10/16/2016 9:40:16 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog21.src(10/16/2016 9:40:17 AM)	        Ignoring  (Equal Date) SY21-prog.bin.txt(10/16/2016 9:40:17 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog22.src(10/16/2016 9:40:17 AM)	        Ignoring  (Equal Date) SY22-prog.bin.txt(10/16/2016 9:40:17 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog23.src(10/16/2016 9:40:17 AM)	        Ignoring  (Equal Date) SY23-prog.bin.txt(10/16/2016 9:40:17 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog24.src(10/16/2016 9:40:17 AM)	        Ignoring  (Equal Date) SY24-prog.bin.txt(10/16/2016 9:40:17 AM)
+10/4/2018 7:01:12 PM : (Asm5x) prog25.src(10/16/2016 9:40:17 AM)	        Ignoring  (Equal Date) SY25-prog.bin.txt(10/16/2016 9:40:17 AM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY01-module.txt(10/29/2016 5:52:35 PM)	Ignoring  (Equal Date) SY01-module.loc.txt(10/29/2016 5:52:35 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY02-module.txt(10/29/2016 7:58:17 PM)	Ignoring  (Equal Date) SY02-module.loc.txt(10/29/2016 7:58:17 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY03-module.txt(10/29/2016 7:58:18 PM)	Ignoring  (Equal Date) SY03-module.loc.txt(10/29/2016 7:58:18 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY04-module.txt(10/29/2016 8:24:10 PM)	Ignoring  (Equal Date) SY04-module.loc.txt(10/29/2016 8:24:10 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY05-module.txt(10/29/2016 7:58:20 PM)	Ignoring  (Equal Date) SY05-module.loc.txt(10/29/2016 7:58:20 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY06-module.txt(10/29/2016 7:58:21 PM)	Ignoring  (Equal Date) SY06-module.loc.txt(10/29/2016 7:58:21 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY07-module.txt(10/29/2016 7:58:22 PM)	Ignoring  (Equal Date) SY07-module.loc.txt(10/29/2016 7:58:22 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY08-module.txt(10/29/2016 8:24:14 PM)	Ignoring  (Equal Date) SY08-module.loc.txt(10/29/2016 8:24:14 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY09-module.txt(10/29/2016 8:24:15 PM)	Ignoring  (Equal Date) SY09-module.loc.txt(10/29/2016 8:24:15 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY10-module.txt(10/29/2016 5:52:40 PM)	Ignoring  (Equal Date) SY10-module.loc.txt(10/29/2016 5:52:40 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY11-module.txt(10/29/2016 5:52:40 PM)	Ignoring  (Equal Date) SY11-module.loc.txt(10/29/2016 5:52:40 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY12-module.txt(10/29/2016 5:52:41 PM)	Ignoring  (Equal Date) SY12-module.loc.txt(10/29/2016 5:52:41 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY13-module.txt(10/29/2016 5:52:41 PM)	Ignoring  (Equal Date) SY13-module.loc.txt(10/29/2016 5:52:41 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY14-module.txt(10/29/2016 5:52:42 PM)	Ignoring  (Equal Date) SY14-module.loc.txt(10/29/2016 5:52:42 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY15-module.txt(10/29/2016 8:24:22 PM)	Ignoring  (Equal Date) SY15-module.loc.txt(10/29/2016 8:24:22 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY16-module.txt(10/29/2016 7:58:31 PM)	Ignoring  (Equal Date) SY16-module.loc.txt(10/29/2016 7:58:31 PM)
+10/4/2018 7:01:12 PM : (Disasm5x) SY17-module.txt(10/29/2016 7:58:32 PM)	Ignoring  (Equal Date) SY17-module.loc.txt(10/29/2016 7:58:32 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY18-module.txt(10/29/2016 8:24:25 PM)	Ignoring  (Equal Date) SY18-module.loc.txt(10/29/2016 8:24:25 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY19-module.txt(10/29/2016 7:58:34 PM)	Ignoring  (Equal Date) SY19-module.loc.txt(10/29/2016 7:58:34 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY20-module.txt(10/29/2016 8:24:27 PM)	Ignoring  (Equal Date) SY20-module.loc.txt(10/29/2016 8:24:27 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY21-module.txt(10/29/2016 5:52:45 PM)	Ignoring  (Equal Date) SY21-module.loc.txt(10/29/2016 5:52:45 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY22-module.txt(10/29/2016 5:52:46 PM)	Ignoring  (Equal Date) SY22-module.loc.txt(10/29/2016 5:52:46 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY23-module.txt(10/29/2016 5:52:46 PM)	Ignoring  (Equal Date) SY23-module.loc.txt(10/29/2016 5:52:46 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY24-module.txt(10/29/2016 5:52:47 PM)	Ignoring  (Equal Date) SY24-module.loc.txt(10/29/2016 5:52:47 PM)
+10/4/2018 7:01:13 PM : (Disasm5x) SY25-module.txt(10/29/2016 8:24:32 PM)	Ignoring  (Equal Date) SY25-module.loc.txt(10/29/2016 8:24:32 PM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card01.xml(10/16/2016 9:40:14 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card02.xml(10/16/2016 9:40:14 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card03.xml(10/16/2016 9:40:14 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card04.xml(10/16/2016 9:40:14 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card05.xml(10/16/2016 9:40:14 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card06.xml(10/16/2016 9:40:14 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card07.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card08.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card09.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card10.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card11.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card12.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card13.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card14.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card15.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card16.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card17.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card18.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card19.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card20.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card21.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card22.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card23.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card24.xml(10/16/2016 9:40:15 AM)
+10/4/2018 7:01:13 PM : (makeInsertCard) No Rendering Required For   : card25.xml(10/16/2016 9:40:15 AM)
+
+
+=========================================================================================================================================
+10/4/2018 7:01:13 PM :  Pass 1L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\User Contributions A.ct.99.pub
+=========================================================================================================================================
+
+
+10/4/2018 7:01:14 PM : (Disasm5x) CT01-module.txt(10/29/2016 8:22:27 PM)	Ignoring  (Equal Date) CT01-module.loc.txt(10/29/2016 8:22:27 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT02-module.txt(10/29/2016 8:22:28 PM)	Ignoring  (Equal Date) CT02-module.loc.txt(10/29/2016 8:22:28 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT03-module.txt(10/29/2016 8:22:29 PM)	Ignoring  (Equal Date) CT03-module.loc.txt(10/29/2016 8:22:29 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT15-module.txt(10/29/2016 8:22:30 PM)	Ignoring  (Equal Date) CT15-module.loc.txt(10/29/2016 8:22:30 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT21-module.txt(10/29/2016 5:51:42 PM)	Ignoring  (Equal Date) CT21-module.loc.txt(10/29/2016 5:51:42 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT22-module.txt(10/29/2016 5:51:43 PM)	Ignoring  (Equal Date) CT22-module.loc.txt(10/29/2016 5:51:43 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT23-module.txt(10/29/2016 5:51:43 PM)	Ignoring  (Equal Date) CT23-module.loc.txt(10/29/2016 5:51:43 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT24-module.txt(10/29/2016 5:51:44 PM)	Ignoring  (Equal Date) CT24-module.loc.txt(10/29/2016 5:51:44 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT25-module.txt(10/29/2016 8:22:35 PM)	Ignoring  (Equal Date) CT25-module.loc.txt(10/29/2016 8:22:35 PM)
+10/4/2018 7:01:14 PM : (Disasm5x) CT30-module.txt(11/19/2016 3:57:37 PM)	Ignoring  (Equal Date) CT30-module.loc.txt(11/19/2016 3:57:37 PM)
+10/4/2018 7:01:14 PM : (Asm5x) prog01.src(10/31/2016 12:16:33 PM)	        Ignoring  (Equal Date) CT01-prog.bin.txt(10/31/2016 12:16:33 PM)
+10/4/2018 7:01:14 PM : (Asm5x) prog02.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT02-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog03.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT03-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog15.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT15-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog21.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT21-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog22.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT22-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog23.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT23-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog24.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT24-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog25.src(10/16/2016 9:40:07 AM)	        Ignoring  (Equal Date) CT25-prog.bin.txt(10/16/2016 9:40:07 AM)
+10/4/2018 7:01:14 PM : (Asm5x) prog30.src(11/19/2016 3:57:37 PM)	        Ignoring  (Equal Date) CT30-prog.bin.txt(11/19/2016 3:57:37 PM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card01.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card02.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card03.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card15.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card21.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card22.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card23.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card24.xml(10/16/2016 9:40:06 AM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card25.xml(10/31/2016 6:35:59 PM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card30.xml(11/19/2016 4:08:32 PM)
+
+
+=====================================================================================================================================
+10/4/2018 7:01:14 PM :  Pass 1P - Scanning Folder F:\Engineering\Projects.Android\TI5x\programs_master\ee19_construct_nam_code.EE.pub
+=====================================================================================================================================
+
+
+10/4/2018 7:01:14 PM : (Disasm5x) EE00-module.txt(1/14/2017 8:55:04 PM)	Ignoring  (Equal Date) EE00-module.loc.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:01:14 PM : (Asm5x) prog00.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE00-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card00.xml(1/14/2017 8:55:04 PM)
+
+
+=============================================================================================================================
+10/4/2018 7:01:14 PM :  Pass 1P - Scanning Folder F:\Engineering\Projects.Android\TI5x\programs_master\ee19_input_code.EE.pub
+=============================================================================================================================
+
+
+10/4/2018 7:01:14 PM : (Disasm5x) EE00-module.txt(1/14/2017 8:55:04 PM)	Ignoring  (Equal Date) EE00-module.loc.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:01:14 PM : (Asm5x) prog00.src(1/14/2017 8:55:04 PM)	        Ignoring  (Equal Date) EE00-prog.bin.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:01:14 PM : (makeInsertCard) No Rendering Required For   : card00.xml(1/14/2017 8:55:04 PM)
+
+
+====================================================
+10/4/2018 7:01:15 PM : Pass 2 - Cleanup the Binaries
+====================================================
+
+
+10/4/2018 7:01:15 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Applied Statistics.st.02.pub
+10/4/2018 7:01:15 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Aviation Library.av.06.pub
+10/4/2018 7:01:16 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub
+10/4/2018 7:01:16 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Electrical Engineering.ee.11.pub
+10/4/2018 7:01:17 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Leisure Library.le.07.pub
+10/4/2018 7:01:18 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Marine Navigation.ng.05.pub
+10/4/2018 7:01:18 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Master Library.ml.01.pub
+10/4/2018 7:01:19 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Math Utilities.mu.10.pub
+10/4/2018 7:01:20 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Real Estate.re.03.pub
+10/4/2018 7:01:20 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Securities Analysis.sa.08.pub
+10/4/2018 7:01:21 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Surveying Library.sy.04.pub
+10/4/2018 7:01:21 PM : Pass 2L - Scanning Folder F:\Engineering\Projects.Android\TI5x\ti_libraries_master\User Contributions A.ct.99.pub
+10/4/2018 7:01:22 PM : Pass 2P - Scanning Folder F:\Engineering\Projects.Android\TI5x\programs_master\ee19_construct_nam_code.EE.pub
+10/4/2018 7:01:22 PM : Pass 2P - Scanning Folder F:\Engineering\Projects.Android\TI5x\programs_master\ee19_input_code.EE.pub
+
+
+=====================================================
+10/4/2018 7:01:22 PM : Pass 3L - Compare the Binaries
+=====================================================
+
+
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST01-module.txt(1/10/2017 11:15:50 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST01-module.txt = ST01-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST02-module.txt(1/10/2017 7:13:07 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST02-module.txt = ST02-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST03-module.txt(1/10/2017 7:26:33 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST03-module.txt = ST03-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST04-module.txt(1/10/2017 7:40:14 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST04-module.txt = ST04-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST05-module.txt(1/12/2017 8:36:26 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST05-module.txt = ST05-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST06-module.txt(9/27/2018 9:30:11 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST06-module.txt = ST06-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST07-module.txt(1/10/2017 7:59:09 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST07-module.txt = ST07-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST08-module.txt(1/10/2017 8:02:33 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST08-module.txt = ST08-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST09-module.txt(1/10/2017 8:14:23 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST09-module.txt = ST09-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST10-module.txt(1/10/2017 8:18:31 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST10-module.txt = ST10-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST11-module.txt(1/10/2017 8:20:42 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST11-module.txt = ST11-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST12-module.txt(1/10/2017 8:25:53 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST12-module.txt = ST12-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST13-module.txt(1/10/2017 8:28:52 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST13-module.txt = ST13-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST14-module.txt(1/10/2017 8:38:30 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST14-module.txt = ST14-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST15-module.txt(1/10/2017 8:40:41 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST15-module.txt = ST15-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST16-module.txt(1/10/2017 8:44:16 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST16-module.txt = ST16-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST17-module.txt(1/10/2017 9:04:37 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST17-module.txt = ST17-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST18-module.txt(1/10/2017 9:16:28 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST18-module.txt = ST18-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST19-module.txt(1/10/2017 9:20:10 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST19-module.txt = ST19-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST20-module.txt(1/10/2017 9:23:42 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST20-module.txt = ST20-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST21-module.txt(1/10/2017 9:32:34 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST21-module.txt = ST21-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	ST22-module.txt(1/10/2017 9:39:40 PM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: ST22-module.txt = ST22-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV01-module.txt(12/21/2016 7:27:09 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV01-module.txt = AV01-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV02-module.txt(12/2/2016 10:38:21 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV02-module.txt = AV02-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV03-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV03-module.txt = AV03-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV04-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV04-module.txt = AV04-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV05-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV05-module.txt = AV05-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV06-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV06-module.txt = AV06-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV07-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV07-module.txt = AV07-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV08-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV08-module.txt = AV08-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV09-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV09-module.txt = AV09-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV10-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV10-module.txt = AV10-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV11-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV11-module.txt = AV11-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV12-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV12-module.txt = AV12-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV13-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV13-module.txt = AV13-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV14-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV14-module.txt = AV14-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV15-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV15-module.txt = AV15-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV16-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV16-module.txt = AV16-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV17-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV17-module.txt = AV17-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV18-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV18-module.txt = AV18-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV19-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV19-module.txt = AV19-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV20-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV20-module.txt = AV20-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV21-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV21-module.txt = AV21-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV22-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV22-module.txt = AV22-prog.bin.txt
+10/4/2018 7:01:22 PM : (binCompare) Input Stream             : 	AV23-module.txt(12/20/2016 7:30:27 AM)
+10/4/2018 7:01:22 PM : (binCompare) ................==Equal==: AV23-module.txt = AV23-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD01-module.txt(9/9/2018 8:37:38 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD01-module.txt = BD01-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD02-module.txt(5/13/2018 7:41:15 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD02-module.txt = BD02-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD03-module.txt(5/13/2018 8:16:12 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD03-module.txt = BD03-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD04-module.txt(5/13/2018 8:45:52 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD04-module.txt = BD04-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD05-module.txt(5/13/2018 9:18:30 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD05-module.txt = BD05-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD06-module.txt(9/23/2018 3:33:00 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD06-module.txt = BD06-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD07-module.txt(5/13/2018 1:11:48 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD07-module.txt = BD07-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD08-module.txt(5/13/2018 2:10:34 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD08-module.txt = BD08-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD09-module.txt(5/13/2018 2:32:35 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD09-module.txt = BD09-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD10-module.txt(9/9/2018 12:42:20 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD10-module.txt = BD10-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	BD11-module.txt(9/9/2018 1:02:24 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: BD11-module.txt = BD11-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE01-module.txt(10/29/2016 5:51:45 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE01-module.txt = EE01-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE02-module.txt(10/29/2016 8:22:37 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE02-module.txt = EE02-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE03-module.txt(10/29/2016 8:22:38 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE03-module.txt = EE03-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE04-module.txt(10/29/2016 7:55:01 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE04-module.txt = EE04-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE05-module.txt(1/14/2017 7:59:56 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE05-module.txt = EE05-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE06-module.txt(10/29/2016 7:08:36 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE06-module.txt = EE06-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE07-module.txt(10/29/2016 5:51:48 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE07-module.txt = EE07-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE08-module.txt(10/29/2016 8:22:43 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE08-module.txt = EE08-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE09-module.txt(1/3/2017 9:47:20 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE09-module.txt = EE09-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE10-module.txt(1/5/2017 6:43:21 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE10-module.txt = EE10-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE11-module.txt(1/3/2017 10:09:13 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE11-module.txt = EE11-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE12-module.txt(1/3/2017 10:13:21 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE12-module.txt = EE12-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE13-module.txt(1/5/2017 6:55:19 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE13-module.txt = EE13-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE14-module.txt(1/3/2017 10:37:14 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE14-module.txt = EE14-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE15-module.txt(1/5/2017 7:13:53 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE15-module.txt = EE15-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE16-module.txt(1/5/2017 7:26:33 AM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE16-module.txt = EE16-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE17-module.txt(1/3/2017 11:13:08 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE17-module.txt = EE17-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE18-module.txt(1/3/2017 11:18:47 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE18-module.txt = EE18-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	EE19-module.txt(1/3/2017 11:28:11 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: EE19-module.txt = EE19-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE01-module.txt(10/29/2016 8:22:46 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE01-module.txt = LE01-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE02-module.txt(10/29/2016 8:22:47 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE02-module.txt = LE02-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE03-module.txt(10/29/2016 5:28:03 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE03-module.txt = LE03-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE04-module.txt(10/29/2016 8:15:56 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE04-module.txt = LE04-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE05-module.txt(12/18/2016 1:04:55 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE05-module.txt = LE05-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE06-module.txt(10/29/2016 8:22:53 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE06-module.txt = LE06-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE07-module.txt(10/29/2016 8:19:13 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE07-module.txt = LE07-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE08-module.txt(12/18/2016 1:09:24 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE08-module.txt = LE08-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE09-module.txt(10/29/2016 5:29:36 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE09-module.txt = LE09-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE10-module.txt(10/29/2016 5:30:12 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE10-module.txt = LE10-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE11-module.txt(10/29/2016 8:23:01 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE11-module.txt = LE11-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE12-module.txt(10/29/2016 5:30:29 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE12-module.txt = LE12-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE13-module.txt(10/29/2016 5:30:29 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE13-module.txt = LE13-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE14-module.txt(10/29/2016 8:23:04 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE14-module.txt = LE14-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE15-module.txt(10/29/2016 5:30:30 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE15-module.txt = LE15-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE16-module.txt(10/29/2016 8:23:06 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE16-module.txt = LE16-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE17-module.txt(10/29/2016 8:23:07 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE17-module.txt = LE17-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE18-module.txt(10/29/2016 5:30:32 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE18-module.txt = LE18-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE19-module.txt(10/29/2016 5:30:32 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE19-module.txt = LE19-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE20-module.txt(10/29/2016 8:23:10 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE20-module.txt = LE20-prog.bin.txt
+10/4/2018 7:01:23 PM : (binCompare) Input Stream             : 	LE21-module.txt(10/29/2016 8:23:11 PM)
+10/4/2018 7:01:23 PM : (binCompare) ................==Equal==: LE21-module.txt = LE21-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG01-module.txt(11/26/2016 11:20:18 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG01-module.txt = NG01-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG02-module.txt(10/29/2016 8:24:05 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG02-module.txt = NG02-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG03-module.txt(11/5/2016 7:51:41 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG03-module.txt = NG03-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG04-module.txt(10/30/2016 10:12:14 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG04-module.txt = NG04-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG05-module.txt(10/30/2016 10:19:44 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG05-module.txt = NG05-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG06-module.txt(11/5/2016 8:16:36 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG06-module.txt = NG06-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG07-module.txt(10/30/2016 10:24:40 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG07-module.txt = NG07-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG08-module.txt(10/30/2016 10:26:53 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG08-module.txt = NG08-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG09-module.txt(11/5/2016 9:17:57 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG09-module.txt = NG09-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG10-module.txt(11/5/2016 9:24:56 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG10-module.txt = NG10-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG11-module.txt(11/5/2016 9:32:30 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG11-module.txt = NG11-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG12-module.txt(10/30/2016 10:40:10 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG12-module.txt = NG12-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG13-module.txt(11/5/2016 9:58:42 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG13-module.txt = NG13-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG14-module.txt(11/5/2016 10:02:33 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG14-module.txt = NG14-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG15-module.txt(11/5/2016 10:17:19 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG15-module.txt = NG15-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG16-module.txt(10/30/2016 10:50:03 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG16-module.txt = NG16-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG17-module.txt(10/30/2016 10:51:10 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG17-module.txt = NG17-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG18-module.txt(10/30/2016 10:55:27 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG18-module.txt = NG18-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG19-module.txt(10/30/2016 10:53:32 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG19-module.txt = NG19-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG20-module.txt(11/5/2016 10:49:28 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG20-module.txt = NG20-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG21-module.txt(10/30/2016 10:57:54 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG21-module.txt = NG21-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG22-module.txt(10/30/2016 11:01:49 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG22-module.txt = NG22-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG23-module.txt(10/30/2016 11:03:57 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG23-module.txt = NG23-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG24-module.txt(10/30/2016 11:07:56 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG24-module.txt = NG24-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG25-module.txt(10/30/2016 11:10:34 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG25-module.txt = NG25-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG26-module.txt(11/5/2016 11:15:06 AM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG26-module.txt = NG26-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG27-module.txt(11/5/2016 3:08:08 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG27-module.txt = NG27-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG28-module.txt(10/30/2016 11:14:56 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG28-module.txt = NG28-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG29-module.txt(10/30/2016 11:16:44 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG29-module.txt = NG29-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	NG30-module.txt(10/30/2016 11:18:32 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: NG30-module.txt = NG30-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML01-module.txt(10/29/2016 5:51:56 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML01-module.txt = ML01-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML02-module.txt(10/29/2016 8:23:13 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML02-module.txt = ML02-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML03-module.txt(10/29/2016 8:23:14 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML03-module.txt = ML03-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML04-module.txt(10/29/2016 7:01:30 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML04-module.txt = ML04-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML05-module.txt(10/29/2016 8:23:16 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML05-module.txt = ML05-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML06-module.txt(10/29/2016 8:23:17 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML06-module.txt = ML06-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML07-module.txt(10/29/2016 5:51:59 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML07-module.txt = ML07-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML08-module.txt(10/29/2016 8:23:19 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML08-module.txt = ML08-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML09-module.txt(10/29/2016 7:21:47 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML09-module.txt = ML09-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML10-module.txt(10/29/2016 8:23:22 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML10-module.txt = ML10-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML11-module.txt(10/29/2016 8:23:23 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML11-module.txt = ML11-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML12-module.txt(10/29/2016 8:23:24 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML12-module.txt = ML12-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML13-module.txt(10/29/2016 5:52:02 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML13-module.txt = ML13-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML14-module.txt(10/29/2016 5:52:03 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML14-module.txt = ML14-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML15-module.txt(10/29/2016 5:52:03 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML15-module.txt = ML15-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML16-module.txt(10/29/2016 5:52:04 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML16-module.txt = ML16-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML17-module.txt(10/29/2016 5:52:04 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML17-module.txt = ML17-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML18-module.txt(10/29/2016 8:23:30 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML18-module.txt = ML18-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML19-module.txt(10/29/2016 8:23:31 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML19-module.txt = ML19-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML20-module.txt(10/29/2016 5:52:06 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML20-module.txt = ML20-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML21-module.txt(10/29/2016 5:52:06 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML21-module.txt = ML21-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML22-module.txt(10/29/2016 5:52:07 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML22-module.txt = ML22-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML23-module.txt(10/29/2016 5:52:07 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML23-module.txt = ML23-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML24-module.txt(10/29/2016 5:52:08 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML24-module.txt = ML24-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML25-module.txt(10/29/2016 8:23:37 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML25-module.txt = ML25-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	ML26-module.txt(10/29/2016 5:52:09 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: ML26-module.txt = ML26-prog.bin.txt
+10/4/2018 7:01:24 PM : (binCompare) Input Stream             : 	MU01-module.txt(10/29/2016 8:23:40 PM)
+10/4/2018 7:01:24 PM : (binCompare) ................==Equal==: MU01-module.txt = MU01-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU02-module.txt(10/29/2016 7:22:31 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU02-module.txt = MU02-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU03-module.txt(10/29/2016 8:23:42 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU03-module.txt = MU03-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU04-module.txt(10/29/2016 7:23:15 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU04-module.txt = MU04-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU05-module.txt(10/29/2016 8:23:44 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU05-module.txt = MU05-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU06-module.txt(10/29/2016 5:52:12 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU06-module.txt = MU06-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU07-module.txt(10/29/2016 8:23:46 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU07-module.txt = MU07-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU08-module.txt(10/29/2016 5:52:13 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU08-module.txt = MU08-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU09-module.txt(10/29/2016 5:52:14 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU09-module.txt = MU09-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU10-module.txt(10/29/2016 5:52:14 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU10-module.txt = MU10-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU11-module.txt(10/29/2016 5:52:15 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU11-module.txt = MU11-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU12-module.txt(10/29/2016 5:52:15 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU12-module.txt = MU12-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU13-module.txt(10/29/2016 5:52:16 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU13-module.txt = MU13-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU14-module.txt(10/29/2016 8:23:53 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU14-module.txt = MU14-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU15-module.txt(10/29/2016 8:23:54 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU15-module.txt = MU15-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU16-module.txt(10/29/2016 7:23:53 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU16-module.txt = MU16-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU17-module.txt(10/29/2016 8:23:56 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU17-module.txt = MU17-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU18-module.txt(10/29/2016 8:23:57 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU18-module.txt = MU18-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU19-module.txt(10/29/2016 5:52:19 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU19-module.txt = MU19-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU20-module.txt(10/29/2016 5:52:20 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU20-module.txt = MU20-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	MU21-module.txt(10/29/2016 7:57:09 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: MU21-module.txt = MU21-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE01-module.txt(1/9/2017 11:46:18 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE01-module.txt = RE01-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE02-module.txt(1/9/2017 9:03:38 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE02-module.txt = RE02-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE03-module.txt(1/9/2017 9:07:50 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE03-module.txt = RE03-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE04-module.txt(1/9/2017 9:15:23 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE04-module.txt = RE04-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE05-module.txt(1/9/2017 9:19:37 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE05-module.txt = RE05-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE06-module.txt(1/9/2017 9:27:33 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE06-module.txt = RE06-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE07-module.txt(1/9/2017 9:33:51 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE07-module.txt = RE07-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE08-module.txt(1/9/2017 9:42:13 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE08-module.txt = RE08-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE09-module.txt(1/9/2017 11:32:22 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE09-module.txt = RE09-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE10-module.txt(1/9/2017 10:00:08 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE10-module.txt = RE10-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE11-module.txt(1/9/2017 10:09:14 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE11-module.txt = RE11-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE12-module.txt(1/9/2017 10:15:40 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE12-module.txt = RE12-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE13-module.txt(1/10/2017 7:30:00 AM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE13-module.txt = RE13-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE14-module.txt(1/9/2017 10:21:01 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE14-module.txt = RE14-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE15-module.txt(1/9/2017 10:24:52 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE15-module.txt = RE15-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	RE16-module.txt(1/9/2017 10:34:22 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: RE16-module.txt = RE16-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA01-module.txt(11/19/2016 1:38:10 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA01-module.txt = SA01-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA02-module.txt(11/27/2016 7:35:30 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA02-module.txt = SA02-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA03-module.txt(11/27/2016 7:44:05 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA03-module.txt = SA03-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA04-module.txt(1/9/2017 7:25:55 AM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA04-module.txt = SA04-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA05-module.txt(1/9/2017 7:08:35 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA05-module.txt = SA05-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA06-module.txt(1/9/2017 7:36:18 AM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA06-module.txt = SA06-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA07-module.txt(11/27/2016 8:50:28 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA07-module.txt = SA07-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA08-module.txt(11/27/2016 9:19:37 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA08-module.txt = SA08-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA09-module.txt(11/27/2016 9:25:41 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA09-module.txt = SA09-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA10-module.txt(11/27/2016 9:57:25 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA10-module.txt = SA10-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA11-module.txt(11/27/2016 10:15:08 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA11-module.txt = SA11-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA12-module.txt(11/27/2016 10:30:41 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA12-module.txt = SA12-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA13-module.txt(11/27/2016 10:51:04 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA13-module.txt = SA13-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA14-module.txt(1/8/2017 10:20:47 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA14-module.txt = SA14-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SA15-module.txt(1/8/2017 10:25:20 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SA15-module.txt = SA15-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY01-module.txt(10/29/2016 5:52:35 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY01-module.txt = SY01-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY02-module.txt(10/29/2016 7:58:17 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY02-module.txt = SY02-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY03-module.txt(10/29/2016 7:58:18 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY03-module.txt = SY03-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY04-module.txt(10/29/2016 8:24:10 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY04-module.txt = SY04-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY05-module.txt(10/29/2016 7:58:20 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY05-module.txt = SY05-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY06-module.txt(10/29/2016 7:58:21 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY06-module.txt = SY06-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY07-module.txt(10/29/2016 7:58:22 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY07-module.txt = SY07-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY08-module.txt(10/29/2016 8:24:14 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY08-module.txt = SY08-prog.bin.txt
+10/4/2018 7:01:25 PM : (binCompare) Input Stream             : 	SY09-module.txt(10/29/2016 8:24:15 PM)
+10/4/2018 7:01:25 PM : (binCompare) ................==Equal==: SY09-module.txt = SY09-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY10-module.txt(10/29/2016 5:52:40 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY10-module.txt = SY10-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY11-module.txt(10/29/2016 5:52:40 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY11-module.txt = SY11-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY12-module.txt(10/29/2016 5:52:41 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY12-module.txt = SY12-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY13-module.txt(10/29/2016 5:52:41 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY13-module.txt = SY13-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY14-module.txt(10/29/2016 5:52:42 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY14-module.txt = SY14-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY15-module.txt(10/29/2016 8:24:22 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY15-module.txt = SY15-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY16-module.txt(10/29/2016 7:58:31 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY16-module.txt = SY16-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY17-module.txt(10/29/2016 7:58:32 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY17-module.txt = SY17-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY18-module.txt(10/29/2016 8:24:25 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY18-module.txt = SY18-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY19-module.txt(10/29/2016 7:58:34 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY19-module.txt = SY19-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY20-module.txt(10/29/2016 8:24:27 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY20-module.txt = SY20-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY21-module.txt(10/29/2016 5:52:45 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY21-module.txt = SY21-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY22-module.txt(10/29/2016 5:52:46 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY22-module.txt = SY22-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY23-module.txt(10/29/2016 5:52:46 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY23-module.txt = SY23-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY24-module.txt(10/29/2016 5:52:47 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY24-module.txt = SY24-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	SY25-module.txt(10/29/2016 8:24:32 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: SY25-module.txt = SY25-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT01-module.txt(10/29/2016 8:22:27 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT01-module.txt = CT01-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT02-module.txt(10/29/2016 8:22:28 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT02-module.txt = CT02-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT03-module.txt(10/29/2016 8:22:29 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT03-module.txt = CT03-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT15-module.txt(10/29/2016 8:22:30 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT15-module.txt = CT15-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT21-module.txt(10/29/2016 5:51:42 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT21-module.txt = CT21-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT22-module.txt(10/29/2016 5:51:43 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT22-module.txt = CT22-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT23-module.txt(10/29/2016 5:51:43 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT23-module.txt = CT23-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT24-module.txt(10/29/2016 5:51:44 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT24-module.txt = CT24-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT25-module.txt(10/29/2016 8:22:35 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT25-module.txt = CT25-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	CT30-module.txt(11/19/2016 3:57:37 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: CT30-module.txt = CT30-prog.bin.txt
+
+
+=====================================================
+10/4/2018 7:01:26 PM : Pass 3P - Compare the Binaries
+=====================================================
+
+
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	EE00-module.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: EE00-module.txt = EE00-prog.bin.txt
+10/4/2018 7:01:26 PM : (binCompare) Input Stream             : 	EE00-module.txt(1/14/2017 8:55:04 PM)
+10/4/2018 7:01:26 PM : (binCompare) ................==Equal==: EE00-module.txt = EE00-prog.bin.txt
+
+
+==============================================================================
+10/4/2018 7:01:26 PM : Pass 4L - Process HTML Files into more consistent forms
+==============================================================================
+
+
+10/4/2018 7:01:26 PM (htmlSync) [ToModule] 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Applied Statistics.st.02.pub\ST-module.html
+								 ===Replace===> 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Applied Statistics.st.02.pub\help.html
+10/4/2018 7:01:26 PM (htmlSync) [ToModule] 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub\BD-module.html
+								 ===Replace===> 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub\help.html
+10/4/2018 7:01:27 PM (htmlSync) [ToModule] 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Real Estate.re.03.pub\RE-module.html
+								 ===Replace===> 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Real Estate.re.03.pub\help.html
+10/4/2018 7:01:27 PM (htmlSync) [ToModule] 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Securities Analysis.sa.08.pub\SA-module.html
+								 ===Replace===> 
+								F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Securities Analysis.sa.08.pub\help.html
+
+
+==============================================================================
+10/4/2018 7:01:27 PM : Pass 4P - Process HTML Files into more consistent forms
+==============================================================================
+
+
+
+
+=======================================================================================
+10/4/2018 7:01:27 PM : Pass 5  - Libraries and Programs Deployment to Build Environment
+=======================================================================================
+
+
+
+
+====================================================================================
+10/4/2018 7:01:27 PM : Pass 5L - Make Libraries from Inputs (Replacement for MLMAKE)
+====================================================================================
+
+
+10/4/2018 7:01:28 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radCD366.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Applied Statistics.st.02.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\st.ti5l" "prog01=ST01-module.txt" "card01=card01" "help01=help01.html" "prog02=ST02-module.txt" "card02=card02" "help02=help02.html" "prog03=ST03-module.txt" "card03=card03" "help03=help03.html" "prog04=ST04-module.txt" "card04=card04" "help04=help04.html" "prog05=ST05-module.txt" "card05=card05" "help05=help05.html" "prog06=ST06-module.txt" "card06=card06" "help06=help06.html" "prog07=ST07-module.txt" "card07=card07" "help07=help07.html" "prog08=ST08-module.txt" "card08=card08" "help08=help08.html" "prog09=ST09-module.txt" "card09=card09" "help09=help09.html" "prog10=ST10-module.txt" "card10=card10" "help10=help10.html" "prog11=ST11-module.txt" "card11=card11" "help11=help11.html" "prog12=ST12-module.txt" "card12=card12" "help12=help12.html" "prog13=ST13-module.txt" "card13=card13" "help13=help13.html" "prog14=ST14-module.txt" "card14=card14" "help14=help14.html" "prog15=ST15-module.txt" "card15=card15" "help15=help15.html" "prog16=ST16-module.txt" "card16=card16" "help16=help16.html" "prog17=ST17-module.txt" "card17=card17" "help17=help17.html" "prog18=ST18-module.txt" "card18=card18" "help18=help18.html" "prog19=ST19-module.txt" "card19=card19" "help19=help19.html" "prog20=ST20-module.txt" "card20=card20" "help20=help20.html" "prog21=ST21-module.txt" "card21=card21" "help21=help21.html" "prog22=ST22-module.txt" "card22=card22" "help22=help22.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radFA18A.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad59F57.tmp.stdout.txt" 
+		
+10/4/2018 7:01:28 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\st.ti5l
+10/4/2018 7:01:28 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radFBF53.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Aviation Library.av.06.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\av.ti5l" "prog01=AV01-module.txt" "card01=card01" "help01=help01.html" "prog02=AV02-module.txt" "card02=card02" "help02=help02.html" "prog03=AV03-module.txt" "card03=card03" "help03=help03.html" "prog04=AV04-module.txt" "card04=card04" "help04=help04.html" "prog05=AV05-module.txt" "card05=card05" "help05=help05.html" "prog06=AV06-module.txt" "card06=card06" "help06=help06.html" "prog07=AV07-module.txt" "card07=card07" "help07=help07.html" "prog08=AV08-module.txt" "card08=card08" "help08=help08.html" "prog09=AV09-module.txt" "card09=card09" "help09=help09.html" "prog10=AV10-module.txt" "card10=card10" "help10=help10.html" "prog11=AV11-module.txt" "card11=card11" "help11=help11.html" "prog12=AV12-module.txt" "card12=card12" "help12=help12.html" "prog13=AV13-module.txt" "card13=card13" "help13=help13.html" "prog14=AV14-module.txt" "card14=card14" "help14=help14.html" "prog15=AV15-module.txt" "card15=card15" "help15=help15.html" "prog16=AV16-module.txt" "card16=card16" "help16=help16.html" "prog17=AV17-module.txt" "card17=card17" "help17=help17.html" "prog18=AV18-module.txt" "card18=card18" "help18=help18.html" "prog19=AV19-module.txt" "card19=card19" "help19=help19.html" "prog20=AV20-module.txt" "card20=card20" "help20=help20.html" "prog21=AV21-module.txt" "card21=card21" "help21=help21.html" "prog22=AV22-module.txt" "card22=card22" "help22=help22.html" "prog23=AV23-module.txt" "card23=card23" "help23=help23.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad4237C.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radA5406.tmp.stdout.txt" 
+		
+10/4/2018 7:01:28 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\av.ti5l
+10/4/2018 7:01:29 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad6176A.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Business Decisions.bd.09.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\bd.ti5l" "prog01=BD01-module.txt" "card01=card01" "help01=help01.html" "prog02=BD02-module.txt" "card02=card02" "help02=help02.html" "prog03=BD03-module.txt" "card03=card03" "help03=help03.html" "prog04=BD04-module.txt" "card04=card04" "help04=help04.html" "prog05=BD05-module.txt" "card05=card05" "help05=help05.html" "prog06=BD06-module.txt" "card06=card06" "help06=help06.html" "prog07=BD07-module.txt" "card07=card07" "help07=help07.html" "prog08=BD08-module.txt" "card08=card08" "help08=help08.html" "prog09=BD09-module.txt" "card09=card09" "help09=help09.html" "prog10=BD10-module.txt" "card10=card10" "help10=help10.html" "prog11=BD11-module.txt" "card11=card11" "help11=help11.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad9FD0A.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad6A77F.tmp.stdout.txt" 
+		
+10/4/2018 7:01:29 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\bd.ti5l
+10/4/2018 7:01:29 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad03B59.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Electrical Engineering.ee.11.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ee.ti5l" "prog01=EE01-module.txt" "card01=card01" "help01=help01.html" "prog02=EE02-module.txt" "card02=card02" "help02=help02.html" "prog03=EE03-module.txt" "card03=card03" "help03=help03.html" "prog04=EE04-module.txt" "card04=card04" "help04=help04.html" "prog05=EE05-module.txt" "card05=card05" "help05=help05.html" "prog06=EE06-module.txt" "card06=card06" "help06=help06.html" "prog07=EE07-module.txt" "card07=card07" "help07=help07.html" "prog08=EE08-module.txt" "card08=card08" "help08=help08.html" "prog09=EE09-module.txt" "card09=card09" "help09=help09.html" "prog10=EE10-module.txt" "card10=card10" "help10=help10.html" "prog11=EE11-module.txt" "card11=card11" "help11=help11.html" "prog12=EE12-module.txt" "card12=card12" "help12=help12.html" "prog13=EE13-module.txt" "card13=card13" "help13=help13.html" "prog14=EE14-module.txt" "card14=card14" "help14=help14.html" "prog15=EE15-module.txt" "card15=card15" "help15=help15.html" "prog16=EE16-module.txt" "card16=card16" "help16=help16.html" "prog17=EE17-module.txt" "card17=card17" "help17=help17.html" "prog18=EE18-module.txt" "card18=card18" "help18=help18.html" "prog19=EE19-module.txt" "card19=card19" "help19=help19.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radFEB4E.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad3EAB3.tmp.stdout.txt" 
+		
+10/4/2018 7:01:29 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ee.ti5l
+10/4/2018 7:01:29 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad82F2A.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Leisure Library.le.07.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\le.ti5l" "prog01=LE01-module.txt" "card01=card01" "help01=help01.html" "prog02=LE02-module.txt" "card02=card02" "help02=help02.html" "prog03=LE03-module.txt" "card03=card03" "help03=help03.html" "prog04=LE04-module.txt" "card04=card04" "help04=help04.html" "prog05=LE05-module.txt" "card05=card05" "help05=help05.html" "prog06=LE06-module.txt" "card06=card06" "help06=help06.html" "prog07=LE07-module.txt" "card07=card07" "help07=help07.html" "prog08=LE08-module.txt" "card08=card08" "help08=help08.html" "prog09=LE09-module.txt" "card09=card09" "help09=help09.html" "prog10=LE10-module.txt" "card10=card10" "help10=help10.html" "prog11=LE11-module.txt" "card11=card11" "help11=help11.html" "prog12=LE12-module.txt" "card12=card12" "help12=help12.html" "prog13=LE13-module.txt" "card13=card13" "help13=help13.html" "prog14=LE14-module.txt" "card14=card14" "help14=help14.html" "prog15=LE15-module.txt" "card15=card15" "help15=help15.html" "prog16=LE16-module.txt" "card16=card16" "help16=help16.html" "prog17=LE17-module.txt" "card17=card17" "help17=help17.html" "prog18=LE18-module.txt" "card18=card18" "help18=help18.html" "prog19=LE19-module.txt" "card19=card19" "help19=help19.html" "prog20=LE20-module.txt" "card20=card20" "help20=help20.html" "prog21=LE21-module.txt" "card21=card21" "help21=help21.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radF889B.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad38DAC.tmp.stdout.txt" 
+		
+10/4/2018 7:01:30 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\le.ti5l
+10/4/2018 7:01:30 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radFC711.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Marine Navigation.ng.05.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ng.ti5l" "prog01=NG01-module.txt" "card01=card01" "help01=help01.html" "prog02=NG02-module.txt" "card02=card02" "help02=help02.html" "prog03=NG03-module.txt" "card03=card03" "help03=help03.html" "prog04=NG04-module.txt" "card04=card04" "help04=help04.html" "prog05=NG05-module.txt" "card05=card05" "help05=help05.html" "prog06=NG06-module.txt" "card06=card06" "help06=help06.html" "prog07=NG07-module.txt" "card07=card07" "help07=help07.html" "prog08=NG08-module.txt" "card08=card08" "help08=help08.html" "prog09=NG09-module.txt" "card09=card09" "help09=help09.html" "prog10=NG10-module.txt" "card10=card10" "help10=help10.html" "prog11=NG11-module.txt" "card11=card11" "help11=help11.html" "prog12=NG12-module.txt" "card12=card12" "help12=help12.html" "prog13=NG13-module.txt" "card13=card13" "help13=help13.html" "prog14=NG14-module.txt" "card14=card14" "help14=help14.html" "prog15=NG15-module.txt" "card15=card15" "help15=help15.html" "prog16=NG16-module.txt" "card16=card16" "help16=help16.html" "prog17=NG17-module.txt" "card17=card17" "help17=help17.html" "prog18=NG18-module.txt" "card18=card18" "help18=help18.html" "prog19=NG19-module.txt" "card19=card19" "help19=help19.html" "prog20=NG20-module.txt" "card20=card20" "help20=help20.html" "prog21=NG21-module.txt" "card21=card21" "help21=help21.html" "prog22=NG22-module.txt" "card22=card22" "help22=help22.html" "prog23=NG23-module.txt" "card23=card23" "help23=help23.html" "prog24=NG24-module.txt" "card24=card24" "help24=help24.html" "prog25=NG25-module.txt" "card25=card25" "help25=help25.html" "prog26=NG26-module.txt" "card26=card26" "help26=help26.html" "prog27=NG27-module.txt" "card27=card27" "help27=help27.html" "prog28=NG28-module.txt" "card28=card28" "help28=help28.html" "prog29=NG29-module.txt" "card29=card29" "help29=help29.html" "prog30=NG30-module.txt" "card30=card30" "help30=help30.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad649BC.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad4F5E2.tmp.stdout.txt" 
+		
+10/4/2018 7:01:30 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ng.ti5l
+10/4/2018 7:01:30 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radB1448.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Master Library.ml.01.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ml.ti5l" "prog01=ML01-module.txt" "card01=card01" "help01=help01.html" "prog02=ML02-module.txt" "card02=card02" "help02=help02.html" "prog03=ML03-module.txt" "card03=card03" "help03=help03.html" "prog04=ML04-module.txt" "card04=card04" "help04=help04.html" "prog05=ML05-module.txt" "card05=card05" "help05=help05.html" "prog06=ML06-module.txt" "card06=card06" "help06=help06.html" "prog07=ML07-module.txt" "card07=card07" "help07=help07.html" "prog08=ML08-module.txt" "card08=card08" "help08=help08.html" "prog09=ML09-module.txt" "card09=card09" "help09=help09.html" "prog10=ML10-module.txt" "card10=card10" "help10=help10.html" "prog11=ML11-module.txt" "card11=card11" "help11=help11.html" "prog12=ML12-module.txt" "card12=card12" "help12=help12.html" "prog13=ML13-module.txt" "card13=card13" "help13=help13.html" "prog14=ML14-module.txt" "card14=card14" "help14=help14.html" "prog15=ML15-module.txt" "card15=card15" "help15=help15.html" "prog16=ML16-module.txt" "card16=card16" "help16=help16.html" "prog17=ML17-module.txt" "card17=card17" "help17=help17.html" "prog18=ML18-module.txt" "card18=card18" "help18=help18.html" "prog19=ML19-module.txt" "card19=card19" "help19=help19.html" "prog20=ML20-module.txt" "card20=card20" "help20=help20.html" "prog21=ML21-module.txt" "card21=card21" "help21=help21.html" "prog22=ML22-module.txt" "card22=card22" "help22=help22.html" "prog23=ML23-module.txt" "card23=card23" "help23=help23.html" "prog24=ML24-module.txt" "card24=card24" "help24=help24.html" "prog25=ML25-module.txt" "card25=card25" "help25=help25.html" "prog26=ML26-module.txt" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radDCC5E.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radE8AB5.tmp.stdout.txt" 
+		
+10/4/2018 7:01:31 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ml.ti5l
+10/4/2018 7:01:31 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad165A5.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Math Utilities.mu.10.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\mu.ti5l" "prog01=MU01-module.txt" "card01=card01" "help01=help01.html" "prog02=MU02-module.txt" "card02=card02" "help02=help02.html" "prog03=MU03-module.txt" "card03=card03" "help03=help03.html" "prog04=MU04-module.txt" "card04=card04" "help04=help04.html" "prog05=MU05-module.txt" "card05=card05" "help05=help05.html" "prog06=MU06-module.txt" "card06=card06" "help06=help06.html" "prog07=MU07-module.txt" "card07=card07" "help07=help07.html" "prog08=MU08-module.txt" "card08=card08" "help08=help08.html" "prog09=MU09-module.txt" "card09=card09" "help09=help09.html" "prog10=MU10-module.txt" "card10=card10" "help10=help10.html" "prog11=MU11-module.txt" "card11=card11" "help11=help11.html" "prog12=MU12-module.txt" "card12=card12" "help12=help12.html" "prog13=MU13-module.txt" "card13=card13" "help13=help13.html" "prog14=MU14-module.txt" "card14=card14" "help14=help14.html" "prog15=MU15-module.txt" "card15=card15" "help15=help15.html" "prog16=MU16-module.txt" "card16=card16" "help16=help16.html" "prog17=MU17-module.txt" "card17=card17" "help17=help17.html" "prog18=MU18-module.txt" "card18=card18" "help18=help18.html" "prog19=MU19-module.txt" "card19=card19" "help19=help19.html" "prog20=MU20-module.txt" "card20=card20" "help20=help20.html" "prog21=MU21-module.txt" "card21=card21" "help21=help21.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radF295F.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad9952A.tmp.stdout.txt" 
+		
+10/4/2018 7:01:31 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\mu.ti5l
+10/4/2018 7:01:31 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad1DBAC.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Real Estate.re.03.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\re.ti5l" "prog01=RE01-module.txt" "card01=card01" "help01=help01.html" "prog02=RE02-module.txt" "card02=card02" "help02=help02.html" "prog03=RE03-module.txt" "card03=card03" "help03=help03.html" "prog04=RE04-module.txt" "card04=card04" "help04=help04.html" "prog05=RE05-module.txt" "card05=card05" "help05=help05.html" "prog06=RE06-module.txt" "card06=card06" "help06=help06.html" "prog07=RE07-module.txt" "card07=card07" "help07=help07.html" "prog08=RE08-module.txt" "card08=card08" "help08=help08.html" "prog09=RE09-module.txt" "card09=card09" "help09=help09.html" "prog10=RE10-module.txt" "card10=card10" "help10=help10.html" "prog11=RE11-module.txt" "card11=card11" "help11=help11.html" "prog12=RE12-module.txt" "card12=card12" "help12=help12.html" "prog13=RE13-module.txt" "card13=card13" "help13=help13.html" "prog14=RE14-module.txt" "card14=card14" "help14=help14.html" "prog15=RE15-module.txt" "card15=card15" "help15=help15.html" "prog16=RE16-module.txt" "card16=card16" "help16=help16.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radBE8A0.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radD3200.tmp.stdout.txt" 
+		
+10/4/2018 7:01:32 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\re.ti5l
+10/4/2018 7:01:32 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad6B948.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Securities Analysis.sa.08.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\sa.ti5l" "prog01=SA01-module.txt" "card01=card01" "help01=help01.html" "prog02=SA02-module.txt" "card02=card02" "help02=help02.html" "prog03=SA03-module.txt" "card03=card03" "help03=help03.html" "prog04=SA04-module.txt" "card04=card04" "help04=help04.html" "prog05=SA05-module.txt" "card05=card05" "help05=help05.html" "prog06=SA06-module.txt" "card06=card06" "help06=help06.html" "prog07=SA07-module.txt" "card07=card07" "help07=help07.html" "prog08=SA08-module.txt" "card08=card08" "help08=help08.html" "prog09=SA09-module.txt" "card09=card09" "help09=help09.html" "prog10=SA10-module.txt" "card10=card10" "help10=help10.html" "prog11=SA11-module.txt" "card11=card11" "help11=help11.html" "prog12=SA12-module.txt" "card12=card12" "help12=help12.html" "prog13=SA13-module.txt" "card13=card13" "help13=help13.html" "prog14=SA14-module.txt" "card14=card14" "help14=help14.html" "prog15=SA15-module.txt" "card15=card15" "help15=help15.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad3DE45.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad38E65.tmp.stdout.txt" 
+		
+10/4/2018 7:01:32 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\sa.ti5l
+10/4/2018 7:01:32 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad1B1B4.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\Surveying Library.sy.04.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\sy.ti5l" "prog01=SY01-module.txt" "card01=card01" "help01=help01.html" "prog02=SY02-module.txt" "card02=card02" "help02=help02.html" "prog03=SY03-module.txt" "card03=card03" "help03=help03.html" "prog04=SY04-module.txt" "card04=card04" "help04=help04.html" "prog05=SY05-module.txt" "card05=card05" "help05=help05.html" "prog06=SY06-module.txt" "card06=card06" "help06=help06.html" "prog07=SY07-module.txt" "card07=card07" "help07=help07.html" "prog08=SY08-module.txt" "card08=card08" "help08=help08.html" "prog09=SY09-module.txt" "card09=card09" "help09=help09.html" "prog10=SY10-module.txt" "card10=card10" "help10=help10.html" "prog11=SY11-module.txt" "card11=card11" "help11=help11.html" "prog12=SY12-module.txt" "card12=card12" "help12=help12.html" "prog13=SY13-module.txt" "card13=card13" "help13=help13.html" "prog14=SY14-module.txt" "card14=card14" "help14=help14.html" "prog15=SY15-module.txt" "card15=card15" "help15=help15.html" "prog16=SY16-module.txt" "card16=card16" "help16=help16.html" "prog17=SY17-module.txt" "card17=card17" "help17=help17.html" "prog18=SY18-module.txt" "card18=card18" "help18=help18.html" "prog19=SY19-module.txt" "card19=card19" "help19=help19.html" "prog20=SY20-module.txt" "card20=card20" "help20=help20.html" "prog21=SY21-module.txt" "card21=card21" "help21=help21.html" "prog22=SY22-module.txt" "card22=card22" "help22=help22.html" "prog23=SY23-module.txt" "card23=card23" "help23=help23.html" "prog24=SY24-module.txt" "card24=card24" "help24=help24.html" "prog25=SY25-module.txt" "card25=card25" "help25=help25.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad6DFA4.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radB3283.tmp.stdout.txt" 
+		
+10/4/2018 7:01:32 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\sy.ti5l
+10/4/2018 7:01:32 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad333F5.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\ti_libraries_master\User Contributions A.ct.99.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ct.ti5l" "prog01=CT01-module.txt" "card01=card01" "help01=help01.html" "prog02=CT02-module.txt" "card02=card02" "help02=help02.html" "prog03=CT03-module.txt" "card03=card03" "help03=help03.html" "prog15=CT15-module.txt" "card15=card15" "help15=help15.html" "prog21=CT21-module.txt" "card21=card21" "help21=help21.html" "prog22=CT22-module.txt" "card22=card22" "help22=help22.html" "prog23=CT23-module.txt" "card23=card23" "help23=help23.html" "prog24=CT24-module.txt" "card24=card24" "help24=help24.html" "prog25=CT25-module.txt" "card25=card25" "help25=help25.html" "prog30=CT30-module.txt" "card30=card30" "help30=help30.html" "help=help.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radEF84F.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radD51B0.tmp.stdout.txt" 
+		
+10/4/2018 7:01:33 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ct.ti5l
+
+
+===================================================================================
+10/4/2018 7:01:33 PM : Pass 5P - Make Programs from Inputs (Replacement for MLMAKE)
+===================================================================================
+
+
+10/4/2018 7:01:33 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad42E59.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\programs_master\ee19_construct_nam_code.EE.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ee19_construct_nam_code.ti5p" "prog00=EE00-module.txt" "card00=card00" "help00=help00.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad87329.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radDB9EF.tmp.stdout.txt" 
+		
+10/4/2018 7:01:33 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ee19_construct_nam_code.ti5p
+10/4/2018 7:01:33 PM : (cmdXEQ) 'C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.rad73BAA.tmp.cmd' with Args: []
+		@Echo Off
+		chcp 65001
+		Echo "Running PYTHON 32-BIT with UTF-8 Redirect"
+		cd F:\Engineering\Projects.Android\TI5x\programs_master\ee19_input_code.EE.pub
+		SET PYTHONHOME=C:\Program Files (x86)\Python37-32\
+		SET PYTHONIOENCODING=UTF-8
+		SET PATH=C:\Program Files (x86)\Python37-32\;%PATH%
+		"C:\Program Files (x86)\Python37-32\python.exe" "F:\Engineering\Projects.Android\TI5x\util\makeprog" "F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ee19_input_code.ti5p" "prog00=EE00-module.txt" "card00=card00" "help00=help00.html"  2> "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radFC9BB.tmp.stderr.txt" > "C:\Users\SZoppi\AppData\Local\Temp\NBuildAll.radE47C5.tmp.stdout.txt" 
+		
+10/4/2018 7:01:33 PM : (makeLibrary) Processing Complete for File F:\Engineering\Projects.Android\TI5x\ti_libraries_target\ee19_input_code.ti5p
+
+
+=======================================================================================================================
+10/4/2018 7:01:33 PM : Pass 6 - Cleanup Unprocessed Files And Delete libraries removed from the Development Environment
+=======================================================================================================================
+
+
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : av.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : bd.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : ct.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : ee.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : ee19_construct_nam_code.ti5p
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : ee19_input_code.ti5p
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : le.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : ml.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : mu.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : ng.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : re.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : sa.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : st.ti5l
+10/4/2018 7:01:33 PM :        - Copying  (To Raw)   : sy.ti5l
+
+
+=================================================================
+10/4/2018 7:01:33 PM : Pass 7 - Removing Irrelevant RAW Resources
+=================================================================
+
+
